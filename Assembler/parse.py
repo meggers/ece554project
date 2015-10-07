@@ -14,7 +14,7 @@ class StartInstructions(Exception):
     def get(self):
         return self.value
 
-class DataDirectiveInstruction(Exception):
+class DataDirective(Exception):
     def __init__(self, directive_type, label, value):
         self.directive_type = directive_type
         self.label = label
@@ -37,6 +37,9 @@ class DataWarehouse(object):
 
     reg_file = "../common/reg-definitions.csv"
     isa_file = "../common/isa-definitions.csv"
+
+    data_address = int('0x000', 16)
+    instructions_address = int('0x800', 16)
 
     lookup_table = {}
     instruction_set = {}
@@ -61,7 +64,7 @@ class Line(object):
 
     data = DataWarehouse()
 
-    def __init__(self, address, line):
+    def __init__(self, address, line = "add $zero,$zero,$zero"):
 
         # remove comments
         clean_line = line.split("#")[0]
@@ -79,7 +82,7 @@ class Line(object):
 
         # check if this is a data directive
         if (raw_fields[1] in self.data_directives):
-            raise DataDirectiveInstruction(raw_fields[1], raw_fields[0], raw_fields[2])
+            raise DataDirective(raw_fields[1], raw_fields[0], raw_fields[2])
 
         # check if this is a labelled address and set address
         self.address = address
@@ -96,4 +99,4 @@ class Line(object):
 
     def assemble(self):
         binary_instruction = self.data.instruction_set[self.operation]
-        return format(int(binary_instruction, 2), '08x')
+        return format(self.address, '03x') + ": " + format(int(binary_instruction, 2), '08x')

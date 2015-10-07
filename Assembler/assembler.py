@@ -15,20 +15,41 @@ def read(program):
     global data
 
     instructions = []
-    current_address = int('0x000', 16)
+    current_address = data.data_address
 
     for line in program:
         try:
             instruction = Line(current_address, line)
             instructions.append(instruction)
-            if (instruction.label != None):
+            if (hasattr(instruction, 'label')):
                 data.lookup_table[instruction.label] = current_address
 
             current_address += 1
+
+        # We didn't get anything on this line, ignore
         except EmptyLine:
             continue
+
+        # data directive found, allocate space in data
+        except DataDirective as directive:
+            # make sure we have space for this data
+            allocated_end_address = current_address
+            if (allocated_end_address >= data.instructions_address):
+                print "Data Overflow. Please use less data or allocate more space for it"
+                sys.exit(1)
+
+            # add data to lookup table
+            data.lookup_table[directive.label] = current_address
+            current_address = allocated_end_address + 1
+
+        # instruction directive found, start writing in instruction section
         except StartInstructions:
-            current_address = int('0x800', 16)
+
+            # pad rest of data section
+            for address in range(current_address, data.instructions_address):
+                instructions.append(Line(address))
+
+            current_address = data.instructions_address
 
     return instructions
 
@@ -36,6 +57,11 @@ def assemble(instructions):
     return [instruction.assemble() for instruction in instructions]
 
 def dump(assembly, filename):
+    global data
+
+    print "Lookup Table"
+    print data.lookup_table
+
     output = open(filename, 'w')
     output.truncate()
     output.write("\n".join(assembly))
