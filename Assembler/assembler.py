@@ -7,18 +7,12 @@
 import sys, getopt
 from parse import *
 
-lookup_table = {}
+opcodes = {}
 
-# return numeric value of symbol or number
-def getVal (s) :
-    global lookup_table
-    if not s: return 0            # Empty symbol - zero
-    a = lookup_table.get(s)       # Get value or None if not in lookup
-    if a == None : return int(s)  # Just a number
-    else         : return a
+data = DataWarehouse()
 
 def read(program):
-    global lookup_table
+    global data
 
     instructions = []
     current_address = int('0x000', 16)
@@ -28,7 +22,7 @@ def read(program):
             instruction = Line(current_address, line)
             instructions.append(instruction)
             if (instruction.label != None):
-                lookup_table[instruction.label] = current_address
+                data.lookup_table[instruction.label] = current_address
 
             current_address += 1
         except EmptyLine:
@@ -39,14 +33,15 @@ def read(program):
     return instructions
 
 def assemble(instructions):
-    return []
+    return [instruction.assemble() for instruction in instructions]
 
-def dump(assembly, output_filename):
-    print output_filename
+def dump(assembly, filename):
+    output = open(filename, 'w')
+    output.truncate()
+    output.write("\n".join(assembly))
+    output.close
 
 def main((input_filename, output_filename)):
-    global lookup_table
-
     with open(input_filename) as f:
         program = f.readlines()
         instructions = read(program)

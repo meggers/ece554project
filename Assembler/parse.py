@@ -24,10 +24,42 @@ class DataDirectiveInstruction(Exception):
     def get(self):
         return self.directive_type, self.label, self.value 
 
+def singleton(cls):
+    instances = {}
+    def getinstance():
+        if cls not in instances:
+            instances[cls] = cls()
+        return instances[cls]
+    return getinstance
+
+@singleton
+class DataWarehouse(object):
+
+    reg_file = "../common/reg-definitions.csv"
+    isa_file = "../common/isa-definitions.csv"
+
+    lookup_table = {}
+    instruction_set = {}
+
+    def __init__(self):
+        with open(self.reg_file) as f:
+            lines = f.readlines()
+            for line in lines:
+                register_parts = line.rstrip().split(',')
+                self.lookup_table[register_parts[0]] = register_parts[1]
+
+        with open(self.isa_file) as f:
+            lines = f.readlines()
+            for line in lines:
+                instruction_parts = line.rstrip().split(',')
+                self.instruction_set[instruction_parts[0]] = instruction_parts[1]
+
 class Line(object):
 
     structure_directives = ['.text']
     data_directives = ['.ascii', '.byte', '.word', '.space']
+
+    data = DataWarehouse()
 
     def __init__(self, address, line):
 
@@ -63,4 +95,5 @@ class Line(object):
             self.arguments = raw_fields[1].split(',')
 
     def assemble(self):
-        return "poop"
+        binary_instruction = self.data.instruction_set[self.operation]
+        return format(int(binary_instruction, 2), '08x')
