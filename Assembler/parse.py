@@ -54,7 +54,10 @@ class Line(object):
         if (raw_fields[0][-1] == ':'):
             self.label = raw_fields[0][:-1]
             self.operation = raw_fields[1]
-            self.arguments = raw_fields[2].split(',')
+            try:
+                self.arguments = raw_fields[2].split(',')
+            except IndexError:
+                self.arguments = None
         else:
             self.operation = raw_fields[0]
             self.arguments = raw_fields[1].split(',')

@@ -50,26 +50,41 @@ def getVal (s) :
     if a == None : return int(s)  # Just a number
     else         : return a
 
-def pass1(program):
+def read(program):
+    global lookup_table
+
+    instructions = []
     current_address = int('0x000', 16)
+
     for line in program:
         try:
-            print line
             instruction = Line(current_address, line)
+            instructions.append(instruction)
+            if (instruction.label != None):
+                lookup_table[instruction.label] = current_address
+
             current_address += 1
         except EmptyLine:
-            current_address -= 1
+            continue
         except StartInstructions:
             current_address = int('0x800', 16)
 
-def pass2(program):
-    print "pass2"
+    return instructions
+
+def assemble(instructions):
+    return []
+
+def dump(assembly, output_filename):
+    print output_filename
 
 def main((input_filename, output_filename)):
+    global lookup_table
+
     with open(input_filename) as f:
         program = f.readlines()
-        pass1(program)
-        pass2(program)
+        instructions = read(program)
+        assembly = assemble(instructions)
+        dump(assembly, output_filename)
 
 # print standard usage msg & any addtl msgs, then exit
 def usage(exit_code, *args):
