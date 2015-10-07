@@ -1,4 +1,4 @@
-Instruction,opcode
+instruction,opcode
 add,000000
 addi,000001
 sub,000010
