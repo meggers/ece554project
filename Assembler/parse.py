@@ -47,13 +47,13 @@ class DataWarehouse(object):
     def __init__(self):
         with open(self.reg_file) as f:
             lines = f.readlines()
-            for line in lines:
+            for line in lines[1:]:
                 register_parts = line.rstrip().split(',')
                 self.lookup_table[register_parts[0]] = register_parts[1]
 
         with open(self.isa_file) as f:
             lines = f.readlines()
-            for line in lines:
+            for line in lines[1:]:
                 instruction_parts = line.rstrip().split(',')
                 self.instruction_set[instruction_parts[0]] = instruction_parts[1]
 
