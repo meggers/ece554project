@@ -5,7 +5,8 @@ r,3,register,5
 r,4,immediate,5
 r,5,not_used,6
 i,1,register,5
-i,2,immediate,26
+i,2,register,5
+i,3,immediate,16
 a,1,register,5
 a,2,immediate,26
 si,1,register,5

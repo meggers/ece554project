@@ -22,13 +22,13 @@ test:       add $at,$at,$at
 
 .text
 
-lookie:     add $at,$at,$at
+lookie:     add $v0,$v0,$at
             sub $a0,$at,$at
 
-iam:        addi $at,$at,$at
+iam:        addi $at,$at,10
 
-thatare:    move $at,$at,$at
-            andi $at,$at,$at
+thatare:    andi $at,$at,0xFF
+            div $t1,$t2,$t3
 
 ##############################################
 #                                            #
