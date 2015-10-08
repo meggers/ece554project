@@ -64,7 +64,9 @@ def dump(assembly, filename):
 
     output = open(filename, 'w')
     output.truncate()
-    output.write("\n".join(assembly))
+    output.write("memory_initialization_radix=16;\nmemory_initialization_vector=\n")
+    output.write(",\n".join(assembly))
+    output.write(";")
     output.close
 
 def main((input_filename, output_filename)):

@@ -99,4 +99,4 @@ class Line(object):
 
     def assemble(self):
         binary_instruction = self.data.instruction_set[self.operation]
-        return format(self.address, '03x') + ": " + format(int(binary_instruction, 2), '08x')
+        return format(int(binary_instruction, 2), '08x')
