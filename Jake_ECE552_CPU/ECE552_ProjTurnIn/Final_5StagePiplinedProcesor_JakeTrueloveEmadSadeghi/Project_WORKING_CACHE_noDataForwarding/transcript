@@ -1,0 +1,50 @@
+# Compile of ALU.v was successful.
+# Compile of ALU_tb.sv was successful.
+# Compile of control.v was successful.
+# Compile of datapath.sv was successful.
+# Compile of Full_processor.v was successful.
+# Compile of Full_processor_tb.sv was successful.
+# Compile of reg_file.v was successful.
+# Compile of reg_file_tb.v was successful.
+# Compile of Reg16.v was successful.
+# Compile of data_mem.v was successful.
+# Compile of Testsss.v was successful.
+# Compile of LwStall_tb.sv was successful with warnings.
+# Compile of Loop_tb.sv was successful.
+# Compile of instr_mem.v was successful.
+# Compile of DataDependence_tb.sv was successful.
+# Compile of Control_tb.sv was successful.
+# Compile of BasicOp_tb.sv was successful.
+# Compile of Branch_tb.sv was successful.
+# Compile of Icache.v was successful.
+# Compile of rf_pipelined.v was successful.
+# Compile of unified_mem.v was successful.
+# Compile of Cntrl_Mem_SM.sv was successful.
+# 22 compiles, 0 failed with no errors. 
+vsim -novopt work.BasicOp_tb
+# vsim -novopt work.BasicOp_tb 
+# Loading sv_std.std
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.BasicOp_tb
+# Loading work.BasicOp_tb
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.Full_processor
+# Loading work.Full_processor
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.control
+# Loading work.control
+# Loading work.DM
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.datapath
+# Loading work.datapath
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.unified_mem
+# Loading work.unified_mem
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.cache
+# Loading work.cache
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.Cntrl_Mem_SM
+# Loading work.Cntrl_Mem_SM
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.ALU
+# Loading work.ALU
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.reg_file
+# Loading work.reg_file
+# Refreshing I:\ECE552\Project_Backup_WORKING_CACHE\work.Reg16
+# Loading work.Reg16
+run -all
+# Break in Module BasicOp_tb at I:/ECE552/Project/TestBenches/BasicOp_tb.sv line 102
+# Closing project I:/ECE552/Project_Backup_WORKING_CACHE/Project.mpf]

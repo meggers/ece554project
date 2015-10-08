@@ -1,0 +1,214 @@
+LwStall TEST <-----PASS
+
+
+	Clock #    0
+
+--------
+PC = 0000
+--------
+
+IFID = xxxx
+			R0 =xxxx
+			R1 =xxxx
+			R2 =xxxx
+			R3 =xxxx
+			R4 =xxxx
+			R5 =xxxx
+			R6 =xxxx
+			R7 =xxxx
+			R8 =xxxx
+			R9 =xxxx
+			R10 =xxxx
+			R11 =xxxx
+			R12 =xxxx
+			R13 =xxxx
+			R14 =xxxx
+			R15 =ffff
+			 N = 0
+			 V = 0
+			 Z = 0
+	Clock #    1
+	Clock #    2
+	Clock #    3
+	Clock #    4
+	Clock #    5
+	Clock #    6
+	Clock #    7
+	Clock #    8
+
+--------
+PC = 0001
+--------
+
+IFID = ae00
+	Clock #    9
+
+--------
+PC = 0002
+--------
+
+IFID = be06
+	Clock #   10
+	Clock #   11
+	Clock #   12
+			R14 =00xx
+	Clock #   13
+	Clock #   14
+
+--------
+PC = 0003
+--------
+
+IFID = a100
+	Clock #   15
+
+--------
+PC = 0004
+--------
+
+IFID = b106
+	Clock #   16
+	Clock #   17
+			R14 =0006
+	Clock #   18
+			R1 =00xx
+	Clock #   19
+	Clock #   20
+	Clock #   21
+	Clock #   22
+	Clock #   23
+	Clock #   24
+
+--------
+PC = 0005
+--------
+
+IFID = 1211
+	Clock #   25
+	Clock #   26
+	Clock #   27
+			R1 =0006
+	Clock #   28
+	Clock #   29
+
+--------
+PC = 0006
+--------
+
+IFID = 9205
+	Clock #   30
+			 Z = 1
+	Clock #   31
+	Clock #   32
+			R2 =0000
+	Clock #   33
+	Clock #   34
+
+--------
+PC = 0007
+--------
+
+IFID = 8305
+	Clock #   35
+
+--------
+PC = 0008
+--------
+
+IFID = 0f13
+	Clock #   36
+	Clock #   37
+	Clock #   38
+			R3 =0000
+	Clock #   39
+	Clock #   40
+	Clock #   41
+	Clock #   42
+	Clock #   43
+	Clock #   44
+
+--------
+PC = 0009
+--------
+
+IFID = 4af4
+	Clock #   45
+			 Z = 0
+	Clock #   46
+	Clock #   47
+			R15 =0006
+	Clock #   48
+	Clock #   49
+
+--------
+PC = 000a
+--------
+
+IFID = xxxx
+	Clock #   50
+	Clock #   51
+	Clock #   52
+			R10 =000a
+	Clock #   53
+	Clock #   54
+
+--------
+PC = 000b
+--------
+
+	Clock #   55
+
+--------
+PC = 000c
+--------
+
+	Clock #   56
+	Clock #   57
+	Clock #   58
+	Clock #   59
+	Clock #   60
+
+
+**********************************
+The final values of registers are:
+
+R0:  xxxx
+
+R1:  0006
+
+R2:  0000
+
+R3:  0000
+
+R4:  xxxx
+
+R5:  xxxx
+
+R6:  xxxx
+
+R7:  xxxx
+
+R8:  xxxx
+
+R9:  xxxx
+
+R10: 000a
+
+R11: xxxx
+
+R12: xxxx
+
+R13: xxxx
+
+R14: 0006
+
+R15: 0006
+
+**********************************
+
+
+---------------------------------------------------------------------------
+| The LwStall Test:                                                       |
+| Worked! All the registers that have values were checked to be correct.  |
+---------------------------------------------------------------------------
+

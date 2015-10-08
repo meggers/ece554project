@@ -1,0 +1,109 @@
+# Current time Tue Apr 28 19:05:27 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.3"
+# Version = "2007.05"
+# Date = "May  4 2007"
+# Platform = win32
+
+Exception c0000005 has occurred at address 1004972f. Traceback:
+# 0    0x1004972f: 'Tcl_FindCommand + 0x3f'
+# 1    0x1004cc97: 'TclSetCmdNameObj + 0x117'
+# 2    0x1004caf0: 'Tcl_GetCommandFromObj + 0x40'
+# 3    0x1000d354: 'TclEvalObjvInternal + 0x74'
+# 4    0x1000dce0: 'Tcl_EvalEx + 0x180'
+# 5    0x1000e066: 'Tcl_Eval + 0x16'
+# 6    0x1000f2bd: 'Tcl_VarEvalVA + 0x4d'
+# 7    0x1000f2f0: 'Tcl_VarEval + 0x10'
+# 8    0x1029c483: 'TkTextScanCmd + 0x5f3'
+# 9    0x102993d0: 'TkTextFreeDInfo + 0x7a0'
+# 10   0x10057f2a: 'TclServiceIdle + 0x4a'
+# 11   0x1004b374: 'Tcl_DoOneEvent + 0x124'
+# 12   0x10262446: 'Tk_MainLoop + 0x16'
+# 13   0x004677e4: '<unknown (@0x4677e4)>'
+# 14   0x00468814: '<unknown (@0x468814)>'
+# 15   0x005e8ef5: '<unknown (@0x5e8ef5)>'
+# 16   0x750b336a: '<unknown (@0x750b336a)>'
+# 17   0x774d92b2: '<unknown (@0x774d92b2)>'
+# 18   0x774d9285: '<unknown (@0x774d9285)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Tue Apr 28 19:05:27 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.3"
+# Version = "2007.05"
+# Date = "May  4 2007"
+# Platform = win32
+
+Exception c0000005 has occurred at address 1004972f. Traceback:
+# 0    0x1004972f: 'Tcl_FindCommand + 0x3f'
+# 1    0x1004cc97: 'TclSetCmdNameObj + 0x117'
+# 2    0x1004caf0: 'Tcl_GetCommandFromObj + 0x40'
+# 3    0x1000d354: 'TclEvalObjvInternal + 0x74'
+# 4    0x1000dce0: 'Tcl_EvalEx + 0x180'
+# 5    0x1000e066: 'Tcl_Eval + 0x16'
+# 6    0x0046444a: '<unknown (@0x46444a)>'
+# 7    0x004675c9: '<unknown (@0x4675c9)>'
+# 8    0x00467693: '<unknown (@0x467693)>'
+# 9    0x00468837: '<unknown (@0x468837)>'
+# 10   0x005e8ef5: '<unknown (@0x5e8ef5)>'
+# 11   0x750b336a: '<unknown (@0x750b336a)>'
+# 12   0x774d92b2: '<unknown (@0x774d92b2)>'
+# 13   0x774d9285: '<unknown (@0x774d9285)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Tue Apr 28 19:05:27 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.3"
+# Version = "2007.05"
+# Date = "May  4 2007"
+# Platform = win32
+
+Exception c0000005 has occurred at address 1004972f. Traceback:
+# 0    0x1004972f: 'Tcl_FindCommand + 0x3f'
+# 1    0x1004cc97: 'TclSetCmdNameObj + 0x117'
+# 2    0x1004caf0: 'Tcl_GetCommandFromObj + 0x40'
+# 3    0x1000d354: 'TclEvalObjvInternal + 0x74'
+# 4    0x1000dce0: 'Tcl_EvalEx + 0x180'
+# 5    0x1000e066: 'Tcl_Eval + 0x16'
+# 6    0x0046444a: '<unknown (@0x46444a)>'
+# 7    0x004675c9: '<unknown (@0x4675c9)>'
+# 8    0x00467693: '<unknown (@0x467693)>'
+# 9    0x00468837: '<unknown (@0x468837)>'
+# 10   0x005e8ef5: '<unknown (@0x5e8ef5)>'
+# 11   0x750b336a: '<unknown (@0x750b336a)>'
+# 12   0x774d92b2: '<unknown (@0x774d92b2)>'
+# 13   0x774d9285: '<unknown (@0x774d9285)>'
+StackWalk failed 487
+# End of Stack Trace
+
+# Current time Tue Apr 28 19:05:27 2015
+# ModelSim Stack Trace
+# Program = vish
+# Id = "6.3"
+# Version = "2007.05"
+# Date = "May  4 2007"
+# Platform = win32
+
+Exception c0000005 has occurred at address 1004972f. Traceback:
+# 0    0x1004972f: 'Tcl_FindCommand + 0x3f'
+# 1    0x1004cc97: 'TclSetCmdNameObj + 0x117'
+# 2    0x1004caf0: 'Tcl_GetCommandFromObj + 0x40'
+# 3    0x1000d354: 'TclEvalObjvInternal + 0x74'
+# 4    0x1000dce0: 'Tcl_EvalEx + 0x180'
+# 5    0x1000e066: 'Tcl_Eval + 0x16'
+# 6    0x0046444a: '<unknown (@0x46444a)>'
+# 7    0x004675c9: '<unknown (@0x4675c9)>'
+# 8    0x00467693: '<unknown (@0x467693)>'
+# 9    0x00468837: '<unknown (@0x468837)>'
+# 10   0x005e8ef5: '<unknown (@0x5e8ef5)>'
+# 11   0x750b336a: '<unknown (@0x750b336a)>'
+# 12   0x774d92b2: '<unknown (@0x774d92b2)>'
+# 13   0x774d9285: '<unknown (@0x774d9285)>'
+StackWalk failed 487
+# End of Stack Trace
+

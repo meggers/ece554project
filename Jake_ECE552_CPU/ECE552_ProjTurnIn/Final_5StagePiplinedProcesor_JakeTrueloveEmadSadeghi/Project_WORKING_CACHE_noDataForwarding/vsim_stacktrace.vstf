@@ -1,0 +1,58 @@
+# Current time Thu Mar 26 15:40:35 2015
+# ModelSim Stack Trace
+# Program = vsim
+# Id = "6.3"
+# Version = "2007.05"
+# Date = "May  4 2007"
+# Platform = win32
+# 0    0x005f714c: '<unknown (@0x5f714c)>'
+# 1    0x0068f3d5: '<unknown (@0x68f3d5)>'
+# 2    0x0068ee61: '<unknown (@0x68ee61)>'
+# 3    0x00691989: '<unknown (@0x691989)>'
+# 4    0x0069162b: '<unknown (@0x69162b)>'
+# 5    0x00691d68: '<unknown (@0x691d68)>'
+# 6    0x1000c74b: 'TclInvokeStringCommand + 0x6b' in 'q:\ms6.001\win32\tcl84.dll'
+# 7    0x1000d52b: 'TclEvalObjvInternal + 0x24b' in 'q:\ms6.001\win32\tcl84.dll'
+# 8    0x1000dce0: 'Tcl_EvalEx + 0x180' in 'q:\ms6.001\win32\tcl84.dll'
+# 9    0x1000e066: 'Tcl_Eval + 0x16' in 'q:\ms6.001\win32\tcl84.dll'
+# 10   0x1000f31c: 'Tcl_GlobalEval + 0x1c' in 'q:\ms6.001\win32\tcl84.dll'
+# 11   0x00752ff6: '<unknown (@0x752ff6)>'
+# 12   0x1003d955: 'Tcl_NotifyChannel + 0xc5' in 'q:\ms6.001\win32\tcl84.dll'
+# 13   0x1006a64b: 'TclpHasSockets + 0x7fb' in 'q:\ms6.001\win32\tcl84.dll'
+# 14   0x1004b0f0: 'Tcl_ServiceEvent + 0x60' in 'q:\ms6.001\win32\tcl84.dll'
+# 15   0x1004b361: 'Tcl_DoOneEvent + 0x111' in 'q:\ms6.001\win32\tcl84.dll'
+# 16   0x007b967c: '<unknown (@0x7b967c)>'
+# 17   0x0060b2f9: '<unknown (@0x60b2f9)>'
+# 18   0x005a6537: '<unknown (@0x5a6537)>'
+# End of Stack Trace
+
+
+# Current time Thu Apr 30 22:48:44 2015
+# ModelSim Stack Trace
+# Program = vsim
+# Id = "6.3"
+# Version = "2007.05"
+# Date = "May  4 2007"
+# Platform = win32
+# 0    0x005f714c: '<unknown (@0x5f714c)>'
+# 1    0x0068f3d5: '<unknown (@0x68f3d5)>'
+# 2    0x0068ee61: '<unknown (@0x68ee61)>'
+# 3    0x00691989: '<unknown (@0x691989)>'
+# 4    0x0069162b: '<unknown (@0x69162b)>'
+# 5    0x00691d68: '<unknown (@0x691d68)>'
+# 6    0x1000c74b: 'TclInvokeStringCommand + 0x6b' in 'q:\ms6.001\win32\tcl84.dll'
+# 7    0x1000d52b: 'TclEvalObjvInternal + 0x24b' in 'q:\ms6.001\win32\tcl84.dll'
+# 8    0x1000dce0: 'Tcl_EvalEx + 0x180' in 'q:\ms6.001\win32\tcl84.dll'
+# 9    0x1000e066: 'Tcl_Eval + 0x16' in 'q:\ms6.001\win32\tcl84.dll'
+# 10   0x1000f31c: 'Tcl_GlobalEval + 0x1c' in 'q:\ms6.001\win32\tcl84.dll'
+# 11   0x00752ff6: '<unknown (@0x752ff6)>'
+# 12   0x1003d955: 'Tcl_NotifyChannel + 0xc5' in 'q:\ms6.001\win32\tcl84.dll'
+# 13   0x1006a64b: 'TclpHasSockets + 0x7fb' in 'q:\ms6.001\win32\tcl84.dll'
+# 14   0x1004b0f0: 'Tcl_ServiceEvent + 0x60' in 'q:\ms6.001\win32\tcl84.dll'
+# 15   0x1004b361: 'Tcl_DoOneEvent + 0x111' in 'q:\ms6.001\win32\tcl84.dll'
+# 16   0x007b967c: '<unknown (@0x7b967c)>'
+# 17   0x0060b2f9: '<unknown (@0x60b2f9)>'
+# 18   0x005a6537: '<unknown (@0x5a6537)>'
+# End of Stack Trace
+
+

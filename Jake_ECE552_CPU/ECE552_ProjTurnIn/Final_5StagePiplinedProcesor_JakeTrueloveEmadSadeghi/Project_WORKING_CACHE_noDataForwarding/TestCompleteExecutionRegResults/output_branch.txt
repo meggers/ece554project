@@ -1,0 +1,286 @@
+BRANCH TEST WITH DELAYED BRANCHING<-----PASS
+
+
+	Clock #    0
+
+--------
+PC = 0000
+--------
+
+IFID = xxxx
+			R0 =xxxx
+			R1 =xxxx
+			R2 =xxxx
+			R3 =xxxx
+			R4 =xxxx
+			R5 =xxxx
+			R6 =xxxx
+			R7 =xxxx
+			R8 =xxxx
+			R9 =xxxx
+			R10 =xxxx
+			R11 =xxxx
+			R12 =xxxx
+			R13 =xxxx
+			R14 =xxxx
+			R15 =xxxx
+			 N = 0
+			 V = 0
+			 Z = 0
+
+--------
+PC = 0001
+--------
+
+IFID = b122
+	Clock #    1
+
+--------
+PC = 0002
+--------
+
+IFID = a100
+	Clock #    2
+	Clock #    3
+	Clock #    4
+			R1 =xx22
+	Clock #    5
+	Clock #    6
+
+--------
+PC = 0003
+--------
+
+IFID = b211
+	Clock #    7
+	Clock #    8
+	Clock #    9
+			R1 =0022
+	Clock #   10
+	Clock #   11
+
+--------
+PC = 0004
+--------
+
+IFID = a200
+	Clock #   12
+	Clock #   13
+	Clock #   14
+			R2 =xx11
+	Clock #   15
+	Clock #   16
+
+--------
+PC = 0005
+--------
+
+IFID = 1021
+	Clock #   17
+	Clock #   18
+	Clock #   19
+			R2 =0011
+	Clock #   20
+	Clock #   21
+
+--------
+PC = 0006
+--------
+
+IFID = c00c
+	Clock #   22
+			 N = 1
+	Clock #   23
+	Clock #   24
+			R0 =ffef
+	Clock #   25
+	Clock #   26
+
+--------
+PC = 0007
+--------
+
+IFID = b333
+	Clock #   27
+
+--------
+PC = 0008
+--------
+
+IFID = c104
+	Clock #   28
+	Clock #   29
+	Clock #   30
+			R3 =xx33
+	Clock #   31
+
+--------
+PC = 000b
+--------
+
+IFID = a333
+	Clock #   32
+
+--------
+PC = 000c
+--------
+
+IFID = b000
+	Clock #   33
+
+--------
+PC = 000d
+--------
+
+IFID = a000
+	Clock #   34
+	Clock #   35
+			R3 =3333
+	Clock #   36
+			R0 =ff00
+	Clock #   37
+	Clock #   38
+
+--------
+PC = 000e
+--------
+
+IFID = c004
+	Clock #   39
+	Clock #   40
+	Clock #   41
+			R0 =0000
+	Clock #   42
+	Clock #   43
+
+--------
+PC = 000f
+--------
+
+IFID = b355
+	Clock #   44
+
+--------
+PC = 0010
+--------
+
+IFID = c704
+	Clock #   45
+	Clock #   46
+	Clock #   47
+			R3 =3355
+	Clock #   48
+
+--------
+PC = 0013
+--------
+
+IFID = a355
+	Clock #   49
+
+--------
+PC = 0014
+--------
+
+IFID = bbaa
+	Clock #   50
+
+--------
+PC = 0015
+--------
+
+IFID = abaa
+	Clock #   51
+	Clock #   52
+			R3 =5555
+	Clock #   53
+			R11 =xxaa
+	Clock #   54
+	Clock #   55
+
+--------
+PC = 0016
+--------
+
+IFID = xxxx
+	Clock #   56
+
+--------
+PC = 001X
+--------
+
+	Clock #   57
+
+--------
+PC = xxxx
+--------
+
+	Clock #   58
+			R11 =aaaa
+	Clock #   59
+	Clock #   60
+	Clock #   61
+	Clock #   62
+	Clock #   63
+	Clock #   64
+	Clock #   65
+	Clock #   66
+	Clock #   67
+	Clock #   68
+	Clock #   69
+	Clock #   70
+	Clock #   71
+	Clock #   72
+	Clock #   73
+	Clock #   74
+	Clock #   75
+	Clock #   76
+	Clock #   77
+	Clock #   78
+	Clock #   79
+	Clock #   80
+
+
+**********************************
+The final values of registers are:
+
+R0:  0000
+
+R1:  0022
+
+R2:  0011
+
+R3:  5555
+
+R4:  xxxx
+
+R5:  xxxx
+
+R6:  xxxx
+
+R7:  xxxx
+
+R8:  xxxx
+
+R9:  xxxx
+
+R10: xxxx
+
+R11: aaaa
+
+R12: xxxx
+
+R13: xxxx
+
+R14: xxxx
+
+R15: xxxx
+
+**********************************
+
+
+-------------------------------------------------
+| The Branch Test:                              |
+| Worked! All register values were correct.     |
+-------------------------------------------------
+

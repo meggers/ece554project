@@ -1,0 +1,13 @@
+module test();
+
+integer f;
+initial begin
+  f = $fopen("output.txt");
+ // $fmonitor(f, "time=%5d, v=%h\n", $time, vv);
+ $fdisplay(f, "2");
+  #1000
+  $fclose(f);
+  $finish;
+end
+
+endmodule
