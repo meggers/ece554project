@@ -59,9 +59,6 @@ def assemble(instructions):
 def dump(assembly, filename):
     global data
 
-    print "Lookup Table"
-    print data.lookup_table
-
     output = open(filename, 'w')
     output.truncate()
     output.write("memory_initialization_radix=16;\nmemory_initialization_vector=\n")

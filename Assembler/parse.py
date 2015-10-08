@@ -60,10 +60,11 @@ class DataWarehouse(object):
 class Line(object):
 
     structure_directives = ['.text']
-    data_directives = ['.ascii', '.byte', '.word', '.space']
+    data_directives = ['.asciiz', '.byte', '.word', '.space']
 
     data = DataWarehouse()
 
+    # if empty initialize line to noop
     def __init__(self, address, line = "add $zero,$zero,$zero"):
 
         # remove comments
