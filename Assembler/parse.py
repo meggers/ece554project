@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+from collections import defaultdict
+
 class EmptyLine(Exception):
     def __init__(self, value):
         self.value = value
@@ -37,12 +39,14 @@ class DataWarehouse(object):
 
     reg_file = "../common/reg-definitions.csv"
     isa_file = "../common/isa-definitions.csv"
+    fmt_file = "../common/format-definitions.csv"
 
     data_address = int('0x000', 16)
     instructions_address = int('0x800', 16)
 
     lookup_table = {}
     instruction_set = {}
+    instruction_formats = defaultdict(list)
 
     def __init__(self):
         with open(self.reg_file) as f:
@@ -55,7 +59,20 @@ class DataWarehouse(object):
             lines = f.readlines()
             for line in lines[1:]:
                 instruction_parts = line.rstrip().split(',')
-                self.instruction_set[instruction_parts[0]] = instruction_parts[1]
+                self.instruction_set[instruction_parts[0]] = {
+                    "opcode": instruction_parts[1],
+                    "format": instruction_parts[2]
+                }
+
+        with open(self.fmt_file) as f:
+            lines = f.readlines()
+            for line in lines[1:]:
+                format_parts = line.rstrip().split(',')
+                self.instruction_formats[format_parts[0]].append({
+                    "order": format_parts[1],
+                    "type": format_parts[2],
+                    "width": format_parts[3]
+                })
 
 class Line(object):
 
@@ -99,5 +116,36 @@ class Line(object):
             self.arguments = raw_fields[1].split(',')
 
     def assemble(self):
-        binary_instruction = self.data.instruction_set[self.operation]
+        instruction_format = self.data.instruction_set[self.operation]
+        instruction_opcode = instruction_format["opcode"]
+        instruction_format = instruction_format["format"]
+
+        binary_instruction = instruction_opcode
+        for index, field in enumerate(sorted(self.data.instruction_formats[instruction_format], key=lambda x: x["order"])):
+            length = int(field['width'])
+            try:
+                if field["type"] == "register":
+                    value = self.data.lookup_table[self.arguments[index]]
+                    value = bin(int(value))[2:].zfill(length)
+                    binary_instruction += value
+
+                elif field["type"] == "immediate":
+                    if hasattr(self.data.lookup_table, self.arguments[index]):
+                        value = self.data.lookup_table[self.arguments[index]]
+                        value = bin(int(value))[2:].zfill(length)
+                    else:
+                        value = self.arguments[index]
+                        if "0x" in value:
+                            value = bin(int(value[2:], 16))[2:].zfill(length)
+                        else:
+                            value = bin(int(value))[2:].zfill(length)
+
+                    binary_instruction += value
+
+                elif field["type"] == "not_used":
+                    binary_instruction += '0' * length
+
+            except IndexError:
+                break
+
         return format(int(binary_instruction, 2), '08x')

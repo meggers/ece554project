@@ -18,21 +18,21 @@ Specifications:
 
 Example Code:
 
-    # this is a comment
-    # data section starts here
+# this is a comment
+# data section starts here
 
-    test:   .byte 0xFA
-    const:  .word 0x0000 # ? what is our word size? 16b? 32b?
-    text:   .asciiz "check out my sick text"
-                
-    .text # instructions start here
+test:   .byte 0xFA
+const:  .word 0x0000 # ? what is our word size? 16b? 32b?
+text:   .asciiz "check out my sick text"
+            
+.text # instructions start here
 
-    label1:     add $at,$at,$at
-                sub $a0,$at,$at
+label1:     add $at,$at,$at
+            sub $a0,$at,$at
 
-    lab:        addi $at,$at,$at
+lab:        addi $at,$at,$at
 
-    labella:    move $at,$at,$at
-                andi $at,$at,$at
+labella:    move $at,$at,$at
+            andi $at,$at,$at
 
-                hlt
+            hlt
