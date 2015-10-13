@@ -11,8 +11,10 @@
 #                                            #
 ##############################################
                                              
-test:       add $at,$at,$at
-            and $at,$at,$at
+test:       .byte 7
+poop:       .word 86
+another:    .space 10
+omg:        .asciiz "pooperdooper"
 
 ##############################################
 #                                            #

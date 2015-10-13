@@ -4,12 +4,12 @@
 #   Assembler
 #
 
-import sys, getopt
+import sys, getopt, math
 from parse import *
 
 opcodes = {}
-
 data = DataWarehouse()
+BYTE_ADDRESS = 4
 
 def read(program):
     global data
@@ -24,7 +24,7 @@ def read(program):
             if (hasattr(instruction, 'label')):
                 data.lookup_table[instruction.label] = current_address
 
-            current_address += 1
+            current_address += BYTE_ADDRESS
 
         # We didn't get anything on this line, ignore
         except EmptyLine:
@@ -33,14 +33,27 @@ def read(program):
         # data directive found, allocate space in data
         except DataDirective as directive:
             # make sure we have space for this data
-            allocated_end_address = current_address
+            byte_size = math.ceil(len(directive.value) / 2)
+            allocated_end_address = current_address + byte_size
             if (allocated_end_address >= data.instructions_address):
                 print "Data Overflow. Please use less data or allocate more space for it"
                 sys.exit(1)
 
             # add data to lookup table
             data.lookup_table[directive.label] = current_address
-            current_address = allocated_end_address + 1
+
+            current_value = ""
+            for character in directive.value:
+                current_value += character
+                if len(current_value) == 8:
+                    instructions.append(Line(current_address, None, current_value))
+                    current_address += BYTE_ADDRESS
+                    current_value = ""
+
+            # set overflow value
+            overflow_length = len(current_value)
+            current_value = ("0" * (8 - overflow_length)) + current_value
+            instructions.append(Line(current_address, None, current_value))
 
         # instruction directive found, start writing in instruction section
         except StartInstructions:

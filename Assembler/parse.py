@@ -17,14 +17,21 @@ class StartInstructions(Exception):
         return self.value
 
 class DataDirective(Exception):
-    def __init__(self, directive_type, label, value):
-        self.directive_type = directive_type
+    def __init__(self, label, value):
         self.label = label
         self.value = value
     def __str__(self):
-        return repr(self.directive_type)
+        return repr(self.value)
     def get(self):
-        return self.directive_type, self.label, self.value 
+        return self.label, self.value 
+
+class PsuedoInstruction(Exception):
+    def __init__(self, instructions):
+        self.instructions
+    def __str__(self):
+        return repr(self.instructions)
+    def get(self):
+        return self.instructions
 
 def singleton(cls):
     instances = {}
@@ -76,13 +83,43 @@ class DataWarehouse(object):
 
 class Line(object):
 
+    def _asciiz(data):
+        return data[1:-1].encode('hex') + "00" # null terminated braaaah
+
+    def _byte(data):
+        if "0x" in data:
+            value = "{0:0{1}x}".format(int(data[2:], 16), 2)
+        else:
+            value = "{0:0{1}x}".format(int(data), 2)
+
+        return value
+
+    def _word(data):
+        if "0x" in data:
+            value = "{0:0{1}x}".format(int(data[2:], 16), 8)
+        else:
+            value = "{0:0{1}x}".format(int(data), 8)
+
+        return value
+
+    def _space(data):
+        return "00" * int(data)
+
     structure_directives = ['.text']
-    data_directives = ['.asciiz', '.byte', '.word', '.space']
+    data_directives = {
+        '.asciiz': _asciiz, 
+        '.byte': _byte, 
+        '.word': _word, 
+        '.space': _space
+    }
 
     data = DataWarehouse()
 
     # if empty initialize line to noop
-    def __init__(self, address, line = "add $zero,$zero,$zero"):
+    def __init__(self, address, line = "add $zero,$zero,$zero", value = None):
+        if value is not None:
+            self.value = value
+            return
 
         # remove comments
         clean_line = line.split("#")[0]
@@ -100,7 +137,7 @@ class Line(object):
 
         # check if this is a data directive
         if (raw_fields[1] in self.data_directives):
-            raise DataDirective(raw_fields[1], raw_fields[0], raw_fields[2])
+            raise DataDirective(raw_fields[0], self.data_directives[raw_fields[1]](raw_fields[2]))
 
         # check if this is a labelled address and set address
         self.address = address
@@ -116,6 +153,9 @@ class Line(object):
             self.arguments = raw_fields[1].split(',')
 
     def assemble(self):
+        if hasattr(self, 'value'):
+            return self.value
+
         instruction_format = self.data.instruction_set[self.operation]
         instruction_opcode = instruction_format["opcode"]
         instruction_format = instruction_format["format"]
