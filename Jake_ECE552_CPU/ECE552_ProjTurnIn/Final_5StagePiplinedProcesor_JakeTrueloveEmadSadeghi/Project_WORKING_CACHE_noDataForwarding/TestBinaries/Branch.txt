@@ -1,0 +1,89 @@
+		LLB R1, 0x22		# R1 = 0xxx22
+		LHB R1, 0x00		# R1 = 0x0022
+		LLB R2, 0x11		# R2 = 0xxx11
+		LHB R2, 0x00		# R2 = 0x0011
+		SUB R0, R2, R1		# This should clear the z flag, and set N flag
+		B	EQ, FAIL
+		LLB	R3, 0x33	# delayed branch, R3 = 0xxx33
+		B	LT, ARND
+		LHB	R3, 0x33	# delayed branch, R3 = 0x3333
+		B 	UNCOND, FAIL    # unconditional branch, ccc=111
+		LLB	R3, 0x55	# R3 = 0x3355
+
+ARND:		LLB R0, 0x00		# This should not set the Z flag
+		LHB R0, 0x00		# This should not set the Z flag
+		B 	EQ, FAIL
+		LLB	R3, 0x55	# delayed branch, R3 = 0x3355
+		B	UNCOND, PASS	# unconditional branch, ccc=111
+		LHB	R3, 0x55	# delayed branch, R3 = 0x5555
+		
+FAIL:		LLB R10, 0xFF		# R10 will contain 0xxxFF
+		LHB R10, 0xFF		# R10 will contain 0xFFFF (indicates failure)		
+		
+PASS:		LLB R11, 0xAA		# R11 will contain 0xxxAA
+		LHB R11, 0xAA		# R11 will contain 0xAAAA (indicated pass)
+
+
+
+
+
+
+instr_mem[0] = 16'hB122; //LLB R1, #22
+instr_mem[1] = 16'hA100; //LHB R1, #00 (R1 = x0022)
+instr_mem[2] = 16'hB211; //LLB R2, #11
+instr_mem[3] = 16'hA200; //LHB R2, #00 (R2 = x0011)
+
+instr_mem[4] = 16'h1021; //SUB R0, R2, R1 (R0 = R1-R2 = FFEF) (N = 1, Z = 0)
+
+instr_mem[5] = 16'hC00C; // 1100 B EQ, 12 (SHOULD NOT TAKE)
+instr_mem[6] = 16'hB333; // LLB R3, x33
+instr_mem[7] = 16'hC104; // B LT ARND (SHOULD TAKE)
+
+
+instr_mem[8] = 16'hA333; // LHB R3, x33 (R3 = x3333)
+instr_mem[9] = 16'hC708; // B TRUE, FAIL 
+
+instr_mem[10] = 16'hB355; // LLB R3 x55 			
+instr_mem[11] = 16'hB000; // LLB R0 x00 (SHOULD NOT SET Z FLAG)  *****ARND*****
+instr_mem[12] = 16'hA000; // LHB R0 x00 (R0 = x0000)  (SHOULD NOT SET Z FLAG)
+instr_mem[13] = 16'hC004; // B EQ, FAIL (SHOULD NOT TAKE)
+instr_mem[14] = 16'hB355; // LLB R3, x55 (R3 = x3355)
+
+instr_mem[15] = 16'hC704; // B True, PASS 			
+instr_mem[16] = 16'hA355; // LHB R3 x55 (R3 = x5555)
+
+instr_mem[17] = 16'hBAFF; // LLB R10 xFF			*****FAIL*****
+instr_mem[18] = 16'hAAFF; // LHB R10 xFF (R10 = xFFFF
+
+instr_mem[19] = 16'hBBAA; // LLB R11 xAA			*****PASS*****
+instr_mem[20] = 16'hABAA; // LHB R11 xAA (R11 = xAAAA)
+
+
+
+
+
+000 Equal (Z = 1)
+001 Less Than (N = 1 and V = 0)
+010 Greater Than (Z = N = V = 0)
+011 Overflow (V = 1)
+100 Not Equal (Z = 0)
+101 Greater or Equal (Complement of Less Than)
+110 Less or Equal ((N = 1 and V = 0) or Z = 1)
+111 True
+
+
+ADD 0000
+SUB 0001
+NAND 0010
+XOR 0011
+INC 0100
+SRA 0101
+SRL 0110
+SLL 0111
+LW 1000
+SW 1001
+LHB 1010
+LLB 1011
+B 1100
+CALL 1101
+RET 1110

@@ -1,0 +1,287 @@
+module IM(clk,addr,rd_en,instr);
+
+input clk;
+input [15:0] addr;
+input rd_en;			// asserted when instruction read desired
+
+output reg [15:0] instr;	//output of insturction memory
+
+reg [15:0]instr_mem[0:65535];
+
+/////////////////////////////////////
+// Memory is latched on clock low //
+///////////////////////////////////
+always @(addr,rd_en,clk)
+  if (~clk & rd_en)
+    instr <= instr_mem[addr];
+
+initial begin
+   /*@0000 BE02	// LLB R14 #2
+//@0001 A326	// LHB R3  #0x26 
+//@0002 9300 // SW R3	#0
+//*/ 
+    
+  $readmemh("instr.hex",instr_mem);
+  
+//////////////  
+// BASIC OP //  
+//////////////
+ /*
+instr_mem[0] = 16'hB101;
+instr_mem[1] = 16'hA100;
+instr_mem[2] = 16'hB210;
+instr_mem[3] = 16'hA200;
+instr_mem[4] = 16'h1011;
+
+instr_mem[5] = 16'h0312;
+instr_mem[6] = 16'h2412;
+instr_mem[7] = 16'h3512;
+instr_mem[8] = 16'h4621;
+instr_mem[9] = 16'h472F;
+
+instr_mem[10] = 16'h5844;
+instr_mem[11] = 16'h6944;
+instr_mem[12] = 16'h7A44;
+instr_mem[13] = 16'hBE0B;
+instr_mem[14] = 16'hAE00;
+
+instr_mem[15] = 16'h9AFF;
+instr_mem[16] = 16'h8BFF;
+  */
+  
+//////////////////////////////
+// BRANCH TEST - FUNCTIONAL //
+//////////////////////////////
+
+/*
+instr_mem[0] = 16'hAF00;
+instr_mem[1] = 16'hBF0F;
+
+instr_mem[2] = 16'hA100;
+instr_mem[3] = 16'hB105;
+
+instr_mem[4] = 16'hC702;
+
+instr_mem[5] = 16'b1011; 
+instr_mem[6] = 16'hD006; // offset is 6 
+instr_mem[7] = 16'hA400; // 0100
+
+
+instr_mem[8] = 16'hB457;
+instr_mem[9] = 16'h1034;
+
+instr_mem[10] = 16'hC007;
+instr_mem[11] = 16'h0000;
+instr_mem[12] = 16'hA300;
+instr_mem[13] = 16'hB357;
+instr_mem[14] = 16'hE000;
+
+instr_mem[15] = 16'hA2FF;
+instr_mem[16] = 16'hB2FF;
+
+instr_mem[17] = 16'hA1AA;
+*/
+
+
+
+
+
+//////////////////////////  
+//LOOP TEST - FUNCTIONAL//
+//////////////////////////
+/*
+instr_mem[0] = 16'hB100;
+instr_mem[1] = 16'hA102;
+instr_mem[2] = 16'hB201;
+instr_mem[3] = 16'hA200;
+
+instr_mem[4] = 16'hB300;
+instr_mem[5] = 16'hA300;
+
+instr_mem[6] = 16'h1112;
+
+instr_mem[7] = 16'hC4FF;
+instr_mem[8] = 16'h0332;
+*/
+
+
+////////////////////
+//SHORT LOOP TESTS//
+////////////////////
+/*
+instr_mem[0] = 16'hB103; // R1 = 3
+instr_mem[1] = 16'hA100;
+instr_mem[2] = 16'hB201; // R2 = 1 
+instr_mem[3] = 16'hA200;
+
+instr_mem[4] = 16'hB300;
+instr_mem[5] = 16'hA300;
+
+instr_mem[6] = 16'h1112;
+
+instr_mem[7] = 16'hC4FE;
+instr_mem[8] = 16'h0332;
+instr_mem[9] = 16'h3721;
+*/
+
+/////////////////
+// Branch Test //
+/////////////////
+// This branch test loads some values in R14 and R3 then adds them 
+// and uses those condition codes to preform a BGT to instruction 8
+/*instr_mem[0] = 16'hBE02; // LLB R14 x02 ==> R14 = x2
+instr_mem[1] = 16'hAE01; // LHB R14 x01
+                         // R14 = x0102
+instr_mem[2] = 16'hB312; // LLB R3 x12  ==> R3 = x12
+instr_mem[3] = 16'hA30C; // LHB R3 x0C
+                         // R3 x0C12
+instr_mem[4] = 16'h013E; // ADD R1 R3 R14   0C12 + 0102 = 0D14 ==> N=0 Z=0 V=0
+instr_mem[5] = 16'hC202; // BGT #x2
+instr_mem[6] = 16'h113E; // SUB R1 R3 R14
+instr_mem[7] = 16'h383E; // instruction should not execute
+instr_mem[8] = 16'h223E; // NAND R2 R3 R14
+*/
+
+/////////////////
+// BRANCH TEST // -------PASS
+/////////////////
+/*
+instr_mem[0] = 16'hB122; //LLB R1, #22
+instr_mem[1] = 16'hA100; //LHB R1, #00 (R1 = x0022)
+instr_mem[2] = 16'hB211; //LLB R2, #11
+instr_mem[3] = 16'hA200; //LHB R2, #00 (R2 = x0011)
+
+instr_mem[4] = 16'h1021; //SUB R0, R2, R1 (R0 = R1-R2 = FFEF) (N = 1, Z = 0)
+
+instr_mem[5] = 16'hC00C; // 1100 B EQ, 12 (SHOULD NOT TAKE)
+instr_mem[6] = 16'hB333; // LLB R3, x33
+instr_mem[7] = 16'hC104; // B LT ARND (SHOULD TAKE)
+
+
+instr_mem[8] = 16'hA333; // LHB R3, x33 (R3 = x3333)
+instr_mem[9] = 16'hC708; // B TRUE, FAIL 
+
+instr_mem[10] = 16'hB355; // LLB R3 x55 			*****ARND*****
+instr_mem[11] = 16'hB000; // LLB R0 x00 (SHOULD NOT SET Z FLAG)
+instr_mem[12] = 16'hA000; // LHB R0 x00 (R0 = x0000)  (SHOULD NOT SET Z FLAG)
+instr_mem[13] = 16'hC004; // B EQ, FAIL (SHOULD NOT TAKE)
+instr_mem[14] = 16'hB355; // LLB R3, x55 (R3 = x3355)
+
+instr_mem[15] = 16'hC704; // B True, PASS 			
+instr_mem[16] = 16'hA355; // LHB R3 x55 (R3 = x5555)
+
+instr_mem[17] = 16'hBAFF; // LLB R10 xFF			*****FAIL*****
+instr_mem[18] = 16'hAAFF; // LHB R10 xFF (R10 = xFFFF
+
+instr_mem[19] = 16'hBBAA; // LLB R11 xAA			*****PASS*****
+instr_mem[20] = 16'hABAA; // LHB R11 xAA (R11 = xAAAA)
+*/
+
+
+///////////////
+// CALL TEST // ------WORKS-----
+/////////////// 
+  /*
+instr_mem[0] = 16'hBE02; // LLB R14 x02 ==> R14 = x2
+instr_mem[1] = 16'hAE01; // LHB R14 x01
+instr_mem[2] = 16'hB312; // LLB R3 x12  ==> R3 = x12
+instr_mem[3] = 16'hA30C; // LHB R3 x0C
+//instr_mem[4] = 16'hC703; // B ***CALL***
+ 
+instr_mem[4] = 16'hAF00; // R15 := 00xx
+instr_mem[5] = 16'hBF0A; // R15 := 000A
+instr_mem[6] = 16'hD00B; // call: PC = 11    ***CALL***
+instr_mem[7] = 16'hAF01;
+instr_mem[8] = 16'h4E05;
+instr_mem[11] = 16'h013E; // ADD R1 R3 R14
+instr_mem[12] = 16'h123E; // SUB R1 R3 R14
+instr_mem[13] = 16'hE124; // RET ***CALL*** (PC = 7)
+
+instr_mem[14] = 16'hBC02; // LLB R14 x02 ==> R14 = x2
+instr_mem[15] = 16'hAC01; // LHB R14 x01
+instr_mem[16] = 16'hBD12; // LLB R3 x12  ==> R3 = x12
+instr_mem[17] = 16'hAD0C;
+*/
+
+
+/*
+instr_mem[2] = 16'hA100; 
+instr_mem[3] = 16'hB206;
+instr_mem[4] = 16'hA200;
+instr_mem[5] = 16'hB306;
+instr_mem[6] = 16'hA300;
+*/
+
+// Data Dependence TEST   
+/*
+instr_mem[0] = 16'hAE00;
+instr_mem[1] = 16'hBE00;
+instr_mem[2] = 16'hA100;
+instr_mem[3] = 16'hB106;
+instr_mem[4] = 16'h0411;
+
+instr_mem[5] = 16'h1111;
+instr_mem[6] = 16'h0214;
+instr_mem[7] = 16'h9101;
+instr_mem[8] = 16'h8201;
+instr_mem[9] = 16'h9207;
+
+instr_mem[10] = 16'h8307;
+*/
+
+// LwStall TEST   
+/*
+instr_mem[0] = 16'hAE00;
+instr_mem[1] = 16'hBE06;
+instr_mem[2] = 16'hA100;
+instr_mem[3] = 16'hB106;
+instr_mem[4] = 16'h1211;
+
+instr_mem[5] = 16'h9205;
+instr_mem[6] = 16'h8305;
+instr_mem[7] = 16'h0F13;
+instr_mem[8] = 16'h4AF4;
+*/
+ 
+ 
+ // BasicOps TEST   
+  /*
+instr_mem[0] = 16'hB101;
+instr_mem[1] = 16'hA100;
+instr_mem[2] = 16'hB210;
+instr_mem[3] = 16'hA200;
+instr_mem[4] = 16'h1011;
+
+instr_mem[5] = 16'h0312;
+instr_mem[6] = 16'h2412;
+instr_mem[7] = 16'h3512;
+instr_mem[8] = 16'h4621;
+instr_mem[9] = 16'h472F;
+
+instr_mem[10] = 16'h5844;
+instr_mem[11] = 16'h6944;
+instr_mem[12] = 16'h7A44;
+instr_mem[13] = 16'hBE0B;
+instr_mem[14] = 16'hAE00;
+
+instr_mem[15] = 16'h9AFF;
+instr_mem[16] = 16'h8BFF;
+ */
+ 
+ 
+  /*
+  instr_mem[0] = 16'hBE02; // LLB R14 x02 ==> R14 = x2
+  instr_mem[1] = 16'hB312; // LLB R3 x12  ==> R3 = x12
+  instr_mem[2] = 16'h9E00; // SW R14 x0   ==> M[R14 + 0] = R14  (R14 = 2) 
+  instr_mem[3] = 16'h9304; // SW R3 x4   ==> M[R14 + 4] = R3  (R3 = x12)
+  instr_mem[4] = 16'h113E; // SUB R1 R3 R14
+  instr_mem[5] = 16'h053E; // ADD R5 R3 R1 (R5 := R14)
+  instr_mem[6] = 16'h56E5; // SRA R6 R14 0x5 ==> R6 = 1000000 (no Bubbles)
+  instr_mem[7] = 16'h4668; // INC R6 R6 0x8  ==> R6 = 10000000000
+  //instr_mem[4] = 16'hBE02;
+  //instr_mem[5] = 16'hBE02;
+  //instr_mem[3] = 16'h8400;
+  */
+end
+
+endmodule

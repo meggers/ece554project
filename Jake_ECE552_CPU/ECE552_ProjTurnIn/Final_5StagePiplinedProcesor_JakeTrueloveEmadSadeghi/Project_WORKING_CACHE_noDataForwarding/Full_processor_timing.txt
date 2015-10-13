@@ -1,0 +1,74 @@
+Warning: Design 'Full_processor' has '6' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 3
+        -max_paths 3
+Design : Full_processor
+Version: I-2013.12-SP5
+Date   : Thu Apr  9 18:38:04 2015
+****************************************
+
+Operating Conditions: NCCOM   Library: tcbn40lpbwptc
+Wire Load Model Mode: segmented
+
+  Startpoint: dpath/PC[14] (internal pin)
+  Endpoint: PC[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Full_processor     TSMC512K_Lowk_Aggresive
+                                           tcbn40lpbwptc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  dpath/PC[14] (datapath)                  0.00       0.00 r
+  PC[14] (out)                             0.00       0.00 r
+  data arrival time                                   0.00
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: instr_mem/addr[14] (internal pin)
+  Endpoint: PC[14] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Full_processor     TSMC512K_Lowk_Aggresive
+                                           tcbn40lpbwptc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  instr_mem/addr[14] (IM)                  0.00       0.00 r
+  PC[14] (out)                             0.00       0.00 r
+  data arrival time                                   0.00
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: instr_mem/addr[13] (internal pin)
+  Endpoint: PC[13] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Full_processor     TSMC512K_Lowk_Aggresive
+                                           tcbn40lpbwptc
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  instr_mem/addr[13] (IM)                  0.00       0.00 r
+  PC[13] (out)                             0.00       0.00 r
+  data arrival time                                   0.00
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

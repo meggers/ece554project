@@ -1,0 +1,51 @@
+		LLB R1, 0x22		# R1 = 0xxx22
+		LHB R1, 0x00		# R1 = 0x0022
+		LLB R2, 0x11		# R2 = 0xxx11
+		LHB R2, 0x00		# R2 = 0x0011
+		SUB R0, R2, R1		# This should clear the z flag, and set N flag
+		B	EQ, FAIL
+		LLB	R3, 0x33	# delayed branch, R3 = 0xxx33
+		B	LT, ARND
+		LHB	R3, 0x33	# delayed branch, R3 = 0x3333
+		B 	UNCOND, FAIL    # unconditional branch, ccc=111
+		LLB	R3, 0x55	# R3 = 0x3355
+
+ARND:		LLB R0, 0x00		# This should not set the Z flag
+		LHB R0, 0x00		# This should not set the Z flag
+		B 	EQ, FAIL
+		LLB	R3, 0x55	# delayed branch, R3 = 0x3355
+		B	UNCOND, PASS	# unconditional branch, ccc=111
+		LHB	R3, 0x55	# delayed branch, R3 = 0x5555
+		
+FAIL:		LLB R10, 0xFF		# R10 will contain 0xxxFF
+		LHB R10, 0xFF		# R10 will contain 0xFFFF (indicates failure)		
+		
+PASS:		LLB R11, 0xAA		# R11 will contain 0xxxAA
+		LHB R11, 0xAA		# R11 will contain 0xAAAA (indicated pass)
+
+
+
+
+
+
+instr_mem[0] = 16'hB122;
+instr_mem[1] = 16'hA100;
+instr_mem[2] = 16'hB211;
+instr_mem[3] = 16'hA200;
+
+instr_mem[4] = 16'h1021;
+
+instr_mem[5] = 16'hC30;
+instr_mem[6] = 16'h2412;
+instr_mem[7] = 16'h3512;
+instr_mem[8] = 16'h4621;
+instr_mem[9] = 16'h472F;
+
+instr_mem[10] = 16'h5844;
+instr_mem[11] = 16'h6944;
+instr_mem[12] = 16'h7A44;
+instr_mem[13] = 16'hBE0B;
+instr_mem[14] = 16'hAE00;
+
+instr_mem[15] = 16'h9AFF;
+instr_mem[16] = 16'h8BFF;
