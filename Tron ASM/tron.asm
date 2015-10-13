@@ -1,30 +1,16 @@
 ### Program Header #################################################################################
-# ECE 267 Project 1 Final.asm
+# tron.asm
 # 
-# This .asm file runs the game of Bulls and Cows. One of the user will set a secret code of 4 unit 
-# digits while the other user tries to guess the secret code. After every guess, the guesser will be
-# given a hint of how many bulls and cow was guessed correctly. A bull is the correct digit in the 
-# correct position while a cow is the correct digit in the wrong position. The guesser may use 
-# repeated digit but bulls xor cows will only be counted once for each unique digit. 
-#
-# Features:
-# Guesses were mirror for the guesser to check what was inputted
-# Singular and plural forms of cow(s), bull(s) and round(s) were accounted
-# The guesser may enter 'q' to quit
-# Error tolerance for repeated digits for secret code input
-# Error tolerance for non-number secret code
-# Error tolerance for non 4 digit entry
-# Error tolerance for non-number guesses except 'q'
-# The program will show the correct secret code at the end
-# Round number is not increased if the guess is invalid
+# This .asm file runs the game of Tron. Player 1 uses "wasd" for directional movements while player
+# 2 uses "ijkl" for directional movements. 
 # 
-# Class: ECE 267, 2012 Spring
-# Professor: Wenjing Rao
-# TA: Umer Cheema
-# System: MARS 4.5, Windows 7 Professional, 64-bit
+# Class:     ECE 554, 2015 Fall
+# Professor: Azadeh Davoodi
+# TA:        Anil
+# System:    MARS 4.5, Windows 7 Professional, 64-bit
 # 
-# @author: Kai Zhao
-# @version: 2012 February 26
+# @author:   Kai Zhao
+# @version:  2015 Octoment
 # 26 * 4 = 104 pixels across
 # 20 * 4 = 80 pixels down
 # player 1 starts at 19th (18) pixel across, 39th (38) pixels down
@@ -85,31 +71,31 @@ inputCode: # Grab User Input and Check Validity ################################
 	li $t5, 0				# 0 steps moved
 	getInput:
 		li $v0, 12
-		syscall			# grab character
-		move $v1, $v0		# move char to $v0 for now to maybe update display
+		syscall				# grab character
+		move $v1, $v0			# move char to $v0 for now to maybe update display
 		endDoGameTick:
 			li $v0, 30
 			syscall
 			sub $t4, $a0, $t3
 			div $t6, $t4, 100
 			blt $t5, $t6, doGameTick1
-		move $v0, $v1		# move back to analyze user input
+		move $v0, $v1			# move back to analyze user input
 		beq $v0, $s2, getInput
 		beq $v0, $s6, getInput
-		beq $v0, 0x00000077, p1ChangeDirection
-		beq $v0, 0x00000073, p1ChangeDirection
-		beq $v0, 0x00000061, p1ChangeDirection
-		beq $v0, 0x00000064, p1ChangeDirection
-		beq $v0, 0x00000069, p2ChangeDirection
-		beq $v0, 0x0000006b, p2ChangeDirection
-		beq $v0, 0x0000006a, p2ChangeDirection
-		beq $v0, 0x0000006c, p2ChangeDirection
+		beq $v0, 0x00000077, p1ChangeDirectionUp # w
+		beq $v0, 0x00000073, p1ChangeDirectionDown # s
+		beq $v0, 0x00000061, p1ChangeDirectionLeft # a
+		beq $v0, 0x00000064, p1ChangeDirectionRight # d
+		beq $v0, 0x00000069, p2ChangeDirectionUp # i
+		beq $v0, 0x0000006b, p2ChangeDirectionDown # k
+		beq $v0, 0x0000006a, p2ChangeDirectionLeft # j
+		beq $v0, 0x0000006c, p2ChangeDirectionRight # l
 		j getInput
 	exit:
-		li $v0, 4		# print string
-		syscall			# display prompt for user input
+		li $v0, 4			# print string
+		syscall				# display prompt for user input
 		li $v0, 10
-		syscall					# terminate program
+		syscall				# terminate program
 	
 updateDisplay:
 	lb $t7, background($s3)
@@ -118,9 +104,9 @@ updateDisplay:
 	bne $t8, 0x00000020, p2lose
 	sb $t0, background($s3)
 	sb $t1, background($s7)
-	la $a0, background	# load background
-	li $v0, 4		# print string
-	syscall			# display prompt for user input
+	la $a0, background			# load background
+	li $v0, 4				# print string
+	syscall					# display prompt for user input
 	j endDoGameTick
 	
 doGameTick1:
@@ -138,10 +124,34 @@ doGameTick2:
 	beq $s6, 0x0000006c, p2GoRight
 	j updateDisplay
 
+p1ChangeDirectionUp:
+	beq $s2, 0x00000073, getInput # s
+	j p1ChangeDirection
+p1ChangeDirectionDown:
+	beq $s2, 0x00000077, getInput # w
+	j p1ChangeDirection
+p1ChangeDirectionLeft:
+	beq $s2, 0x00000064, getInput # d
+	j p1ChangeDirection
+p1ChangeDirectionRight:
+	beq $s2, 0x00000061, getInput # a
+	j p1ChangeDirection
 p1ChangeDirection:
 	move $s2, $v0
 	j getInput
 	
+p2ChangeDirectionUp:
+	beq $s6, 0x0000006b, getInput # k
+	j p2ChangeDirection
+p2ChangeDirectionDown:
+	beq $s6, 0x00000069, getInput # i
+	j p2ChangeDirection
+p2ChangeDirectionLeft:
+	beq $s6, 0x0000006c, getInput # l
+	j p2ChangeDirection
+p2ChangeDirectionRight:
+	beq $s6, 0x0000006a, getInput # j
+	j p2ChangeDirection
 p2ChangeDirection:
 	move $s6, $v0
 	j getInput
