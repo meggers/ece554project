@@ -6,7 +6,8 @@ input  [5:0]  opcode; // Used for differentiating between NO_OP and HALT
 
 //OUTPUTS///////////////////////////////////////////////////
 
-output reg	jump;
+output reg	call;
+output reg	ret;
 output reg	branch;		// branching control; 0-2 sensitive, 3 pick 
 output reg	mem_to_reg;	// LW signal to Memory unit 
 output reg	[1:0] alu_src;	// ALU operand seleciton
@@ -22,7 +23,8 @@ output reg	MemRead;	// Signal for reading from memory
 	// All ALU oriented instrucitons  
 	if (opcode[5]) begin
 
-		jump		= 1'b0;
+		call		= 1'b0;
+		ret		= 1'b0;
 		branch		= 1'b0;
 		mem_to_reg	= 1'b0;
 		mem_src		= 1'b0;
@@ -67,14 +69,14 @@ output reg	MemRead;	// Signal for reading from memory
 	end
 
 	// Control instructions 
-/*
 	else if (!&opcode[5:3]) begin
 
 		OAMWrite	= 1'b0;
 
 		if (!opcode[2]) begin
 
-			jump		= 1'b0;
+			call		= 1'b0;
+			ret		= 1'b0;
 			branch		= 1'b1;
 			mem_to_reg	= 1'b0;
 			mem_src		= 1'b0;
@@ -83,31 +85,52 @@ output reg	MemRead;	// Signal for reading from memory
 			MemWrite	= 1'b0;
 			MemRead		= 1'b0;
 
-			alu_src = 2'b01;
+			alu_src 	= 2'b01;
 
 		end
 
 		else begin
-		
-			jump		= 1'b1;
+
 			branch		= 1'b0;
-			mem_to_reg	= 1'b0;
-			mem_src		= 1'b0;
+			RegWrite	= 1'b1;
+		
+			// CALL
+			if (!opcode[0]) begin
 
-			RegWrite	= 1'b0;
-			MemWrite	= 1'b0;
-			MemRead		= 1'b0;
+				call		= 1'b1;
+				ret		= 1'b0;
+				mem_to_reg	= 1'b0;
+				mem_src		= 1'b0;
 
-			alu_src = 2'b01;
+				MemWrite	= 1'b1;
+				MemRead		= 1'b0;
+
+				alu_src 	= 2'b00;
+
+			end
+			// RET
+			else begin
+
+				call		= 1'b0;
+				ret		= 1'b1;
+				mem_to_reg	= 1'b1;
+				mem_src		= 1'b1;
+
+				MemWrite	= 1'b0;
+				MemRead		= 1'b1;
+
+				alu_src 	= 2'b00;
+
+			end
 
 		end
 
 	end
-*/
 
 	else if (!&opcode[5:4]) begin
 
-		jump		= 1'b0;
+		call		= 1'b0;
+		ret		= 1'b0;
 		branch		= 1'b0;
 		OAMWrite	= 1'b0;
 		alu_src 	= 2'b01;
@@ -137,25 +160,33 @@ output reg	MemRead;	// Signal for reading from memory
 
 	else begin
 
-		jump		= 1'b0;
+		call		= 1'b0;
+		ret		= 1'b0;
 		branch		= 1'b0;
-		alu_src 	= 2'b00;
+		OAMWrite	= 1'b1;
+		mem_to_reg	= 1'b0;
+		RegWrite	= 1'b0;
+		MemWrite	= 1'b0;
+		
 
 		// Is load sprite different from load word at all? Doesn't look like it...
 		if (!&opcode[3:0]) begin
 
-			mem_to_reg	= 1'b1;
-			mem_src		= 1'b0;
+			mem_src		= 1'b1;
 
-			OAMWrite	= 1'b0;
-			RegWrite	= 1'b1;
-			MemWrite	= 1'b0;
 			MemRead		= 1'b1;
+
+			alu_src 	= 2'b11;	// <-- Spr_start + {24'h000, Spr_num, 2'b00}
 
 		end
 		else begin
 
-			
+			mem_src		= 1'b0;
+
+			MemRead		= 1'b0;
+
+			alu_src 	= 2'b00;	// <-- Spr_start + {24'h000, Spr_num, 2'b00}
+
 
 		end
 	end
