@@ -1,4 +1,6 @@
-module Control_Logic(opcode);
+module Control_Logic(opcode,
+			call, ret, branch, mem_to_reg, mem_src, alu_src,
+			RegWrite, MemWrite, MemRead, OAMWrite);
 
 //INPUTS////////////////////////////////////////////////////
 
@@ -11,8 +13,8 @@ output reg	ret;
 output reg	branch;		// branching control; 0-2 sensitive, 3 pick 
 output reg	mem_to_reg;	// LW signal to Memory unit 
 output reg	[1:0] alu_src;	// ALU operand seleciton
-output reg	sign_ext_sel;	// sign extend select bit
 output reg	mem_src;	// Read_reg_2 proper SW select
+
 output reg	RegWrite;	// Signal for writing back to register
 output reg	MemWrite;	// Signal for writing to memory
 output reg	OAMWrite;	// Signal for writing to the OAM
@@ -24,7 +26,7 @@ output reg	MemRead;	// Signal for reading from memory
 	if (opcode[5]) begin
 
 		call		= 1'b0;
-		ret		= 1'b0;
+		ret			= 1'b0;
 		branch		= 1'b0;
 		mem_to_reg	= 1'b0;
 		mem_src		= 1'b0;
@@ -68,8 +70,8 @@ output reg	MemRead;	// Signal for reading from memory
 		
 	end
 
-	// Control instructions 
-	else if (!&opcode[5:3]) begin
+	// PC control instructions 
+	else if (~(&opcode[5:3])) begin
 
 		OAMWrite	= 1'b0;
 
@@ -127,7 +129,8 @@ output reg	MemRead;	// Signal for reading from memory
 
 	end
 
-	else if (!&opcode[5:4]) begin
+	// Memory accessing instructions
+	else if (~(&opcode[5:4])) begin
 
 		call		= 1'b0;
 		ret		= 1'b0;
@@ -137,7 +140,7 @@ output reg	MemRead;	// Signal for reading from memory
 
 		if (!opcode[2]) begin
 
-			mem_to_reg	= 1'b1;
+			mem_to_reg	= (!opcode[0]);
 			mem_src		= 1'b0;
 
 			RegWrite	= 1'b1;
@@ -150,7 +153,7 @@ output reg	MemRead;	// Signal for reading from memory
 			mem_to_reg	= 1'b0;
 			mem_src		= 1'b1;
 
-			RegWrite	= 1'b0;
+			RegWrite	= opcode[1];
 			MemWrite	= 1'b1;
 			MemRead		= 1'b0;
 
@@ -158,6 +161,13 @@ output reg	MemRead;	// Signal for reading from memory
 
 	end
 
+	else if (&opcode[4:3]) begin
+
+		// AUDIO
+
+	end
+
+	// Sprite instructions
 	else begin
 
 		call		= 1'b0;
@@ -170,7 +180,7 @@ output reg	MemRead;	// Signal for reading from memory
 		
 
 		// Is load sprite different from load word at all? Doesn't look like it...
-		if (!&opcode[3:0]) begin
+		if (~(&opcode[3:0])) begin
 
 			mem_src		= 1'b1;
 
