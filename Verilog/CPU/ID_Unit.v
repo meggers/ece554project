@@ -66,10 +66,16 @@ always @(alu_src) begin
 		end
 		
 		// ALU operation on register and sign extended immediate field
-		// Instructions:	ANDI, ADDI, LW, SW
+		// Instructions:	ANDI, ADDI, LW, SW, BRANCH
 		2'b01 :	begin
 		
-			ALU_input_1 = Read_Bus_1;
+			if (branch) begin
+				ALU_input_1 = PC_in;
+			end
+			else
+				ALU_input_1 = Read_Bus_1;
+			end
+
 			ALU_input_2 = sign_ext;
 		
 		end
@@ -90,12 +96,27 @@ always @(alu_src) begin
 		
 		// ALU operation to compute sprite data memory location
 		// Instructions:	SLD
-		2'b11 :	begin
-		
-			ALU_input_1 = sprite_begin;
-			ALU_input_2 = {26'h0000, R_funct_S_snum};
-		
-		end
-
+		//2'b11 :	begin
+		//
+		//	ALU_input_1 = sprite_begin;
+		//	ALU_input_2 = {26'h0000, R_funct_S_snum};
+		//
+		//end
+end
    
+// Sign_Ext_Unit
+always (sign_ext_sel) begin
+    
+    // Use of J-type immediate field
+    if (sign_ext_sel) begin
+        sign_ext = {{6{J_type_imm[25]}}, J_type_imm};
+    end
+    
+    // Use of I=type immediate field
+    else begin
+        sign_ext = {{16{I_type_imm[15]}}, I_type_imm};
+    end
+
+end
+
 endmodule

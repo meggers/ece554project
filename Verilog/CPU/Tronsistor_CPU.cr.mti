@@ -1,0 +1,81 @@
+I:/ece554/GitHub/ece554project/Verilog/CPU/IDEX_reg.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/IDEX_reg.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module IDEX_reg
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IDEX_reg.v(3): (vlog-2730) Undefined variable: 'clk'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IDEX_reg.v(3): Identifier must be declared with a port mode: clk.
+
+} {4.0 5.0 6.0 7.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/ID_Unit.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/ID_Unit.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module ID_Unit
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/ID_Unit.v(2): near "I_type_imm": syntax error, unexpected IDENTIFIER, expecting ')'
+
+} {4.0 5.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/EX_Unit.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/EX_Unit.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module EX_Unit
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/EX_Unit.v(1): (vlog-2730) Undefined variable: 'clk'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/EX_Unit.v(1): Identifier must be declared with a port mode: clk.
+
+} {4.0 5.0 6.0 7.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/RegFile_32bit.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/RegFile_32bit.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module RegFile_32bit
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/RegFile_32bit.v(117): (vlog-2730) Undefined variable: 'StackReg'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/RegFile_32bit.v(125): (vlog-2730) Undefined variable: 'DataReg'.
+
+
+} {4.0 5.0 6.0 7.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module IFID_reg
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v(99): (vlog-2730) Undefined variable: 'R_funct_S_rs'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v(102): (vlog-2730) Undefined variable: 'R_type_rt'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v(113): (vlog-2730) Undefined variable: 'S_type_saddr'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v(11): (vlog-2730) Undefined variable: 'A_type_reg'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IFID_reg.v(11): Identifier must be declared with a port mode: A_type_reg.
+
+} {4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/MEMWB_reg.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/MEMWB_reg.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module MEMWB_reg
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/MEMWB_reg.v(1): (vlog-2730) Undefined variable: 'clk'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/MEMWB_reg.v(1): Identifier must be declared with a port mode: clk.
+
+} {4.0 5.0 6.0 7.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/EXMEM_reg.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/EXMEM_reg.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module EXMEM_reg
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/EXMEM_reg.v(1): (vlog-2730) Undefined variable: 'clk'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/EXMEM_reg.v(1): Identifier must be declared with a port mode: clk.
+
+} {4.0 5.0 6.0 7.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/MEM_Unit.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/MEM_Unit.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module MEM_Unit
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/MEM_Unit.v(1): (vlog-2730) Undefined variable: 'clk'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/MEM_Unit.v(1): Identifier must be declared with a port mode: clk.
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/MEM_Unit.v(1): (vlog-2730) Undefined variable: 'rst'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/MEM_Unit.v(1): Identifier must be declared with a port mode: rst.
+
+} {4.0 5.0 6.0 8.0 9.0 10.0} {}} I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v {0 {vlog -work work -vopt -stats=none I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v
+Model Technology ModelSim SE vlog 10.3c Compiler 2014.07 Jul 19 2014
+-- Compiling module IF_Unit
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): (vlog-2730) Undefined variable: 'clk'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): Identifier must be declared with a port mode: clk.
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): (vlog-2730) Undefined variable: 'rst'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): Identifier must be declared with a port mode: rst.
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): (vlog-2730) Undefined variable: 'data_hazard'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): Identifier must be declared with a port mode: data_hazard.
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): (vlog-2730) Undefined variable: 'instruction'.
+
+** Error: I:/ece554/GitHub/ece554project/Verilog/CPU/IF_Unit.v(1): Identifier must be declared with a port mode: instruction.
+
+} {4.0 5.0 6.0 8.0 9.0 11.0 12.0 14.0 15.0 16.0} {}}
