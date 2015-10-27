@@ -78,11 +78,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       
         // ////////////////////////////////////   BASIC INSTRUCTIONS START HERE ////////////////////////////////
       
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("nop",
             	 "Null operation : machine code is all zeroes",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 00000 00000 00000 000000",
+                "111111 11111 11111 11111 11111 111111",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -90,11 +91,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                   	// Hey I like this so far!
                   }
                }));
+		// changed for 554
          instructionList.add(
                 new BasicInstruction("add $t1,$t2,$t3",
             	 "Addition with overflow : set $t1 to ($t2 plus $t3)",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100000",
+                "100000 sssss ttttt fffff 00000 100000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -113,11 +115,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                      RegisterFile.updateRegister(operands[0], sum);
                   }
                }));
+		// changed for 554	   
          instructionList.add(
                 new BasicInstruction("sub $t1,$t2,$t3",
             	 "Subtraction with overflow : set $t1 to ($t2 minus $t3)",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100010",
+                "100010 sssss ttttt fffff 00000 100010",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -136,11 +139,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                      RegisterFile.updateRegister(operands[0], dif);
                   }
                }));
+			   
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("addi $t1,$t2,-100",
             	 "Addition immediate with overflow : set $t1 to ($t2 plus signed 16-bit immediate)",
                 BasicInstructionFormat.I_FORMAT,
-                "001000 sssss fffff tttttttttttttttt",
+                "100001 sssss fffff tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -159,296 +164,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                      RegisterFile.updateRegister(operands[0], sum);
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("addu $t1,$t2,$t3",
-            	 "Addition unsigned without overflow : set $t1 to ($t2 plus $t3), no overflow",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        + RegisterFile.getValue(operands[2]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("subu $t1,$t2,$t3",
-            	 "Subtraction unsigned without overflow : set $t1 to ($t2 minus $t3), no overflow",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100011",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        - RegisterFile.getValue(operands[2]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("addiu $t1,$t2,-100",
-            	 "Addition immediate unsigned without overflow : set $t1 to ($t2 plus signed 16-bit immediate), no overflow",
-                BasicInstructionFormat.I_FORMAT,
-                "001001 sssss fffff tttttttttttttttt",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        + (operands[2] << 16 >> 16));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("mult $t1,$t2",
-            	 "Multiplication : Set hi to high-order 32 bits, lo to low-order 32 bits of the product of $t1 and $t2 (use mfhi to access hi, mflo to access lo)",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 fffff sssss 00000 00000 011000",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (long) RegisterFile.getValue(operands[0])
-                        * (long) RegisterFile.getValue(operands[1]);
-                  // Register 33 is HIGH and 34 is LOW
-                     RegisterFile.updateRegister(33, (int) (product >> 32));
-                     RegisterFile.updateRegister(34, (int) ((product << 32) >> 32));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("multu $t1,$t2",
-            	 "Multiplication unsigned : Set HI to high-order 32 bits, LO to low-order 32 bits of the product of unsigned $t1 and $t2 (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 fffff sssss 00000 00000 011001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (((long) RegisterFile.getValue(operands[0]))<<32>>>32)
-                        * (((long) RegisterFile.getValue(operands[1]))<<32>>>32);
-                  // Register 33 is HIGH and 34 is LOW
-                     RegisterFile.updateRegister(33, (int) (product >> 32));
-                     RegisterFile.updateRegister(34, (int) ((product << 32) >> 32));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("mul $t1,$t2,$t3",
-            	 "Multiplication without overflow  : Set HI to high-order 32 bits, LO and $t1 to low-order 32 bits of the product of $t2 and $t3 (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "011100 sssss ttttt fffff 00000 000010",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (long) RegisterFile.getValue(operands[1])
-                        * (long) RegisterFile.getValue(operands[2]);
-                     RegisterFile.updateRegister(operands[0],
-                        (int) ((product << 32) >> 32));
-                  // Register 33 is HIGH and 34 is LOW.  Not required by MIPS; SPIM does it.
-                     RegisterFile.updateRegister(33, (int) (product >> 32));
-                     RegisterFile.updateRegister(34, (int) ((product << 32) >> 32));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("madd $t1,$t2",
-            	 "Multiply add : Multiply $t1 by $t2 then increment HI by high-order 32 bits of product, increment LO by low-order 32 bits of product (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "011100 fffff sssss 00000 00000 000000",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (long) RegisterFile.getValue(operands[0])
-                        * (long) RegisterFile.getValue(operands[1]);
-                     // Register 33 is HIGH and 34 is LOW. 
-                     long contentsHiLo = Binary.twoIntsToLong(
-                        RegisterFile.getValue(33), RegisterFile.getValue(34));
-                     long sum = contentsHiLo + product;
-                     RegisterFile.updateRegister(33, Binary.highOrderLongToInt(sum));
-                     RegisterFile.updateRegister(34, Binary.lowOrderLongToInt(sum));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("maddu $t1,$t2",
-            	 "Multiply add unsigned : Multiply $t1 by $t2 then increment HI by high-order 32 bits of product, increment LO by low-order 32 bits of product, unsigned (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "011100 fffff sssss 00000 00000 000001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (((long) RegisterFile.getValue(operands[0]))<<32>>>32)
-                        * (((long) RegisterFile.getValue(operands[1]))<<32>>>32);
-                     // Register 33 is HIGH and 34 is LOW. 
-                     long contentsHiLo = Binary.twoIntsToLong(
-                        RegisterFile.getValue(33), RegisterFile.getValue(34));
-                     long sum = contentsHiLo + product;
-                     RegisterFile.updateRegister(33, Binary.highOrderLongToInt(sum));
-                     RegisterFile.updateRegister(34, Binary.lowOrderLongToInt(sum));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("msub $t1,$t2",
-            	 "Multiply subtract : Multiply $t1 by $t2 then decrement HI by high-order 32 bits of product, decrement LO by low-order 32 bits of product (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "011100 fffff sssss 00000 00000 000100",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (long) RegisterFile.getValue(operands[0])
-                        * (long) RegisterFile.getValue(operands[1]);
-                     // Register 33 is HIGH and 34 is LOW. 
-                     long contentsHiLo = Binary.twoIntsToLong(
-                        RegisterFile.getValue(33), RegisterFile.getValue(34));
-                     long diff = contentsHiLo - product;
-                     RegisterFile.updateRegister(33, Binary.highOrderLongToInt(diff));
-                     RegisterFile.updateRegister(34, Binary.lowOrderLongToInt(diff));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("msubu $t1,$t2",
-            	 "Multiply subtract unsigned : Multiply $t1 by $t2 then decrement HI by high-order 32 bits of product, decement LO by low-order 32 bits of product, unsigned (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "011100 fffff sssss 00000 00000 000101",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     long product = (((long) RegisterFile.getValue(operands[0]))<<32>>>32)
-                        * (((long) RegisterFile.getValue(operands[1]))<<32>>>32);
-                     // Register 33 is HIGH and 34 is LOW. 
-                     long contentsHiLo = Binary.twoIntsToLong(
-                        RegisterFile.getValue(33), RegisterFile.getValue(34));
-                     long diff = contentsHiLo - product;
-                     RegisterFile.updateRegister(33, Binary.highOrderLongToInt(diff));
-                     RegisterFile.updateRegister(34, Binary.lowOrderLongToInt(diff));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("div $t1,$t2",
-            	 "Division with overflow : Divide $t1 by $t2 then set LO to quotient and HI to remainder (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 fffff sssss 00000 00000 011010",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[1]) == 0)
-                     {
-                     // Note: no exceptions and undefined results for zero div
-                     // COD3 Appendix A says "with overflow" but MIPS 32 instruction set
-                     // specification says "no arithmetic exception under any circumstances".
-                        return;
-                     }
-                  
-                  // Register 33 is HIGH and 34 is LOW
-                     RegisterFile.updateRegister(33,
-                        RegisterFile.getValue(operands[0])
-                        % RegisterFile.getValue(operands[1]));
-                     RegisterFile.updateRegister(34,
-                        RegisterFile.getValue(operands[0])
-                        / RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("divu $t1,$t2",
-            	 "Division unsigned without overflow : Divide unsigned $t1 by $t2 then set LO to quotient and HI to remainder (use mfhi to access HI, mflo to access LO)",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 fffff sssss 00000 00000 011011",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[1]) == 0)
-                     {
-                     // Note: no exceptions, and undefined results for zero divide
-                        return;
-                     }
-                     long oper1 = ((long)RegisterFile.getValue(operands[0])) << 32 >>> 32; 
-                     long oper2 = ((long)RegisterFile.getValue(operands[1])) << 32 >>> 32; 
-                  // Register 33 is HIGH and 34 is LOW
-                     RegisterFile.updateRegister(33,
-                        (int) (((oper1 % oper2) << 32) >> 32));
-                     RegisterFile.updateRegister(34,
-                        (int) (((oper1 / oper2) << 32) >> 32));                  
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("mfhi $t1", 
-            	 "Move from HI register : Set $t1 to contents of HI (see multiply and divide operations)",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 00000 fffff 00000 010000",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(33));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("mflo $t1", 
-            	 "Move from LO register : Set $t1 to contents of LO (see multiply and divide operations)",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 00000 fffff 00000 010010",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(34));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("mthi $t1", 
-            	 "Move to HI registerr : Set HI to contents of $t1 (see multiply and divide operations)",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 fffff 00000 00000 00000 010001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(33,
-                        RegisterFile.getValue(operands[0]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("mtlo $t1", 
-            	 "Move to LO register : Set LO to contents of $t1 (see multiply and divide operations)",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 fffff 00000 00000 00000 010011",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(34,
-                        RegisterFile.getValue(operands[0]));
-                  }
-               }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("and $t1,$t2,$t3",
             	 "Bitwise AND : Set $t1 to bitwise AND of $t2 and $t3",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100100",
+                "100100 sssss ttttt fffff 00000 100100",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -459,26 +180,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         & RegisterFile.getValue(operands[2]));
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("or $t1,$t2,$t3",
-            	 "Bitwise OR : Set $t1 to bitwise OR of $t2 and $t3",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100101",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        | RegisterFile.getValue(operands[2]));
-                  }
-               }));
+
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("andi $t1,$t2,100",
             	 "Bitwise AND immediate : Set $t1 to bitwise AND of $t2 and zero-extended 16-bit immediate",
                 BasicInstructionFormat.I_FORMAT,
-                "001100 sssss fffff tttttttttttttttt",
+                "100101 sssss fffff tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -490,42 +198,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         & (operands[2] & 0x0000FFFF));
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("ori $t1,$t2,100",
-            	 "Bitwise OR immediate : Set $t1 to bitwise OR of $t2 and zero-extended 16-bit immediate",
-                BasicInstructionFormat.I_FORMAT,
-                "001101 sssss fffff tttttttttttttttt",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        | (operands[2] & 0x0000FFFF));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("nor $t1,$t2,$t3",
-            	 "Bitwise NOR : Set $t1 to bitwise NOR of $t2 and $t3",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100111",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        ~(RegisterFile.getValue(operands[1])
-                        | RegisterFile.getValue(operands[2])));
-                  }
-               }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("xor $t1,$t2,$t3",
             	 "Bitwise XOR (exclusive OR) : Set $t1 to bitwise XOR of $t2 and $t3",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 100110",
+                "101000 sssss ttttt fffff 00000 100110",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -536,27 +214,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         ^ RegisterFile.getValue(operands[2]));
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("xori $t1,$t2,100",
-            	 "Bitwise XOR immediate : Set $t1 to bitwise XOR of $t2 and zero-extended 16-bit immediate",
-                BasicInstructionFormat.I_FORMAT,
-                "001110 sssss fffff tttttttttttttttt",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        ^ (operands[2] & 0x0000FFFF));
-                  }
-               }));					
+		// Changed for 554			   
          instructionList.add(
                 new BasicInstruction("sll $t1,$t2,10",
             	 "Shift left logical : Set $t1 to result of shifting $t2 left by number of bits specified by immediate",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 sssss fffff ttttt 000000",
+                "100111 sssss fffff ttttt 00000 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -566,27 +229,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         RegisterFile.getValue(operands[1]) << operands[2]);
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("sllv $t1,$t2,$t3",
-            	 "Shift left logical variable : Set $t1 to result of shifting $t2 left by number of bits specified by value in low-order 5 bits of $t3",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 ttttt sssss fffff 00000 000100",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // Mask all but low 5 bits of register containing shamt.
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1]) << 
-                        (RegisterFile.getValue(operands[2]) & 0x0000001F));
-                  }
-               }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("srl $t1,$t2,10",
             	 "Shift right logical : Set $t1 to result of shifting $t2 right by number of bits specified by immediate",
                 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 sssss fffff ttttt 000010",
+                "100110 sssss fffff ttttt 00000 000010",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -597,58 +245,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         RegisterFile.getValue(operands[1]) >>> operands[2]);
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("sra $t1,$t2,10",
-                "Shift right arithmetic : Set $t1 to result of sign-extended shifting $t2 right by number of bits specified by immediate",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 sssss fffff ttttt 000011",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // must sign-fill, so use ">>".
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1]) >> operands[2]);
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("srav $t1,$t2,$t3",
-            	 "Shift right arithmetic variable : Set $t1 to result of sign-extended shifting $t2 right by number of bits specified by value in low-order 5 bits of $t3",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 ttttt sssss fffff 00000 000111",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // Mask all but low 5 bits of register containing shamt.Use ">>" to sign-fill.
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1]) >> 
-                        (RegisterFile.getValue(operands[2]) & 0x0000001F));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("srlv $t1,$t2,$t3",
-            	 "Shift right logical variable : Set $t1 to result of shifting $t2 right by number of bits specified by value in low-order 5 bits of $t3",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 ttttt sssss fffff 00000 000110",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // Mask all but low 5 bits of register containing shamt.Use ">>>" to zero-fill.
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1]) >>> 
-                        (RegisterFile.getValue(operands[2]) & 0x0000001F));
-                  }
-               }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("lw $t1,-100($t2)",
             	 "Load word : Set $t1 to contents of effective memory word address",
                 BasicInstructionFormat.I_FORMAT,
-                "100011 ttttt fffff ssssssssssssssss",
+                "001000 ttttt fffff ssssssssssssssss",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -659,86 +261,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         RegisterFile.updateRegister(operands[0],
                             Globals.memory.getWord(
                             RegisterFile.getValue(operands[2]) + operands[1]));
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("ll $t1,-100($t2)",
-                "Load linked : Paired with Store Conditional (sc) to perform atomic read-modify-write.  Treated as equivalent to Load Word (lw) because MARS does not simulate multiple processors.",
-            	 BasicInstructionFormat.I_FORMAT,
-                "110000 ttttt fffff ssssssssssssssss",
-            	 // The ll (load link) command is supposed to be the front end of an atomic
-            	 // operation completed by sc (store conditional), with success or failure
-            	 // of the store depending on whether the memory block containing the
-            	 // loaded word is modified in the meantime by a different processor.
-            	 // Since MARS, like SPIM simulates only a single processor, the store
-            	 // conditional will always succeed so there is no need to do anything
-            	 // special here.  In that case, ll is same as lw.  And sc does the same
-            	 // thing as sw except in addition it writes 1 into the source register.
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            Globals.memory.getWord(
-                            RegisterFile.getValue(operands[2]) + operands[1]));
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lwl $t1,-100($t2)",
-                "Load word left : Load from 1 to 4 bytes left-justified into $t1, starting with effective memory byte address and continuing through the low-order byte of its word",
-            	 BasicInstructionFormat.I_FORMAT,
-                "100010 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        int address = RegisterFile.getValue(operands[2]) + operands[1];
-                        int result = RegisterFile.getValue(operands[0]);
-                        for (int i=0; i<=address % Globals.memory.WORD_LENGTH_BYTES; i++) {
-                           result = Binary.setByte(result,3-i,Globals.memory.getByte(address-i));
-                        }
-                        RegisterFile.updateRegister(operands[0], result);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lwr $t1,-100($t2)",
-                "Load word right : Load from 1 to 4 bytes right-justified into $t1, starting with effective memory byte address and continuing through the high-order byte of its word",
-            	 BasicInstructionFormat.I_FORMAT,
-                "100110 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        int address = RegisterFile.getValue(operands[2]) + operands[1];
-                        int result = RegisterFile.getValue(operands[0]);
-                        for (int i=0; i<=3-(address % Globals.memory.WORD_LENGTH_BYTES); i++) {
-                           result = Binary.setByte(result,i,Globals.memory.getByte(address+i));
-                        }
-                        RegisterFile.updateRegister(operands[0], result);
                      } 
                          catch (AddressErrorException e)
                         {
@@ -750,7 +272,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                 new BasicInstruction("sw $t1,-100($t2)",
                 "Store word : Store contents of $t1 into effective memory word address",
             	 BasicInstructionFormat.I_FORMAT,
-                "101011 ttttt fffff ssssssssssssssss",
+                "001100 ttttt fffff ssssssssssssssss",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
