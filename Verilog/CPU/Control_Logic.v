@@ -1,7 +1,8 @@
-module Control_Logic(opcode,
-			call, ret, branch, SP_update, mem_to_reg, mem_src, 
-			sign_ext_sel, alu_src, RegWrite, MemWrite, MemRead,
-			OAMWrite);
+module Control_Logic(opcode_in,
+			call, ret, branch, push_pop, mem_to_reg,
+			mem_src, sign_ext_sel, load_imm, alu_src,
+			RegWrite, MemWrite, MemRead, OAMWrite,
+			opcode_out);
 
 //INPUTS////////////////////////////////////////////////////
 
@@ -14,10 +15,9 @@ output reg		ret;
 output reg		branch;
 output reg		push_pop;
 
-output reg		SP_update;	// Signal for updating the stack pointer
-
 output reg		mem_to_reg;	// LW signal to Memory unit 
 output reg		mem_src;	// Read_reg_2 proper SW select
+output reg		load_imm;	// Load the J-type immediate field
 output reg		sign_ext_sel;	// 0 - I-type imm, 1 - J-type imm
 output reg [1:0] 	alu_src;	// ALU operand seleciton
 
@@ -28,19 +28,19 @@ output reg		MemRead;	// Signal for reading from memory
 
 output reg [5:0] 	opcode_out;	// Opcode passed to the ALU       
 
-  always @(*) begin
+always @(opcode_in) begin
         
 	// All ALU oriented instrucitons  
-	if (opcode[5]) begin
+	if (opcode_in[5]) begin
 
 		call		= 1'b0;
 		ret		= 1'b0;
 		branch		= 1'b0;
-
-		SP_update 	= 1'b0;
+		push_pop	= 1'b0;
 
 		mem_to_reg	= 1'b0;
 		mem_src		= 1'b0;
+		load_imm 	= 1'b0;
 		sign_ext_sel 	= 1'b0;
 
 		RegWrite	= 1'b1;
@@ -55,9 +55,9 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 		 *	need to use the immediate field,
 		 *	else it will use register rt.
 		 */
-		if (!opcode[1]) begin
+		if (!opcode_in[1]) begin
 
-			if (opcode[0]) begin
+			if (opcode_in[0]) begin
 				alu_src	= 2'b01;
 			end
 			else begin
@@ -73,7 +73,7 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 		 */
 		else begin
 
-			if (opcode[2]) begin
+			if (opcode_in[2]) begin
 				alu_src = 2'b10;
 			end
 			else begin
@@ -85,10 +85,12 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 	end
 
 	// PC control instructions 
-	else if (~(|opcode[5:3])) begin
+	else if (~(|opcode_in[5:3])) begin
 
 		OAMWrite	= 1'b0;
+		load_imm 	= 1'b0;
 		sign_ext_sel 	= 1'b1;
+		push_pop	= 1'b0;
 
 		/* BRANCH
 		 *	If opcode[2] is not set the
@@ -96,7 +98,7 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 		 *	with the sign extended branch
 		 *	address field.
 		 */
-		if (!opcode[2]) begin
+		if (!opcode_in[2]) begin
 
 			call		= 1'b0;
 			ret		= 1'b0;
@@ -124,9 +126,10 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 
 			branch		= 1'b0;
 			RegWrite	= 1'b1;
+			push_pop	= 1'b0;
 		
 			// CALL - Writing SP to memory
-			if (!opcode[0]) begin
+			if (!opcode_in[0]) begin
 
 				call		= 1'b1;
 				ret		= 1'b0;
@@ -166,7 +169,7 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 	end
 
 	// Memory accessing instructions
-	else if (~(|opcode[5:4])) begin
+	else if (~(|opcode_in[5:4])) begin
 
 		call		= 1'b0;
 		ret		= 1'b0;
@@ -175,98 +178,99 @@ output reg [5:0] 	opcode_out;	// Opcode passed to the ALU
 		
 		sign_ext_sel 	= 1'b0;
 
-		// LW, POP
-		if (!(opcode[2] | opcode[0])) begin
+		/* LW, LI, POP
+		 *	Read from memory and write
+		 *	this data to a register. In
+		 *	the case of POP, update SP.
+		 *	If the instruction is LI, no
+		 *	memory transactions are needed.
+		 */
+		if (!(opcode_in[2])) begin
 
-			mem_to_reg	= 1'b1;
+			mem_to_reg	= !(opcode_in[0]);
 			mem_src		= 1'b0;
+			load_imm 	= opcode_in[0];
 
 			RegWrite	= 1'b1;
 			MemWrite	= 1'b0;
-			MemRead		= 1'b1;
+			MemRead		= !(opcode_in[0]);
 
 			// POP
-			if (opcode[1]) begin
+			if (opcode_in[1]) begin
 				opcode_out	= 6'b100010;
 				alu_src		= 2'b00;
+				push_pop	= 1'b1;
 			end
 
 			// LW
 			else begin
 				opcode_out	= 6'b100000;
 				alu_src		= 2'b01;
+				push_pop	= 1'b0;
 			end
 
 		end
 
-		// SW, PUSH
+		/* SW, PUSH
+		 *	Write data to memory. In
+		 *	the case of PUSH, update SP.
+		 */
 		else begin
 
 			mem_to_reg	= 1'b0;
 			mem_src		= 1'b1;
+			load_imm 	= 1'b0;
 
-			RegWrite	= opcode[1];
+			RegWrite	= opcode_in[1];
 			MemWrite	= 1'b1;
 			MemRead		= 1'b0;
 			
-			// PUSH - Add to stack pointer
-			if (opcode[2]) begin
+			// PUSH
+			if (opcode_in[1]) begin
 				opcode_out	= 6'b100000;
+				alu_src		= 2'b00;
+				push_pop	= 1'b1;
 			end
 
-			// POP - Sub from stack pointer
+			// SW
 			else begin
 				opcode_out	= 6'b100010;
+				alu_src		= 2'b01;
+				push_pop	= 1'b0;
 			end
 
 		end
 
 	end
 
-	else if (&opcode[4:3]) begin
+	else if (|opcode_in[4:3]) begin
 
 		// AUDIO
 
 	end
 
-	// Sprite instructions
+	// Sprite instructions and all else
 	else begin
 
 		call		= 1'b0;
 		ret		= 1'b0;
 		branch		= 1'b0;
-		OAMWrite	= 1'b1;
+		push_pop	= 1'b0;
+
 		mem_to_reg	= 1'b0;
+		mem_src		= 1'b0;
+		load_imm 	= 1'b0;
+		sign_ext_sel 	= 1'b0;
+
+		alu_src 	= 2'b11;
+
 		RegWrite	= 1'b0;
 		MemWrite	= 1'b0;
-		sign_ext_sel 	= 1'b0;
-		
-		mem_src		= 1'b0;
+		OAMWrite	= opcode_in[4];
 		MemRead		= 1'b0;
-		alu_src 	= 2'b00;
-		
-/*
-		// Is load sprite different from load word at all? Doesn't look like it...
-		if (~(|opcode[3:0])) begin
 
-			mem_src		= 1'b1;
+		opcode_out	= 6'b100000; 
 
-			MemRead		= 1'b1;
-
-			alu_src 	= 2'b11;	// <-- Spr_start + {24'h000, Spr_num, 2'b00}
-
-		end
-		else begin
-
-			mem_src		= 1'b0;
-
-			MemRead		= 1'b0;
-
-			alu_src 	= 2'b00;	// <-- Spr_start + {24'h000, Spr_num, 2'b00}
-
-
-		end
-*/
 	end
       
   end

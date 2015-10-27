@@ -1,5 +1,11 @@
-module ID_Unit(clk, rst, R_I_A_type_rs, R_I_type_rt, R_funct_S_snum, R_type_rd, R_type_shamt
-				I_type_imm, J_type_imm, S_type_index, A_type_imm, PC_out);
+module ID_Unit(
+		clk, rst, 						// Standard inputs
+		call, ret, branch, push_pop, sign_ext_sel, alu_src,	// Control Inputs
+		RegWrite, RegWrite_Reg, RegWrite_Data,			// Write Back inputs
+		R_I_A_type_rd, R_I_type_rs, R_type_rt, R_type_shamt, 	// IFID Inputs
+		I_type_imm, J_type_imm, A_type_imm, PC_in,
+		ALU_input_1, ALU_input_2				// Outputs
+);
 
 //INPUTS//////////////////////////////////////////////////////
 
@@ -7,35 +13,33 @@ input clk, rst;
 
 input RegWrite;
 
+// From Control_Logic
+input call, ret, branch, push_pop, sign_ext_sel;
+input [1:0] alu_src;
+
+// From Write Back pipe section
+input [4:0]	RegWrite_Reg;		// Register to write data to
+input [31:0] 	RegWrite_Data;		// Data to write to a register
+
 // Shared instruction type outputs
-input [5:0] opcode;				// Inst[31:26] - instruction opcode
-input [4:0] R_I_A_type_rs;		// Inst[25:21] - R-type, I-type rs field
-input [4:0] R_I_type_rt;		// Inst[15:11] - Register rd
-input [5:0] R_funct_S_snum;		// Inst[5:0]   - R-type funct field, S-type rs field
+input [4:0] 	R_I_A_type_rd;		// Inst[25:21] - R-type, I-type rs field
+input [4:0] 	R_I_type_rs;		// Inst[15:11] - Register rd
 
 // R-type instruction outputs
-input [4:0] R_type_rd;			// Inst[20:16] - Register rd
-input [4:0] R_type_shamt;		// Inst[10:6]  - Shift amount
+input [4:0] 	R_type_rt;		// Inst[20:16] - Register rd
+input [4:0] 	R_type_shamt;		// Inst[10:6]  - Shift amount
 
 // I-type instruction outputs
-input [15:0] I_type_imm;		// Inst[20:0]  - Immediate field
+input [15:0] 	I_type_imm;		// Inst[20:0]  - Immediate field
 
 // J-type instruction outputs
-input [25:0] J_type_imm;		// Inst[25:0]  - Immediate field
-
-/*
-// S-type instruction outputs
-input [5:0] S_type_index;		// Inst[25:20] - OAM index
-input [7:0] S_type_imm;			// Inst[7:0]   - S_ATTR-type, S_TNUM-type immediate field
-input [9:0] S_type_xcoor;		// Inst[19:10] - S_COOR-type x-coordinate
-input [9:0] S_type_ycoor;		// Inst[9:0]   - S_COOR-type y-coordinate
-*/
+input [25:0] 	J_type_imm;		// Inst[25:0]  - Immediate field
 
 // A-type instruction outputs
-input [20:0] A_type_imm;		// Inst[20:0]  - Immediate field
+input [20:0] 	A_type_imm;		// Inst[20:0]  - Immediate field
 
 // General outputs
-input [31:0] PC_out;        	// Program counter
+input [31:0] 	PC_in;        		// Program counter
 
 //OUTPUTS/////////////////////////////////////////////////////
 
@@ -43,18 +47,31 @@ output reg [31:0] ALU_input_1;
 output reg [31:0] ALU_input_2;
 
 //INTERNAL CONTROL////////////////////////////////////////////
-wire [31:0] Read_Bus_1;
-wire [31:0] Read_Bus_2;
-wire [31:0] sign_ext;
-wire [31:0] shamt_32;
 
-wire [31:0] sprite_begin = 32'h0C00;	// Starting location of sprite data?
+reg [4:0]	Read_Reg_1;		// RegFile first read port
 
-RegFile_32bit RegFile( .clk(clk), .RegWrite(RegWrite), .Read_Reg_1(), .Read_Reg_2(), .Write_Reg(), .Write_Bus(), .Read_Bus_1(Read_Bus_1), .Read_Bus_2(Read_Bus_2) )
+reg [31:0] 	Read_Bus_1;		// RegFile first output data port
+reg [31:0] 	Read_Bus_2;		// RegFile second output data port
+reg [31:0] 	sign_ext;		// Output of the sign extension unit
+
+wire 		SP_update;		// Signal for selecting SP register in RegFile
+
+//REGISTER FILE///////////////////////////////////////////////
+
+RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegWrite), .Read_Reg_1(Read_Reg_1),
+			.Read_Reg_2(R_I_type_rs), .Write_Reg(RegWrite_Reg),
+			.Write_Bus(RegWrite_Data), .Read_Bus_1(Read_Bus_1),
+			.Read_Bus_2(Read_Bus_2) );
+
+//SP updates occur with CALL, RET, PUSH, POP
+
+assign SP_update = (call | ret | push_pop);
+
+//ALU input mux///////////////////////////////////////////////
 
 always @(alu_src) begin
 
-	case (alu_src) begin
+	case (alu_src)
 	
 		// ALU operation on two register values
 		// Instructions:	ADD, SUB, AND, NAND, XOR
@@ -72,7 +89,7 @@ always @(alu_src) begin
 			if (branch) begin
 				ALU_input_1 = PC_in;
 			end
-			else
+			else begin
 				ALU_input_1 = Read_Bus_1;
 			end
 
@@ -86,36 +103,53 @@ always @(alu_src) begin
 		
 			ALU_input_1 = Read_Bus_1;
 			
-			if (/* push, pop, ret, call */) begin
+			if (SP_update) begin
 				ALU_input_2 = 32'h0001;
 			end
 			else begin
-				ALU_input_2 = shamt_32;
+				ALU_input_2 = {26'h0000000, R_type_shamt};
 			end
 		end
 		
 		// ALU operation to compute sprite data memory location
 		// Instructions:	SLD
-		//2'b11 :	begin
-		//
-		//	ALU_input_1 = sprite_begin;
-		//	ALU_input_2 = {26'h0000, R_funct_S_snum};
-		//
-		//end
+		2'b11 :	begin
+		
+			ALU_input_1 = 32'h00000000;
+			ALU_input_2 = 32'h00000000;
+		
+		end
+
+	endcase
+end
+
+//Stack pointer selector mux//////////////////////////////////////
+
+always @(SP_update) begin
+
+	// CALL, RET, PUSH, POP use stack pointer
+	if (SP_update) begin
+		Read_Reg_1 = 5'b11101;
+	end
+	else begin
+		Read_Reg_1 = R_I_A_type_rd;
+	end
+
 end
    
-// Sign_Ext_Unit
-always (sign_ext_sel) begin
+//Sign extension unit//////////////////////////////////////////////
+
+always @(sign_ext_sel) begin
     
-    // Use of J-type immediate field
-    if (sign_ext_sel) begin
-        sign_ext = {{6{J_type_imm[25]}}, J_type_imm};
-    end
+	// Use of J-type immediate field
+	if (sign_ext_sel) begin
+		sign_ext = {{6{J_type_imm[25]}}, J_type_imm};
+	end
     
-    // Use of I=type immediate field
-    else begin
-        sign_ext = {{16{I_type_imm[15]}}, I_type_imm};
-    end
+	// Use of I-type immediate field
+	else begin
+ 		sign_ext = {{16{I_type_imm[15]}}, I_type_imm};
+	end
 
 end
 
