@@ -44,7 +44,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * @version August 2003-5
  */
 
-    public class InstructionSet
+public class InstructionSet
    {
       private ArrayList instructionList;
 	  private ArrayList opcodeMatchMaps;
@@ -268,6 +268,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         }
                   }
                }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("sw $t1,-100($t2)",
                 "Store word : Store contents of $t1 into effective memory word address",
@@ -290,97 +291,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         }
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("sc $t1,-100($t2)",
-                "Store conditional : Paired with Load Linked (ll) to perform atomic read-modify-write.  Stores $t1 value into effective address, then sets $t1 to 1 for success.  Always succeeds because MARS does not simulate multiple processors.",
-            	 BasicInstructionFormat.I_FORMAT,
-                "111000 ttttt fffff ssssssssssssssss",
-            	 // See comments with "ll" instruction above.  "sc" is implemented
-            	 // like "sw", except that 1 is placed in the source register.
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        Globals.memory.setWord(
-                            RegisterFile.getValue(operands[2]) + operands[1],
-                            RegisterFile.getValue(operands[0]));
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                     RegisterFile.updateRegister(operands[0],1); // always succeeds
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("swl $t1,-100($t2)",
-                "Store word left : Store high-order 1 to 4 bytes of $t1 into memory, starting with effective byte address and continuing through the low-order byte of its word",
-            	 BasicInstructionFormat.I_FORMAT,
-                "101010 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        int address = RegisterFile.getValue(operands[2]) + operands[1];
-                        int source = RegisterFile.getValue(operands[0]);
-                        for (int i=0; i<=address % Globals.memory.WORD_LENGTH_BYTES; i++) {
-                           Globals.memory.setByte(address-i,Binary.getByte(source,3-i));
-                        }
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("swr $t1,-100($t2)",
-                "Store word right : Store low-order 1 to 4 bytes of $t1 into memory, starting with high-order byte of word containing effective byte address and continuing through that byte address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "101110 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        int address = RegisterFile.getValue(operands[2]) + operands[1];
-                        int source = RegisterFile.getValue(operands[0]);
-                        for (int i=0; i<=3-(address % Globals.memory.WORD_LENGTH_BYTES); i++) {
-                           Globals.memory.setByte(address+i,Binary.getByte(source,i));
-                        }
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lui $t1,100",
-                "Load upper immediate : Set high-order 16 bits of $t1 to 16-bit immediate and low-order 16 bits to 0",
-            	 BasicInstructionFormat.I_FORMAT,
-                "001111 00000 fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0], operands[1] << 16);
-                  }
-               }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("beq $t1,$t2,label",
                 "Branch if equal : Branch to statement at label's address if $t1 and $t2 are equal",
             	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000100 fffff sssss tttttttttttttttt",
+                "000000 fffff sssss tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -394,11 +310,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                      }
                   }
                }));
+		// Changed for 554
          instructionList.add(
                 new BasicInstruction("bne $t1,$t2,label",
                 "Branch if not equal : Branch to statement at label's address if $t1 and $t2 are not equal",
             	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000101 fffff sssss tttttttttttttttt",
+                "000001 fffff sssss tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -411,55 +328,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                      }
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("bgez $t1,label",
-                "Branch if greater than or equal to zero : Branch to statement at label's address if $t1 is greater than or equal to zero",
-            	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000001 fffff 00001 ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) >= 0)
-                     {
-                        processBranch(operands[1]);
-                     }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("bgezal $t1,label",
-                "Branch if greater then or equal to zero and link : If $t1 is greater than or equal to zero, then set $ra to the Program Counter and branch to statement at label's address",
-            	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000001 fffff 10001 ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) >= 0)
-                     {  // the "and link" part
-                        processReturnAddress(31);//RegisterFile.updateRegister("$ra",RegisterFile.getProgramCounter());
-                        processBranch(operands[1]);
-                     }
-                  } 
-               }));
-         instructionList.add(
-                new BasicInstruction("bgtz $t1,label",
-                "Branch if greater than zero : Branch to statement at label's address if $t1 is greater than zero",
-            	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000111 fffff 00000 ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) > 0)
-                     {
-                        processBranch(operands[1]);
-                     }
-                  }
-               }));
+			   
          instructionList.add(
                 new BasicInstruction("blez $t1,label",
                 "Branch if less than or equal to zero : Branch to statement at label's address if $t1 is less than or equal to zero",
@@ -476,522 +345,34 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                      }
                   }
                }));
+		// asdf
          instructionList.add(
-                new BasicInstruction("bltz $t1,label",
-                "Branch if less than zero : Branch to statement at label's address if $t1 is less than zero",
-            	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000001 fffff 00000 ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) < 0)
-                     {
-                        processBranch(operands[1]);
-                     }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("bltzal $t1,label",
-                "Branch if less than zero and link : If $t1 is less than or equal to zero, then set $ra to the Program Counter and branch to statement at label's address",
-            	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000001 fffff 10000 ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) < 0)
-                     {  // the "and link" part
-                        processReturnAddress(31);//RegisterFile.updateRegister("$ra",RegisterFile.getProgramCounter());
-                        processBranch(operands[1]);
-                     }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("slt $t1,$t2,$t3",
-                "Set less than : If $t2 is less than $t3, then set $t1 to 1 else set $t1 to 0",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 101010",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        (RegisterFile.getValue(operands[1])
-                        < RegisterFile.getValue(operands[2]))
-                                ? 1
-                                : 0);
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("sltu $t1,$t2,$t3",
-                "Set less than unsigned : If $t2 is less than $t3 using unsigned comparision, then set $t1 to 1 else set $t1 to 0",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 101011",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     int first = RegisterFile.getValue(operands[1]);
-                     int second = RegisterFile.getValue(operands[2]);
-                     if (first >= 0 && second >= 0 || first < 0 && second < 0)
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            (first < second) ? 1 : 0);
-                     } 
-                     else
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            (first >= 0) ? 1 : 0);
-                     }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("slti $t1,$t2,-100",
-                "Set less than immediate : If $t2 is less than sign-extended 16-bit immediate, then set $t1 to 1 else set $t1 to 0",
-            	 BasicInstructionFormat.I_FORMAT,
-                "001010 sssss fffff tttttttttttttttt",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                  // 16 bit immediate value in operands[2] is sign-extended
-                     RegisterFile.updateRegister(operands[0],
-                        (RegisterFile.getValue(operands[1])
-                        < (operands[2] << 16 >> 16))
-                                ? 1
-                                : 0);
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("sltiu $t1,$t2,-100",
-                "Set less than immediate unsigned : If $t2 is less than  sign-extended 16-bit immediate using unsigned comparison, then set $t1 to 1 else set $t1 to 0",
-            	 BasicInstructionFormat.I_FORMAT,
-                "001011 sssss fffff tttttttttttttttt",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     int first = RegisterFile.getValue(operands[1]);
-                  // 16 bit immediate value in operands[2] is sign-extended
-                     int second = operands[2] << 16 >> 16;
-                     if (first >= 0 && second >= 0 || first < 0 && second < 0)
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            (first < second) ? 1 : 0);
-                     } 
-                     else
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            (first >= 0) ? 1 : 0);
-                     }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("movn $t1,$t2,$t3",
-                "Move conditional not zero : Set $t1 to $t2 if $t3 is not zero",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 001011",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  { 
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[2])!=0)
-                        RegisterFile.updateRegister(operands[0], RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("movz $t1,$t2,$t3",
-                "Move conditional zero : Set $t1 to $t2 if $t3 is zero",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttttt fffff 00000 001010",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  { 
-                     int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[2])==0)
-                        RegisterFile.updateRegister(operands[0], RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("movf $t1,$t2",
-                "Move if FP condition flag 0 false : Set $t1 to $t2 if FPU (Coprocessor 1) condition flag 0 is false (zero)",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss 000 00 fffff 00000 000001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  { 
-                     int[] operands = statement.getOperands();
-                     if (Coprocessor1.getConditionFlag(0)==0)
-                        RegisterFile.updateRegister(operands[0], RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("movf $t1,$t2,1",
-                "Move if specified FP condition flag false : Set $t1 to $t2 if FPU (Coprocessor 1) condition flag specified by the immediate is false (zero)",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttt 00 fffff 00000 000001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  { 
-                     int[] operands = statement.getOperands();
-                     if (Coprocessor1.getConditionFlag(operands[2])==0)
-                        RegisterFile.updateRegister(operands[0], RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("movt $t1,$t2",
-            	 "Move if FP condition flag 0 true : Set $t1 to $t2 if FPU (Coprocessor 1) condition flag 0 is true (one)",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 sssss 000 01 fffff 00000 000001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  { 
-                     int[] operands = statement.getOperands();
-                     if (Coprocessor1.getConditionFlag(0)==1)
-                        RegisterFile.updateRegister(operands[0], RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("movt $t1,$t2,1",
-            	 "Move if specfied FP condition flag true : Set $t1 to $t2 if FPU (Coprocessor 1) condition flag specified by the immediate is true (one)",
-                BasicInstructionFormat.R_FORMAT,
-                "000000 sssss ttt 01 fffff 00000 000001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  { 
-                     int[] operands = statement.getOperands();
-                     if (Coprocessor1.getConditionFlag(operands[2])==1)
-                        RegisterFile.updateRegister(operands[0], RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("break 100", 
-            	 "Break execution with code : Terminate program execution with specified exception code",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 ffffffffffffffffffff 001101",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {  // At this time I don't have exception processing or trap handlers
-                     // so will just halt execution with a message.
-                     int[] operands = statement.getOperands();
-                     throw new ProcessingException(statement, "break instruction executed; code = "+
-                          operands[0]+".", Exceptions.BREAKPOINT_EXCEPTION);
-                  }
-               }));	
-         instructionList.add(
-                new BasicInstruction("break", 
-            	 "Break execution : Terminate program execution with exception",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 00000 00000 00000 001101",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {  // At this time I don't have exception processing or trap handlers
-                     // so will just halt execution with a message.
-                     throw new ProcessingException(statement, "break instruction executed; no code given.",
-                        Exceptions.BREAKPOINT_EXCEPTION);
-                  }
-               }));					
-         instructionList.add(
-                new BasicInstruction("syscall", 
-            	 "Issue a system call : Execute the system call specified by value in $v0",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 00000 00000 00000 00000 001100",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     findAndSimulateSyscall(RegisterFile.getValue(2),statement);
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("j target", 
-            	 "Jump unconditionally : Jump to statement at target address",
+                new BasicInstruction("call Imm", 
+            	 "Call a label : Update the PC and save the return address on the stack",
             	 BasicInstructionFormat.J_FORMAT,
-                "000010 ffffffffffffffffffffffffff",
+                "000100 ffffffffffffffffffffffffff",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
+					  try
+					{
+						Globals.memory.setWord(
+							RegisterFile.getValue(29),			// Set the top of the stack with
+							RegisterFile.getProgramCounter() + 1);		// what's in the PC + 1 
+					} 
+                    catch (AddressErrorException e)
+                    {
+                        throw new ProcessingException(statement, e);
+                    }
+					
+					
                      processJump(
                         ((RegisterFile.getProgramCounter() & 0xF0000000)
                                 | (operands[0] << 2)));            
                   }
                }));
-         instructionList.add(
-                new BasicInstruction("jr $t1", 
-            	 "Jump register unconditionally : Jump to statement whose address is in $t1",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 fffff 00000 00000 00000 001000",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     processJump(RegisterFile.getValue(operands[0]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("jal target",
-                "Jump and link : Set $ra to Program Counter (return address) then jump to statement at target address",
-            	 BasicInstructionFormat.J_FORMAT,
-                "000011 ffffffffffffffffffffffffff",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     processReturnAddress(31);// RegisterFile.updateRegister(31, RegisterFile.getProgramCounter());
-                     processJump(
-                        (RegisterFile.getProgramCounter() & 0xF0000000)
-                                | (operands[0] << 2));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("jalr $t1,$t2",
-                "Jump and link register : Set $t1 to Program Counter (return address) then jump to statement whose address is in $t2",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 sssss 00000 fffff 00000 001001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     processReturnAddress(operands[0]);//RegisterFile.updateRegister(operands[0], RegisterFile.getProgramCounter());
-                     processJump(RegisterFile.getValue(operands[1]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("jalr $t1",
-                "Jump and link register : Set $ra to Program Counter (return address) then jump to statement whose address is in $t1",
-            	 BasicInstructionFormat.R_FORMAT,
-                "000000 fffff 00000 11111 00000 001001",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     processReturnAddress(31);//RegisterFile.updateRegister(31, RegisterFile.getProgramCounter()); 
-                     processJump(RegisterFile.getValue(operands[0]));
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lb $t1,-100($t2)",
-                "Load byte : Set $t1 to sign-extended 8-bit value from effective memory byte address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "100000 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            Globals.memory.getByte(
-                            RegisterFile.getValue(operands[2])
-                                    + (operands[1] << 16 >> 16))
-                                            << 24
-                                            >> 24);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lh $t1,-100($t2)",
-                "Load halfword : Set $t1 to sign-extended 16-bit value from effective memory halfword address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "100001 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            Globals.memory.getHalf(
-                            RegisterFile.getValue(operands[2])
-                                    + (operands[1] << 16 >> 16))
-                                            << 16
-                                            >> 16);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lhu $t1,-100($t2)",
-                "Load halfword unsigned : Set $t1 to zero-extended 16-bit value from effective memory halfword address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "100101 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                     // offset is sign-extended and loaded halfword value is zero-extended
-                        RegisterFile.updateRegister(operands[0],
-                            Globals.memory.getHalf(
-                            RegisterFile.getValue(operands[2])
-                                    + (operands[1] << 16 >> 16))
-                                            & 0x0000ffff);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("lbu $t1,-100($t2)",
-                "Load byte unsigned : Set $t1 to zero-extended 8-bit value from effective memory byte address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "100100 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        RegisterFile.updateRegister(operands[0],
-                            Globals.memory.getByte(
-                            RegisterFile.getValue(operands[2])
-                                    + (operands[1] << 16 >> 16))
-                                            & 0x000000ff);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("sb $t1,-100($t2)",
-                "Store byte : Store the low-order 8 bits of $t1 into the effective memory byte address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "101000 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        Globals.memory.setByte(
-                            RegisterFile.getValue(operands[2])
-                                    + (operands[1] << 16 >> 16),
-                                    RegisterFile.getValue(operands[0])
-                                            & 0x000000ff);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));
-         instructionList.add(
-                new BasicInstruction("sh $t1,-100($t2)",
-                "Store halfword : Store the low-order 16 bits of $t1 into the effective memory halfword address",
-            	 BasicInstructionFormat.I_FORMAT,
-                "101001 ttttt fffff ssssssssssssssss",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     try
-                     {
-                        Globals.memory.setHalf(
-                            RegisterFile.getValue(operands[2])
-                                    + (operands[1] << 16 >> 16),
-                                    RegisterFile.getValue(operands[0])
-                                            & 0x0000ffff);
-                     } 
-                         catch (AddressErrorException e)
-                        {
-                           throw new ProcessingException(statement, e);
-                        }
-                  }
-               }));				
-         instructionList.add(        
-                new BasicInstruction("clo $t1,$t2", 
-            	 "Count number of leading ones : Set $t1 to the count of leading one bits in $t2 starting at most significant bit position",
-            	 BasicInstructionFormat.R_FORMAT,
-            	 // MIPS32 requires rd (first) operand to appear twice in machine code.
-            	 // It has to be same as rt (third) operand in machine code, but the
-            	 // source statement does not have or permit third operand.
-            	 // In the machine code, rd and rt are adjacent, but my mask
-            	 // substitution cannot handle adjacent placement of the same source
-            	 // operand (e.g. "... sssss fffff fffff ...") because it would interpret
-            	 // the mask to be the total length of both (10 bits).  I could code it
-            	 // to have 3 operands then define a pseudo-instruction of two operands
-            	 // to translate into this, but then both would show up in instruction set
-            	 // list and I don't want that.  So I will use the convention of Computer
-            	 // Organization and Design 3rd Edition, Appendix A, and code the rt bits
-            	 // as 0's.  The generated code does not match SPIM and would not run 
-            	 // on a real MIPS machine but since I am providing no means of storing
-            	 // the binary code that is not really an issue.
-                "011100 sssss 00000 fffff 00000 100001",
-                new SimulationCode()
-               {   
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     int value = RegisterFile.getValue(operands[1]);
-                     int leadingOnes = 0;
-                     int bitPosition = 31;
-                     while (Binary.bitValue(value,bitPosition)==1 && bitPosition>=0) {
-                        leadingOnes++;
-                        bitPosition--;
-                     }
-                     RegisterFile.updateRegister(operands[0], leadingOnes);
-                  }
-               }));	
-         instructionList.add(        
-                new BasicInstruction("clz $t1,$t2", 
-            	 "Count number of leading zeroes : Set $t1 to the count of leading zero bits in $t2 starting at most significant bit positio",
-            	 BasicInstructionFormat.R_FORMAT,
-            	 // See comments for "clo" instruction above.  They apply here too.
-                "011100 sssss 00000 fffff 00000 100000",
-                new SimulationCode()
-               {
-                   public void simulate(ProgramStatement statement) throws ProcessingException
-                  {
-                     int[] operands = statement.getOperands();
-                     int value = RegisterFile.getValue(operands[1]);
-                     int leadingZeros = 0;
-                     int bitPosition = 31;
-                     while (Binary.bitValue(value,bitPosition)==0 && bitPosition>=0) {
-                        leadingZeros++;
-                        bitPosition--;
-                     }
-                     RegisterFile.updateRegister(operands[0], leadingZeros);
-                  }
-               }));				
          instructionList.add(        
                 new BasicInstruction("mfc0 $t1,$8", 
             	 "Move from Coprocessor 0 : Set $t1 to the value stored in Coprocessor 0 register $8",
