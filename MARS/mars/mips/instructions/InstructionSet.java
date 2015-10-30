@@ -360,7 +360,8 @@ public class InstructionSet
 					{
 						Globals.memory.setWord(
 							RegisterFile.getValue(29),			// Set the top of the stack with
-							RegisterFile.getProgramCounter() + 1);		// what's in the PC + 1 
+							RegisterFile.getProgramCounter());		// what's in the PC + 1 
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
 					} 
                     catch (AddressErrorException e)
                     {
@@ -371,6 +372,28 @@ public class InstructionSet
                      processJump(
                         ((RegisterFile.getProgramCounter() & 0xF0000000)
                                 | (operands[0] << 2)));            
+                  }
+               }));
+			instructionList.add(
+                new BasicInstruction("Return", 
+            	 "Return from a previous function call",
+            	 BasicInstructionFormat.J_FORMAT,
+                "000101 ffffffffffffffffffffffffff",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 
+					RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
+					try
+					{
+						processJump(Globals.memory.getWord(RegisterFile.getValue(29)));
+					}
+					catch (AddressErrorException e)
+					{
+                        throw new ProcessingException(statement, e);
+                    }
                   }
                }));
          instructionList.add(        

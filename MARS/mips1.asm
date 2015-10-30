@@ -5,4 +5,11 @@ run:	addi $t0, $t0, 5
 	add  $t2, $t1, $t0
 	sub  $t3, $t0, $t1
 
-call	
+call	stop
+
+
+	addi $t7, $t7 0xFFFFFFFF
+	
+stop:
+	return
+	nop
