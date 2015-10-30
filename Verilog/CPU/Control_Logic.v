@@ -15,6 +15,9 @@ output reg		ret;
 output reg		branch;
 output reg		push_pop;
 
+output reg		pop;		// Data forwarding of SP-1
+
+output reg		reg_2_sel;	// Signal for selecting second RegFile read
 output reg		mem_to_reg;	// LW signal to Memory unit 
 output reg		mem_src;	// Read_reg_2 proper SW select
 output reg		load_imm;	// Load the J-type immediate field
@@ -37,7 +40,9 @@ always @(opcode_in) begin
 		ret		= 1'b0;
 		branch		= 1'b0;
 		push_pop	= 1'b0;
+		pop		= 1'b0;
 
+		reg_2_sel	= 1'b1;
 		mem_to_reg	= 1'b0;
 		mem_src		= 1'b0;
 		load_imm 	= 1'b0;
@@ -91,6 +96,9 @@ always @(opcode_in) begin
 		load_imm 	= 1'b0;
 		sign_ext_sel 	= 1'b1;
 		push_pop	= 1'b0;
+		pop		= 1'b0;
+
+		reg_2_sel	= 1'b0;
 
 		/* BRANCH
 		 *	If opcode[2] is not set the
@@ -177,6 +185,7 @@ always @(opcode_in) begin
 		OAMWrite	= 1'b0;
 		
 		sign_ext_sel 	= 1'b0;
+		reg_2_sel	= 1'b0;
 
 		/* LW, LI, POP
 		 *	Read from memory and write
@@ -200,6 +209,7 @@ always @(opcode_in) begin
 				opcode_out	= 6'b100010;
 				alu_src		= 2'b00;
 				push_pop	= 1'b1;
+				pop		= 1'b1;			//<-----POP
 			end
 
 			// LW
@@ -207,6 +217,7 @@ always @(opcode_in) begin
 				opcode_out	= 6'b100000;
 				alu_src		= 2'b01;
 				push_pop	= 1'b0;
+				pop		= 1'b0;
 			end
 
 		end
@@ -218,8 +229,9 @@ always @(opcode_in) begin
 		else begin
 
 			mem_to_reg	= 1'b0;
-			mem_src		= 1'b1;
+			mem_src		= 1'b0;
 			load_imm 	= 1'b0;
+			pop		= 1'b0;
 
 			RegWrite	= opcode_in[1];
 			MemWrite	= 1'b1;
@@ -256,7 +268,9 @@ always @(opcode_in) begin
 		ret		= 1'b0;
 		branch		= 1'b0;
 		push_pop	= 1'b0;
+		pop		= 1'b0;
 
+		reg_2_sel	= 1'b0;
 		mem_to_reg	= 1'b0;
 		mem_src		= 1'b0;
 		load_imm 	= 1'b0;

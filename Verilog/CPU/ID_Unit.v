@@ -1,32 +1,35 @@
 module ID_Unit(
-		clk, rst, 						// Standard inputs
-		call, ret, branch, push_pop, sign_ext_sel, alu_src,	// Control Inputs
-		RegWrite, RegWrite_Reg, RegWrite_Data,			// Write Back inputs
-		R_I_A_type_rd, R_I_type_rs, R_type_rt, R_type_shamt, 	// IFID Inputs
+		clk, rst, 								// Standard inputs
+		call, ret, branch, push_pop, pop, reg_2_sel, sign_ext_sel, alu_src,	// Control Inputs
+		RegWrite, RegWrite_Reg, RegWrite_Data,					// Write Back inputs
+		R_I_A_type_rd, R_I_type_rs, R_type_rt, R_type_shamt, 			// IFID Inputs
 		I_type_imm, J_type_imm, A_type_imm, PC_in,
-		ALU_input_1, ALU_input_2				// Outputs
+		ALU_input_1, ALU_input_2						// Outputs
 );
 
 //INPUTS//////////////////////////////////////////////////////
 
 input clk, rst;
 
+// From WriteBack unit
 input RegWrite;
 
 // From Control_Logic
-input call, ret, branch, push_pop, sign_ext_sel;
-input [1:0] alu_src;
+input 		call, ret, branch, push_pop, 
+		pop, reg_2_sel, sign_ext_sel;
+
+input [1:0] 	alu_src;		// Mux select signal for choosing the ALU inputs
 
 // From Write Back pipe section
 input [4:0]	RegWrite_Reg;		// Register to write data to
 input [31:0] 	RegWrite_Data;		// Data to write to a register
 
 // Shared instruction type outputs
-input [4:0] 	R_I_A_type_rd;		// Inst[25:21] - R-type, I-type rs field
-input [4:0] 	R_I_type_rs;		// Inst[15:11] - Register rd
+input [4:0] 	R_I_A_type_rd;		// Inst[25:21] - R-type, I-type, A-type rd field
+input [4:0] 	R_I_type_rs;		// Inst[15:11] - R-type, I-type rt field
 
 // R-type instruction outputs
-input [4:0] 	R_type_rt;		// Inst[20:16] - Register rd
+input [4:0] 	R_type_rt;		// Inst[20:16] - Register rt
 input [4:0] 	R_type_shamt;		// Inst[10:6]  - Shift amount
 
 // I-type instruction outputs
@@ -43,12 +46,14 @@ input [31:0] 	PC_in;        		// Program counter
 
 //OUTPUTS/////////////////////////////////////////////////////
 
-output reg [31:0] ALU_input_1;
-output reg [31:0] ALU_input_2;
+output reg [4:0]	DestReg;	// Register to write data
+output reg [31:0] 	ALU_input_1;	// First input of the ALU
+output reg [31:0] 	ALU_input_2;	// Second input of the ALU
 
 //INTERNAL CONTROL////////////////////////////////////////////
 
 reg [4:0]	Read_Reg_1;		// RegFile first read port
+reg [4:0]	Read_Reg_2;		// RegFile second read port
 
 reg [31:0] 	Read_Bus_1;		// RegFile first output data port
 reg [31:0] 	Read_Bus_2;		// RegFile second output data port
@@ -56,16 +61,22 @@ reg [31:0] 	sign_ext;		// Output of the sign extension unit
 
 wire 		SP_update;		// Signal for selecting SP register in RegFile
 
+wire		RegWrite_en;		// Signal for writing to the Regfile (dataforwarding stuff)
+
 //REGISTER FILE///////////////////////////////////////////////
 
-RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegWrite), .Read_Reg_1(Read_Reg_1),
-			.Read_Reg_2(R_I_type_rs), .Write_Reg(RegWrite_Reg),
+RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegFile_we), .Read_Reg_1(Read_Reg_1),
+			.Read_Reg_2(Read_Reg_2), .Write_Reg(RegWrite_Reg),
 			.Write_Bus(RegWrite_Data), .Read_Bus_1(Read_Bus_1),
 			.Read_Bus_2(Read_Bus_2) );
 
 //SP updates occur with CALL, RET, PUSH, POP
 
-assign SP_update = (call | ret | push_pop);
+assign SP_update 	= (call | ret | push_pop);
+
+assign RegFile_we 	= (RegWrite | pop);
+
+assign DestReg 		= R_I_A_type_rd;
 
 //ALU input mux///////////////////////////////////////////////
 
@@ -123,13 +134,27 @@ always @(alu_src) begin
 	endcase
 end
 
-//Stack pointer selector mux//////////////////////////////////////
+//Read_Reg_1 selector mux//////////////////////////////////////
 
 always @(SP_update) begin
 
 	// CALL, RET, PUSH, POP use stack pointer
 	if (SP_update) begin
 		Read_Reg_1 = 5'b11101;
+	end
+	else begin
+		Read_Reg_1 = R_I_type_rs;
+	end
+
+end
+
+//Read_Reg_2 selector mux//////////////////////////////////////
+
+always @(reg_2_sel) begin
+
+	// CALL, RET, PUSH, POP use stack pointer
+	if (reg_2_sel) begin
+		Read_Reg_1 = R_type_rt;
 	end
 	else begin
 		Read_Reg_1 = R_I_A_type_rd;
