@@ -1,18 +1,24 @@
-module ID_Unit(
-		clk, rst, 								// Standard inputs
-		call, ret, branch, push_pop, pop, reg_2_sel, sign_ext_sel, alu_src,	// Control Inputs
-		RegWrite, RegWrite_Reg, RegWrite_Data,					// Write Back inputs
-		R_I_A_type_rd, R_I_type_rs, R_type_rt, R_type_shamt, 			// IFID Inputs
-		I_type_imm, J_type_imm, A_type_imm, PC_in,
-		ALU_input_1, ALU_input_2						// Outputs
+module ID_Unit
+(
+	clk, rst, 	
+		
+	// INPUTS
+	call, ret, branch, push_pop, pop,		// From CPU_control
+	reg_2_sel, sign_ext_sel, alu_src,	
+
+	RegWrite, RegWrite_Reg, RegWrite_Data,		// From WB_Unit
+
+	R_I_A_type_rd, R_I_type_rs, R_type_rt,		// From IFID Register
+	R_type_shamt, I_type_imm, J_type_imm_in,
+	A_type_imm, PC_in,
+
+	// OUTPUTS
+	DestReg, J_type_imm_out, ALU_input_1, ALU_input_2, PC_out
 );
 
 //INPUTS//////////////////////////////////////////////////////
 
-input clk, rst;
-
-// From WriteBack unit
-input RegWrite;
+input 		clk, rst;
 
 // From Control_Logic
 input 		call, ret, branch, push_pop, 
@@ -21,6 +27,7 @@ input 		call, ret, branch, push_pop,
 input [1:0] 	alu_src;		// Mux select signal for choosing the ALU inputs
 
 // From Write Back pipe section
+input 		RegWrite;
 input [4:0]	RegWrite_Reg;		// Register to write data to
 input [31:0] 	RegWrite_Data;		// Data to write to a register
 
@@ -36,7 +43,7 @@ input [4:0] 	R_type_shamt;		// Inst[10:6]  - Shift amount
 input [15:0] 	I_type_imm;		// Inst[20:0]  - Immediate field
 
 // J-type instruction outputs
-input [25:0] 	J_type_imm;		// Inst[25:0]  - Immediate field
+input [25:0] 	J_type_imm_in;		// Inst[25:0]  - Immediate field
 
 // A-type instruction outputs
 input [20:0] 	A_type_imm;		// Inst[20:0]  - Immediate field
@@ -46,7 +53,9 @@ input [31:0] 	PC_in;        		// Program counter
 
 //OUTPUTS/////////////////////////////////////////////////////
 
-output reg [4:0]	DestReg;	// Register to write data
+output [4:0]		DestReg;	// Register to write data
+output [25:0]		J_type_imm_out;	// J-type immediate field for LI instruction
+output [31:0]		PC_out;		// Output PC+1 of current instruction
 output reg [31:0] 	ALU_input_1;	// First input of the ALU
 output reg [31:0] 	ALU_input_2;	// Second input of the ALU
 
@@ -63,20 +72,22 @@ wire 		SP_update;		// Signal for selecting SP register in RegFile
 
 wire		RegWrite_en;		// Signal for writing to the Regfile (dataforwarding stuff)
 
+assign SP_update 	= (call | ret | push_pop);
+
+assign RegFile_we 	= (RegWrite | pop);
+
+assign DestReg 		= R_I_A_type_rd;
+
+assign J_type_imm_out	= J_type_imm_in;
+
+assign PC_out		= PC_in;
+
 //REGISTER FILE///////////////////////////////////////////////
 
 RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegFile_we), .Read_Reg_1(Read_Reg_1),
 			.Read_Reg_2(Read_Reg_2), .Write_Reg(RegWrite_Reg),
 			.Write_Bus(RegWrite_Data), .Read_Bus_1(Read_Bus_1),
 			.Read_Bus_2(Read_Bus_2) );
-
-//SP updates occur with CALL, RET, PUSH, POP
-
-assign SP_update 	= (call | ret | push_pop);
-
-assign RegFile_we 	= (RegWrite | pop);
-
-assign DestReg 		= R_I_A_type_rd;
 
 //ALU input mux///////////////////////////////////////////////
 
@@ -168,7 +179,7 @@ always @(sign_ext_sel) begin
     
 	// Use of J-type immediate field
 	if (sign_ext_sel) begin
-		sign_ext = {{6{J_type_imm[25]}}, J_type_imm};
+		sign_ext = {{6{J_type_imm_in[25]}}, J_type_imm_in};
 	end
     
 	// Use of I-type immediate field

@@ -5,11 +5,17 @@
 	data for instruction decoding and execution.
 */
 
-module IFID_reg(clk, data_hazard, PC_hazard, instruction_in, PC_in, 
-			opcode, R_I_A_type_rd, R_I_type_rs, S_type_snum, R_type_rt,
-			R_type_shamt, I_type_imm, J_type_imm, S_type_index,
-			S_type_imm, S_type_xcoor, S_type_ycoor, A_type_imm,
-			PC_out, instruction_out);
+module IFID_reg
+(
+	// INPUTS
+	clk, data_hazard, PC_hazard, instruction_in, PC_in, 
+	opcode, R_I_A_type_rd, R_I_type_rs, S_type_snum, R_type_rt,
+	R_type_shamt, I_type_imm, J_type_imm, S_type_index,
+	S_type_imm, S_type_xcoor, S_type_ycoor, A_type_imm,
+	
+	// OUTPUTS
+	PC_out, instruction_out
+);
 
 //INPUTS///////////////////////////////////////////////////
 

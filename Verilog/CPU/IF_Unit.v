@@ -1,8 +1,14 @@
-module IF_Unit(	
-		clk, rst, 		// General Inputs		
-		data_hazard, PC_hazard,	// Inputs from Hazard_Unit
-		PC_control, PC_src,	// Inputs from PC_control
-		PC_next, instruction	// Outputs
+module IF_Unit
+(	
+	// INPUTS
+	clk, rst, 		// General Inputs	
+	
+	data_hazard, PC_hazard,	// Inputs from Hazard_Unit
+
+	PC_control, PC_src,	// Inputs from PC_control
+
+	// OUTPUTS
+	PC_next, instruction
 );
 
 //INPUTS/////////////////////////////
@@ -24,13 +30,12 @@ output reg [31:0]	instruction;
 
 //INTERNAL LOGIC//////////////////////
 
-reg 		[31:0]	PC_curr;
-reg		[31:0]	PC_update;
+reg [31:0]		PC_curr;
+reg [31:0]		PC_update;
 
 wire			hazard;
 
-//INTERNAL LOGIC ASSIGNS
-assign hazard = (data_hazard | PC_hazard);
+assign hazard 		= (data_hazard | PC_hazard);
 
 //Adder for calculating next PC///////
 always @(PC_curr) begin
@@ -38,7 +43,6 @@ always @(PC_curr) begin
 end
 
 //PC updating mux/////////////////////
-//always @(PC_src) begin
 always @(PC_control, PC_next) begin
 	
 	if (PC_src) begin

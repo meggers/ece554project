@@ -1,15 +1,24 @@
-module EX_Unit(	opcode, RegWrite_in, MemWrite_in, MemRead_in, MemToReg_in, MemSrc_in, DestReg_in,
-		ALU_input_1, ALU_input_2, call, ret, load_imm, J_type_imm,
-		RegWrite_out, MemWrite_out, MemRead_out, MemToReg_out, MemSrc_out, DestReg_out,
-		N,Z,V,
-		EX_out);
+module EX_Unit
+(
+	// INPUTS
+	opcode, 
+	RegWrite_in, MemWrite_in, MemRead_in,
+	MemToReg_in, MemSrc_in, DestReg_in,
+	ALU_input_1, ALU_input_2, call, ret,
+	load_imm, J_type_imm,
+		
+	// OUTPUTS
+	RegWrite_out, MemWrite_out, MemRead_out,
+	MemToReg_out, MemSrc_out, DestReg_out,
+	EX_out,	MemWrite_data, PC_in, N,Z,V
+);
 //ASSUMTIONS:
 //	-All S type instructions will be executed outside of normal CPU pipe
 //	{NOT ASSUMING THIS}-PC will have seperate adder for branch instructions
 
 //INPUTS//////////////////////////////////////////////////////
 
-input	call, ret, load_imm;
+input			call, ret, load_imm;
 
 //From Control via IFID register
 input [5:0] 		opcode;		// Tells ALU what operation to complete
@@ -28,25 +37,27 @@ input			MemSrc_in;
 //From Decode via IFID register
 input [4:0]		DestReg_in;	// Destination register of ALU/Memory result
 input [25:0] 		J_type_imm;	// Immediate field to be loaded into a register
-input [31:0] 		PC;		// PC to be written to memory during call
+input [31:0] 		PC_in;		// PC to be written to memory during call
 input [31:0] 		ALU_input_1;	// ALU input 1
 input [31:0] 		ALU_input_2;	// ALU input 2
 
 //OUTPUTS/////////////////////////////////////////////////////
 
-output reg		RegWrite_out;	// Passed straight to EXMEM from IDEX
-output reg		MemWrite_out;
-output reg		MemRead_out;
-output reg		MemToReg_out;
-output reg		MemSrc_out;
+output			RegWrite_out;	// Passed straight to EXMEM from IDEX
+output			MemWrite_out;
+output			MemRead_out;
+output			MemToReg_out;
+output			MemSrc_out;
 
 output reg [5:0] 	DestReg_out;	// (call | ret) = 0 -> DestReg_in
 output reg [31:0] 	EX_out;		//		  1 -> 0x1B (SP register)
-output reg [31:0] 	ALU_out;
+output reg [31:0] 	MemWrite_data;
 
 output reg 		N, Z, V;	// Set flags to send to FLAGS register
 
 //INTERNAL CONTROL////////////////////////////////////////////
+
+reg [31:0]		ALU_out;
 
 assign RegWrite_out 	= RegWrite_in;
 assign MemWrite_out 	= MemWrite_in;
@@ -75,7 +86,7 @@ end
 always @(call) begin
 	
 	if (call) begin
-		MemWrite_data = PC;
+		MemWrite_data = PC_in;
 	end
 	else begin
 		MemWrite_data = ALU_input_2;
@@ -86,7 +97,7 @@ end
 always @(call, ret) begin
 
 	if (call | ret) begin
-		DestReg_out = 0x1B;
+		DestReg_out = 5'h1B;
 	end
 	else begin
 		DestReg_out = DestReg_in;
