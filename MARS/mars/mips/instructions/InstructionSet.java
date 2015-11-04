@@ -214,6 +214,22 @@ public class InstructionSet
                         ^ RegisterFile.getValue(operands[2]));
                   }
                }));
+		// Changed for 554
+         instructionList.add(
+                new BasicInstruction("nand $t1,$t2,$t3",
+            	 "Bitwise NAND: Set $t1 to bitwise NAND of $t2 and $t3",
+                BasicInstructionFormat.R_FORMAT,
+                "101000 sssss ttttt fffff 00000 100110",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+                     RegisterFile.updateRegister(operands[0],
+                        ~(RegisterFile.getValue(operands[1])
+                        & RegisterFile.getValue(operands[2])));
+                  }
+               }));
 		// Changed for 554			   
          instructionList.add(
                 new BasicInstruction("sll $t1,$t2,10",
@@ -367,8 +383,6 @@ public class InstructionSet
                     {
                         throw new ProcessingException(statement, e);
                     }
-					
-					
                      processJump(
                         ((RegisterFile.getProgramCounter() & 0xF0000000)
                                 | (operands[0] << 2)));            
@@ -396,6 +410,67 @@ public class InstructionSet
                     }
                   }
                }));
+			   
+			   
+			instructionList.add(
+				new BasicInstruction("push $t0",
+				"Push a value from a register onto the stack",
+				BasicInstructionFormat.I_FORMAT,
+				"001110 ffffffffffffffffffffffffff",
+				
+				new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+						try
+						{
+							Globals.memory.setWord(
+								RegisterFile.getValue(29),			// Set the top of the stack with
+								RegisterFile.getValue(operands[1]));		// what's in the PC + 1 
+							RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+						} 
+						catch (AddressErrorException e)
+						{
+							throw new ProcessingException(statement, e);
+						}
+					}
+				
+			}));
+			
+			instructionList.add(
+				new BasicInstruction("pop $t0",
+				"Pop a value from the stack into a register",
+				BasicInstructionFormat.I_FORMAT,
+				"001010 ffffffffffffffffffffffffff",
+				
+				new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						
+						try
+						{
+							RegisterFile.updateRegister(operands[1],
+							Globals.memory.getWord(
+								RegisterFile.getValue(29)));		// what's in the PC + 1 
+							RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+						} 
+						catch (AddressErrorException e)
+						{
+							throw new ProcessingException(statement, e);
+						}
+						
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
+					}
+				
+			}));
+			   
+			   
+			   
+		
          instructionList.add(        
                 new BasicInstruction("mfc0 $t1,$8", 
             	 "Move from Coprocessor 0 : Set $t1 to the value stored in Coprocessor 0 register $8",
