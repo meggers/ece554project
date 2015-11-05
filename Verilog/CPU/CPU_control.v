@@ -8,12 +8,12 @@ module CPU_control
 	call, ret, branch, push_pop, pop, reg_2_sel,
 	mem_to_reg, mem_src, sign_ext_sel, load_imm,
 	alu_src, RegWrite, MemWrite, MemRead, OAMWrite,
-	opcode_out
+	opcode_out, ALU_logic, and_add_imm, load
 );
 
 //INPUTS////////////////////////////////////////////////////
 
-input [5:0]  		opcode_in; 	// Opcode received from ID
+input [5:0]  		opcode_in; 	// Opcode received from IFID
 
 //OUTPUTS///////////////////////////////////////////////////
 
@@ -40,9 +40,17 @@ output reg		MemWrite;	// Signal for writing to memory
 output reg		OAMWrite;	// Signal for writing to the OAM
 output reg		MemRead;	// Signal for reading from memory 
 
+//for hazard detect
+output reg		ALU_logic;	// Indicates ALU type instruction
+output reg 		and_add_imm;	// Indicates imm type instruction
+output reg		load;		// load
+
 output reg [5:0] 	opcode_out;	// Opcode passed to the ALU       
 
 always @(opcode_in) begin
+	ALU_logic = 1'b0;
+	and_add_imm = 1'b0;
+	load = 1'b0;
         
 	// All ALU oriented instrucitons  
 	if (opcode_in[5]) begin
@@ -64,6 +72,8 @@ always @(opcode_in) begin
 		OAMWrite	= 1'b0;
 		MemRead		= 1'b0;
 
+		ALU_logic	= 1'b1;
+
 		opcode_out	= opcode_in;
 
 		/* ADD, ADDI, AND, ANDI, and XOR (Needs Imm) 
@@ -75,6 +85,7 @@ always @(opcode_in) begin
 
 			if (opcode_in[0]) begin
 				alu_src	= 2'b01;
+				and_add_imm = 1'b1;
 			end
 			else begin
 				alu_src = 2'b00;
@@ -229,6 +240,7 @@ always @(opcode_in) begin
 				alu_src		= 2'b01;
 				push_pop	= 1'b0;
 				pop		= 1'b0;
+				load 		= 1'b1;
 			end
 
 		end
