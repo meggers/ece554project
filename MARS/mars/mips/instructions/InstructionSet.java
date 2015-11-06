@@ -346,18 +346,18 @@ public class InstructionSet
                }));
 			   
          instructionList.add(
-                new BasicInstruction("blez $t1,label",
-                "Branch if less than or equal to zero : Branch to statement at label's address if $t1 is less than or equal to zero",
+                new BasicInstruction("blt $t1,$t2,label",
+                "Branch if less than: Branch to statement at label's address if $t1 is less $t2",
             	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000110 fffff 00000 ssssssssssssssss",
+                "000010 fffff sssss tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) <= 0)
+                     if (RegisterFile.getValue(operands[0]) < RegisterFile.getValue(operands[1]))
                      {
-                        processBranch(operands[1]);
+                        processBranch(operands[2]);
                      }
                   }
                }));
@@ -423,13 +423,12 @@ public class InstructionSet
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
 						int[] operands = statement.getOperands();
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 4);
 						try
 						{
 							Globals.memory.setWord(
-								RegisterFile.getValue(29),			// Set the top of the stack with
-								RegisterFile.getValue(operands[1]));		// what's in the PC + 1 
-							RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+								RegisterFile.getValue(29),			
+								RegisterFile.getValue(operands[0]));		
 						} 
 						catch (AddressErrorException e)
 						{
@@ -453,17 +452,16 @@ public class InstructionSet
 						
 						try
 						{
-							RegisterFile.updateRegister(operands[1],
+							RegisterFile.updateRegister(operands[0],
 							Globals.memory.getWord(
-								RegisterFile.getValue(29)));		// what's in the PC + 1 
-							RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+								RegisterFile.getValue(29)));		// what's in the PC
 						} 
 						catch (AddressErrorException e)
 						{
 							throw new ProcessingException(statement, e);
 						}
 						
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 4);
 					}
 				
 			}));

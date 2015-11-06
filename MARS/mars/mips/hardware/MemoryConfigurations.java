@@ -77,14 +77,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    	
       // Default configuration comes from SPIM
       private static int[] defaultConfigurationItemValues = { 
-         0x00400000, // .text Base Address
-         0x10000000, // Data Segment base address
+         0x00000000, // .text Base Address
+         0x00000400, // Data Segment base address
          0x10000000, // .extern Base Address
          0x10008000, // Global Pointer $gp)
-         0x10010000, // .data base Address
+         0x00000400, // .data base Address
          0x10040000, // heap base address
-         0x7fffeffc, // stack pointer $sp (from SPIM not MIPS)
-         0x7ffffffc, // stack base address
+         0x00000BFC, // stack pointer $sp (from SPIM not MIPS)
+         0x00000C00, // stack base address
          0x7fffffff, // highest address in user space
          0x80000000, // lowest address in kernel space
          0x80000000, // .ktext base address
