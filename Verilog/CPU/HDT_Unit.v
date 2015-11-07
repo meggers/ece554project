@@ -1,19 +1,25 @@
-module HDT_Unit(IF_ID_reg_rs, IF_ID_reg_rt, IF_ID_reg_rd,
-                   ID_EX_reg_rd, EX_MEM_reg_rd, MEM_WB_reg_rd,
-                   jump, branch, PC_update, rst,
-                data_hazard, PC_hazard);
+module HDT_Unit
+(
+	// INPUTS	
+	rst, Read_Reg_1, Read_Reg_2,
+	IDEX_reg_rd, EXMEM_reg_rd, MEMWB_reg_rd,
+	//IDEX_RegWrite, EXMEM_RegWrite, MEMWB_RegWrite,
+	call, ret, branch, PC_update, 
+
+	// OUTPUTS	
+	data_hazard, PC_hazard
+);
   
 //INPUTS//////////////////////////////////////////////////////////////
 
-input rst, jump, branch, PC_update;
+input rst, call, ret, branch, PC_update;
 
-input [4:0] IF_ID_reg_rs;	// Registers being read by the current instruction
-input [4:0] IF_ID_reg_rt;
-input [4:0] IF_ID_reg_rd;
+input [4:0] Read_Reg_1;		// Registers being read by the current instruction
+input [4:0] Read_Reg_2;
 
-input [4:0] ID_EX_reg_rd;  	// Corresponds to IDEX_reg's reg_rd_out
-input [4:0] EX_MEM_reg_rd; 	// Corresponds to EXMEM_reg's reg_rd_out
-input [4:0] MEM_WB_reg_rd; 	// Corresponds to MEMWB_reg's reg_rd_out
+input [4:0] IDEX_reg_rd;  	// Corresponds to IDEX_reg's reg_rd_out
+input [4:0] EXMEM_reg_rd; 	// Corresponds to EXMEM_reg's reg_rd_out
+input [4:0] MEMWB_reg_rd; 	// Corresponds to MEMWB_reg's reg_rd_out
 
 //OUTPUTS/////////////////////////////////////////////////////////////
 
@@ -43,7 +49,7 @@ always @(*) begin
     end
     
     // Can't have a data hazard if the current instruction is return
-    else if (jump) begin
+    else if (call | ret | branch) begin
        PC_hazard = 1'b1;
        data_hazard = 1'b0; 
     end
@@ -51,20 +57,19 @@ always @(*) begin
     else begin
 
 	/* Combinational register comparisons */
-        IDEX_hazard  = ( (&(IF_ID_reg_rs ~^ ID_EX_reg_rd)) |
-                         (&(IF_ID_reg_rt ~^ ID_EX_reg_rd)) |
-                         (&(IF_ID_reg_rd ~^ ID_EX_reg_rd)) );
+        IDEX_hazard  = ( (&(Read_Reg_1 ~^ IDEX_reg_rd)) |
+                         (&(Read_Reg_2 ~^ IDEX_reg_rd)) );
                      
-        EXMEM_hazard = ( (&(IF_ID_reg_rs ~^ EX_MEM_reg_rd)) |
-                         (&(IF_ID_reg_rt ~^ EX_MEM_reg_rd)) |
-                         (&(IF_ID_reg_rd ~^ EX_MEM_reg_rd)) );
+        EXMEM_hazard = ( (&(Read_Reg_1 ~^ EXMEM_reg_rd)) |
+                         (&(Read_Reg_2 ~^ EXMEM_reg_rd)) );
                      
-        MEMWB_hazard = ( (&(IF_ID_reg_rs ~^ MEM_WB_reg_rd)) |
-                         (&(IF_ID_reg_rt ~^ MEM_WB_reg_rd)) |
-                         (&(IF_ID_reg_rd ~^ MEM_WB_reg_rd)) );
+        MEMWB_hazard = ( (&(Read_Reg_1 ~^ MEMWB_reg_rd)) |
+                         (&(Read_Reg_2 ~^ MEMWB_reg_rd)) );
                        
 	/* Data hazards occur when any one of the above signals are set */
         data_hazard = (IDEX_hazard | EXMEM_hazard | MEMWB_hazard);
+
+	PC_hazard = PC_hazard;
         
 	/* Data hazards shouldn't happen when one of the above signals 
 	is undefined, however this will not synthesize */

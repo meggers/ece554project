@@ -1,8 +1,8 @@
-module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, op);
+module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
    //ALU_in1 = $d 	ALU_in2 = shamt
    //ALU_in1 = rs	ALU_in2 = rt <---DIVIDE
    input [31:0] ALU_in1, ALU_in2; //input values to ALU
-   input [5:0] op;
+   input [5:0] opcode;
    output reg N, Z, V;
    output reg [31:0] ALU_out;
    
@@ -12,17 +12,17 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, op);
    //reg [15:0] ALU_in1_16b;
   // reg [15:0] ALU_in2_16b;
    
-	localparam ADD 	 = 6'h00;
-	localparam ADDI  = 6'h01;
-	localparam SUB 	 = 6'h02;
-	localparam AND	 = 6'h03;
-	localparam ANDI  = 6'h04; 
-	localparam SLL	 = 6'h05;
-	localparam SRL	 = 6'h06;
+	localparam ADD 	 = 6'h20;
+	localparam ADDI  = 6'h21;
+	localparam SUB 	 = 6'h22;
+	localparam NAND  = 6'h23;
+	localparam AND	 = 6'h24;
+	localparam ANDI  = 6'h25;
+	localparam SRL	 = 6'h26; 
+	localparam SLL	 = 6'h27;
 	//localparam MULT  = 6'h16;
 	//localparam DIV   = 6'h15;
-	localparam NAND  = 6'h22;
-	localparam XOR   = 6'h23; 
+	localparam XOR   = 6'h28; 
 	localparam NO_OP = 6'h3F;
 
    assign ALU_in1_16b = ALU_in1[15:0];
@@ -34,7 +34,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, op);
       V = V;
       ALU_out = 32'hxxxx_xxxx;
       
-      case(op)
+      case(opcode)
          ADD: begin
             {V1, ALU_out1} = ALU_in1[30:0] + ALU_in2[30:0];
 	    {V2, ALU_out} = ALU_in1 + ALU_in2;

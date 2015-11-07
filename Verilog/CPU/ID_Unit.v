@@ -9,11 +9,13 @@ module ID_Unit
 	RegWrite, RegWrite_Reg, RegWrite_Data,		// From WB_Unit
 
 	R_I_A_type_rd, R_I_type_rs, R_type_rt,		// From IFID Register
-	R_type_shamt, I_type_imm, J_type_imm_in,
+	R_type_shamt, I_type_imm_in, J_type_imm,
 	A_type_imm, PC_in,
 
 	// OUTPUTS
-	DestReg, J_type_imm_out, ALU_input_1, ALU_input_2, PC_out
+	DestReg, I_type_imm_out, 
+	ALU_input_1, ALU_input_2, PC_out,
+	Read_Reg_1_out, Read_Reg_2_out
 );
 
 //INPUTS//////////////////////////////////////////////////////
@@ -40,10 +42,10 @@ input [4:0] 	R_type_rt;		// Inst[20:16] - Register rt
 input [4:0] 	R_type_shamt;		// Inst[10:6]  - Shift amount
 
 // I-type instruction outputs
-input [15:0] 	I_type_imm;		// Inst[20:0]  - Immediate field
+input [15:0] 	I_type_imm_in;		// Inst[20:0]  - Immediate field
 
 // J-type instruction outputs
-input [25:0] 	J_type_imm_in;		// Inst[25:0]  - Immediate field
+input [25:0] 	J_type_imm;		// Inst[25:0]  - Immediate field
 
 // A-type instruction outputs
 input [20:0] 	A_type_imm;		// Inst[20:0]  - Immediate field
@@ -54,18 +56,23 @@ input [31:0] 	PC_in;        		// Program counter
 //OUTPUTS/////////////////////////////////////////////////////
 
 output [4:0]		DestReg;	// Register to write data
-output [25:0]		J_type_imm_out;	// J-type immediate field for LI instruction
+
+output reg [4:0]	Read_Reg_1_out;	// RegFile first read port
+output reg [4:0]	Read_Reg_2_out;	// RegFile second read port
+
+output [15:0]		I_type_imm_out;	// J-type immediate field for LI instruction
+
 output [31:0]		PC_out;		// Output PC+1 of current instruction
 output reg [31:0] 	ALU_input_1;	// First input of the ALU
 output reg [31:0] 	ALU_input_2;	// Second input of the ALU
 
 //INTERNAL CONTROL////////////////////////////////////////////
 
-reg [4:0]	Read_Reg_1;		// RegFile first read port
-reg [4:0]	Read_Reg_2;		// RegFile second read port
+//reg [4:0]	Read_Reg_1;		// RegFile first read port
+//reg [4:0]	Read_Reg_2;		// RegFile second read port
 
-reg [31:0] 	Read_Bus_1;		// RegFile first output data port
-reg [31:0] 	Read_Bus_2;		// RegFile second output data port
+wire [31:0] 	Read_Bus_1;		// RegFile first output data port
+wire [31:0] 	Read_Bus_2;		// RegFile second output data port
 reg [31:0] 	sign_ext;		// Output of the sign extension unit
 
 wire 		SP_update;		// Signal for selecting SP register in RegFile
@@ -78,20 +85,23 @@ assign RegFile_we 	= (RegWrite | pop);
 
 assign DestReg 		= R_I_A_type_rd;
 
-assign J_type_imm_out	= J_type_imm_in;
+assign I_type_imm_out	= I_type_imm_in;
 
 assign PC_out		= PC_in;
 
+//assign Read_Reg_1_out	= Read_Reg_1;
+//assign Read_Reg_2_out	= Read_Reg_2;
+
 //REGISTER FILE///////////////////////////////////////////////
 
-RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegFile_we), .Read_Reg_1(Read_Reg_1),
-			.Read_Reg_2(Read_Reg_2), .Write_Reg(RegWrite_Reg),
+RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegFile_we), .Read_Reg_1(Read_Reg_1_out),
+			.Read_Reg_2(Read_Reg_2_out), .Write_Reg(RegWrite_Reg),
 			.Write_Bus(RegWrite_Data), .Read_Bus_1(Read_Bus_1),
 			.Read_Bus_2(Read_Bus_2) );
 
 //ALU input mux///////////////////////////////////////////////
 
-always @(alu_src) begin
+always @(*) begin
 
 	case (alu_src)
 	
@@ -147,44 +157,44 @@ end
 
 //Read_Reg_1 selector mux//////////////////////////////////////
 
-always @(SP_update) begin
+always @(*) begin
 
 	// CALL, RET, PUSH, POP use stack pointer
 	if (SP_update) begin
-		Read_Reg_1 = 5'b11101;
+		Read_Reg_1_out = 5'b11101;
 	end
 	else begin
-		Read_Reg_1 = R_I_type_rs;
+		Read_Reg_1_out = R_I_type_rs;
 	end
 
 end
 
 //Read_Reg_2 selector mux//////////////////////////////////////
 
-always @(reg_2_sel) begin
+always @(*) begin
 
 	// CALL, RET, PUSH, POP use stack pointer
 	if (reg_2_sel) begin
-		Read_Reg_1 = R_type_rt;
+		Read_Reg_2_out = R_type_rt;
 	end
 	else begin
-		Read_Reg_1 = R_I_A_type_rd;
+		Read_Reg_2_out = R_I_A_type_rd;
 	end
 
 end
    
 //Sign extension unit//////////////////////////////////////////////
 
-always @(sign_ext_sel) begin
+always @(*) begin
     
 	// Use of J-type immediate field
 	if (sign_ext_sel) begin
-		sign_ext = {{6{J_type_imm_in[25]}}, J_type_imm_in};
+		sign_ext = {{6{J_type_imm[25]}}, J_type_imm};
 	end
     
 	// Use of I-type immediate field
 	else begin
- 		sign_ext = {{16{I_type_imm[15]}}, I_type_imm};
+ 		sign_ext = {{16{I_type_imm_in[15]}}, I_type_imm_in};
 	end
 
 end

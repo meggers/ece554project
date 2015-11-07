@@ -1,49 +1,66 @@
-module MEM_Unit(clk, rst,
-		RegWrite,
-		MemRead,
-		mem_to_reg,
-		mem_src,
-		dest_reg,
-		mem_addr,
-		MemWrite_data,
-		RegWrite_out,
-		mem_to_reg_out,
-		dest_reg_out,
-		mem_read_data,
-		alu_result_out);
+`include "Data_Memory.v"
 
-//////////////////////////INPUTS/////////////////////////////
-input RegWrite,
-	mem_to_reg,
-	mem_src;
-input [4:0] dest_reg;
-input [31:0] mem_addr;
-input [31:0] MemWrite_data;
-input [31:0] mem_read_data_in;
-input [31:0] rd_data_mem;
-/////////////////////////END INPUTS///////////////////////////
+module MEM_Unit
+(
+	// INPUTS
+	clk, rst, RegWrite_in, MemWrite, 
+	MemRead, MemToReg_in, MemSrc,
+	DestReg_in, MemAcc_addr, MemWrite_data,
 
+	// OUTPUTS
+	RegWrite_out,
+	MemToReg_out,
+	DestReg_out,
+	ALU_result_out,
+	MemRead_data
+);
 
-//////////////////////////OUTPUTS/////////////////////////////
+//INPUTS//////////////////////////////////////////////////////
+
+input clk;
+input rst;
+
+input RegWrite_in;
+input MemWrite;
+input MemRead;
+input MemSrc;
+
+input 		MemToReg_in;	// Memory Read to register 
+input [4:0]  	DestReg_in;	// Destination of Memory Read
+input [31:0] 	MemAcc_addr;	// Results of ALU operation
+input [31:0] 	MemWrite_data;	// Data for Memory Write 
+
+//OUTPUTS/////////////////////////////////////////////////////
+
 output RegWrite_out;
-output mem_to_reg_out;
-output dest_reg_out;
-output reg [31:0] mem_read_data_out;
-output reg alu_result_out;
-output [31:0] data_mem_addr;
+output MemToReg_out;
+output [4:0] DestReg_out;
+output [31:0] ALU_result_out;
+output [31:0] MemRead_data;
 
-////////////////////////END OUTPUTS///////////////////////////
+//INTERNAL CONTROL////////////////////////////////////////////
 
-reg mem_addr_in
-//////////////////////////////////////////////////////////////
+reg [31:0] MemAddr;
 
-//decide what address should be loaded into mem to read from
-//when mem_src = 1, load none alu output as address
-assign data_mem_addr = (mem_src) ? MemWrite_data :
-				 mem_addr;
-assign MemWrite_data 
+assign ALU_result_out = MemAcc_addr;
+assign DestReg_out = DestReg_in;
+assign RegWrite_out = RegWrite_in;
 
+// MUX: Memory accessing address selector
 
+always @(MemAcc_addr, MemWrite_data, MemSrc) begin
 
+	if (MemSrc) begin
+		MemAddr = MemWrite_data;
+	end
+	else begin
+		MemAddr = MemAcc_addr;
+	end
+end
+		
+// Testing memory
+Data_Memory data_mem(.clk(clk), .addr(MemAddr), .re(MemRead),
+                     .we(MemWrite), .wrt_data(MemWrite_data),
+                     .rd_data(MemRead_data));
 
 endmodule

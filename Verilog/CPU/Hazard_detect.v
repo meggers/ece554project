@@ -1,8 +1,20 @@
-`define NO_WRITE 6'h00
-`define $SP	 5'h1F
+`define NO_WRITE 6'b000000
+`define SP	 5'b11111
 
-module Hazard_detect(clk, rst, opcode, RegWrite, ALU_logic, load, push_pop, call, ret, branch, and_add_imm, R_type_rd, R_I_type_rt_rd, R_I_type_rs, rd_addr1, rd_addr2, rd_en1, rd_en2, clr_ret_haz,
-			clr_call_haz, clr_branch_haz, data_hazard, control_hazard);
+module Hazard_detect
+(
+	// INPUTS
+	clk, rst, opcode, RegWrite,
+	ALU_logic, load, push_pop,
+	call, ret, branch, and_add_imm,
+	R_type_rd, R_I_type_rt_rd,
+	R_I_type_rs, rd_addr1, rd_addr2,
+	rd_en1, rd_en2, clr_ret_haz,
+	clr_call_haz, clr_branch_haz,
+
+	// OUTPUTS
+	data_hazard, control_hazard
+);
 //////////////////////////INPUTS/////////////////////////////
 	input clk;
 	input rst;
@@ -67,7 +79,7 @@ reg branch_hazard;
 //appends write enable signal to front inorder to preserve relevence
 assign reg_to_write = (ALU_logic & and_add_imm)		? {RegWrite, R_I_type_rt_rd}		:
 		      (ALU_logic & ~and_add_imm) 	? {RegWrite, R_type_rd}			:
-		      (call | ret | push_pop)    	? {RegWrite, $SP}			:
+		      (call | ret | push_pop)    	? {RegWrite, `SP}			:
 		      (load)				? {RegWrite, R_I_type_rs}		:
 						           `NO_WRITE;	  
 
@@ -170,8 +182,4 @@ always@(posedge clk, posedge rst)begin
 	end
 end
 
-
-
-
-
-endmodule;
+endmodule

@@ -26,7 +26,7 @@ input			data_hazard;
 //OUTPUTS/////////////////////////////
 
 output reg [31:0]	PC_next;
-output reg [31:0]	instruction;
+output[31:0]		instruction;
 
 //INTERNAL LOGIC//////////////////////
 

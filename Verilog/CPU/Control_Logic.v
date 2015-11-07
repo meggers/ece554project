@@ -1,8 +1,14 @@
-module Control_Logic(opcode_in,
-			call, ret, branch, push_pop, mem_to_reg,
-			mem_src, sign_ext_sel, load_imm, alu_src,
-			RegWrite, MemWrite, MemRead, OAMWrite,
-			opcode_out);
+module CPU_control
+(
+	// INPUTS
+	opcode_in,
+
+	// OUTPUTS
+	call, ret, branch, push_pop, pop, reg_2_sel,
+	mem_to_reg, mem_src, sign_ext_sel, load_imm,
+	alu_src, RegWrite, MemWrite, MemRead, OAMWrite,
+	opcode_out
+);
 
 //INPUTS////////////////////////////////////////////////////
 
@@ -10,16 +16,16 @@ input [5:0]  		opcode_in; 	// Opcode received from ID
 
 //OUTPUTS///////////////////////////////////////////////////
 
-output reg		call;
-output reg		ret;
-output reg		branch;
-output reg		push_pop;
+output reg		call;		// PC_control signal for calling
+output reg		ret;		// PC_control signal for returning
+output reg		branch;		// PC_control signal for branching
+output reg		push_pop;	// Signal for Hazard Detector
 
 output reg		pop;		// Data forwarding of SP-1
 
 output reg		reg_2_sel;	// Signal for selecting second RegFile read
 output reg		mem_to_reg;	// LW signal to Memory unit 
-output reg		mem_src;	// Read_reg_2 proper SW select
+output reg		mem_src;	// 0 - MemAddr = ALU output, 1 - MemAddr = Read_Reg_2
 output reg		load_imm;	// Load the J-type immediate field
 output reg		sign_ext_sel;	// 0 - I-type imm, 1 - J-type imm
 output reg [1:0] 	alu_src;	// ALU operand seleciton
@@ -142,7 +148,7 @@ always @(opcode_in) begin
 				call		= 1'b1;
 				ret		= 1'b0;
 				mem_to_reg	= 1'b0;
-				mem_src		= 1'b0;
+				mem_src		= 1'b1;
 
 				MemWrite	= 1'b1;
 				MemRead		= 1'b0;
@@ -160,7 +166,7 @@ always @(opcode_in) begin
 				call		= 1'b0;
 				ret		= 1'b1;
 				mem_to_reg	= 1'b1;
-				mem_src		= 1'b1;
+				mem_src		= 1'b0;
 
 				MemWrite	= 1'b0;
 				MemRead		= 1'b1;
@@ -209,7 +215,7 @@ always @(opcode_in) begin
 				opcode_out	= 6'b100010;
 				alu_src		= 2'b00;
 				push_pop	= 1'b1;
-				pop		= 1'b1;			//<-----POP
+				pop		= 1'b1;
 			end
 
 			// LW
@@ -229,7 +235,6 @@ always @(opcode_in) begin
 		else begin
 
 			mem_to_reg	= 1'b0;
-			mem_src		= 1'b0;
 			load_imm 	= 1'b0;
 			pop		= 1'b0;
 
@@ -242,6 +247,7 @@ always @(opcode_in) begin
 				opcode_out	= 6'b100000;
 				alu_src		= 2'b00;
 				push_pop	= 1'b1;
+				mem_src		= 1'b1;
 			end
 
 			// SW
@@ -249,6 +255,7 @@ always @(opcode_in) begin
 				opcode_out	= 6'b100010;
 				alu_src		= 2'b01;
 				push_pop	= 1'b0;
+				mem_src		= 1'b0;
 			end
 
 		end
