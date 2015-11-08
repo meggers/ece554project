@@ -2,11 +2,22 @@
 /* This module defines the regeister interface
    for accessing the 16-bit registers used by
    our processor. */
-module RegFile_32bit(clk, RegWrite, Read_Reg_1, Read_Reg_2, Write_Reg, Write_Bus,
-						Read_Bus_1, Read_Bus_2);
+module RegFile_32bit
+(
+	// INPUTS
+	clk, RegWrite, Read_Reg_1, Read_Reg_2, 
+	Read_Reg_1_en, Read_Reg_2_en,
+	Write_Reg, Write_Bus,
+
+	// OUTPUTS
+	Read_Bus_1, Read_Bus_2
+);
                  
   input clk;
-  input RegWrite; // Writes data to a register when high  
+  input RegWrite; // Writes data to a register when high 
+
+  input Read_Reg_1_en;
+  input Read_Reg_2_en; 
   
   /* Input address buses */
   input [4:0] Read_Reg_1;
@@ -55,148 +66,167 @@ module RegFile_32bit(clk, RegWrite, Read_Reg_1, Read_Reg_2, Write_Reg, Write_Bus
   localparam   REG_31    =    5'b11111;
   
   /* Outputs from each specific register */
-  wire [31:0] 	out2,out3,out4,
+  wire [31:0] 	out1,out2,out3,out4,
               	out5,out6,out7,out8,
               	out9,out10,out11,out12,
               	out13,out14,out15,out16,
 		out17,out18,out19,out20,
 		out21,out22,out23,out24,
 		out25,out26,out27,out28,
-		out29,out30,out31,out32;
+		out29,out30,out31;
              
   /* Register Write Selection */
   reg [31:0] RegWriteSel;
     
   // Assembler Temporary Register  
-  Reg_32bit Assembler_Temp(.clk(clk), .en(RegWriteSel[1]), .d(Write_Bus), .q(out2));		// Register 1
+  Reg_32bit Assembler_Temp(.clk(clk), .en(RegWriteSel[1]), .d(Write_Bus), .q(out1));		// Register 1
 
   // Function Result Registers
-  Reg_32bit Func_Result_1(.clk(clk), .en(RegWriteSel[2]), .d(Write_Bus), .q(out3));		// Register 2
-  Reg_32bit Func_Result_2(.clk(clk), .en(RegWriteSel[3]), .d(Write_Bus), .q(out4));		// Register 3
+  Reg_32bit Func_Result_1(.clk(clk), .en(RegWriteSel[2]), .d(Write_Bus), .q(out2));		// Register 2
+  Reg_32bit Func_Result_2(.clk(clk), .en(RegWriteSel[3]), .d(Write_Bus), .q(out3));		// Register 3
 
   // Argument Registers
-  Reg_32bit Arg_Reg_1(.clk(clk), .en(RegWriteSel[4]), .d(Write_Bus), .q(out5));			// Register 4
-  Reg_32bit Arg_Reg_2(.clk(clk), .en(RegWriteSel[5]), .d(Write_Bus), .q(out6));			// Register 5
-  Reg_32bit Arg_Reg_3(.clk(clk), .en(RegWriteSel[6]), .d(Write_Bus), .q(out7));			// Register 6
-  Reg_32bit Arg_Reg_4(.clk(clk), .en(RegWriteSel[7]), .d(Write_Bus), .q(out8));			// Register 7
+  Reg_32bit Arg_Reg_1(.clk(clk), .en(RegWriteSel[4]), .d(Write_Bus), .q(out4));			// Register 4
+  Reg_32bit Arg_Reg_2(.clk(clk), .en(RegWriteSel[5]), .d(Write_Bus), .q(out5));			// Register 5
+  Reg_32bit Arg_Reg_3(.clk(clk), .en(RegWriteSel[6]), .d(Write_Bus), .q(out6));			// Register 6
+  Reg_32bit Arg_Reg_4(.clk(clk), .en(RegWriteSel[7]), .d(Write_Bus), .q(out7));			// Register 7
 
   // Temporary Value Registers
-  Reg_32bit Temp_Reg_1(.clk(clk), .en(RegWriteSel[8]), .d(Write_Bus), .q(out9));		// Register 8
-  Reg_32bit Temp_Reg_2(.clk(clk), .en(RegWriteSel[9]), .d(Write_Bus), .q(out10));		// Register 9
-  Reg_32bit Temp_Reg_3(.clk(clk), .en(RegWriteSel[10]), .d(Write_Bus), .q(out11));		// Register 10
-  Reg_32bit Temp_Reg_4(.clk(clk), .en(RegWriteSel[11]), .d(Write_Bus), .q(out12));		// Register 11
-  Reg_32bit Temp_Reg_5(.clk(clk), .en(RegWriteSel[12]), .d(Write_Bus), .q(out13));		// Register 12
-  Reg_32bit Temp_Reg_6(.clk(clk), .en(RegWriteSel[13]), .d(Write_Bus), .q(out14));		// Register 13
-  Reg_32bit Temp_Reg_7(.clk(clk), .en(RegWriteSel[14]), .d(Write_Bus), .q(out15));		// Register 14
-  Reg_32bit Temp_Reg_8(.clk(clk), .en(RegWriteSel[15]), .d(Write_Bus), .q(out16));		// Register 15
-  Reg_32bit Temp_Reg_9(.clk(clk), .en(RegWriteSel[16]), .d(Write_Bus), .q(out17));		// Register 16
-  Reg_32bit Temp_Reg_10(.clk(clk), .en(RegWriteSel[17]), .d(Write_Bus), .q(out18));		// Register 17
-  Reg_32bit Temp_Reg_11(.clk(clk), .en(RegWriteSel[18]), .d(Write_Bus), .q(out19));		// Register 18
+  Reg_32bit Temp_Reg_1(.clk(clk), .en(RegWriteSel[8]), .d(Write_Bus), .q(out8));		// Register 8
+  Reg_32bit Temp_Reg_2(.clk(clk), .en(RegWriteSel[9]), .d(Write_Bus), .q(out9));		// Register 9
+  Reg_32bit Temp_Reg_3(.clk(clk), .en(RegWriteSel[10]), .d(Write_Bus), .q(out10));		// Register 10
+  Reg_32bit Temp_Reg_4(.clk(clk), .en(RegWriteSel[11]), .d(Write_Bus), .q(out11));		// Register 11
+  Reg_32bit Temp_Reg_5(.clk(clk), .en(RegWriteSel[12]), .d(Write_Bus), .q(out12));		// Register 12
+  Reg_32bit Temp_Reg_6(.clk(clk), .en(RegWriteSel[13]), .d(Write_Bus), .q(out13));		// Register 13
+  Reg_32bit Temp_Reg_7(.clk(clk), .en(RegWriteSel[14]), .d(Write_Bus), .q(out14));		// Register 14
+  Reg_32bit Temp_Reg_8(.clk(clk), .en(RegWriteSel[15]), .d(Write_Bus), .q(out15));		// Register 15
+  Reg_32bit Temp_Reg_9(.clk(clk), .en(RegWriteSel[16]), .d(Write_Bus), .q(out16));		// Register 16
+  Reg_32bit Temp_Reg_10(.clk(clk), .en(RegWriteSel[17]), .d(Write_Bus), .q(out17));		// Register 17
+  Reg_32bit Temp_Reg_11(.clk(clk), .en(RegWriteSel[18]), .d(Write_Bus), .q(out18));		// Register 18
 
   // Saved Temporary Value Registers
-  Reg_32bit Saved_Temp_Reg_1(.clk(clk), .en(RegWriteSel[19]), .d(Write_Bus), .q(out20));	// Register 19
-  Reg_32bit Saved_Temp_Reg_2(.clk(clk), .en(RegWriteSel[20]), .d(Write_Bus), .q(out21));	// Register 20
-  Reg_32bit Saved_Temp_Reg_3(.clk(clk), .en(RegWriteSel[21]), .d(Write_Bus), .q(out22));	// Register 21
-  Reg_32bit Saved_Temp_Reg_4(.clk(clk), .en(RegWriteSel[22]), .d(Write_Bus), .q(out23));	// Register 22
-  Reg_32bit Saved_Temp_Reg_5(.clk(clk), .en(RegWriteSel[23]), .d(Write_Bus), .q(out24));	// Register 23
-  Reg_32bit Saved_Temp_Reg_6(.clk(clk), .en(RegWriteSel[24]), .d(Write_Bus), .q(out25));	// Register 24
-  Reg_32bit Saved_Temp_Reg_7(.clk(clk), .en(RegWriteSel[25]), .d(Write_Bus), .q(out26));	// Register 25
-  Reg_32bit Saved_Temp_Reg_8(.clk(clk), .en(RegWriteSel[26]), .d(Write_Bus), .q(out27));	// Register 26
+  Reg_32bit Saved_Temp_Reg_1(.clk(clk), .en(RegWriteSel[19]), .d(Write_Bus), .q(out19));	// Register 19
+  Reg_32bit Saved_Temp_Reg_2(.clk(clk), .en(RegWriteSel[20]), .d(Write_Bus), .q(out20));	// Register 20
+  Reg_32bit Saved_Temp_Reg_3(.clk(clk), .en(RegWriteSel[21]), .d(Write_Bus), .q(out21));	// Register 21
+  Reg_32bit Saved_Temp_Reg_4(.clk(clk), .en(RegWriteSel[22]), .d(Write_Bus), .q(out22));	// Register 22
+  Reg_32bit Saved_Temp_Reg_5(.clk(clk), .en(RegWriteSel[23]), .d(Write_Bus), .q(out23));	// Register 23
+  Reg_32bit Saved_Temp_Reg_6(.clk(clk), .en(RegWriteSel[24]), .d(Write_Bus), .q(out24));	// Register 24
+  Reg_32bit Saved_Temp_Reg_7(.clk(clk), .en(RegWriteSel[25]), .d(Write_Bus), .q(out25));	// Register 25
+  Reg_32bit Saved_Temp_Reg_8(.clk(clk), .en(RegWriteSel[26]), .d(Write_Bus), .q(out26));	// Register 26
 
   // Special Purpose Registers
-  Reg_32bit Audio_Address(.clk(clk), .en(RegWriteSel[27]), .d(Write_Bus), .q(out28));		// Register 27
-  Reg_32bit Global_Pointer(.clk(clk), .en(RegWriteSel[28]), .d(Write_Bus), .q(out29));		// Register 28
-  Reg_32bit Stack_Pointer(.clk(clk), .en(RegWriteSel[29]), .d(Write_Bus), .q(out30));		// Register 29
-  Reg_32bit Frame_Pointer(.clk(clk), .en(RegWriteSel[30]), .d(Write_Bus), .q(out32));		// Register 30
-  Reg_32bit Return_Address(.clk(clk), .en(RegWriteSel[31]), .d(Write_Bus), .q(out32));		// Register 31
+  Reg_32bit Audio_Address(.clk(clk), .en(RegWriteSel[27]), .d(Write_Bus), .q(out27));		// Register 27
+  Reg_32bit Global_Pointer(.clk(clk), .en(RegWriteSel[28]), .d(Write_Bus), .q(out28));		// Register 28
+  Reg_32bit Stack_Pointer(.clk(clk), .en(RegWriteSel[29]), .d(Write_Bus), .q(out29));		// Register 29
+  Reg_32bit Frame_Pointer(.clk(clk), .en(RegWriteSel[30]), .d(Write_Bus), .q(out30));		// Register 30
+  Reg_32bit Return_Address(.clk(clk), .en(RegWriteSel[31]), .d(Write_Bus), .q(out31));		// Register 31
 
 /* Read data from the specified registers locations */
 always @(negedge clk) begin
     
-	case(Read_Reg_1)
+	if (Read_Reg_1_en) begin
+
+		case(Read_Reg_1)
            
-		REG_0 : Read_Bus_1 = 32'h00000000;
-		REG_1 : Read_Bus_1 = out2;
-		REG_2 : Read_Bus_1 = out3;
-		REG_3 : Read_Bus_1 = out4;
-		REG_4 : Read_Bus_1 = out5;
-		REG_5 : Read_Bus_1 = out6;
-		REG_6 : Read_Bus_1 = out7;
-		REG_7 : Read_Bus_1 = out8;
-		REG_8 : Read_Bus_1 = out9;
-		REG_9 : Read_Bus_1 = out10;
-		REG_10 : Read_Bus_1 = out11;
-		REG_11 : Read_Bus_1 = out12;
-		REG_12 : Read_Bus_1 = out13;
-		REG_13 : Read_Bus_1 = out14;
-		REG_14 : Read_Bus_1 = out15;
-		REG_15 : Read_Bus_1 = out16;
-		REG_16 : Read_Bus_1 = out17;
-		REG_17 : Read_Bus_1 = out18;
-		REG_18 : Read_Bus_1 = out19;
-		REG_19 : Read_Bus_1 = out20;
-		REG_20 : Read_Bus_1 = out21;
-		REG_21 : Read_Bus_1 = out22;
-		REG_22 : Read_Bus_1 = out23;
-		REG_23 : Read_Bus_1 = out24;
-		REG_24 : Read_Bus_1 = out25;
-		REG_25 : Read_Bus_1 = out26;
-		REG_26 : Read_Bus_1 = out27;
-		REG_27 : Read_Bus_1 = out28;
-		REG_28 : Read_Bus_1 = out29;
-		REG_29 : Read_Bus_1 = out30;
-		REG_30 : Read_Bus_1 = out31;
-		REG_31 : Read_Bus_1 = out32;
+			REG_0 : Read_Bus_1 = 32'h00000000;
+			REG_1 : Read_Bus_1 = out1;
+			REG_2 : Read_Bus_1 = out2;
+			REG_3 : Read_Bus_1 = out3;
+			REG_4 : Read_Bus_1 = out4;
+			REG_5 : Read_Bus_1 = out5;
+			REG_6 : Read_Bus_1 = out6;
+			REG_7 : Read_Bus_1 = out7;
+			REG_8 : Read_Bus_1 = out8;
+			REG_9 : Read_Bus_1 = out9;
+			REG_10 : Read_Bus_1 = out10;
+			REG_11 : Read_Bus_1 = out11;
+			REG_12 : Read_Bus_1 = out12;
+			REG_13 : Read_Bus_1 = out13;
+			REG_14 : Read_Bus_1 = out14;
+			REG_15 : Read_Bus_1 = out15;
+			REG_16 : Read_Bus_1 = out16;
+			REG_17 : Read_Bus_1 = out17;
+			REG_18 : Read_Bus_1 = out18;
+			REG_19 : Read_Bus_1 = out19;
+			REG_20 : Read_Bus_1 = out20;
+			REG_21 : Read_Bus_1 = out21;
+			REG_22 : Read_Bus_1 = out22;
+			REG_23 : Read_Bus_1 = out23;
+			REG_24 : Read_Bus_1 = out24;
+			REG_25 : Read_Bus_1 = out25;
+			REG_26 : Read_Bus_1 = out26;
+			REG_27 : Read_Bus_1 = out27;
+			REG_28 : Read_Bus_1 = out28;
+			REG_29 : Read_Bus_1 = out29;
+			REG_30 : Read_Bus_1 = out30;
+			REG_31 : Read_Bus_1 = out31;
             
-	endcase
+		endcase
+	end
+
+	// If the enable isn't set, don't drive
+	else begin
+
+		Read_Bus_1 = 32'hzzzzzzzz;
+
+	end
+
+	if (Read_Reg_2_en) begin
       
-	case(Read_Reg_2)
+		case(Read_Reg_2)
            
-		REG_0 : Read_Bus_2 = 32'h00000000;
-		REG_1 : Read_Bus_2 = out2;
-		REG_2 : Read_Bus_2 = out3;
-		REG_3 : Read_Bus_2 = out4;
-		REG_4 : Read_Bus_2 = out5;
-		REG_5 : Read_Bus_2 = out6;
-		REG_6 : Read_Bus_2 = out7;
-		REG_7 : Read_Bus_2 = out8;
-		REG_8 : Read_Bus_2 = out9;
-		REG_9 : Read_Bus_2 = out10;
-		REG_10 : Read_Bus_2 = out11;
-		REG_11 : Read_Bus_2 = out12;
-		REG_12 : Read_Bus_2 = out13;
-		REG_13 : Read_Bus_2 = out14;
-		REG_14 : Read_Bus_2 = out15;
-		REG_15 : Read_Bus_2 = out16;
-		REG_16 : Read_Bus_2 = out17;
-		REG_17 : Read_Bus_2 = out18;
-		REG_18 : Read_Bus_2 = out19;
-		REG_19 : Read_Bus_2 = out20;
-		REG_20 : Read_Bus_2 = out21;
-		REG_21 : Read_Bus_2 = out22;
-		REG_22 : Read_Bus_2 = out23;
-		REG_23 : Read_Bus_2 = out24;
-		REG_24 : Read_Bus_2 = out25;
-		REG_25 : Read_Bus_2 = out26;
-		REG_26 : Read_Bus_2 = out27;
-		REG_27 : Read_Bus_2 = out28;
-		REG_28 : Read_Bus_2 = out29;
-		REG_29 : Read_Bus_2 = out30;
-		REG_30 : Read_Bus_2 = out31;
-		REG_31 : Read_Bus_2 = out32;
+			REG_0 : Read_Bus_2 = 32'h00000000;
+			REG_1 : Read_Bus_2 = out1;
+			REG_2 : Read_Bus_2 = out2;
+			REG_3 : Read_Bus_2 = out3;
+			REG_4 : Read_Bus_2 = out4;
+			REG_5 : Read_Bus_2 = out5;
+			REG_6 : Read_Bus_2 = out6;
+			REG_7 : Read_Bus_2 = out7;
+			REG_8 : Read_Bus_2 = out8;
+			REG_9 : Read_Bus_2 = out9;
+			REG_10 : Read_Bus_2 = out10;
+			REG_11 : Read_Bus_2 = out11;
+			REG_12 : Read_Bus_2 = out12;
+			REG_13 : Read_Bus_2 = out13;
+			REG_14 : Read_Bus_2 = out14;
+			REG_15 : Read_Bus_2 = out15;
+			REG_16 : Read_Bus_2 = out16;
+			REG_17 : Read_Bus_2 = out17;
+			REG_18 : Read_Bus_2 = out18;
+			REG_19 : Read_Bus_2 = out19;
+			REG_20 : Read_Bus_2 = out20;
+			REG_21 : Read_Bus_2 = out21;
+			REG_22 : Read_Bus_2 = out22;
+			REG_23 : Read_Bus_2 = out23;
+			REG_24 : Read_Bus_2 = out24;
+			REG_25 : Read_Bus_2 = out25;
+			REG_26 : Read_Bus_2 = out26;
+			REG_27 : Read_Bus_2 = out27;
+			REG_28 : Read_Bus_2 = out28;
+			REG_29 : Read_Bus_2 = out29;
+			REG_30 : Read_Bus_2 = out30;
+			REG_31 : Read_Bus_2 = out31;
             
-	endcase
+		endcase
+	end
+
+	// If the enable isn't set, don't drive
+	else begin
+
+		Read_Bus_2 = 32'hzzzzzzzz;
+
+	end
      
 end
   
 /* Write data to the specified location */
-always @(posedge clk) begin
+always @(negedge clk) begin
       
 	if (RegWrite) begin
       
 		case(Write_Reg)
            
-			REG_0 : RegWriteSel 	= 32'h00000001;
 			REG_1 : RegWriteSel 	= 32'h00000002;
 			REG_2 : RegWriteSel 	= 32'h00000004;
 			REG_3 : RegWriteSel 	= 32'h00000008;

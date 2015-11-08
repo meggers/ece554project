@@ -64,7 +64,7 @@ wire [5:0] NO_OP = 32'hF0000000;
 always @(posedge clk) begin
     
    // Don't stall the pipe
-   if (!data_hazard) begin
+   if (!data_hazard & !PC_hazard) begin
    
 	// Shared instruction type
 	opcode 		<= instruction_in[31:26];
@@ -126,6 +126,36 @@ always @(posedge clk) begin
 
 	// General outputs
 	PC_out 		<= PC_out;
+
+/*
+	// Shared instruction type
+	opcode 		<= 6'hzz;
+	R_I_A_type_rd 	<= 5'hzz;
+	R_I_type_rs 	<= 5'hzz;
+	S_type_snum 	<= 5'hzz;
+
+	// R-type instruction
+	R_type_rt 	<= 5'hzz;
+	R_type_shamt 	<= 5'hzz;
+
+	// I-type instruction
+	I_type_imm 	<= 16'hzzzz;
+
+	// J-type instruction
+	J_type_imm 	<= 26'hzzzzzzz;
+
+	// S-type instruction
+	S_type_index 	<= 6'hzz;
+	S_type_imm 	<= 8'hzz;
+	S_type_xcoor 	<= 10'hzzz;
+	S_type_ycoor 	<= 10'hzzz;
+
+	// A-type instruction
+	A_type_imm 	<= 21'hzzzzzz;
+
+	// General outputs
+	PC_out 		<= PC_out;
+*/
 	   
    end
 
