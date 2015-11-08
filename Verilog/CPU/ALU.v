@@ -1,9 +1,9 @@
-module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
+module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode, ALU_done);
    //ALU_in1 = $d 	ALU_in2 = shamt
    //ALU_in1 = rs	ALU_in2 = rt <---DIVIDE
    input [31:0] ALU_in1, ALU_in2; //input values to ALU
    input [5:0] opcode;
-   output reg N, Z, V;
+   output reg N, Z, V, ALU_done;
    output reg [31:0] ALU_out;
    
    //used for overflow detection
@@ -28,17 +28,19 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
    assign ALU_in1_16b = ALU_in1[15:0];
    assign ALU_in2_16b = ALU_in2[15:0];
    
-   always@(*) begin
-      N = N;
-      Z = Z;
-      V = V;
-      ALU_out = 32'hxxxx_xxxx;
+always@(*) begin
+	N = N;
+	Z = Z;
+	V = V;
+	ALU_done = 0;
+	ALU_out = 32'hzzzzzzzz;
       
       case(opcode)
          ADD: begin
             {V1, ALU_out1} = ALU_in1[30:0] + ALU_in2[30:0];
 	    {V2, ALU_out} = ALU_in1 + ALU_in2;
 	    V = V1 ^ V2;
+	ALU_done = 1;
             if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -52,6 +54,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
 	 //SAME AS ADD
 	 ADDI: begin
 	    {V, ALU_out} = ALU_in1 + ALU_in2;
+	ALU_done = 1;      
             if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -67,6 +70,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
             {V1, ALU_out1} = (ALU_in1[30:0] - ALU_in2[30:0]);
             {V2, ALU_out} = (ALU_in1 - ALU_in2);  
             V = V1 ^ V2;
+	ALU_done = 1;
             if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -80,6 +84,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
 	 AND: begin
 	    V = 0;
 	    ALU_out = (ALU_in1 & ALU_in2);
+	ALU_done = 1;
 	    if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -94,6 +99,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
 	 ANDI: begin
 	    V = 0;
 	    ALU_out = (ALU_in1 & ALU_in2);
+	ALU_done = 1;
 	    if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -108,12 +114,14 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
 	 //ALU_in1 = $d 	ALU_in2 = shamt
          SLL: begin
              ALU_out = (ALU_in1 << ALU_in2);
+	ALU_done = 0;
          end
 
 	 //Shift Right Logical, Leave flags unchanged
 	 //ALU_in1 = $d 	ALU_in2 = shamt
          SRL: begin
              ALU_out = (ALU_in1 >> ALU_in2);
+	ALU_done = 0;
          end
 
 ////////////// May need to remove ////////////////////
@@ -159,6 +167,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
 	 NAND: begin
             V = 0;
             ALU_out = ~(ALU_in1 & ALU_in2);
+	ALU_done = 1;
             if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -172,6 +181,7 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
          XOR: begin
             V = 0;
             ALU_out = (ALU_in1 ^ ALU_in2);
+	ALU_done = 1;
             if((ALU_out & 32'h8000_0000) > 0)
                N = 1;
             else
@@ -188,7 +198,6 @@ module ALU(N, Z, V, ALU_in1, ALU_in2, ALU_out, opcode);
          default: begin
          end
     
-            
       endcase
   end
   

@@ -5,10 +5,11 @@ module CPU_control
 	opcode_in,
 
 	// OUTPUTS
-	call, ret, branch, push_pop, pop, reg_2_sel,
-	mem_to_reg, mem_src, sign_ext_sel, load_imm,
-	alu_src, RegWrite, MemWrite, MemRead, OAMWrite,
-	opcode_out, ALU_logic, and_add_imm, load
+	call, ret, branch, branch_cond, push_pop, pop, 
+	reg_2_sel, mem_to_reg, mem_src, sign_ext_sel,
+	load_imm, alu_src, RegWrite, MemWrite, MemRead,
+	OAMWrite, Read_Reg_1_en, Read_Reg_2_en, opcode_out
+	//ALU_logic, and_add_imm, load
 );
 
 //INPUTS////////////////////////////////////////////////////
@@ -20,9 +21,13 @@ input [5:0]  		opcode_in; 	// Opcode received from IFID
 output reg		call;		// PC_control signal for calling
 output reg		ret;		// PC_control signal for returning
 output reg		branch;		// PC_control signal for branching
+output reg [1:0]	branch_cond;	// The branch condition to be verified
 output reg		push_pop;	// Signal for Hazard Detector
 
 output reg		pop;		// Data forwarding of SP-1
+
+output reg		Read_Reg_1_en;	// Allows Registers to be read
+output reg		Read_Reg_2_en;
 
 output reg		reg_2_sel;	// Signal for selecting second RegFile read
 output reg		mem_to_reg;	// LW signal to Memory unit 
@@ -41,16 +46,16 @@ output reg		OAMWrite;	// Signal for writing to the OAM
 output reg		MemRead;	// Signal for reading from memory 
 
 //for hazard detect
-output reg		ALU_logic;	// Indicates ALU type instruction
-output reg 		and_add_imm;	// Indicates imm type instruction
-output reg		load;		// load
+//output reg		ALU_logic;	// Indicates ALU type instruction
+//output reg 		and_add_imm;	// Indicates imm type instruction
+//output reg		load;		// load
 
 output reg [5:0] 	opcode_out;	// Opcode passed to the ALU       
 
 always @(opcode_in) begin
-	ALU_logic = 1'b0;
-	and_add_imm = 1'b0;
-	load = 1'b0;
+	//ALU_logic = 1'b0;
+	//and_add_imm = 1'b0;
+	//load = 1'b0;
         
 	// All ALU oriented instrucitons  
 	if (opcode_in[5]) begin
@@ -58,6 +63,7 @@ always @(opcode_in) begin
 		call		= 1'b0;
 		ret		= 1'b0;
 		branch		= 1'b0;
+		branch_cond	= 2'b11;
 		push_pop	= 1'b0;
 		pop		= 1'b0;
 
@@ -72,7 +78,7 @@ always @(opcode_in) begin
 		OAMWrite	= 1'b0;
 		MemRead		= 1'b0;
 
-		ALU_logic	= 1'b1;
+		//ALU_logic	= 1'b1;
 
 		opcode_out	= opcode_in;
 
@@ -85,10 +91,14 @@ always @(opcode_in) begin
 
 			if (opcode_in[0]) begin
 				alu_src	= 2'b01;
-				and_add_imm = 1'b1;
+				//and_add_imm = 1'b1;
+				Read_Reg_1_en	= 1'b1;
+				Read_Reg_2_en	= 1'b0;
 			end
 			else begin
 				alu_src = 2'b00;
+				Read_Reg_1_en	= 1'b1;
+				Read_Reg_2_en	= 1'b1;
 			end
 
 		end
@@ -102,9 +112,13 @@ always @(opcode_in) begin
 
 			if (opcode_in[2]) begin
 				alu_src = 2'b10;
+				Read_Reg_1_en	= 1'b1;
+				Read_Reg_2_en	= 1'b0;
 			end
 			else begin
 				alu_src = 2'b00;
+				Read_Reg_1_en	= 1'b1;
+				Read_Reg_2_en	= 1'b1;
 			end
 
 		end
@@ -122,6 +136,8 @@ always @(opcode_in) begin
 
 		reg_2_sel	= 1'b0;
 
+		Read_Reg_2_en	= 1'b0;
+
 		/* BRANCH
 		 *	If opcode[2] is not set the
 		 *	ALU will need to add the PC
@@ -133,6 +149,7 @@ always @(opcode_in) begin
 			call		= 1'b0;
 			ret		= 1'b0;
 			branch		= 1'b1;
+			branch_cond	= opcode_in[1:0];
 			mem_to_reg	= 1'b0;
 			mem_src		= 1'b0;
 
@@ -142,6 +159,8 @@ always @(opcode_in) begin
 
 			alu_src 	= 2'b01;
 
+			Read_Reg_1_en	= 1'b0;
+			
 			// Set the output opcode to ADD
 			opcode_out	= 6'b100000;
 
@@ -155,8 +174,11 @@ always @(opcode_in) begin
 		else begin
 
 			branch		= 1'b0;
+			branch_cond	= 2'b11;
 			RegWrite	= 1'b1;
 			push_pop	= 1'b0;
+
+			Read_Reg_1_en	= 1'b1;
 		
 			// CALL - Writing SP to memory
 			if (!opcode_in[0]) begin
@@ -204,11 +226,13 @@ always @(opcode_in) begin
 		call		= 1'b0;
 		ret		= 1'b0;
 		branch		= 1'b0;
+		branch_cond	= 2'b11;
 		OAMWrite	= 1'b0;
 		
 		sign_ext_sel 	= 1'b0;
-		reg_2_sel	= 1'b0;
-
+		
+		Read_Reg_1_en	= 1'b1;
+		
 		/* LW, LI, POP
 		 *	Read from memory and write
 		 *	this data to a register. In
@@ -226,6 +250,10 @@ always @(opcode_in) begin
 			MemWrite	= 1'b0;
 			MemRead		= !(opcode_in[0]);
 
+			reg_2_sel	= 1'b1;
+
+			Read_Reg_2_en	= 1'b0;
+
 			// POP
 			if (opcode_in[1]) begin
 				opcode_out	= 6'b100010;
@@ -240,7 +268,7 @@ always @(opcode_in) begin
 				alu_src		= 2'b01;
 				push_pop	= 1'b0;
 				pop		= 1'b0;
-				load 		= 1'b1;
+				//load 		= 1'b1;
 			end
 
 		end
@@ -258,10 +286,16 @@ always @(opcode_in) begin
 			RegWrite	= opcode_in[1];
 			MemWrite	= 1'b1;
 			MemRead		= 1'b0;
+
+			reg_2_sel	= 1'b0;
+
+			Read_Reg_2_en	= 1'b1;
+
+			opcode_out	= 6'b100000;
 			
 			// PUSH
 			if (opcode_in[1]) begin
-				opcode_out	= 6'b100000;
+				
 				alu_src		= 2'b00;
 				push_pop	= 1'b1;
 				mem_src		= 1'b1;
@@ -269,7 +303,7 @@ always @(opcode_in) begin
 
 			// SW
 			else begin
-				opcode_out	= 6'b100010;
+				
 				alu_src		= 2'b01;
 				push_pop	= 1'b0;
 				mem_src		= 1'b0;
@@ -291,6 +325,7 @@ always @(opcode_in) begin
 		call		= 1'b0;
 		ret		= 1'b0;
 		branch		= 1'b0;
+		branch_cond	= 2'b11;
 		push_pop	= 1'b0;
 		pop		= 1'b0;
 
@@ -306,6 +341,9 @@ always @(opcode_in) begin
 		MemWrite	= 1'b0;
 		OAMWrite	= opcode_in[4];
 		MemRead		= 1'b0;
+
+		Read_Reg_1_en	= 1'b0;
+		Read_Reg_2_en	= 1'b0;
 
 		opcode_out	= 6'b100000; 
 

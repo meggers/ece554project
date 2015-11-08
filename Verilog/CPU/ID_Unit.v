@@ -4,9 +4,10 @@ module ID_Unit
 		
 	// INPUTS
 	call, ret, branch, push_pop, pop,		// From CPU_control
-	reg_2_sel, sign_ext_sel, alu_src,	
+	reg_2_sel, sign_ext_sel, alu_src,
+	Read_Reg_1_en, Read_Reg_2_en,
 
-	RegWrite, RegWrite_Reg, RegWrite_Data,		// From WB_Unit
+	RegWrite_in, RegWrite_Reg_in, RegWrite_Data_in,	// From WB_Unit
 
 	R_I_A_type_rd, R_I_type_rs, R_type_rt,		// From IFID Register
 	R_type_shamt, I_type_imm_in, J_type_imm,
@@ -15,7 +16,8 @@ module ID_Unit
 	// OUTPUTS
 	DestReg, I_type_imm_out, 
 	ALU_input_1, ALU_input_2, PC_out,
-	Read_Reg_1_out, Read_Reg_2_out
+	Read_Reg_1_out, Read_Reg_2_out,
+	MemWrite_data
 );
 
 //INPUTS//////////////////////////////////////////////////////
@@ -24,14 +26,15 @@ input 		clk, rst;
 
 // From Control_Logic
 input 		call, ret, branch, push_pop, 
-		pop, reg_2_sel, sign_ext_sel;
+		pop, reg_2_sel, sign_ext_sel,
+		Read_Reg_1_en, Read_Reg_2_en;
 
 input [1:0] 	alu_src;		// Mux select signal for choosing the ALU inputs
 
 // From Write Back pipe section
-input 		RegWrite;
-input [4:0]	RegWrite_Reg;		// Register to write data to
-input [31:0] 	RegWrite_Data;		// Data to write to a register
+input 		RegWrite_in;
+input [4:0]	RegWrite_Reg_in;	// Register to write data to
+input [31:0] 	RegWrite_Data_in;	// Data to write to a register
 
 // Shared instruction type outputs
 input [4:0] 	R_I_A_type_rd;		// Inst[25:21] - R-type, I-type, A-type rd field
@@ -65,11 +68,17 @@ output [15:0]		I_type_imm_out;	// J-type immediate field for LI instruction
 output [31:0]		PC_out;		// Output PC+1 of current instruction
 output reg [31:0] 	ALU_input_1;	// First input of the ALU
 output reg [31:0] 	ALU_input_2;	// Second input of the ALU
+output [31:0]		MemWrite_data;	// Data read from register to write to memory
 
 //INTERNAL CONTROL////////////////////////////////////////////
 
 //reg [4:0]	Read_Reg_1;		// RegFile first read port
 //reg [4:0]	Read_Reg_2;		// RegFile second read port
+
+// From Write Back pipe section
+reg 		RegWrite;
+reg [4:0]	RegWrite_Reg;		// Register to write data to
+reg [31:0] 	RegWrite_Data;		// Data to write to a register
 
 wire [31:0] 	Read_Bus_1;		// RegFile first output data port
 wire [31:0] 	Read_Bus_2;		// RegFile second output data port
@@ -77,7 +86,7 @@ reg [31:0] 	sign_ext;		// Output of the sign extension unit
 
 wire 		SP_update;		// Signal for selecting SP register in RegFile
 
-wire		RegWrite_en;		// Signal for writing to the Regfile (dataforwarding stuff)
+wire		RegFile_we;		// Signal for writing to the Regfile (dataforwarding stuff)
 
 assign SP_update 	= (call | ret | push_pop);
 
@@ -89,15 +98,21 @@ assign I_type_imm_out	= I_type_imm_in;
 
 assign PC_out		= PC_in;
 
+assign MemWrite_data	= Read_Bus_2;
+
 //assign Read_Reg_1_out	= Read_Reg_1;
 //assign Read_Reg_2_out	= Read_Reg_2;
 
 //REGISTER FILE///////////////////////////////////////////////
 
-RegFile_32bit RegFile( 	.clk(clk), .RegWrite(RegFile_we), .Read_Reg_1(Read_Reg_1_out),
-			.Read_Reg_2(Read_Reg_2_out), .Write_Reg(RegWrite_Reg),
-			.Write_Bus(RegWrite_Data), .Read_Bus_1(Read_Bus_1),
-			.Read_Bus_2(Read_Bus_2) );
+RegFile_32bit RegFile
+( 	
+	.clk(clk), .RegWrite(RegFile_we),
+	.Read_Reg_1(Read_Reg_1_out), .Read_Reg_2(Read_Reg_2_out),
+	.Read_Reg_1_en(Read_Reg_1_en), .Read_Reg_2_en(Read_Reg_2_en),
+	.Write_Reg(RegWrite_Reg), .Write_Bus(RegWrite_Data),
+	.Read_Bus_1(Read_Bus_1), .Read_Bus_2(Read_Bus_2)
+);
 
 //ALU input mux///////////////////////////////////////////////
 
@@ -197,6 +212,28 @@ always @(*) begin
  		sign_ext = {{16{I_type_imm_in[15]}}, I_type_imm_in};
 	end
 
+end
+
+// Reset Control MUX
+always @(*) begin
+    
+    // Reset stack pointer
+    if (rst) begin
+        
+        RegWrite  	= 1'b1;       		// Write to SP
+        RegWrite_Reg  	= 5'b11101;  		// SP register
+        RegWrite_Data 	= 32'h00000FFF; 	// Reset SP
+        
+    end
+    
+    else begin
+        
+        RegWrite  	= RegWrite_in;
+        RegWrite_Reg  	= RegWrite_Reg_in;
+        RegWrite_Data 	= RegWrite_Data_in;
+        
+    end
+    
 end
 
 endmodule

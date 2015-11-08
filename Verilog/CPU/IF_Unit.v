@@ -8,7 +8,7 @@ module IF_Unit
 	PC_control, PC_src,	// Inputs from PC_control
 
 	// OUTPUTS
-	PC_next, instruction
+	PC_plus_1, instruction
 );
 
 //INPUTS/////////////////////////////
@@ -25,8 +25,8 @@ input			data_hazard;
 
 //OUTPUTS/////////////////////////////
 
-output reg [31:0]	PC_next;
-output[31:0]		instruction;
+output reg [31:0]	PC_plus_1;
+output [31:0]		instruction;
 
 //INTERNAL LOGIC//////////////////////
 
@@ -34,22 +34,24 @@ reg [31:0]		PC_curr;
 reg [31:0]		PC_update;
 
 wire			hazard;
+//reg			hazard_ff;
+//reg 			data_hazard_ff;
 
 assign hazard 		= (data_hazard | PC_hazard);
 
 //Adder for calculating next PC///////
-always @(PC_curr) begin
-	PC_next = PC_curr + 1;
+always @(*) begin
+	PC_plus_1 = PC_curr + 1;
 end
 
 //PC updating mux/////////////////////
-always @(PC_control, PC_next) begin
+always @(*) begin
 	
 	if (PC_src) begin
 		PC_update = PC_control;
 	end
 	else begin
-		PC_update = PC_next;
+		PC_update = PC_plus_1;
 	end
 
 end
@@ -69,6 +71,6 @@ always @(posedge clk) begin
 
 end
 
-Instruction_Memory instr_mem(.clk(clk), .addr(PC_curr), .instr(instruction), .rd_en(!clk));
+Instruction_Memory instr_mem(.clk(clk), .addr(PC_curr), .instr(instruction), .rd_en(!hazard));
 
 endmodule

@@ -2,11 +2,22 @@
 /* This module defines the regeister interface
    for accessing the 16-bit registers used by
    our processor. */
-module RegFile_32bit(clk, RegWrite, Read_Reg_1, Read_Reg_2, Write_Reg, Write_Bus,
-						Read_Bus_1, Read_Bus_2);
+module RegFile_32bit
+(
+	// INPUTS
+	clk, RegWrite, Read_Reg_1, Read_Reg_2, 
+	Read_Reg_1_en, Read_Reg_2_en,
+	Write_Reg, Write_Bus,
+
+	// OUTPUTS
+	Read_Bus_1, Read_Bus_2
+);
                  
   input clk;
-  input RegWrite; // Writes data to a register when high  
+  input RegWrite; // Writes data to a register when high 
+
+  input Read_Reg_1_en;
+  input Read_Reg_2_en; 
   
   /* Input address buses */
   input [4:0] Read_Reg_1;
@@ -113,79 +124,99 @@ module RegFile_32bit(clk, RegWrite, Read_Reg_1, Read_Reg_2, Write_Reg, Write_Bus
 /* Read data from the specified registers locations */
 always @(negedge clk) begin
     
-	case(Read_Reg_1)
+	if (Read_Reg_1_en) begin
+
+		case(Read_Reg_1)
            
-		REG_0 : Read_Bus_1 = 32'h00000000;
-		REG_1 : Read_Bus_1 = out1;
-		REG_2 : Read_Bus_1 = out2;
-		REG_3 : Read_Bus_1 = out3;
-		REG_4 : Read_Bus_1 = out4;
-		REG_5 : Read_Bus_1 = out5;
-		REG_6 : Read_Bus_1 = out6;
-		REG_7 : Read_Bus_1 = out7;
-		REG_8 : Read_Bus_1 = out8;
-		REG_9 : Read_Bus_1 = out9;
-		REG_10 : Read_Bus_1 = out10;
-		REG_11 : Read_Bus_1 = out11;
-		REG_12 : Read_Bus_1 = out12;
-		REG_13 : Read_Bus_1 = out13;
-		REG_14 : Read_Bus_1 = out14;
-		REG_15 : Read_Bus_1 = out15;
-		REG_16 : Read_Bus_1 = out16;
-		REG_17 : Read_Bus_1 = out17;
-		REG_18 : Read_Bus_1 = out18;
-		REG_19 : Read_Bus_1 = out19;
-		REG_20 : Read_Bus_1 = out20;
-		REG_21 : Read_Bus_1 = out21;
-		REG_22 : Read_Bus_1 = out22;
-		REG_23 : Read_Bus_1 = out23;
-		REG_24 : Read_Bus_1 = out24;
-		REG_25 : Read_Bus_1 = out25;
-		REG_26 : Read_Bus_1 = out26;
-		REG_27 : Read_Bus_1 = out27;
-		REG_28 : Read_Bus_1 = out28;
-		REG_29 : Read_Bus_1 = out29;
-		REG_30 : Read_Bus_1 = out30;
-		REG_31 : Read_Bus_1 = out31;
+			REG_0 : Read_Bus_1 = 32'h00000000;
+			REG_1 : Read_Bus_1 = out1;
+			REG_2 : Read_Bus_1 = out2;
+			REG_3 : Read_Bus_1 = out3;
+			REG_4 : Read_Bus_1 = out4;
+			REG_5 : Read_Bus_1 = out5;
+			REG_6 : Read_Bus_1 = out6;
+			REG_7 : Read_Bus_1 = out7;
+			REG_8 : Read_Bus_1 = out8;
+			REG_9 : Read_Bus_1 = out9;
+			REG_10 : Read_Bus_1 = out10;
+			REG_11 : Read_Bus_1 = out11;
+			REG_12 : Read_Bus_1 = out12;
+			REG_13 : Read_Bus_1 = out13;
+			REG_14 : Read_Bus_1 = out14;
+			REG_15 : Read_Bus_1 = out15;
+			REG_16 : Read_Bus_1 = out16;
+			REG_17 : Read_Bus_1 = out17;
+			REG_18 : Read_Bus_1 = out18;
+			REG_19 : Read_Bus_1 = out19;
+			REG_20 : Read_Bus_1 = out20;
+			REG_21 : Read_Bus_1 = out21;
+			REG_22 : Read_Bus_1 = out22;
+			REG_23 : Read_Bus_1 = out23;
+			REG_24 : Read_Bus_1 = out24;
+			REG_25 : Read_Bus_1 = out25;
+			REG_26 : Read_Bus_1 = out26;
+			REG_27 : Read_Bus_1 = out27;
+			REG_28 : Read_Bus_1 = out28;
+			REG_29 : Read_Bus_1 = out29;
+			REG_30 : Read_Bus_1 = out30;
+			REG_31 : Read_Bus_1 = out31;
             
-	endcase
+		endcase
+	end
+
+	// If the enable isn't set, don't drive
+	else begin
+
+		Read_Bus_1 = 32'hzzzzzzzz;
+
+	end
+
+	if (Read_Reg_2_en) begin
       
-	case(Read_Reg_2)
+		case(Read_Reg_2)
            
-		REG_0 : Read_Bus_2 = 32'h00000000;
-		REG_1 : Read_Bus_2 = out1;
-		REG_2 : Read_Bus_2 = out2;
-		REG_3 : Read_Bus_2 = out3;
-		REG_4 : Read_Bus_2 = out4;
-		REG_5 : Read_Bus_2 = out5;
-		REG_6 : Read_Bus_2 = out6;
-		REG_7 : Read_Bus_2 = out7;
-		REG_8 : Read_Bus_2 = out8;
-		REG_9 : Read_Bus_2 = out9;
-		REG_10 : Read_Bus_2 = out10;
-		REG_11 : Read_Bus_2 = out11;
-		REG_12 : Read_Bus_2 = out12;
-		REG_13 : Read_Bus_2 = out13;
-		REG_14 : Read_Bus_2 = out14;
-		REG_15 : Read_Bus_2 = out15;
-		REG_16 : Read_Bus_2 = out16;
-		REG_17 : Read_Bus_2 = out17;
-		REG_18 : Read_Bus_2 = out18;
-		REG_19 : Read_Bus_2 = out19;
-		REG_20 : Read_Bus_2 = out20;
-		REG_21 : Read_Bus_2 = out21;
-		REG_22 : Read_Bus_2 = out22;
-		REG_23 : Read_Bus_2 = out23;
-		REG_24 : Read_Bus_2 = out24;
-		REG_25 : Read_Bus_2 = out25;
-		REG_26 : Read_Bus_2 = out26;
-		REG_27 : Read_Bus_2 = out27;
-		REG_28 : Read_Bus_2 = out28;
-		REG_29 : Read_Bus_2 = out29;
-		REG_30 : Read_Bus_2 = out30;
-		REG_31 : Read_Bus_2 = out31;
+			REG_0 : Read_Bus_2 = 32'h00000000;
+			REG_1 : Read_Bus_2 = out1;
+			REG_2 : Read_Bus_2 = out2;
+			REG_3 : Read_Bus_2 = out3;
+			REG_4 : Read_Bus_2 = out4;
+			REG_5 : Read_Bus_2 = out5;
+			REG_6 : Read_Bus_2 = out6;
+			REG_7 : Read_Bus_2 = out7;
+			REG_8 : Read_Bus_2 = out8;
+			REG_9 : Read_Bus_2 = out9;
+			REG_10 : Read_Bus_2 = out10;
+			REG_11 : Read_Bus_2 = out11;
+			REG_12 : Read_Bus_2 = out12;
+			REG_13 : Read_Bus_2 = out13;
+			REG_14 : Read_Bus_2 = out14;
+			REG_15 : Read_Bus_2 = out15;
+			REG_16 : Read_Bus_2 = out16;
+			REG_17 : Read_Bus_2 = out17;
+			REG_18 : Read_Bus_2 = out18;
+			REG_19 : Read_Bus_2 = out19;
+			REG_20 : Read_Bus_2 = out20;
+			REG_21 : Read_Bus_2 = out21;
+			REG_22 : Read_Bus_2 = out22;
+			REG_23 : Read_Bus_2 = out23;
+			REG_24 : Read_Bus_2 = out24;
+			REG_25 : Read_Bus_2 = out25;
+			REG_26 : Read_Bus_2 = out26;
+			REG_27 : Read_Bus_2 = out27;
+			REG_28 : Read_Bus_2 = out28;
+			REG_29 : Read_Bus_2 = out29;
+			REG_30 : Read_Bus_2 = out30;
+			REG_31 : Read_Bus_2 = out31;
             
-	endcase
+		endcase
+	end
+
+	// If the enable isn't set, don't drive
+	else begin
+
+		Read_Bus_2 = 32'hzzzzzzzz;
+
+	end
      
 end
   
