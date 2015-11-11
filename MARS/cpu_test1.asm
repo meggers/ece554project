@@ -107,6 +107,12 @@ blt_t:
 
 
 
-fail:	
+end:	
 	addi $t0, $zero, 0x414
 	lw $a0, ($t0)
+	addi $t2, $zero, 0x420
+	sw $a0, ($t2)
+	add $t2, $t2, 4
+	sw $a0, ($t2)
+	add $t2, $t2, 4
+	sw $a0, ($t2)

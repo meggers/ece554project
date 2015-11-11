@@ -78,7 +78,7 @@ public class InstructionSet
       
         // ////////////////////////////////////   BASIC INSTRUCTIONS START HERE ////////////////////////////////
       
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("nop",
             	 "Null operation : machine code is all zeroes",
@@ -91,12 +91,12 @@ public class InstructionSet
                   	// Hey I like this so far!
                   }
                }));
-		// changed for 554
+		
          instructionList.add(
                 new BasicInstruction("add $t1,$t2,$t3",
             	 "Addition with overflow : set $t1 to ($t2 plus $t3)",
                 BasicInstructionFormat.R_FORMAT,
-                "100000 sssss ttttt fffff 00000 100000",
+                "100000 fffff sssss ttttt 00000 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -115,12 +115,12 @@ public class InstructionSet
                      RegisterFile.updateRegister(operands[0], sum);
                   }
                }));
-		// changed for 554	   
+			   
          instructionList.add(
                 new BasicInstruction("sub $t1,$t2,$t3",
             	 "Subtraction with overflow : set $t1 to ($t2 minus $t3)",
                 BasicInstructionFormat.R_FORMAT,
-                "100010 sssss ttttt fffff 00000 100010",
+                "100010 fffff sssss ttttt 00000 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -140,12 +140,12 @@ public class InstructionSet
                   }
                }));
 			   
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("addi $t1,$t2,-100",
             	 "Addition immediate with overflow : set $t1 to ($t2 plus signed 16-bit immediate)",
                 BasicInstructionFormat.I_FORMAT,
-                "100001 sssss fffff tttttttttttttttt",
+                "100001 fffff sssss tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -164,12 +164,12 @@ public class InstructionSet
                      RegisterFile.updateRegister(operands[0], sum);
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("and $t1,$t2,$t3",
             	 "Bitwise AND : Set $t1 to bitwise AND of $t2 and $t3",
                 BasicInstructionFormat.R_FORMAT,
-                "100100 sssss ttttt fffff 00000 100100",
+                "100100 fffff sssss ttttt 00000 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -181,12 +181,12 @@ public class InstructionSet
                   }
                }));
 
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("andi $t1,$t2,100",
             	 "Bitwise AND immediate : Set $t1 to bitwise AND of $t2 and zero-extended 16-bit immediate",
                 BasicInstructionFormat.I_FORMAT,
-                "100101 sssss fffff tttttttttttttttt",
+                "100101 fffff sssss tttttttttttttttt",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -198,12 +198,12 @@ public class InstructionSet
                         & (operands[2] & 0x0000FFFF));
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("xor $t1,$t2,$t3",
             	 "Bitwise XOR (exclusive OR) : Set $t1 to bitwise XOR of $t2 and $t3",
                 BasicInstructionFormat.R_FORMAT,
-                "101000 sssss ttttt fffff 00000 100110",
+                "101000 fffff sssss ttttt 00000 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -214,12 +214,12 @@ public class InstructionSet
                         ^ RegisterFile.getValue(operands[2]));
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("nand $t1,$t2,$t3",
             	 "Bitwise NAND: Set $t1 to bitwise NAND of $t2 and $t3",
                 BasicInstructionFormat.R_FORMAT,
-                "101000 sssss ttttt fffff 00000 100110",
+                "100011 fffff sssss ttttt 00000 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -230,12 +230,12 @@ public class InstructionSet
                         & RegisterFile.getValue(operands[2])));
                   }
                }));
-		// Changed for 554			   
+					   
          instructionList.add(
                 new BasicInstruction("sll $t1,$t2,10",
             	 "Shift left logical : Set $t1 to result of shifting $t2 left by number of bits specified by immediate",
                 BasicInstructionFormat.R_FORMAT,
-                "100111 sssss fffff ttttt 00000 000000",
+                "100111 fffff sssss 00000 ttttt 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -245,12 +245,12 @@ public class InstructionSet
                         RegisterFile.getValue(operands[1]) << operands[2]);
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("srl $t1,$t2,10",
             	 "Shift right logical : Set $t1 to result of shifting $t2 right by number of bits specified by immediate",
                 BasicInstructionFormat.R_FORMAT,
-                "100110 sssss fffff ttttt 00000 000010",
+                "100110 fffff sssss 00000 ttttt 000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -261,12 +261,28 @@ public class InstructionSet
                         RegisterFile.getValue(operands[1]) >>> operands[2]);
                   }
                }));
-		// Changed for 554
+		
+		
+		instructionList.add(
+                new BasicInstruction("li $t1, 10",
+            	 "Load Immediate : Set $t1 to immediate value 10",
+                BasicInstructionFormat.I_FORMAT,
+                "001001 fffff ttttt ssssssssssssssss",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+
+                     RegisterFile.updateRegister(operands[0], operands[1]);
+				  }
+               }));
+			   
          instructionList.add(
                 new BasicInstruction("lw $t1,-100($t2)",
             	 "Load word : Set $t1 to contents of effective memory word address",
                 BasicInstructionFormat.I_FORMAT,
-                "001000 ttttt fffff ssssssssssssssss",
+                "001000 fffff ttttt ssssssssssssssss",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -284,12 +300,12 @@ public class InstructionSet
                         }
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("sw $t1,-100($t2)",
                 "Store word : Store contents of $t1 into effective memory word address",
             	 BasicInstructionFormat.I_FORMAT,
-                "001100 ttttt fffff ssssssssssssssss",
+                "001100 fffff ttttt ssssssssssssssss",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -307,7 +323,7 @@ public class InstructionSet
                         }
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("beq $t1,$t2,label",
                 "Branch if equal : Branch to statement at label's address if $t1 and $t2 are equal",
@@ -326,7 +342,7 @@ public class InstructionSet
                      }
                   }
                }));
-		// Changed for 554
+		
          instructionList.add(
                 new BasicInstruction("bne $t1,$t2,label",
                 "Branch if not equal : Branch to statement at label's address if $t1 and $t2 are not equal",
@@ -361,7 +377,7 @@ public class InstructionSet
                      }
                   }
                }));
-		// asdf
+			   
          instructionList.add(
                 new BasicInstruction("call Imm", 
             	 "Call a label : Update the PC and save the return address on the stack",
@@ -468,6 +484,19 @@ public class InstructionSet
 			   
 			   
 			   
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
          instructionList.add(        
                 new BasicInstruction("mfc0 $t1,$8", 
