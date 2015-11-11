@@ -1,8 +1,8 @@
 module IDEX_reg
 (
 	// INPUTS
-	clk, branch_in, 
-	call_in, ret_in, pop_in, 		// From CPU_control
+	clk, branch_in,				// From CPU_control
+	call_in, ret_in, pop_in, 		
 	MemToReg_in, MemSrc_in,
 	load_imm_in, RegWrite_in,
 	MemWrite_in, MemRead_in,
@@ -31,6 +31,8 @@ input			clk, branch_in, call_in,
 			MemSrc_in, load_imm_in,
 			RegWrite_in, MemWrite_in,
 			MemRead_in;
+
+//input			clr_branch_hazard;
 
 input			data_hazard, PC_hazard;
 
@@ -68,9 +70,12 @@ output reg [31:0] 	ALU_input_2_out;
 output reg [31:0]	PC_out;
 output reg [31:0]	MemWrite_data_out;
 
+// Needed to stop read after write hazards
+reg data_hazard_ff;
+
 always @(posedge clk) begin
 
-	if (!data_hazard & !PC_hazard) begin
+	if (/*!data_hazard_ff & */!data_hazard & !PC_hazard) begin
 
 		branch_out		<= branch_in;
 		branch_cond_out		<= branch_cond_in;
@@ -101,14 +106,17 @@ always @(posedge clk) begin
 		branch_cond_out		<= branch_cond_in;
 		call_out		<= call_in;
 		ret_out			<= ret_in;
-		pop_out			<= pop_in;
+		pop_out			<= 1'b0;
 		MemToReg_out		<= 1'b0;
 		MemSrc_out		<= 1'b0;
 		load_imm_out		<= 1'b0;
 		RegWrite_out		<= 1'b0;
 		MemWrite_out		<= 1'b0;
 		MemRead_out		<= 1'b0;
-		DestReg_out		<= DestReg_in;
+		if (PC_hazard)
+			DestReg_out	<= 5'bzzzzz;
+		else
+			DestReg_out	<= DestReg_in;
 		opcode_out		<= opcode_in;
 		I_type_imm_out		<= I_type_imm_in;
 		ALU_input_1_out		<= ALU_input_1_in;
@@ -119,6 +127,23 @@ always @(posedge clk) begin
 	end
 
 
+end
+/*
+always @(posedge clk) begin
+
+	if (clr_branch_hazard) begin
+		branch_out	<= 1'b0;
+	end
+	else begin
+		branch_out	<= branch_in;
+	end
+end
+*/
+
+always @(posedge clk) begin
+
+	data_hazard_ff <= data_hazard;
+	
 end
 
 endmodule

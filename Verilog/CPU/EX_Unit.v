@@ -7,14 +7,15 @@ module EX_Unit
 	RegWrite_in, MemWrite_in, MemRead_in,
 	MemToReg_in, MemSrc_in, DestReg_in,
 	ALU_input_1, ALU_input_2, branch_in,
-	call, ret_in, pop_in, load_imm, I_type_imm,
+	call_in, ret_in, pop_in, load_imm, I_type_imm,
 	MemWrite_data_in,
 		
 	// OUTPUTS
 	RegWrite_out, MemWrite_out, MemRead_out,
 	MemToReg_out, MemSrc_out, DestReg_out,
-	EX_out,	MemWrite_data_out, PC_in, pop_out,
-	branch_out, ret_out, N_out,Z_out,V_out, ALU_done
+	MemWrite_data_out, ALU_addr, NON_ALU_addr, PC_in,
+	pop_out, branch_out, ret_out, N_out,Z_out,V_out,
+	ALU_done, call_out
 );
 //ASSUMTIONS:
 //	-All S type instructions will be executed outside of normal CPU pipe
@@ -28,7 +29,7 @@ input [5:0] 		opcode;	// Tells ALU what operation to complete
 input			branch_in;	// Branch signal for PC branching AFTER
 					// the new PC has been calculated (by ALU)
 
-input			call;		// Changes destination register to SP
+input			call_in;	// Changes destination register to SP
 input			ret_in;
 
 input			pop_in;		// Forwards SP update to register
@@ -58,11 +59,15 @@ output			MemToReg_out;
 output			MemSrc_out;
 output			pop_out;
 output			ret_out;
+output			call_out;
 output			ALU_done;
 
-output reg [4:0] 	DestReg_out;		// (call | ret) = 0 -> DestReg_in
-output reg [31:0] 	EX_out;			//		  1 -> 0x1B (SP register)
-output reg [31:0] 	MemWrite_data_out;
+output [4:0] 		DestReg_out;		// (call | ret) = 0 -> DestReg_in
+						//		  1 -> 0x1B (SP register)
+output reg 	[31:0] 	ALU_addr;		// Calculated ALU address for memory access
+output 		[31:0]	NON_ALU_addr;		// Non-calculated address for memory access
+output reg 	[31:0] 	MemWrite_data_out;
+
 
 output			branch_out;		// Sent to PC_control for branching
 output 			N_out, Z_out, V_out;	// Set flags to send to FLAGS register
@@ -71,6 +76,8 @@ output 			N_out, Z_out, V_out;	// Set flags to send to FLAGS register
 
 wire [31:0]		ALU_out;
 
+assign DestReg_out 	= DestReg_in;
+assign NON_ALU_addr	= ALU_input_1;
 assign RegWrite_out 	= RegWrite_in;
 assign MemWrite_out 	= MemWrite_in;
 assign MemRead_out 	= MemRead_in;
@@ -78,6 +85,7 @@ assign MemToReg_out 	= MemToReg_in;
 assign MemSrc_out 	= MemSrc_in;
 assign branch_out	= branch_in;
 assign pop_out		= pop_in;
+assign call_out		= call_in;
 assign ret_out		= ret_in;
 
 //ARITHMETIC LOGIC UNIT///////////////////////////////////////
@@ -89,10 +97,10 @@ ALU ALU1(.N(N_out), .Z(Z_out), .V(V_out), .ALU_in1(ALU_input_1), .ALU_in2(ALU_in
 always @(*) begin
 
 	if (load_imm) begin
-		EX_out = {6'b000000, I_type_imm};
+		ALU_addr = {6'b000000, I_type_imm};
 	end
 	else begin
-		EX_out = ALU_out;
+		ALU_addr = ALU_out;
 	end
 
 end
@@ -100,23 +108,24 @@ end
 //MUX: If instr. is call, the MemWrite_data is the PC. Else, data is ALU_input_2.
 always @(*) begin
 	
-	if (call) begin
+	if (call_in) begin
 		MemWrite_data_out = PC_in;
 	end
 	else begin
 		MemWrite_data_out = MemWrite_data_in;
 	end
 end
-
+/*
 //MUX: If instr. is call or ret, DestReg_out is the SP. Else, keep the DestReg_in.
 always @(call, ret_in, DestReg_in) begin
 
 	if (call | ret_in) begin
-		DestReg_out = 5'h1B;
+		DestReg_out = 5'h1D;
 	end
 	else begin
 		DestReg_out = DestReg_in;
 	end
 end
+*/
 
 endmodule

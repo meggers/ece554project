@@ -30,6 +30,7 @@ output [31:0]		instruction;
 
 //INTERNAL LOGIC//////////////////////
 
+reg 			PC_src_ff;
 reg [31:0]		PC_curr;
 reg [31:0]		PC_update;
 
@@ -41,7 +42,13 @@ assign hazard 		= (data_hazard | PC_hazard);
 
 //Adder for calculating next PC///////
 always @(*) begin
-	PC_plus_1 = PC_curr + 1;
+
+	if (!clk & !PC_hazard) begin
+		PC_plus_1 = PC_curr + 1;
+	end
+	else begin
+		PC_plus_1 = PC_plus_1;
+	end
 end
 
 //PC updating mux/////////////////////
@@ -59,7 +66,7 @@ end
 //Program counter/////////////////////
 always @(posedge clk) begin
 
-	if (!rst & !hazard) begin
+	if (!rst & !data_hazard) begin
 		PC_curr <= PC_update;
 	end
 	else if (rst) begin
@@ -70,6 +77,13 @@ always @(posedge clk) begin
 	end
 
 end
+/*
+always @(posedge clk) begin
+
+	PC_src_ff <= PC_src;	
+
+end
+*/
 
 Instruction_Memory instr_mem(.clk(clk), .addr(PC_curr), .instr(instruction), .rd_en(!hazard));
 

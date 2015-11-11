@@ -47,7 +47,7 @@ wire		CPU_cntrl_call;
 wire		CPU_cntrl_ret;
 wire		CPU_cntrl_branch;
 wire [1:0]	CPU_cntrl_branch_cond;
-wire		CPU_cntrl_push_pop;
+wire		CPU_cntrl_push;
 wire		CPU_cntrl_pop;
 wire		CPU_cntrl_reg_2_sel;
 wire		CPU_cntrl_mem_to_reg;
@@ -116,8 +116,10 @@ wire		EXU_MemToReg_out;
 wire		EXU_MemSrc_out;
 wire		EXU_branch_out;
 wire		EXU_ret_out;
+wire		EXU_call_out;
 wire [4:0] 	EXU_DestReg_out;
-wire [31:0] 	EXU_EX_out;	
+wire [31:0] 	EXU_ALU_addr;
+wire [31:0]	EXU_NON_ALU_addr;
 wire [31:0] 	EXU_MemWrite_data_out;
 wire		EXU_pop_out;
 wire 		N_flag, Z_flag, V_flag;
@@ -129,9 +131,11 @@ wire		EXMEM_MemWrite_out;
 wire		EXMEM_MemRead_out;
 wire		EXMEM_MemToReg_out;
 wire		EXMEM_ret_out;
+wire		EXMEM_call_out;
 wire		EXMEM_MemSrc_out;
 wire [4:0] 	EXMEM_DestReg_out;
-wire [31:0] 	EXMEM_EX_out;
+wire [31:0] 	EXMEM_ALU_addr_out;
+wire [31:0]	EXMEM_NON_ALU_addr_out;
 wire [31:0] 	EXMEM_MemWrite_data_out;
 
 // Memory Interface -> MEMWB Register
@@ -183,7 +187,7 @@ IFID_reg IFID
 // INPUTS
 		.clk(clk), 
 		.data_hazard(data_hazard),
-		.PC_hazard(PC_hazard), 
+		.PC_hazard(PC_hazard),
 		.instruction_in(IFU_instruction_out),
 		.PC_in(IFU_PC_plus_1),
 
@@ -210,17 +214,20 @@ ID_Unit IDU
 
 // INPUTS
 		.clk(clk), .rst(rst),
+		.data_hazard(data_hazard),
 		.call(CPU_cntrl_call),
 		.ret(CPU_cntrl_ret),
 		.branch(CPU_cntrl_branch),
-		.push_pop(CPU_cntrl_push_pop),
-		.pop(EXU_pop_out), 
+		.push(CPU_cntrl_push),
+		.pop_cntrl(CPU_cntrl_pop),
+		.pop_EX(EXU_pop_out), 
 		.reg_2_sel(CPU_cntrl_reg_2_sel),
 		.sign_ext_sel(CPU_cntrl_sign_ext_sel),
 		.alu_src(CPU_cntrl_alu_src),
 		.RegWrite_in(WBU_RegWrite_out), 
 		.RegWrite_Reg_in(WBU_DestReg_out),
 		.RegWrite_Data_in(WBU_RegWrite_data),
+		.RegWrite_pop(EXU_ALU_addr),
 		.Read_Reg_1_en(CPU_cntrl_Read_Reg_1_en),
 		.Read_Reg_2_en(CPU_cntrl_Read_Reg_2_en),
 		.R_I_A_type_rd(IFID_R_I_A_type_rd),
@@ -254,7 +261,7 @@ CPU_control CPU_cntrl
 		.ret(CPU_cntrl_ret),
 		.branch(CPU_cntrl_branch),
 		.branch_cond(CPU_cntrl_branch_cond),
-		.push_pop(CPU_cntrl_push_pop),
+		.push(CPU_cntrl_push),
 		.pop(CPU_cntrl_pop),
 		.reg_2_sel(CPU_cntrl_reg_2_sel),
 		.mem_to_reg(CPU_cntrl_mem_to_reg),
@@ -275,6 +282,7 @@ HDT_Unit Hazard_Detect
 (
 
 // INPUTS	
+		.clk(clk),
 		.rst(rst),
 		.Read_Reg_1(IDU_Read_Reg_1_out),
 		.Read_Reg_2(IDU_Read_Reg_2_out),
@@ -295,36 +303,6 @@ HDT_Unit Hazard_Detect
 		.data_hazard(data_hazard),
 		.PC_hazard(PC_hazard)
 );
-/*
-Hazard_detect HDU
-(
-	// INPUTS
-	.clk(),
-	.rst(),
-	.opcode(),
-	.RegWrite(),
-	.ALU_logic(),
-	.load(),
-	.push_pop(),
-	.call(),
-	.ret(),
-	.branch(),
-	.and_add_imm(),
-	.R_type_rd(),
-	.R_I_type_rt_rd(),
-	.R_I_type_rs(),
-	.rd_addr1(),
-	.rd_addr2(),
-	.rd_en1(),
-	.rd_en2(),
-	.clr_ret_haz(),
-	.clr_call_haz(),
-	.clr_branch_haz(),
-
-	// OUTPUTS
-	data_hazard, control_hazard
-);
-*/
 
 PC_control PC_cntrl
 (
@@ -333,11 +311,12 @@ PC_control PC_cntrl
 		.clk(clk),
 		.PC_in(IFID_PC_out),
 		.PC_stack_pointer(MEM_MemRead_data_out),
-		.ALU_result(EXU_EX_out),
+		.ALU_result(EXU_ALU_addr),
 		.flags(Flags_reg_flags),
 		.J_type_imm(IFID_J_type_imm),
 		.branch(EXU_branch_out),
 		.branch_cond(IDEX_branch_cond_out),
+		.data_hazard(data_hazard),
 		.call(CPU_cntrl_call),
 		.ret(MEM_ret_out), 
 	
@@ -355,7 +334,7 @@ Flags_reg flags
 
 // INPUTS
 		.clk(clk),
-		.en(EXU_ALU_done),
+		.en(EXU_ALU_done & !EXU_branch_out),
 		.d({Z_flag,V_flag,N_flag}),
 		.q(Flags_reg_flags)
 );
@@ -430,7 +409,7 @@ EX_Unit EXU
 		.ALU_input_2(IDEX_ALU_input_2_out), 
 		.MemWrite_data_in(IDEX_MemWrite_data_out),
 		.branch_in(IDEX_branch_out),
-		.call(IDEX_call_out),
+		.call_in(IDEX_call_out),
 		.ret_in(IDEX_ret_out),
 		.pop_in(IDEX_pop_out),
 		.load_imm(IDEX_load_imm_out),
@@ -443,10 +422,12 @@ EX_Unit EXU
 		.MemRead_out(EXU_MemRead_out),
 		.MemToReg_out(EXU_MemToReg_out),
 		.MemSrc_out(EXU_MemSrc_out),
+		.call_out(EXU_call_out),
 		.ret_out(EXU_ret_out),
 		.DestReg_out(EXU_DestReg_out),
-		.EX_out(EXU_EX_out),
-		.MemWrite_data_out(EXU_MemWrite_data_out), 
+		.ALU_addr(EXU_ALU_addr),
+		.NON_ALU_addr(EXU_NON_ALU_addr),
+		.MemWrite_data_out(EXU_MemWrite_data_out),
 		.branch_out(EXU_branch_out),
 		.pop_out(EXU_pop_out),
 		.N_out(N_flag), .Z_out(Z_flag), .V_out(V_flag),
@@ -463,9 +444,11 @@ EXMEM_reg EXMEM
 		.MemRead_in(EXU_MemRead_out), 
 		.MemToReg_in(EXU_MemToReg_out),
 		.MemSrc_in(EXU_MemSrc_out),
+		.call_in(EXU_call_out),
 		.ret_in(EXU_ret_out),
 		.DestReg_in(EXU_DestReg_out),
-		.EX_in(EXU_EX_out),
+		.ALU_addr_in(EXU_ALU_addr),
+		.NON_ALU_addr_in(EXU_NON_ALU_addr),
 		.MemWrite_data_in(EXU_MemWrite_data_out),
 
 // OUTPUTS
@@ -474,9 +457,11 @@ EXMEM_reg EXMEM
 		.MemRead_out(EXMEM_MemRead_out),
 		.MemToReg_out(EXMEM_MemToReg_out),
 		.MemSrc_out(EXMEM_MemSrc_out),
+		.call_out(EXMEM_call_out),
 		.ret_out(EXMEM_ret_out),
 		.DestReg_out(EXMEM_DestReg_out),
-		.EX_out(EXMEM_EX_out),
+		.ALU_addr_out(EXMEM_ALU_addr_out),
+		.NON_ALU_addr_out(EXMEM_NON_ALU_addr_out),
 		.MemWrite_data_out(EXMEM_MemWrite_data_out)
 );
 
@@ -491,9 +476,11 @@ MEM_Unit Mem_Interface
 		.MemRead(EXMEM_MemRead_out),
 		.MemToReg_in(EXMEM_MemToReg_out),
 		.MemSrc(EXMEM_MemSrc_out),
+		.call_in(EXMEM_call_out),
 		.ret_in(EXMEM_ret_out),
 		.DestReg_in(EXMEM_DestReg_out),
-		.MemAcc_addr(EXMEM_EX_out),
+		.ALU_addr(EXMEM_ALU_addr_out),
+		.NON_ALU_addr(EXMEM_NON_ALU_addr_out),
 		.MemWrite_data(EXMEM_MemWrite_data_out),
 
 // OUTPUTS

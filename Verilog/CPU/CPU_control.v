@@ -5,7 +5,7 @@ module CPU_control
 	opcode_in,
 
 	// OUTPUTS
-	call, ret, branch, branch_cond, push_pop, pop, 
+	call, ret, branch, branch_cond, push, pop, 
 	reg_2_sel, mem_to_reg, mem_src, sign_ext_sel,
 	load_imm, alu_src, RegWrite, MemWrite, MemRead,
 	OAMWrite, Read_Reg_1_en, Read_Reg_2_en, opcode_out
@@ -22,8 +22,7 @@ output reg		call;		// PC_control signal for calling
 output reg		ret;		// PC_control signal for returning
 output reg		branch;		// PC_control signal for branching
 output reg [1:0]	branch_cond;	// The branch condition to be verified
-output reg		push_pop;	// Signal for Hazard Detector
-
+output reg		push;		// Destination register updater
 output reg		pop;		// Data forwarding of SP-1
 
 output reg		Read_Reg_1_en;	// Allows Registers to be read
@@ -64,7 +63,7 @@ always @(opcode_in) begin
 		ret		= 1'b0;
 		branch		= 1'b0;
 		branch_cond	= 2'b11;
-		push_pop	= 1'b0;
+		push		= 1'b0;
 		pop		= 1'b0;
 
 		reg_2_sel	= 1'b1;
@@ -131,7 +130,7 @@ always @(opcode_in) begin
 		OAMWrite	= 1'b0;
 		load_imm 	= 1'b0;
 		sign_ext_sel 	= 1'b1;
-		push_pop	= 1'b0;
+		push		= 1'b0;
 		pop		= 1'b0;
 
 		reg_2_sel	= 1'b0;
@@ -176,7 +175,9 @@ always @(opcode_in) begin
 			branch		= 1'b0;
 			branch_cond	= 2'b11;
 			RegWrite	= 1'b1;
-			push_pop	= 1'b0;
+
+			alu_src 	= 2'b10;
+			mem_to_reg	= 1'b0;
 
 			Read_Reg_1_en	= 1'b1;
 		
@@ -185,16 +186,14 @@ always @(opcode_in) begin
 
 				call		= 1'b1;
 				ret		= 1'b0;
-				mem_to_reg	= 1'b0;
 				mem_src		= 1'b1;
 
 				MemWrite	= 1'b1;
 				MemRead		= 1'b0;
 
-				alu_src 	= 2'b00;
-
-				// Set the output opcode to ADD
-				opcode_out	= 6'b100000;
+				// Set the output opcode to SUB
+				opcode_out	= 6'b100010;
+				
 
 			end
 
@@ -203,16 +202,14 @@ always @(opcode_in) begin
 
 				call		= 1'b0;
 				ret		= 1'b1;
-				mem_to_reg	= 1'b1;
 				mem_src		= 1'b0;
 
 				MemWrite	= 1'b0;
 				MemRead		= 1'b1;
 
-				alu_src 	= 2'b00;
-
-				// Set the output opcode to SUB
-				opcode_out	= 6'b100010;
+				// Set the output opcode to ADD
+				opcode_out	= 6'b100000;
+				
 
 			end
 
@@ -245,6 +242,7 @@ always @(opcode_in) begin
 			mem_to_reg	= !(opcode_in[0]);
 			mem_src		= 1'b0;
 			load_imm 	= opcode_in[0];
+			push		= 1'b0;
 
 			RegWrite	= 1'b1;
 			MemWrite	= 1'b0;
@@ -254,21 +252,20 @@ always @(opcode_in) begin
 
 			Read_Reg_2_en	= 1'b0;
 
+			opcode_out	= 6'b100000;
+
 			// POP
 			if (opcode_in[1]) begin
-				opcode_out	= 6'b100010;
-				alu_src		= 2'b00;
-				push_pop	= 1'b1;
+
+				alu_src		= 2'b10;
 				pop		= 1'b1;
 			end
 
 			// LW
 			else begin
-				opcode_out	= 6'b100000;
+				
 				alu_src		= 2'b01;
-				push_pop	= 1'b0;
 				pop		= 1'b0;
-				//load 		= 1'b1;
 			end
 
 		end
@@ -291,22 +288,22 @@ always @(opcode_in) begin
 
 			Read_Reg_2_en	= 1'b1;
 
-			opcode_out	= 6'b100000;
-			
 			// PUSH
 			if (opcode_in[1]) begin
 				
-				alu_src		= 2'b00;
-				push_pop	= 1'b1;
+				alu_src		= 2'b10;
+				push		= 1'b1;
 				mem_src		= 1'b1;
+				opcode_out	= 6'b100010;
 			end
 
 			// SW
 			else begin
 				
 				alu_src		= 2'b01;
-				push_pop	= 1'b0;
+				push		= 1'b0;
 				mem_src		= 1'b0;
+				opcode_out	= 6'b100000;
 			end
 
 		end
@@ -326,7 +323,7 @@ always @(opcode_in) begin
 		ret		= 1'b0;
 		branch		= 1'b0;
 		branch_cond	= 2'b11;
-		push_pop	= 1'b0;
+		push		= 1'b0;
 		pop		= 1'b0;
 
 		reg_2_sel	= 1'b0;
