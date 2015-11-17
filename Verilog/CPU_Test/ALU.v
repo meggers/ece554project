@@ -196,6 +196,7 @@ always@(*) begin
          end 
          
          default: begin
+		ALU_done = 1'b0;
          end
     
       endcase

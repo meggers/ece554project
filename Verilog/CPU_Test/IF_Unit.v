@@ -7,8 +7,14 @@ module IF_Unit
 
 	PC_control, PC_src,	// Inputs from PC_control
 
+	instruction_in,		// Instruction from memory interface
+
 	// OUTPUTS
-	PC_plus_1, instruction
+	PC_plus_1, PC_curr,	// PC to IFID, PC to fetch instruction
+
+	instr_en,
+
+	instruction_out		// Intsruction for IFID
 );
 
 //INPUTS/////////////////////////////
@@ -23,25 +29,35 @@ input [31:0]		PC_control;
 input			PC_hazard;
 input			data_hazard;
 
+input [31:0]		instruction_in;
+
 //OUTPUTS/////////////////////////////
 
 output reg [31:0]	PC_plus_1;
-output [31:0]		instruction;
+output reg [31:0]	PC_curr;
+
+output			instr_en;
+output [31:0]		instruction_out;
 
 //INTERNAL LOGIC//////////////////////
 
-reg [31:0]		PC_curr;
+reg 			PC_src_ff;
 reg [31:0]		PC_update;
 
-wire			hazard;
-//reg			hazard_ff;
-//reg 			data_hazard_ff;
+//Instruction handling from memory////
 
-assign hazard 		= (data_hazard | PC_hazard);
+assign instr_en 	= !(data_hazard | PC_hazard);
+assign instruction_out 	= instruction_in;
 
 //Adder for calculating next PC///////
-always @(*) begin
-	PC_plus_1 = PC_curr + 1;
+always @(negedge clk) begin
+
+	if (!PC_hazard) begin
+		PC_plus_1 <= PC_curr + 1;
+	end
+	else begin
+		PC_plus_1 <= PC_plus_1;
+	end
 end
 
 //PC updating mux/////////////////////
@@ -59,18 +75,18 @@ end
 //Program counter/////////////////////
 always @(posedge clk) begin
 
-	if (!rst & !hazard) begin
-		PC_curr <= PC_update;
-	end
-	else if (rst) begin
+	if (rst) begin
 		PC_curr <= 32'h00000000;
 	end
+
+	else if (!data_hazard) begin
+		PC_curr <= PC_update;
+	end
+	
 	else begin
 		PC_curr <= PC_curr;
 	end
 
 end
-
-Instruction_Memory instr_mem(.clk(clk), .addr(PC_curr), .instr(instruction), .rd_en(!hazard));
 
 endmodule

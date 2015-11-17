@@ -47,7 +47,7 @@ always @(instr_addr,we1,clk)
 
 always @(data_addr,re2,clk)
   if (~clk && re2 && ~we2)
-    rd_data2 <= instr_mem[data_addr];
+    rd_data2 <= data_mem[data_addr];
 	
 ////////////////////////////////////////////////
 // Model write, data is written on clock low //
