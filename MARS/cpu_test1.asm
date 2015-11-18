@@ -12,7 +12,8 @@ all5: .word 0x55555555
 .text
 	# Test the basic ALU ops
 test1:
-	
+	li $t0, 1
+	li $t1, 2
 	# "andi" and "and"
 	addi $t0, $zero, 0x7777
 	addi $t1, $zero, 0x0888
