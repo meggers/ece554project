@@ -76,12 +76,13 @@ public class ECE554VisualSim {
 		nextDirections[0] = 'd';
 		nextDirections[1] = 'j';
 		
+		// all
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++y) {
 				groundData[x][y] = 0;
 			}
 		}
-		BufferedImage backgroundBufferedImage = ImageIO.read(new File("images/background/white.png"));
+		BufferedImage backgroundBufferedImage = ImageIO.read(new File("images/background/background0000.png")); // new File("images/background/white.png"));
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
 				groundVisual[x][y] = backgroundBufferedImage;
@@ -191,35 +192,39 @@ public class ECE554VisualSim {
 			case 'l': p2x++; break;
 			}
 			
-//			// check for collision
-//			if (ground[p1y * DISPLAY_LOGIC_WIDTH + p1x] != 0) {
-//				if (ground[p2y * DISPLAY_LOGIC_WIDTH + p2x] != 0) {
-//					System.out.println("tied");
-//				} else {
-//					System.out.println("player 2 wins");
-//				}
-//				jFrame.setVisible(false);
-//				return;
-//			} else {
-//				if (ground[p2y * DISPLAY_LOGIC_WIDTH + p2x] != 0) {
-//					System.out.println("player 1 wins");
-//					jFrame.setVisible(false);
-//					return;
-//				}
-//			}
+			// check for collision
+			if (groundData[p1x][p1y] != 0) {
+				if (groundData[p2x][p2y] != 0) {
+					System.out.println("tied");
+				} else {
+					System.out.println("player 2 wins");
+				}
+				jFrame.setVisible(false);
+				return;
+			} else {
+				if (groundData[p2x][p2y] != 0) {
+					System.out.println("player 1 wins");
+					jFrame.setVisible(false);
+					return;
+				}
+			}
 //			
 //			// update background to leave trail
 			groundData[p1x][p1y] = 1;
 			int p1xVisual = p1x / 2;
 			int p1yVisual = p1y / 2;
+			groundData[p2x][p2y] = 2;
+			int p2xVisual = p2x / 2;
+			int p2yVisual = p2y / 2;
 
-			System.out.println("before = " + p1x + "; after = " + p1xVisual);
-			System.out.println("pulling from background[groundData[" + p1xVisual + "][" + p1yVisual + "]][groundData[][]][groundData[][]][groundData[][]]");
-			System.out.println("which equals to background[" + groundData[p1xVisual][p1yVisual] + "][" + groundData[p1xVisual + 1][p1yVisual] + "][" + groundData[p1xVisual][p1yVisual + 1] + "][" + groundData[p1xVisual + 1][p1yVisual + 1] + "]");
+//			System.out.println("before = " + p1x + "; after = " + p1xVisual);
+//			System.out.println("pulling from background[groundData[" + p1xVisual + "][" + p1yVisual + "]][groundData[][]][groundData[][]][groundData[][]]");
+//			System.out.println("which equals to background[" + groundData[p1xVisual][p1yVisual] + "][" + groundData[p1xVisual + 1][p1yVisual] + "][" + groundData[p1xVisual][p1yVisual + 1] + "][" + groundData[p1xVisual + 1][p1yVisual + 1] + "]");
 			
 			// groundVisual[p1xRounded][p1yRounded] = ImageIO.read(new File("images/background/background" + groundData[p1xRounded][p1yRounded] + groundData[p1xRounded + 1][p1yRounded] + groundData[p1xRounded][p1yRounded + 1] + groundData[p1xRounded + 1][p1yRounded + 1] + ".png"));
 			// groundVisual[p1xRounded][p1yRounded] = background[groundData[p1xRounded][p1yRounded]][groundData[p1xRounded + 1][p1yRounded]][groundData[p1xRounded][p1yRounded + 1]][groundData[p1xRounded + 1][p1yRounded + 1]];
 			groundVisual[p1xVisual][p1yVisual] = background[groundData[2 * p1xVisual][2 * p1yVisual]][groundData[2 * p1xVisual + 1][2 * p1yVisual]][groundData[2 * p1xVisual][2 * p1yVisual + 1]][groundData[2 * p1xVisual + 1][2 * p1yVisual + 1]];
+			groundVisual[p2xVisual][p2yVisual] = background[groundData[2 * p2xVisual][2 * p2yVisual]][groundData[2 * p2xVisual + 1][2 * p2yVisual]][groundData[2 * p2xVisual][2 * p2yVisual + 1]][groundData[2 * p2xVisual + 1][2 * p2yVisual + 1]];
 //			ground[p2y * DISPLAY_LOGIC_WIDTH + p2x] = 3;
 			
 			directions[0] = nextDirections[0];
@@ -235,49 +240,78 @@ public class ECE554VisualSim {
 			super.paintComponent(graphics);
 			this.setBackground(Color.WHITE);
 
+			for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+				for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+					graphics.drawImage(groundVisual[x][y], x * DISPLAY_LOGIC_IMAGE_DIMENSION, y * DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				}
+			}
+			
 			try {
-				BufferedImage bikeBufferedImage = ImageIO.read(new File("images/foreground/light_bike3.png"));
-				BufferedImage bikeBufferedImage2 = ImageIO.read(new File("images/foreground/light_bike4.png"));
+				BufferedImage bikeBufferedImage0 = ImageIO.read(new File("images/foreground/bike0.png"));
+				BufferedImage bikeBufferedImage1 = ImageIO.read(new File("images/foreground/bike1.png"));
+				BufferedImage bikeBufferedImage2 = ImageIO.read(new File("images/foreground/bike2.png"));
 				
-				//BufferedImage bikeBufferedImage = ImageIO.read(new File("images/duke_skateboard.jpg"));
-				
-				int maxDimension = Math.max(bikeBufferedImage.getWidth(), bikeBufferedImage.getHeight());
+				// BufferedImage bikeBufferedImage = ImageIO.read(new File("images/duke_skateboard.jpg"));
 				
 				int p1rotationCount = 0;
+				int p1xOffset = 0;
+				int p1yOffset = 1;
 				int p2rotationCount = 0;
+				int p2xOffset = 0;
+				int p2yOffset = 1;
 				switch (directions[0]) {
 				case 'a': 
 					p1rotationCount = 3;
+					p1xOffset = 1;
+					p1yOffset = 0;
 					break;
 				case 's': 
-					p1rotationCount = 2; 
+					p1rotationCount = 2;
+					p1xOffset = 0;
+					p1yOffset = -1;
 					break;
 				case 'd': 
 					p1rotationCount = 1;
+					p1xOffset = -1;
+					p1yOffset = 0;
 					break;
 				}
 				
 				switch (directions[1]) {
 				case 'j': 
 					p2rotationCount = 3;
+					p2xOffset = 1;
+					p2yOffset = 0;
 					break;
 				case 'k': 
 					p2rotationCount = 2; 
+					p2xOffset = 0;
+					p2yOffset = -1;
 					break;
 				case 'l': 
 					p2rotationCount = 1;
+					p2xOffset = -1;
+					p2yOffset = 0;
 					break;
 				}
 				
-				AffineTransform affineTransform = new AffineTransform();
-				affineTransform.rotate(Math.toRadians(90) * p1rotationCount, maxDimension / 2, maxDimension / 2);
-				AffineTransformOp op = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
-				BufferedImage player1BikeBufferedImage = op.filter(bikeBufferedImage, null);
+				AffineTransform affineTransform;
+				AffineTransformOp affineTransformOp;
 				
 				affineTransform = new AffineTransform();
-				affineTransform.rotate(Math.toRadians(90) * (p2rotationCount), maxDimension / 2, maxDimension / 2);
-				op = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
-				BufferedImage player2BikeBufferedImage = op.filter(bikeBufferedImage2, null);
+				affineTransform.rotate(Math.toRadians(90) * p1rotationCount, DISPLAY_LOGIC_IMAGE_DIMENSION / 2, DISPLAY_LOGIC_IMAGE_DIMENSION / 2);
+				affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
+				int player1ColorPalette = 2;
+				BufferedImage player1BikeBufferedImage0 = setColorPalette(affineTransformOp.filter(bikeBufferedImage0, null), player1ColorPalette);
+				BufferedImage player1BikeBufferedImage1 = setColorPalette(affineTransformOp.filter(bikeBufferedImage1, null), player1ColorPalette);
+				BufferedImage player1BikeBufferedImage2 = setColorPalette(affineTransformOp.filter(bikeBufferedImage2, null), player1ColorPalette);
+				
+				affineTransform = new AffineTransform();
+				affineTransform.rotate(Math.toRadians(90) * p2rotationCount, DISPLAY_LOGIC_IMAGE_DIMENSION / 2, DISPLAY_LOGIC_IMAGE_DIMENSION / 2);
+				affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
+				BufferedImage player2BikeBufferedImage0 = affineTransformOp.filter(bikeBufferedImage0, null);
+				BufferedImage player2BikeBufferedImage1 = affineTransformOp.filter(bikeBufferedImage1, null);
+				BufferedImage player2BikeBufferedImage2 = affineTransformOp.filter(bikeBufferedImage2, null);
 				
 				
 				//for (int i = 0; i < player2BikeBufferedImage.getHeight(); i++) {
@@ -286,7 +320,13 @@ public class ECE554VisualSim {
 				//}
 				
 				//System.out.println("bikeHeight = " + bikeHeight + "; bikeWidth = " + bikeWidth);
-				// TODO graphics.drawImage(player1BikeBufferedImage, p1x - maxDimension / 2, p1y - maxDimension / 2, maxDimension, maxDimension, null);
+				graphics.drawImage(player1BikeBufferedImage0, p1x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player1BikeBufferedImage1, p1x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player1BikeBufferedImage2, p1x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player2BikeBufferedImage0, p2x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player2BikeBufferedImage1, p2x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player2BikeBufferedImage2, p2x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				
 				//graphics.drawImage(player2BikeBufferedImage, p2x - maxDimension / 2, p2y - maxDimension / 2, maxDimension, maxDimension, null);
 				
 				//graphics.drawImage(bikeBufferedImage, p1x - bikeBufferedImage.getWidth() / 2, p1y - bikeBufferedImage.getHeight() / 2, bikeBufferedImage.getWidth(), bikeBufferedImage.getHeight(), null);
@@ -294,24 +334,52 @@ public class ECE554VisualSim {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
-//			for (int i = 0; i < DISPLAY_LOGIC_WIDTH * DISPLAY_LOGIC_HEIGHT; ++i) {
-//				if (ground[i] != 0) {
-//					graphics.setColor(ground[i] == 1 ? Color.BLACK : (ground[i] == 2 ? Color.RED : Color.BLUE));
-//					graphics.fillRect((i % DISPLAY_LOGIC_WIDTH) * DISPLAY_LOGIC_UNIT_SIZE, (i / DISPLAY_LOGIC_WIDTH) * DISPLAY_LOGIC_UNIT_SIZE, DISPLAY_LOGIC_UNIT_SIZE, DISPLAY_LOGIC_UNIT_SIZE);
-//				}
-//			}
-			for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
-				for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
-					graphics.drawImage(groundVisual[x][y], x * DISPLAY_LOGIC_IMAGE_DIMENSION, y * DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-				}
-			}
 
 //			graphics.fillRect(25, 25, 2, 2);
 //			graphics.fillRect(50, 50, 2, 2);
 		}
 	}
 	
+	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex) {
+		
+		// colorPaletteIndex0 = RGB
+		// colorPaletteIndex1 = CMY
+		// colorPaletteIndex2 = BRG
+		// colorPaletteIndex3 = BBB
+		
+		int[] colors = { Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
+		
+		switch (colorPaletteIndex) {
+		case 1: 
+			colors[0] = Color.CYAN.getRGB();
+			colors[1] = Color.MAGENTA.getRGB();
+			colors[2] = Color.YELLOW.getRGB();
+			break;
+		case 2: 
+			colors[0] = Color.GREEN.getRGB();
+			colors[1] = Color.RED.getRGB();
+			colors[2] = Color.BLUE.getRGB();
+			break;
+		case 3: 
+			colors[0] = Color.BLUE.getRGB();
+			colors[1] = Color.BLUE.getRGB();
+			colors[2] = Color.BLUE.getRGB();
+			break;
+		}
+		for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+			for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+				if (inputBufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
+				} else if (inputBufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
+					inputBufferedImage.setRGB(x, y, colors[0]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
+					inputBufferedImage.setRGB(x, y, colors[1]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
+					inputBufferedImage.setRGB(x, y, colors[2]);
+				}
+			}
+		}
+		return inputBufferedImage;
+	}
 
 	public void sleep(int milliseconds) {
 		try {
@@ -324,7 +392,7 @@ public class ECE554VisualSim {
 	class TimerInterrupt implements Runnable {
 		public void run() {
 			try {
-				Thread.sleep(300);
+				Thread.sleep(100);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
