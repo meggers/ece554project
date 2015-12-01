@@ -262,22 +262,19 @@ public class InstructionSet
                   }
                }));
 		
-		
 		instructionList.add(
-                new BasicInstruction("li $t1, 10",
-            	 "Load Immediate : Set $t1 to immediate value 10",
-                BasicInstructionFormat.I_FORMAT,
-                "001001 fffff ttttt ssssssssssssssss",
+                new BasicInstruction("li $t1,100",
+                "Load Immediate : Set $t1 to immediate value 100",
+            	 BasicInstructionFormat.I_FORMAT,
+                "001001 fffff 00000 ssssssssssssssss",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-
                      RegisterFile.updateRegister(operands[0], operands[1]);
-				  }
-               }));
-			   
+                  }
+               }));			   
          instructionList.add(
                 new BasicInstruction("lw $t1,-100($t2)",
             	 "Load word : Set $t1 to contents of effective memory word address",
@@ -426,8 +423,6 @@ public class InstructionSet
                     }
                   }
                }));
-			   
-			   
 			instructionList.add(
 				new BasicInstruction("push $t0",
 				"Push a value from a register onto the stack",
@@ -453,7 +448,6 @@ public class InstructionSet
 					}
 				
 			}));
-			
 			instructionList.add(
 				new BasicInstruction("pop $t0",
 				"Pop a value from the stack into a register",
@@ -481,23 +475,67 @@ public class InstructionSet
 					}
 				
 			}));
+         instructionList.add(        
+                new BasicInstruction("srm $8", 
+            	 "Sprite Remove : Set Coprocessor register $8 to 0xFFFFFFFF",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010001 00000000000000000000 ffffff",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+                     Coprocessor1.updateRegister(operands[0], 0xFFFFFFFF);
+                  }
+               }));
+         instructionList.add(        
+                new BasicInstruction("ssl $8, $t1, $t2", 
+            	 "Sprite Set Location : Set Coprocessor register $8[31:24] to $t1[7:0] and Set Coprocessor register $8[7:0] to $t2[7:0]",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010010 sssss ttttt 0000000000 ffffff",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 int ssl1 = RegisterFile.getValue(operands[1]) & 0x000000FF;
+					 int ssl2 = RegisterFile.getValue(operands[2]) & 0x000000FF;
+					 // int mask = 0x00FFFF00; mask to keep sprite tile and attribute
+					 Coprocessor1.updateRegister(operands[0],
+					  ((Coprocessor1.getValue(operands[0]) & 0x00FFFF00) + (ssl1 << 24) + ssl2));
+                  }
+               }));
+         instructionList.add(        
+                new BasicInstruction("sft $8, $t1", 
+            	 "Set Foreground Tile : Set Coprocessor register $8[23:16] to $t1[7:0]",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010100 00000 sssss 0000000000 ffffff",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 int sft = RegisterFile.getValue(operands[1]) & 0x000000FF;
+					 Coprocessor1.updateRegister(operands[0],
+					  ((Coprocessor1.getValue(operands[0]) & 0xFF00FFFF) + (sft << 16)));
+                  }
+               }));
+         instructionList.add(        
+                new BasicInstruction("sfa $8, $t1", 
+            	 "Set Foreground Tile : Set Coprocessor register $8[15:8] to $t1[7:0]",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010110 00000 sssss 0000000000 ffffff",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 int sfa = RegisterFile.getValue(operands[1]) & 0x000000FF;
+					 Coprocessor1.updateRegister(operands[0],
+					  ((Coprocessor1.getValue(operands[0]) & 0xFFFF00FF) + (sfa << 8)));
+                  }
+               }));
 			   
-			   
-			   
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
          instructionList.add(        
                 new BasicInstruction("mfc0 $t1,$8", 
             	 "Move from Coprocessor 0 : Set $t1 to the value stored in Coprocessor 0 register $8",
