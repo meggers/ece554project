@@ -49,11 +49,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     public  class Coprocessor1 {
       private static Register [] registers = 
-          { new Register("$f0", 0, 0),  new Register("$f1", 1, 0),
-         	new Register("$f2", 2, 0),  new Register("$f3", 3, 0),
-         	new Register("$f4", 4, 0),  new Register("$f5", 5, 0),
-         	new Register("$f6", 6, 0),  new Register("$f7", 7, 0),
-         	new Register("$f8", 8, 0),  new Register("$f9", 9, 0),
+          { new Register( "$f0",  0, 0),new Register( "$f1",  1, 0),
+         	new Register( "$f2",  2, 0),new Register( "$f3",  3, 0),
+         	new Register( "$f4",  4, 0),new Register( "$f5",  5, 0),
+         	new Register( "$f6",  6, 0),new Register( "$f7",  7, 0),
+         	new Register( "$f8",  8, 0),new Register( "$f9",  9, 0),
          	new Register("$f10", 10, 0),new Register("$f11", 11, 0), 
          	new Register("$f12", 12, 0),new Register("$f13", 13, 0),
          	new Register("$f14", 14, 0),new Register("$f15", 15, 0),
@@ -64,7 +64,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          	new Register("$f24", 24, 0),new Register("$f25", 25, 0),
          	new Register("$f26", 26, 0),new Register("$f27", 27, 0),
          	new Register("$f28", 28, 0),new Register("$f29", 29, 0),
-         	new Register("$f30", 30, 0),new Register("$f31", 31, 0)
+         	new Register("$f30", 30, 0),new Register("$f31", 31, 0),
+			new Register("$f32", 32, 0),new Register("$f33", 33, 0),
+         	new Register("$f34", 34, 0),new Register("$f35", 35, 0),
+         	new Register("$f36", 36, 0),new Register("$f37", 37, 0),
+         	new Register("$f38", 38, 0),new Register("$f39", 39, 0),
+         	new Register("$f40", 40, 0),new Register("$f41", 41, 0),
+         	new Register("$f42", 42, 0),new Register("$f43", 43, 0), 
+         	new Register("$f44", 44, 0),new Register("$f45", 45, 0),
+         	new Register("$f46", 46, 0),new Register("$f47", 47, 0),
+         	new Register("$f48", 48, 0),new Register("$f49", 49, 0),
+         	new Register("$f50", 50, 0),new Register("$f51", 51, 0),
+         	new Register("$f52", 52, 0),new Register("$f53", 53, 0),
+         	new Register("$f54", 54, 0),new Register("$f55", 55, 0),
+         	new Register("$f56", 56, 0),new Register("$f57", 57, 0),
+         	new Register("$f58", 58, 0),new Register("$f59", 59, 0),
+         	new Register("$f60", 60, 0),new Register("$f61", 61, 0),
+			new Register("$f62", 62, 0),new Register("$f63", 63, 0)
            };
    	// The 8 condition flags will be stored in bits 0-7 for flags 0-7.
       private static Register condition = new Register("cf",32, 0);	 

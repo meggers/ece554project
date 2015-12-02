@@ -485,7 +485,7 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     Coprocessor1.updateRegister(operands[0], 0xFFFFFFFF);
+                     Coprocessor1.updateRegister(RegisterFile.getValue(operands[0]) & 0x0000003F, 0xFFFFFFFF);
                   }
                }));
          instructionList.add(        
@@ -498,11 +498,12 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
+					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 					 int ssl1 = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 int ssl2 = RegisterFile.getValue(operands[2]) & 0x000000FF;
 					 // int mask = 0x00FFFF00; mask to keep sprite tile and attribute
-					 Coprocessor1.updateRegister(operands[0],
-					  ((Coprocessor1.getValue(operands[0]) & 0x00FFFF00) + (ssl1 << 24) + ssl2));
+					 Coprocessor1.updateRegister(OAMindex,
+					  ((Coprocessor1.getValue(OAMindex) & 0x00FFFF00) + (ssl1 << 24) + ssl2));
                   }
                }));
          instructionList.add(        
@@ -515,9 +516,10 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
+					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 					 int sft = RegisterFile.getValue(operands[1]) & 0x000000FF;
-					 Coprocessor1.updateRegister(operands[0],
-					  ((Coprocessor1.getValue(operands[0]) & 0xFF00FFFF) + (sft << 16)));
+					 Coprocessor1.updateRegister(OAMindex,
+					  ((Coprocessor1.getValue(OAMindex) & 0xFF00FFFF) + (sft << 16)));
                   }
                }));
          instructionList.add(        
@@ -530,9 +532,10 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
+					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 					 int sfa = RegisterFile.getValue(operands[1]) & 0x000000FF;
-					 Coprocessor1.updateRegister(operands[0],
-					  ((Coprocessor1.getValue(operands[0]) & 0xFFFF00FF) + (sfa << 8)));
+					 Coprocessor1.updateRegister(OAMindex,
+					  ((Coprocessor1.getValue(OAMindex) & 0xFFFF00FF) + (sfa << 8)));
                   }
                }));
 			   
