@@ -49,6 +49,8 @@ public class InstructionSet
       private ArrayList instructionList;
 	  private ArrayList opcodeMatchMaps;
       private SyscallLoader syscallLoader;
+	  private int[] backgroundTile = new int[1024];
+	  private int[] backgroundAttribute = new int[1024];
     /**
      * Creates a new InstructionSet object.
      */
@@ -476,10 +478,10 @@ public class InstructionSet
 				
 			}));
          instructionList.add(        
-                new BasicInstruction("srm $8", 
-            	 "Sprite Remove : Set Coprocessor register $8 to 0xFFFFFFFF",
+                new BasicInstruction("srm $t0", 
+            	 "Sprite Remove : Set Coprocessor register $t0[5:0] to 0xFFFFFFFF",
             	 BasicInstructionFormat.R_FORMAT,
-                "010001 00000000000000000000 ffffff",
+                "010001 fffff 000000000000000000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -489,28 +491,28 @@ public class InstructionSet
                   }
                }));
          instructionList.add(        
-                new BasicInstruction("ssl $8, $t1, $t2", 
-            	 "Sprite Set Location : Set Coprocessor register $8[31:24] to $t1[7:0] and Set Coprocessor register $8[7:0] to $t2[7:0]",
+                new BasicInstruction("ssl $t0, $t1", 
+            	 "Sprite Set Location : Set Coprocessor register $t0[5:0][31:24] to $t1[7:0] and Set Coprocessor register $t0[7:0] to $t2[7:0]",
             	 BasicInstructionFormat.R_FORMAT,
-                "010010 sssss ttttt 0000000000 ffffff",
+                "010010 fffff sssss 0000000000000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
 					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
-					 int ssl1 = RegisterFile.getValue(operands[1]) & 0x000000FF;
-					 int ssl2 = RegisterFile.getValue(operands[2]) & 0x000000FF;
+					 int sslY = RegisterFile.getValue(operands[1]) & 0x000000FF;
+					 int sslX = RegisterFile.getValue(operands[1]) & 0x0000FF00;
 					 // int mask = 0x00FFFF00; mask to keep sprite tile and attribute
 					 Coprocessor1.updateRegister(OAMindex,
-					  ((Coprocessor1.getValue(OAMindex) & 0x00FFFF00) + (ssl1 << 24) + ssl2));
+					  ((Coprocessor1.getValue(OAMindex) & 0x00FFFF00) + (sslX << 16) + sslY)); // shift 16 more since it already shifted by 8
                   }
                }));
          instructionList.add(        
-                new BasicInstruction("sft $8, $t1", 
-            	 "Set Foreground Tile : Set Coprocessor register $8[23:16] to $t1[7:0]",
+                new BasicInstruction("sft $t0, $t1", 
+            	 "Set Foreground Tile : Set Coprocessor register $t0[5:0][23:16] to $t1[7:0]",
             	 BasicInstructionFormat.R_FORMAT,
-                "010100 00000 sssss 0000000000 ffffff",
+                "010100 fffff sssss 0000000000000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -523,10 +525,25 @@ public class InstructionSet
                   }
                }));
          instructionList.add(        
-                new BasicInstruction("sfa $8, $t1", 
-            	 "Set Foreground Tile : Set Coprocessor register $8[15:8] to $t1[7:0]",
+                new BasicInstruction("sbt $t0, $t1", 
+            	 "Set Background Tile : Set Background tile register $t0[9:0] to $t1[7:0]",
             	 BasicInstructionFormat.R_FORMAT,
-                "010110 00000 sssss 0000000000 ffffff",
+                "010101 fffff sssss 0000000000000000",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
+					 int sbt = RegisterFile.getValue(operands[1]) & 0x000000FF;
+					 backgroundTile[BGindex] = sbt;
+                  }
+               }));
+         instructionList.add(        
+                new BasicInstruction("sfa $t0, $t1", 
+            	 "Set Foreground Tile : Set Coprocessor register $t0[5:0][15:8] to $t1[7:0]",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010110 fffff sssss 0000000000000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -538,7 +555,21 @@ public class InstructionSet
 					  ((Coprocessor1.getValue(OAMindex) & 0xFFFF00FF) + (sfa << 8)));
                   }
                }));
-			   
+         instructionList.add(        
+                new BasicInstruction("sba $t0, $t1", 
+            	 "Set Background Tile : Set Background tile register $t0[9:0] to $t1[1:0]",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010111 fffff sssss 0000000000000000",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
+					 int sba = RegisterFile.getValue(operands[1]) & 0x00000003;
+					 backgroundAttribute[BGindex] = sba;
+                  }
+               }));
          instructionList.add(        
                 new BasicInstruction("mfc0 $t1,$8", 
             	 "Move from Coprocessor 0 : Set $t1 to the value stored in Coprocessor 0 register $8",
