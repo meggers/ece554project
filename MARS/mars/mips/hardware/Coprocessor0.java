@@ -53,7 +53,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
           { new Register("$8 (vaddr)", 8, 0),  
             new Register("$12 (status)", 12, DEFAULT_STATUS_VALUE),
          	new Register("$13 (cause)", 13, 0),  
-         	new Register("$14 (epc)", 14, 0)
+         	new Register("$14 (epc)", 14, 0),  
+         	new Register("$16 (Z flag)", 16, 0),  
+         	new Register("$17 (N flag)", 17, 0),  
+         	new Register("$18 (V flag)", 18, 0)
            };
         												  
    	 

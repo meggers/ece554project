@@ -6,6 +6,21 @@
    import mars.util.*;
    import java.util.*;
    import java.io.*;
+
+	import java.awt.Color;
+	import java.awt.Graphics;
+	import java.awt.event.KeyEvent;
+	import java.awt.event.KeyListener;
+	import java.awt.geom.AffineTransform;
+	import java.awt.image.AffineTransformOp;
+	import java.awt.image.BufferedImage;
+	import java.io.File;
+	import java.io.IOException;
+
+	import javax.imageio.IIOException;
+	import javax.imageio.ImageIO;
+	import javax.swing.JFrame;
+	import javax.swing.JPanel;
 	
 	/*
 Copyright (c) 2003-2013,  Pete Sanderson and Kenneth Vollmar
@@ -51,6 +66,372 @@ public class InstructionSet
       private SyscallLoader syscallLoader;
 	  private int[] backgroundTile = new int[1024];
 	  private int[] backgroundAttribute = new int[1024];
+	  
+		int DISPLAY_LOGIC_WIDTH = 256;
+		int DISPLAY_LOGIC_HEIGHT = 256;
+		int DISPLAY_LOGIC_IMAGE_DIMENSION = 8;
+		int DISPLAY_LOGIC_UNIT_SIZE = 4;
+		BufferedImage[][] groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION];
+		int[][] groundData = new int[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
+		BufferedImage[][][][] background = new BufferedImage[4][4][4][4];
+
+		int p1x;
+		int p1y;
+		int p2x;
+		int p2y;
+
+		//char[] prevDirections = {'d', 'j'};
+		char[] directions = {'d', 'j'};
+		char[] nextDirections = {'d', 'j'};
+
+	
+	public void sleep(int milliseconds) {
+		try {
+			Thread.sleep(milliseconds);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	class TimerInterrupt implements Runnable {
+		public void run() {
+			try {
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void readBackground() {
+		int backgroundPermutation = 4;
+		for (int i = 0; i < backgroundPermutation; ++i) {
+			for (int j = 0; j < backgroundPermutation; ++j) {
+				for (int k = 0; k < backgroundPermutation; ++k) {
+					for (int l = 0; l < backgroundPermutation; ++l) {
+						try {
+							background[i][j][k][l] = ImageIO.read(new File("images/background/background" + i + j + k + l + ".png"));
+						} catch (IIOException E) {
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void start() throws IOException {
+		JFrame jFrame = new JFrame("Sample PPU Simulator");
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
+		groundData = new int[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
+		
+		p1x = DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE / 5;		// give three fifth of screen of bikes to run into each other
+		p2x = DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE * 4 / 5;
+
+		p1y = DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE / 2;		// initialize both bikes to vertical half
+		p2y = DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE / 2;
+		
+		directions[0] = 'd';
+		directions[1] = 'j';
+		nextDirections[0] = 'd';
+		nextDirections[1] = 'j';
+		
+		// all
+		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++x) {
+			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++y) {
+				groundData[x][y] = 0;
+			}
+		}
+		//BufferedImage backgroundBufferedImage = ImageIO.read(new File("images/background/white.png"));
+		BufferedImage backgroundBufferedImage = ImageIO.read(new File("images/background/background0000.png"));
+		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+				groundVisual[x][y] = backgroundBufferedImage;
+			}
+		}
+		
+		// top
+		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
+			groundData[i][0] = 3;
+		}
+		BufferedImage topBufferedImage = ImageIO.read(new File("images/background/background3300.png"));
+		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
+			groundVisual[i][0] = topBufferedImage;
+		}
+		
+		// left
+		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
+			groundData[0][i] = 3;
+		}
+		BufferedImage leftBufferedImage = ImageIO.read(new File("images/background/background3030.png"));
+		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
+			groundVisual[0][i] = leftBufferedImage;
+		}
+		
+		// right
+		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
+			groundData[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE - 1][i] = 3;
+		}
+		BufferedImage rightBufferedImage = ImageIO.read(new File("images/background/background0303.png"));
+		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
+			groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][i] = rightBufferedImage;
+		}
+		
+		// bottom
+		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
+			groundData[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE - 1] = 3;
+		}
+		BufferedImage bottomBufferedImage = ImageIO.read(new File("images/background/background0033.png"));
+		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
+			groundVisual[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = bottomBufferedImage;
+		}
+
+		// need to recover the corners since images overwrite each other
+		groundVisual[0][0] = ImageIO.read(new File("images/background/background3330.png"));
+		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = ImageIO.read(new File("images/background/background3303.png"));
+		groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background3033.png"));
+		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background0333.png"));
+		
+		PPU ppu = new PPU();
+		jFrame.add(ppu);
+		jFrame.setSize(DISPLAY_LOGIC_WIDTH + 50, DISPLAY_LOGIC_HEIGHT + 50);
+		jFrame.setVisible(true);
+		
+		KeyListener keyListener = new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				char characterPressed = arg0.getKeyChar();
+				if ("wasdijkl".contains("" + characterPressed)) {
+					if (characterPressed == 'w' && directions[0] != 's'
+							|| characterPressed == 'a' && directions[0] != 'd'
+							|| characterPressed == 's' && directions[0] != 'w'
+							|| characterPressed == 'd' && directions[0] != 'a') {
+						nextDirections[0] = characterPressed;
+					}
+					if (characterPressed == 'i' && directions[1] != 'k'
+							|| characterPressed == 'j' && directions[1] != 'l'
+							|| characterPressed == 'k' && directions[1] != 'i'
+							|| characterPressed == 'l' && directions[1] != 'j') {
+						nextDirections[1] = characterPressed;
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+		};
+		
+		jFrame.addKeyListener(keyListener);
+		
+		while(true) {
+			Thread thread = new Thread(new TimerInterrupt());
+			thread.start();
+			try {
+				thread.join();
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			// start game tick
+			
+			// update direction
+			switch (directions[0]) {
+			case 'w': p1y--; break;
+			case 'a': p1x--; break;
+			case 's': p1y++; break;
+			case 'd': p1x++; break;
+			}
+			switch (directions[1]) {
+			case 'i': p2y--; break;
+			case 'j': p2x--; break;
+			case 'k': p2y++; break;
+			case 'l': p2x++; break;
+			}
+			
+			// check for collision
+			if (groundData[p1x][p1y] != 0) {
+				if (groundData[p2x][p2y] != 0) {
+					System.out.println("tied");
+				} else {
+					System.out.println("player 2 wins");
+				}
+				jFrame.setVisible(false);
+				return;
+			} else {
+				if (groundData[p2x][p2y] != 0) {
+					System.out.println("player 1 wins");
+					jFrame.setVisible(false);
+					return;
+				}
+			}
+
+			// update background to leave trail
+			groundData[p1x][p1y] = 1;
+			int p1xVisual = p1x / 2;
+			int p1yVisual = p1y / 2;
+			groundData[p2x][p2y] = 2;
+			int p2xVisual = p2x / 2;
+			int p2yVisual = p2y / 2;
+
+			groundVisual[p1xVisual][p1yVisual] = background[groundData[2 * p1xVisual][2 * p1yVisual]][groundData[2 * p1xVisual + 1][2 * p1yVisual]][groundData[2 * p1xVisual][2 * p1yVisual + 1]][groundData[2 * p1xVisual + 1][2 * p1yVisual + 1]];
+			groundVisual[p2xVisual][p2yVisual] = background[groundData[2 * p2xVisual][2 * p2yVisual]][groundData[2 * p2xVisual + 1][2 * p2yVisual]][groundData[2 * p2xVisual][2 * p2yVisual + 1]][groundData[2 * p2xVisual + 1][2 * p2yVisual + 1]];
+
+			directions[0] = nextDirections[0];
+			directions[1] = nextDirections[1];
+			
+			jFrame.repaint();
+		}
+	}
+	
+	class PPUSimulator implements Runnable {
+		public void run() {
+			readBackground();
+			System.out.println("done reading background");
+			try {
+				start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public class PPU extends JPanel {
+		public void paintComponent(Graphics graphics) {
+			super.paintComponent(graphics);
+			this.setBackground(Color.WHITE);
+
+			for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+				for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+					graphics.drawImage(groundVisual[x][y], x * DISPLAY_LOGIC_IMAGE_DIMENSION, y * DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				}
+			}
+			
+			try {
+				BufferedImage bikeBufferedImage0 = ImageIO.read(new File("images/foreground/bike0.png"));
+				BufferedImage bikeBufferedImage1 = ImageIO.read(new File("images/foreground/bike1.png"));
+				BufferedImage bikeBufferedImage2 = ImageIO.read(new File("images/foreground/bike2.png"));
+
+				int p1rotationCount = 0;
+				int p1xOffset = 0;
+				int p1yOffset = 1;
+				int p2rotationCount = 0;
+				int p2xOffset = 0;
+				int p2yOffset = 1;
+				switch (directions[0]) {
+				case 'a': 
+					p1rotationCount = 3;
+					p1xOffset = 1;
+					p1yOffset = 0;
+					break;
+				case 's': 
+					p1rotationCount = 2;
+					p1xOffset = 0;
+					p1yOffset = -1;
+					break;
+				case 'd': 
+					p1rotationCount = 1;
+					p1xOffset = -1;
+					p1yOffset = 0;
+					break;
+				}
+				
+				switch (directions[1]) {
+				case 'j': 
+					p2rotationCount = 3;
+					p2xOffset = 1;
+					p2yOffset = 0;
+					break;
+				case 'k': 
+					p2rotationCount = 2; 
+					p2xOffset = 0;
+					p2yOffset = -1;
+					break;
+				case 'l': 
+					p2rotationCount = 1;
+					p2xOffset = -1;
+					p2yOffset = 0;
+					break;
+				}
+				
+				AffineTransform affineTransform;
+				AffineTransformOp affineTransformOp;
+				
+				affineTransform = new AffineTransform();
+				affineTransform.rotate(Math.toRadians(90) * p1rotationCount, DISPLAY_LOGIC_IMAGE_DIMENSION / 2, DISPLAY_LOGIC_IMAGE_DIMENSION / 2);
+				affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
+				int player1ColorPalette = 2;
+				BufferedImage player1BikeBufferedImage0 = setColorPalette(affineTransformOp.filter(bikeBufferedImage0, null), player1ColorPalette);
+				BufferedImage player1BikeBufferedImage1 = setColorPalette(affineTransformOp.filter(bikeBufferedImage1, null), player1ColorPalette);
+				BufferedImage player1BikeBufferedImage2 = setColorPalette(affineTransformOp.filter(bikeBufferedImage2, null), player1ColorPalette);
+				
+				affineTransform = new AffineTransform();
+				affineTransform.rotate(Math.toRadians(90) * p2rotationCount, DISPLAY_LOGIC_IMAGE_DIMENSION / 2, DISPLAY_LOGIC_IMAGE_DIMENSION / 2);
+				affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
+				BufferedImage player2BikeBufferedImage0 = affineTransformOp.filter(bikeBufferedImage0, null);
+				BufferedImage player2BikeBufferedImage1 = affineTransformOp.filter(bikeBufferedImage1, null);
+				BufferedImage player2BikeBufferedImage2 = affineTransformOp.filter(bikeBufferedImage2, null);
+				
+				graphics.drawImage(player1BikeBufferedImage0, p1x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player1BikeBufferedImage1, p1x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player1BikeBufferedImage2, p1x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player2BikeBufferedImage0, p2x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player2BikeBufferedImage1, p2x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(player2BikeBufferedImage2, p2x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex) {
+		
+		// colorPaletteIndex0 = RGB
+		// colorPaletteIndex1 = CMY
+		// colorPaletteIndex2 = BRG
+		// colorPaletteIndex3 = BBB
+		
+		int[] colors = { Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
+		
+		switch (colorPaletteIndex) {
+		case 1: 
+			colors[0] = Color.CYAN.getRGB();
+			colors[1] = Color.MAGENTA.getRGB();
+			colors[2] = Color.YELLOW.getRGB();
+			break;
+		case 2: 
+			colors[0] = Color.GREEN.getRGB();
+			colors[1] = Color.RED.getRGB();
+			colors[2] = Color.BLUE.getRGB();
+			break;
+		case 3: 
+			colors[0] = Color.BLUE.getRGB();
+			colors[1] = Color.BLUE.getRGB();
+			colors[2] = Color.BLUE.getRGB();
+			break;
+		}
+		for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+			for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+				if (inputBufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
+				} else if (inputBufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
+					inputBufferedImage.setRGB(x, y, colors[0]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
+					inputBufferedImage.setRGB(x, y, colors[1]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
+					inputBufferedImage.setRGB(x, y, colors[2]);
+				}
+			}
+		}
+		return inputBufferedImage;
+	}
+		
     /**
      * Creates a new InstructionSet object.
      */
@@ -76,6 +457,8 @@ public class InstructionSet
      */
        public void populate()
       {
+		  Thread thread = new Thread(new PPUSimulator());	// read meridian data while waiting for user input
+		  thread.start();
         /* Here is where the parade begins.  Every instruction is added to the set here.*/
       
         // ////////////////////////////////////   BASIC INSTRUCTIONS START HERE ////////////////////////////////
@@ -114,6 +497,8 @@ public class InstructionSet
                         throw new ProcessingException(statement,
                             "arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
                      }
+					 Coprocessor0.updateRegister(16, (sum == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (sum < 0 ? 1 : 0));
                      RegisterFile.updateRegister(operands[0], sum);
                   }
                }));
@@ -135,9 +520,14 @@ public class InstructionSet
                      if ((sub1 >= 0 && sub2 < 0 && dif < 0)
                         || (sub1 < 0 && sub2 >= 0 && dif >= 0))
                      {
+						Coprocessor0.updateRegister(18, 1);
                         throw new ProcessingException(statement,
                             "arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
-                     }
+                     } else {
+						Coprocessor0.updateRegister(18, 0);
+					 }
+					 Coprocessor0.updateRegister(16, (dif == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (dif < 0 ? 1 : 0));
                      RegisterFile.updateRegister(operands[0], dif);
                   }
                }));
@@ -163,6 +553,8 @@ public class InstructionSet
                         throw new ProcessingException(statement,
                             "arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
                      }
+					 Coprocessor0.updateRegister(16, (sum == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (sum < 0 ? 1 : 0));
                      RegisterFile.updateRegister(operands[0], sum);
                   }
                }));
@@ -177,9 +569,10 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        & RegisterFile.getValue(operands[2]));
+					 int and = RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]);
+					 Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
+                     RegisterFile.updateRegister(operands[0], and);
                   }
                }));
 
@@ -194,10 +587,11 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
+					 int and = RegisterFile.getValue(operands[1]) & (operands[2] & 0x0000FFFF);
                   // ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        & (operands[2] & 0x0000FFFF));
+					 Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
+                     Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
+                     RegisterFile.updateRegister(operands[0], and);
                   }
                }));
 		
@@ -211,9 +605,11 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1])
-                        ^ RegisterFile.getValue(operands[2]));
+					 int xor = RegisterFile.getValue(operands[1]) ^ RegisterFile.getValue(operands[2]);
+					 Coprocessor0.updateRegister(16, (xor == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (xor < 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(18, 1);
+                     RegisterFile.updateRegister(operands[0], xor);
                   }
                }));
 		
@@ -227,9 +623,11 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        ~(RegisterFile.getValue(operands[1])
-                        & RegisterFile.getValue(operands[2])));
+					 int nand = ~(RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]));
+					 Coprocessor0.updateRegister(16, (nand == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (nand < 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(18, 1);
+                     RegisterFile.updateRegister(operands[0], nand);
                   }
                }));
 					   
@@ -243,8 +641,10 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1]) << operands[2]);
+					 int sll = RegisterFile.getValue(operands[1]) << operands[2];
+					 Coprocessor0.updateRegister(16, (sll == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (sll < 0 ? 1 : 0));
+                     RegisterFile.updateRegister(operands[0], sll);
                   }
                }));
 		
@@ -259,8 +659,10 @@ public class InstructionSet
                   {
                      int[] operands = statement.getOperands();
                   // must zero-fill, so use ">>>" instead of ">>".
-                     RegisterFile.updateRegister(operands[0],
-                        RegisterFile.getValue(operands[1]) >>> operands[2]);
+                     int srl = RegisterFile.getValue(operands[1]) >>> operands[2];
+					 Coprocessor0.updateRegister(16, (srl == 0 ? 1 : 0));
+					 Coprocessor0.updateRegister(17, (srl < 0 ? 1 : 0));
+                     RegisterFile.updateRegister(operands[0], srl);
                   }
                }));
 		
@@ -324,53 +726,64 @@ public class InstructionSet
                }));
 		
          instructionList.add(
-                new BasicInstruction("beq $t1,$t2,label",
+                new BasicInstruction("b label",
+                "Branch unconditional : Branch to statement at label's address",
+            	 BasicInstructionFormat.I_BRANCH_FORMAT,
+                "000011 ffffffffffffffffffffffffff",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+                     processBranch(operands[0]);
+                  }
+               }));
+         instructionList.add(
+                new BasicInstruction("beq label",
                 "Branch if equal : Branch to statement at label's address if $t1 and $t2 are equal",
             	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000000 fffff sssss tttttttttttttttt",
+                "000000 ffffffffffffffffffffffffff",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
                   
-                     if (RegisterFile.getValue(operands[0])
-                        == RegisterFile.getValue(operands[1]))
+                     if (Coprocessor0.getValue(16) == 1)
                      {
-                        processBranch(operands[2]);
+                        processBranch(operands[0]);
                      }
                   }
                }));
 		
          instructionList.add(
-                new BasicInstruction("bne $t1,$t2,label",
+                new BasicInstruction("bne label",
                 "Branch if not equal : Branch to statement at label's address if $t1 and $t2 are not equal",
             	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000001 fffff sssss tttttttttttttttt",
+                "000001 ffffffffffffffffffffffffff",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0])
-                        != RegisterFile.getValue(operands[1]))
+                     if (Coprocessor0.getValue(16) == 0)
                      {
-                        processBranch(operands[2]);
+                        processBranch(operands[0]);
                      }
                   }
                }));
 			   
          instructionList.add(
-                new BasicInstruction("blt $t1,$t2,label",
+                new BasicInstruction("blt label",
                 "Branch if less than: Branch to statement at label's address if $t1 is less $t2",
             	 BasicInstructionFormat.I_BRANCH_FORMAT,
-                "000010 fffff sssss tttttttttttttttt",
+                "000010 ffffffffffffffffffffffffff",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     if (RegisterFile.getValue(operands[0]) < RegisterFile.getValue(operands[1]))
+                     if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
                      {
                         processBranch(operands[2]);
                      }
@@ -378,7 +791,7 @@ public class InstructionSet
                }));
 			   
          instructionList.add(
-                new BasicInstruction("call Imm", 
+                new BasicInstruction("call label", 
             	 "Call a label : Update the PC and save the return address on the stack",
             	 BasicInstructionFormat.J_FORMAT,
                 "000100 ffffffffffffffffffffffffff",
@@ -404,7 +817,7 @@ public class InstructionSet
                   }
                }));
 			instructionList.add(
-                new BasicInstruction("Return", 
+                new BasicInstruction("return", 
             	 "Return from a previous function call",
             	 BasicInstructionFormat.J_FORMAT,
                 "000101 ffffffffffffffffffffffffff",
