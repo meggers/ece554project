@@ -785,7 +785,7 @@ public class InstructionSet
                      int[] operands = statement.getOperands();
                      if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
                      {
-                        processBranch(operands[2]);
+                        processBranch(operands[0]);
                      }
                   }
                }));
