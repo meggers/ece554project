@@ -805,7 +805,7 @@ public class InstructionSet
 						Globals.memory.setWord(
 							RegisterFile.getValue(29),			// Set the top of the stack with
 							RegisterFile.getProgramCounter());		// what's in the PC + 1 
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 4);
 					} 
                     catch (AddressErrorException e)
                     {
@@ -827,7 +827,7 @@ public class InstructionSet
                   {
                      int[] operands = statement.getOperands();
 					 
-					RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
+					RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 4);
 					try
 					{
 						processJump(Globals.memory.getWord(RegisterFile.getValue(29)));
