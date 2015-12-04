@@ -52,6 +52,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       private ErrorList errors;
       private MIPSprogram sourceMIPSprogram;
       private HashMap<String,String> equivalents; // DPS 11-July-2012
+	  private HashMap<String,String> spriteAssemblerHash;
    	// The 8 escaped characters are: single quote, double quote, backslash, newline (linefeed),
    	// tab, backspace, return, form feed.  The characters and their corresponding decimal codes:
       private static final String escapedCharacters = "'\"\\ntbrf0";
@@ -73,7 +74,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          errors = new ErrorList();
          sourceMIPSprogram = program;
       }
-   
+
+	  public String spriteAssemble(String source) {
+		  Set<String> keySet = spriteAssemblerHash.keySet();
+		  for (String string : keySet) {
+			  source = source.replace(string, spriteAssemblerHash.get(string));
+		  }
+		  return source;
+	  }
    /**
     * Will tokenize a complete MIPS program.  MIPS is line oriented (not free format),
     * so we will be line-oriented too.
@@ -86,6 +94,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        public ArrayList tokenize(MIPSprogram p) throws ProcessingException {
          sourceMIPSprogram = p;
          equivalents = new HashMap<String,String>(); // DPS 11-July-2012
+		 spriteAssemblerHash = new HashMap<String,String>();
+		 spriteAssemblerHash.put("test", "72");
          ArrayList tokenList = new ArrayList();
          //ArrayList source = p.getSourceList();
          ArrayList<SourceLine> source = processIncludes(p, new HashMap<String,String>()); // DPS 9-Jan-2013
@@ -102,7 +112,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          	// This IF statement will replace original source with source modified by .eqv substitution.
          	// Not needed by assembler, but looks better in the Text Segment Display.
             if (sourceLine.length() > 0 && sourceLine != currentLineTokens.getProcessedLine()) {
-               source.set(i,new SourceLine(currentLineTokens.getProcessedLine(),source.get(i).getMIPSprogram(), source.get(i).getLineNumber())); 
+               source.set(i,new SourceLine(spriteAssemble(currentLineTokens.getProcessedLine()),source.get(i).getMIPSprogram(), source.get(i).getLineNumber())); 
             } 
          }
          if (errors.errorsOccurred()) {
@@ -162,7 +172,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                } 
             }
             if (!hasInclude){
-               result.add(new SourceLine(line, program, i+1));//line);
+               result.add(new SourceLine(spriteAssemble(line), program, i+1));//line);
             }
          }
          return result;
