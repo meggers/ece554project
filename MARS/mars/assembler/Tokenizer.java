@@ -78,8 +78,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	  public String spriteAssemble(String source) {
 		  Set<String> keySet = spriteAssemblerHash.keySet();
 		  for (String string : keySet) {
-			  source = source.replace(string, spriteAssemblerHash.get(string));
+			  // append " " or "," so that light_bike2_index doesnt get parsed as 2_index
+			  source = source.replace(" " + string, " " + spriteAssemblerHash.get(string));
+			  source = source.replace("," + string, "," + spriteAssemblerHash.get(string));
 		  }
+		  System.out.println();
 		  return source;
 	  }
    /**
