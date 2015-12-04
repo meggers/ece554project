@@ -66,7 +66,7 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 		addi $t0,$t0,1
 		b whileLoopToLoadAllBackground
 	
-	# Fill the top of the background with the top sprites
+	# Fill the top of the background with the top sprites 
 	LoadTopBackground: li $t0,0
 		li $t1,32
 		
@@ -132,20 +132,20 @@ LoadFrontSprites: 	# Load the sprites from the pattern table into the OAM
 	
 	# Put one copy of light_bike (p1) rotated pi/2 right into OAM
 	addi $t0,$t0,1
-	# sft $t0,light_bike_rot_0
+	# sft $t0,light_bike_small_rotated_0
 	addi $t0,$t0,1
-	# sft $t0,light_bike_rot_1
+	# sft $t0,light_bike_small_rotated_1
 	addi $t0,$t0,1
-	# sft $t0,light_bike_rot_2
+	# sft $t0,light_bike_small_rotated_2
 	addi $t0,$t0,1
 
 	# Put one copy of light_bike (p2) rotated pi/2 right into OAM
 	 addi $t0,$t0,1
-	 # sft $t0,light_bike_rot_0
+	 # sft $t0,light_bike_small_rotated_0
 	 addi $t0,$t0,1
-	 # sft $t0,light_bike_rot_1
+	 # sft $t0,light_bike_small_rotated_1
 	 addi $t0,$t0,1
-	 # sft $t0,light_bike_rot_2
+	 # sft $t0,light_bike_small_rotated_2
 
 	
 LoadGameData:
@@ -210,7 +210,7 @@ GameLoop:
 	testlUpdate:
 		li $t0,0x6C
 		sub $zero,$t0,$s6
-		bne updateP2Postion
+		bne gameLoopSpin
 		addi $s0, $s0, 1
 		call p2displayupdate
 	
@@ -223,7 +223,7 @@ gameLoopSpin:
 
 
 
-	p1displayupdate:
+p1displayupdate:
 	# $t0 holds comparison values 
 		push $t0
 	# t1 holds OAM value of sprite
@@ -242,7 +242,7 @@ gameLoopSpin:
 		bne updatespritea,
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes (flip) of the sprite
@@ -252,7 +252,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_1
+		# sft $t1,light_bike2_1
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
@@ -265,7 +265,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_2
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
@@ -284,7 +284,7 @@ gameLoopSpin:
 		bne updatesprites
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_rot_0
+		# sft $t1,light_bike_small_rotated_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes of the sprite
@@ -295,7 +295,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_1
+		# sft $t1,light_bike_small_rotated_1
 	# set the location of the sprite
 	# direction is left, so next sprite is 8 right of
 	# the last sprite 
@@ -309,7 +309,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_0
+		# sft $t1,light_bike_small_rotated_0
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 right of
 	# the last sprite 
@@ -328,7 +328,7 @@ gameLoopSpin:
 		bne updatesprited
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes of the sprite
@@ -339,7 +339,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_1
+		# sft $t1,light_bike2_1
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
@@ -353,7 +353,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
@@ -372,7 +372,7 @@ gameLoopSpin:
 		bne updatesprited
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_rot_0
+		# sft $t1,light_bike_small_rotated_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes of the sprite
@@ -383,7 +383,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_1
+		# sft $t1,light_bike_small_rotated_1
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
@@ -397,7 +397,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_2
+		# sft $t1,light_bike_small_rotated_2
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
@@ -438,7 +438,7 @@ gameLoopSpin:
 		bne updatespritea
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes (flip) of the sprite
@@ -448,7 +448,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_1
+		# sft $t1,light_bike2_1
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
@@ -461,7 +461,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
@@ -480,7 +480,7 @@ gameLoopSpin:
 		bne updatesprites
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_rot_0
+		# sft $t1,light_bike_small_rotated_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes of the sprite
@@ -491,7 +491,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_1
+		# sft $t1,light_bike_small_rotated_1
 	# set the location of the sprite
 	# direction is left, so next sprite is 8 right of
 	# the last sprite 
@@ -524,7 +524,7 @@ gameLoopSpin:
 		bne updatesprited
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes of the sprite
@@ -535,7 +535,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_1
+		# sft $t1,light_bike2_1
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
@@ -549,7 +549,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_0
+		# sft $t1,light_bike2_0
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
@@ -568,7 +568,7 @@ gameLoopSpin:
 		bne updatesprited
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_rot_0
+		# sft $t1,light_bike_small_rotated_0
 	# set the location of the sprite
 		# ssl $t1,$s0,$s1
 	# set the attributes of the sprite
@@ -579,7 +579,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_1
+		# sft $t1,light_bike_small_rotated_1
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
@@ -593,7 +593,7 @@ gameLoopSpin:
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_2
+		# sft $t1,light_bike_small_rotated_2
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
