@@ -95,7 +95,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          sourceMIPSprogram = p;
          equivalents = new HashMap<String,String>(); // DPS 11-July-2012
 		 spriteAssemblerHash = new HashMap<String,String>();
-		 spriteAssemblerHash.put("test", "72");
+		 try {
+			BufferedReader br = new BufferedReader(new FileReader("sprite-definitions.csv"));
+		    for (String line; (line = br.readLine()) != null; ) {
+		        // process the line
+				String[] lineTokens = line.split(",");
+				//for (int i = 0; i < lineTokens.length; ++i) {
+				//	System.out.println("lineTokens[" + i + "] = $" + lineTokens[i] + "$");
+				//}
+				spriteAssemblerHash.put(lineTokens[0] + "_index", lineTokens[1]);
+				spriteAssemblerHash.put(lineTokens[0] + "_height", lineTokens[2]);
+				spriteAssemblerHash.put(lineTokens[0] + "_width", lineTokens[3]);
+		    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
          ArrayList tokenList = new ArrayList();
          //ArrayList source = p.getSourceList();
          ArrayList<SourceLine> source = processIncludes(p, new HashMap<String,String>()); // DPS 9-Jan-2013
