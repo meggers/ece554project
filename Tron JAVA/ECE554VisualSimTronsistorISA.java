@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 
 public class ECE554VisualSimTronsistorISA {
 
-	HashMap<String, Integer> spriteAssemblerHash;
-	BufferedImage[] spritePatternTable = new BufferedImage[256]; 
-	BufferedImage[] backgroundPatternTable = new BufferedImage[256]; 
+	HashMap<String, Integer> spriteAssemblerHash; // will be handled by the assembler
+	BufferedImage[] spritePatternTable = new BufferedImage[256]; // index into sprite visual data, use assembler for index
+	BufferedImage[] backgroundPatternTable = new BufferedImage[256]; // index into background visual data, use assembler for index
 	int DISPLAY_LOGIC_WIDTH = 256;
 	int DISPLAY_LOGIC_HEIGHT = 256;
 	int DISPLAY_LOGIC_IMAGE_DIMENSION = 8;
@@ -34,7 +34,6 @@ public class ECE554VisualSimTronsistorISA {
 	int p2x;
 	int p2y;
 
-	//char[] prevDirections = {'d', 'j'};
 	char[] directions = {'d', 'j'};
 	char[] nextDirections = {'d', 'j'};
 
@@ -73,7 +72,7 @@ public class ECE554VisualSimTronsistorISA {
 								BufferedImage bufferedImageOutput = new BufferedImage(DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, BufferedImage.TYPE_INT_RGB);
 								bufferedImageOutput.setRGB(0, 0, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, 8);
 								// ImageIO.write(bufferedImageOutput, "png", new File("test_test_foreground" + foregroundCount + ".png"));
-								spritePatternTable[Integer.parseInt(lineTokens[1]) + height*bufferedImage.getWidth() + width] = bufferedImageOutput;
+								spritePatternTable[Integer.parseInt(lineTokens[1]) + height*bufferedImage.getWidth() / DISPLAY_LOGIC_IMAGE_DIMENSION + width] = bufferedImageOutput;
 							}
 						}
 					}
@@ -150,7 +149,7 @@ public class ECE554VisualSimTronsistorISA {
 		}
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
-				groundVisual[x][y] = backgroundPatternTable[spriteAssemblerHash.get("background0000_index")];
+				groundVisual[x][y] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0000_index")], 0);
 			}
 		}
 
@@ -159,7 +158,7 @@ public class ECE554VisualSimTronsistorISA {
 			groundData[i][0] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[i][0] = backgroundPatternTable[spriteAssemblerHash.get("background3300_index")];
+			groundVisual[i][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3300_index")], 0);
 		}
 
 		// left
@@ -167,7 +166,7 @@ public class ECE554VisualSimTronsistorISA {
 			groundData[0][i] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[0][i] = backgroundPatternTable[spriteAssemblerHash.get("background3030_index")];
+			groundVisual[0][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3030_index")], 0);
 		}
 
 		// right
@@ -175,7 +174,7 @@ public class ECE554VisualSimTronsistorISA {
 			groundData[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE - 1][i] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][i] = backgroundPatternTable[spriteAssemblerHash.get("background0303_index")];
+			groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0303_index")], 0);
 		}
 
 		// bottom
@@ -183,18 +182,18 @@ public class ECE554VisualSimTronsistorISA {
 			groundData[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE - 1] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = backgroundPatternTable[spriteAssemblerHash.get("background0033_index")];
+			groundVisual[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0033_index")], 0);
 		}
 
 		// need to recover the corners since images overwrite each other
 		// groundVisual[0][0] = ImageIO.read(new File("images/background/background3330.png"));
-		groundVisual[0][0] = backgroundPatternTable[spriteAssemblerHash.get("background3330_index")];
+		groundVisual[0][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3330_index")], 0);
 		// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = ImageIO.read(new File("images/background/background3303.png"));
-		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = backgroundPatternTable[spriteAssemblerHash.get("background3303_index")];
+		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3303_index")], 0);
 		// groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background3033.png"));
-		groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = backgroundPatternTable[spriteAssemblerHash.get("background3033_index")];
+		groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3033_index")], 0);
 		// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background0333.png"));
-		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = backgroundPatternTable[spriteAssemblerHash.get("background0333_index")];
+		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0333_index")], 0);
 
 		PPU ppu = new PPU();
 		jFrame.add(ppu);
@@ -206,7 +205,8 @@ public class ECE554VisualSimTronsistorISA {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
 				char characterPressed = arg0.getKeyChar();
-				if ("wasdijkl".contains("" + characterPressed)) {
+				if ("WwAaSsDdIiJjKkLl".contains("" + characterPressed)) {
+					characterPressed = ("" + characterPressed).toLowerCase().charAt(0);
 					if (characterPressed == 'w' && directions[0] != 's'
 							|| characterPressed == 'a' && directions[0] != 'd'
 							|| characterPressed == 's' && directions[0] != 'w'
@@ -288,10 +288,10 @@ public class ECE554VisualSimTronsistorISA {
 
 			//groundVisual[p1xVisual][p1yVisual] = background[groundData[2 * p1xVisual][2 * p1yVisual]][groundData[2 * p1xVisual + 1][2 * p1yVisual]][groundData[2 * p1xVisual][2 * p1yVisual + 1]][groundData[2 * p1xVisual + 1][2 * p1yVisual + 1]];
 			int p1LocationVisual = getVisualIndex((groundData[2 * p1xVisual][2 * p1yVisual]) + 4*(groundData[2 * p1xVisual + 1][2 * p1yVisual]) + 16*(groundData[2 * p1xVisual][2 * p1yVisual + 1]) + 64*(groundData[2 * p1xVisual + 1][2 * p1yVisual + 1]));
-			groundVisual[p1xVisual][p1yVisual] = backgroundPatternTable[p1LocationVisual];
+			groundVisual[p1xVisual][p1yVisual] = setColorPalette(backgroundPatternTable[p1LocationVisual], 0);
 			//groundVisual[p2xVisual][p2yVisual] = background[groundData[2 * p2xVisual][2 * p2yVisual]][groundData[2 * p2xVisual + 1][2 * p2yVisual]][groundData[2 * p2xVisual][2 * p2yVisual + 1]][groundData[2 * p2xVisual + 1][2 * p2yVisual + 1]];
 			int p2LocationVisual = getVisualIndex((groundData[2 * p2xVisual][2 * p2yVisual]) + 4*(groundData[2 * p2xVisual + 1][2 * p2yVisual]) + 16*(groundData[2 * p2xVisual][2 * p2yVisual + 1]) + 64*(groundData[2 * p2xVisual + 1][2 * p2yVisual + 1]));
-			groundVisual[p2xVisual][p2yVisual] = backgroundPatternTable[p2LocationVisual];
+			groundVisual[p2xVisual][p2yVisual] = setColorPalette(backgroundPatternTable[p2LocationVisual], 0);
 
 			directions[0] = nextDirections[0];
 			directions[1] = nextDirections[1];
@@ -574,141 +574,159 @@ public class ECE554VisualSimTronsistorISA {
 				}
 			}
 
-			try {
-//				BufferedImage bikeBufferedImage0 = ImageIO.read(new File("images/foreground/bike0.png"));
-//				BufferedImage bikeBufferedImage1 = ImageIO.read(new File("images/foreground/bike1.png"));
-//				BufferedImage bikeBufferedImage2 = ImageIO.read(new File("images/foreground/bike2.png"));
-
-				BufferedImage bikeBufferedImage0 = ImageIO.read(new File("images/foreground/bike0.png"));
-				BufferedImage bikeBufferedImage1 = ImageIO.read(new File("images/foreground/bike1.png"));
-				BufferedImage bikeBufferedImage2 = ImageIO.read(new File("images/foreground/bike2.png"));
-				
-				int p1rotationCount = 0;
-				int p1xOffset = 0;
-				int p1yOffset = 1;
-				int p2rotationCount = 0;
-				int p2xOffset = 0;
-				int p2yOffset = 1;
-				switch (directions[0]) {
-				case 'a': 
-					p1rotationCount = 3;
-					p1xOffset = 1;
-					p1yOffset = 0;
-					break;
-				case 's': 
-					p1rotationCount = 2;
-					p1xOffset = 0;
-					p1yOffset = -1;
-					break;
-				case 'd': 
-					p1rotationCount = 1;
-					p1xOffset = -1;
-					p1yOffset = 0;
-					break;
-				}
-
-				switch (directions[1]) {
-				case 'j': 
-					p2rotationCount = 3;
-					p2xOffset = 1;
-					p2yOffset = 0;
-					break;
-				case 'k': 
-					p2rotationCount = 2; 
-					p2xOffset = 0;
-					p2yOffset = -1;
-					break;
-				case 'l': 
-					p2rotationCount = 1;
-					p2xOffset = -1;
-					p2yOffset = 0;
-					break;
-				}
-
-				AffineTransform affineTransform;
-				AffineTransformOp affineTransformOp;
-
-				affineTransform = new AffineTransform();
-				affineTransform.rotate(Math.toRadians(90) * p1rotationCount, DISPLAY_LOGIC_IMAGE_DIMENSION / 2, DISPLAY_LOGIC_IMAGE_DIMENSION / 2);
-				affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
-				int player1ColorPalette = 2;
-				BufferedImage player1BikeBufferedImage0 = setColorPalette(affineTransformOp.filter(bikeBufferedImage0, null), player1ColorPalette);
-				BufferedImage player1BikeBufferedImage1 = setColorPalette(affineTransformOp.filter(bikeBufferedImage1, null), player1ColorPalette);
-				BufferedImage player1BikeBufferedImage2 = setColorPalette(affineTransformOp.filter(bikeBufferedImage2, null), player1ColorPalette);
-
-				affineTransform = new AffineTransform();
-				affineTransform.rotate(Math.toRadians(90) * p2rotationCount, DISPLAY_LOGIC_IMAGE_DIMENSION / 2, DISPLAY_LOGIC_IMAGE_DIMENSION / 2);
-				affineTransformOp = new AffineTransformOp(affineTransform, AffineTransformOp.TYPE_BILINEAR);
-				BufferedImage player2BikeBufferedImage0 = affineTransformOp.filter(bikeBufferedImage0, null);
-				BufferedImage player2BikeBufferedImage1 = affineTransformOp.filter(bikeBufferedImage1, null);
-				BufferedImage player2BikeBufferedImage2 = affineTransformOp.filter(bikeBufferedImage2, null);
-
-
-				//for (int i = 0; i < player2BikeBufferedImage.getHeight(); i++) {
-				//	player2BikeBufferedImage.setRGB(i, i, 65280);
-				//	//player2BikeBufferedImage.setRGB(i+1, i+1, 255);
-				//}
-
-				//System.out.println("bikeHeight = " + bikeHeight + "; bikeWidth = " + bikeWidth);
-				graphics.drawImage(player1BikeBufferedImage0, p1x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-				graphics.drawImage(player1BikeBufferedImage1, p1x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-				graphics.drawImage(player1BikeBufferedImage2, p1x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-				graphics.drawImage(player2BikeBufferedImage0, p2x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-				graphics.drawImage(player2BikeBufferedImage1, p2x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-				graphics.drawImage(player2BikeBufferedImage2, p2x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-
-				//graphics.drawImage(player2BikeBufferedImage, p2x - maxDimension / 2, p2y - maxDimension / 2, maxDimension, maxDimension, null);
-
-				//graphics.drawImage(bikeBufferedImage, p1x - bikeBufferedImage.getWidth() / 2, p1y - bikeBufferedImage.getHeight() / 2, bikeBufferedImage.getWidth(), bikeBufferedImage.getHeight(), null);
-				//graphics.drawImage(bikeBufferedImage, p2x * DISPLAY_LOGIC_UNIT_SIZE, p2y * DISPLAY_LOGIC_UNIT_SIZE, 48, 16, null);
-			} catch (IOException e) {
-				e.printStackTrace();
+			int p1startingTileNumber = spriteAssemblerHash.get("light_bike_small_index"); // index into spritePatternTable
+			int p1attribute = 0;	// determines rotation
+			int p1xOffset = 0;		// determines where to draw head and tail
+			int p1yOffset = 1;		// determines where to draw head and tail
+			int p2startingTileNumber = spriteAssemblerHash.get("light_bike_small_index"); // index into spritePatternTable
+			int p2attribute = 0;	// determines rotation
+			int p2xOffset = 0;		// determines where to draw head and tail
+			int p2yOffset = 1;		// determines where to draw head and tail
+			switch (directions[0]) {
+			case 'a': 
+				p1startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
+				p1attribute = 1;
+				p1xOffset = 1;
+				p1yOffset = 0;
+				break;
+			case 's': 
+				p1attribute = 2;
+				p1xOffset = 0;
+				p1yOffset = -1;
+				break;
+			case 'd': 
+				p1startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
+				p1attribute = 3;
+				p1xOffset = -1;
+				p1yOffset = 0;
+				break;
 			}
 
-			//			graphics.fillRect(25, 25, 2, 2);
-			//			graphics.fillRect(50, 50, 2, 2);
+			switch (directions[1]) {
+			case 'j': 
+				p2startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
+				p2attribute = 1;
+				p2xOffset = 1;
+				p2yOffset = 0;
+				break;
+			case 'k': 
+				p2attribute = 2; 
+				p2xOffset = 0;
+				p2yOffset = -1;
+				break;
+			case 'l': 
+				p2startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
+				p2attribute = 3;
+				p2xOffset = -1;
+				p2yOffset = 0;
+				break;
+			}
+
+			// load tile number
+			BufferedImage player1BikeBufferedImage0 = spritePatternTable[p1startingTileNumber];
+			BufferedImage player1BikeBufferedImage1 = spritePatternTable[p1startingTileNumber + 1];
+			BufferedImage player1BikeBufferedImage2 = spritePatternTable[p1startingTileNumber + 2];
+			BufferedImage player2BikeBufferedImage0 = spritePatternTable[p2startingTileNumber];
+			BufferedImage player2BikeBufferedImage1 = spritePatternTable[p2startingTileNumber + 1];
+			BufferedImage player2BikeBufferedImage2 = spritePatternTable[p2startingTileNumber + 2];
+
+			// set attributes
+			player1BikeBufferedImage0 = setFlip(player1BikeBufferedImage0, p1attribute == 3, p1attribute == 2);
+			player1BikeBufferedImage1 = setFlip(player1BikeBufferedImage1, p1attribute == 3, p1attribute == 2);
+			player1BikeBufferedImage2 = setFlip(player1BikeBufferedImage2, p1attribute == 3, p1attribute == 2);
+			player2BikeBufferedImage0 = setFlip(player2BikeBufferedImage0, p2attribute == 3, p2attribute == 2);
+			player2BikeBufferedImage1 = setFlip(player2BikeBufferedImage1, p2attribute == 3, p2attribute == 2);
+			player2BikeBufferedImage2 = setFlip(player2BikeBufferedImage2, p2attribute == 3, p2attribute == 2);
+
+			// set color palettes
+			int player1ColorPalette = 2;
+			player1BikeBufferedImage0 = setColorPalette(player1BikeBufferedImage0, player1ColorPalette);
+			player1BikeBufferedImage1 = setColorPalette(player1BikeBufferedImage1, player1ColorPalette);
+			player1BikeBufferedImage2 = setColorPalette(player1BikeBufferedImage2, player1ColorPalette);
+			int player2ColorPalette = 0;
+			player2BikeBufferedImage0 = setColorPalette(player2BikeBufferedImage0, player2ColorPalette);
+			player2BikeBufferedImage1 = setColorPalette(player2BikeBufferedImage1, player2ColorPalette);
+			player2BikeBufferedImage2 = setColorPalette(player2BikeBufferedImage2, player2ColorPalette);
+
+			// draw light bikes
+			graphics.drawImage(player1BikeBufferedImage0, p1x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			graphics.drawImage(player1BikeBufferedImage1, p1x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			graphics.drawImage(player1BikeBufferedImage2, p1x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			graphics.drawImage(player2BikeBufferedImage0, p2x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			graphics.drawImage(player2BikeBufferedImage1, p2x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			graphics.drawImage(player2BikeBufferedImage2, p2x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
 		}
 	}
 
-	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex) {
-
-		// colorPaletteIndex0 = RGB
-		// colorPaletteIndex1 = CMY
-		// colorPaletteIndex2 = BRG
-		// colorPaletteIndex3 = BBB
-
-		int[] colors = { Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
-
-		switch (colorPaletteIndex) {
-		case 1: 
-			colors[0] = Color.CYAN.getRGB();
-			colors[1] = Color.MAGENTA.getRGB();
-			colors[2] = Color.YELLOW.getRGB();
-			break;
-		case 2: 
-			colors[0] = Color.GREEN.getRGB();
-			colors[1] = Color.RED.getRGB();
-			colors[2] = Color.BLUE.getRGB();
-			break;
-		case 3: 
-			colors[0] = Color.BLUE.getRGB();
-			colors[1] = Color.BLUE.getRGB();
-			colors[2] = Color.BLUE.getRGB();
-			break;
-		}
-		for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
-			for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
-				if (inputBufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
-				} else if (inputBufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
-					inputBufferedImage.setRGB(x, y, colors[0]);
-				} else if (inputBufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
-					inputBufferedImage.setRGB(x, y, colors[1]);
-				} else if (inputBufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
-					inputBufferedImage.setRGB(x, y, colors[2]);
+	public BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipHorizontal, boolean isFlipVertical) {
+		
+		BufferedImage outputBufferedImage = new BufferedImage(inputBufferedImage.getWidth(), inputBufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+		if (!isFlipHorizontal && !isFlipVertical) {
+			return inputBufferedImage;
+		} else if (!isFlipHorizontal && isFlipVertical) {
+			for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+				for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+					outputBufferedImage.setRGB(x, y, inputBufferedImage.getRGB(x, inputBufferedImage.getHeight() - 1 - y));
+				}
+			}
+		} else if (isFlipHorizontal && !isFlipVertical) {
+			for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+				for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+					outputBufferedImage.setRGB(x, y, inputBufferedImage.getRGB(inputBufferedImage.getWidth() - 1 - x, y));
+				}
+			}
+		} else {
+			for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+				for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+					outputBufferedImage.setRGB(x, y, inputBufferedImage.getRGB(inputBufferedImage.getWidth() - 1 - x, inputBufferedImage.getHeight() - 1 - y));
 				}
 			}
 		}
-		return inputBufferedImage;
+		return outputBufferedImage;
+	}
+	
+	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex) {
+
+		// colorPaletteIndex0 = BlRGB
+		// colorPaletteIndex1 = BlCMY
+		// colorPaletteIndex2 = BlBRG
+		// colorPaletteIndex3 = BlBBB
+
+		int[] colors = { Color.PINK.getRGB(), Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
+							//	^ is the global background color
+		switch (colorPaletteIndex) {
+		case 1: 
+			colors[1] = Color.CYAN.getRGB();
+			colors[2] = Color.MAGENTA.getRGB();
+			colors[3] = Color.YELLOW.getRGB();
+			break;
+		case 2: 
+			colors[1] = Color.GREEN.getRGB();
+			colors[2] = Color.RED.getRGB();
+			colors[3] = Color.BLUE.getRGB();
+			break;
+		case 3: 
+			colors[1] = Color.BLUE.getRGB();
+			colors[2] = Color.BLUE.getRGB();
+			colors[3] = Color.BLUE.getRGB();
+			break;
+		}
+		
+		BufferedImage outputBufferedImage = new BufferedImage(inputBufferedImage.getWidth(), inputBufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+		for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+			for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+				if (inputBufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[0]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[1]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[2]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[3]);
+				}
+			}
+		}
+		return outputBufferedImage;
 	}
 
 	public void sleep(int milliseconds) {
