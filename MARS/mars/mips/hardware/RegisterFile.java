@@ -60,10 +60,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          	new Register("$s4", 20, 0),new Register("$s5", 21, 0),
          	new Register("$s6", 22, 0),new Register("$s7", 23, 0),
          	new Register("$t8", 24, 0),new Register("$t9", 25, 0),
-         	new Register("$k0", 26, 0),new Register("$k1", 27, 0),
-         	new Register("$gp", GLOBAL_POINTER_REGISTER, Memory.globalPointer),
-         	new Register("$sp", STACK_POINTER_REGISTER, Memory.stackPointer),
-         	new Register("$fp", 30, 0),new Register("$ra", 31, 0)
+         	new Register("$t10", 26, 0),new Register("$au", 27, 0),
+         	//new Register("$gp", GLOBAL_POINTER_REGISTER, Memory.globalPointer),
+			new Register("$idr", 28, 0),
+         	//new Register("$sp", STACK_POINTER_REGISTER, Memory.stackPointer),
+			new Register("$sp", STACK_POINTER_REGISTER, 4095 * 4),
+         	//new Register("$fp", 30, 0),
+			new Register("$epc", 30, 0),
+			new Register("$ra", 31, 0)
            };
          												  
       private static Register programCounter= new Register("pc", 32, Memory.textBaseAddress); 

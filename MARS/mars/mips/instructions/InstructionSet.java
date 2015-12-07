@@ -180,7 +180,7 @@ public class InstructionSet
 		}
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
-				groundVisual[x][y] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0000_index")], 0);
+				// commented out, do this with TronMIPStor ISA instead; groundVisual[x][y] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0000_index")], 0);
 			}
 		}
 
@@ -189,7 +189,7 @@ public class InstructionSet
 			groundData[i][0] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[i][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3300_index")], 0);
+			// commented out, do this with TronMIPStor ISA instead; groundVisual[i][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3300_index")], 0);
 		}
 
 		// left
@@ -197,7 +197,7 @@ public class InstructionSet
 			groundData[0][i] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[0][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3030_index")], 0);
+			// commented out, do this with TronMIPStor ISA instead; groundVisual[0][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3030_index")], 0);
 		}
 
 		// right
@@ -205,7 +205,7 @@ public class InstructionSet
 			groundData[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE - 1][i] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0303_index")], 0);
+			// commented out, do this with TronMIPStor ISA instead; groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0303_index")], 0);
 		}
 
 		// bottom
@@ -213,18 +213,19 @@ public class InstructionSet
 			groundData[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE - 1] = 3;
 		}
 		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			groundVisual[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0033_index")], 0);
+			// commented out, do this with TronMIPStor ISA instead; groundVisual[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0033_index")], 0);
 		}
 
 		// need to recover the corners since images overwrite each other
-		// groundVisual[0][0] = ImageIO.read(new File("images/background/background3330.png"));
-		groundVisual[0][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3330_index")], 0);
-		// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = ImageIO.read(new File("images/background/background3303.png"));
-		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3303_index")], 0);
-		// groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background3033.png"));
-		groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3033_index")], 0);
-		// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background0333.png"));
-		groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0333_index")], 0);
+		// commented out, do this with TronMIPStor ISA instead; 
+			// groundVisual[0][0] = ImageIO.read(new File("images/background/background3330.png"));
+			//groundVisual[0][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3330_index")], 0);
+			// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = ImageIO.read(new File("images/background/background3303.png"));
+			//groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3303_index")], 0);
+			// groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background3033.png"));
+			//groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3033_index")], 0);
+			// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background0333.png"));
+			//groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0333_index")], 0);
 
 		PPU ppu = new PPU();
 		jFrame.add(ppu);
@@ -1303,7 +1304,8 @@ public class InstructionSet
 					 int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 					 int sbt = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 backgroundTile[BGindex] = sbt;
-					 groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[BGindex], backgroundAttribute[BGindex]);
+					 // TODO update visual data as well
+					 groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex]);
                   }
                }));
          instructionList.add(        
@@ -1335,7 +1337,7 @@ public class InstructionSet
 					 int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 					 int sba = RegisterFile.getValue(operands[1]) & 0x00000003;
 					 backgroundAttribute[BGindex] = sba;
-					 groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[BGindex], backgroundAttribute[BGindex]);
+					 groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex]);
                   }
                }));
          instructionList.add(        

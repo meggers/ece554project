@@ -59,10 +59,11 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 	# Fill the whole background with blank sprites
 	li $t0,0
 	li $t1,1024
+	li $t2,background0000_index
 	whileLoopToLoadAllBackground:
 		sub $zero,$t1,$t0
 		blt LoadTopBackground
-		# sbt $t0,background0000
+		sbt $t0,$t2
 		addi $t0,$t0,1
 		b whileLoopToLoadAllBackground
 	
