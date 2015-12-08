@@ -70,11 +70,11 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 	# Fill the top of the background with the top sprites 
 	LoadTopBackground: li $t0,0
 		li $t1,32
-		
+		li $t2,background3300_index
 	whileLoopToLoadTopBackground:
 		sub $zero,$t1,$t0
 		blt LoadLeftBackground
-		# sbt $t0,background3300
+		sbt $t0,$t2
 		addi $t0,$t0,1
 		b whileLoopToLoadTopBackground
 	
@@ -82,11 +82,11 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 	LoadLeftBackground:
 		li $t0,0
 		li $t1,1024
-		
+		li $t2,background3030_index
 	whileLoopToLoadLeftBackground:
 		sub $zero,$t1,$t0
 		blt LoadRightBackground
-		# sbt $t0,background3030
+		sbt $t0,$t2
 		addi $t0,$t0,32
 		b whileLoopToLoadLeftBackground
 	
@@ -94,11 +94,11 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 	LoadRightBackground:
 		li $t0,31
 		li $t1,1024
-		
+		li $t2,background0303_index
 	whileLoopToLoadRightBackground:
 		sub $zero,$t1,$t0
 		blt LoadBottomBackground
-		# sbt $t0,background0303
+		sbt $t0,$t2
 		addi $t0,$t0,32
 		b whileLoopToLoadRightBackground
 	
@@ -106,24 +106,38 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 	LoadBottomBackground:
 		li $t0,992 # 31 * 32
 		li $t1,1024
-		
+		li $t2,background0033_index
 	whileLoopToLoadBottomBackground:
 		sub $zero,$t1,$t0
 		blt LoadCornerBackground
-		# sbt $t0,background0033
+		sbt $t0,$t2
 		addi $t0,$t0,1
 		b whileLoopToLoadBottomBackground
 	
 	# Load the corners of the background with the corner sprites
 	LoadCornerBackground:
 		li $t0, 0
+		li $t2,background3330_index
+		sbt $t0,$t2
 		# sbt $t0,background3330
 		li $t0, 31
+		li $t2,background3303_index
+		sbt $t0,$t2
 		# sbt $t0,background3303
 		li $t0, 992
+		li $t2,background3033_index
+		sbt $t0,$t2
 		# sbt $t0,background3033
 		li $t0, 1023
+		li $t2,background0333_index
+		sbt $t0,$t2
 		# sbt $t0,background0333
+	#commented out, kai was testing this on dec 8th
+	#li $t0,0
+	#li $t1,light_bike_small_rotated_index
+	#sft $t0,$t1
+	#li $t1,0
+	#sfa $t0,$t1
 					
 LoadFrontSprites: 	# Load the sprites from the pattern table into the OAM
 					# Set the attributes of the sprites for the beginning of the game
