@@ -829,7 +829,7 @@ public class InstructionSet
                 new BasicInstruction("nop",
             	 "Null operation : machine code is all zeroes",
                 BasicInstructionFormat.R_FORMAT,
-                "111111 11111 11111 11111 11111 111111",
+                "111111 00000000000000000000000000",
                 new SimulationCode()
                {
                    public void simulate(ProgramStatement statement) throws ProcessingException
@@ -1062,7 +1062,28 @@ public class InstructionSet
                         }
                   }
                }));
-		
+         instructionList.add(
+                new BasicInstruction("lw $t1, $t2, -100",
+            	 "Load word : Set $t1 to contents of effective memory word address",
+                BasicInstructionFormat.I_FORMAT,
+                "001000 fffff sssss tttttttttttttttt",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+                     try
+                     {
+                        RegisterFile.updateRegister(operands[0],
+                            Globals.memory.getWord(
+                            RegisterFile.getValue(operands[1]) + operands[2]));
+                     } 
+                         catch (AddressErrorException e)
+                        {
+                           throw new ProcessingException(statement, e);
+                        }
+                  }
+               }));
          instructionList.add(
                 new BasicInstruction("sw $t1,-100($t2)",
                 "Store word : Store contents of $t1 into effective memory word address",
@@ -1085,7 +1106,28 @@ public class InstructionSet
                         }
                   }
                }));
-		
+         instructionList.add(
+                new BasicInstruction("sw $t1, $t2, -100",
+                "Store word : Store contents of $t1 into effective memory word address",
+            	 BasicInstructionFormat.I_FORMAT,
+                "001100 fffff sssss tttttttttttttttt",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+                     try
+                     {
+                        Globals.memory.setWord(
+                            RegisterFile.getValue(operands[1]) + operands[2],
+                            RegisterFile.getValue(operands[0]));
+                     } 
+                         catch (AddressErrorException e)
+                        {
+                           throw new ProcessingException(statement, e);
+                        }
+                  }
+               }));
          instructionList.add(
                 new BasicInstruction("b label",
                 "Branch unconditional : Branch to statement at label's address",
@@ -1203,7 +1245,7 @@ public class InstructionSet
 				new BasicInstruction("push $t0",
 				"Push a value from a register onto the stack",
 				BasicInstructionFormat.I_FORMAT,
-				"001110 ffffffffffffffffffffffffff",
+				"001110 fffff 000000000000000000000",
 				
 				new SimulationCode()
 				{
@@ -1228,7 +1270,7 @@ public class InstructionSet
 				new BasicInstruction("pop $t0",
 				"Pop a value from the stack into a register",
 				BasicInstructionFormat.I_FORMAT,
-				"001010 ffffffffffffffffffffffffff",
+				"001010 fffff 000000000000000000000",
 				
 				new SimulationCode()
 				{
