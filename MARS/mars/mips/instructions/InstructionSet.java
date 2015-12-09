@@ -574,7 +574,7 @@ public class InstructionSet
 
 		instructionList.add(
 				new BasicInstruction("nop",
-						"Null operation : machine code is all zeroes",
+						"Null operation : do nothing",
 						BasicInstructionFormat.R_FORMAT,
 						"111111 00000000000000000000000000",
 						new SimulationCode()
@@ -801,7 +801,21 @@ public class InstructionSet
 						// sign extending the li
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
-				}));			   
+				}));
+		instructionList.add(
+				new BasicInstruction("li $t1,label",
+						"Load Immediate : Set $t1 to immediate sign extended address of label",
+						BasicInstructionFormat.I_FORMAT,
+						"001001 fffff 00000 ssssssssssssssss",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						// sign extending the li
+						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
+					}
+				}));			
 		instructionList.add(
 				new BasicInstruction("lw $t1,-100($t2)",
 						"Load word : Set $t1 to contents of effective memory word address",
@@ -826,6 +840,28 @@ public class InstructionSet
 				}));
 		instructionList.add(
 				new BasicInstruction("lw $t1,$t2,-100",
+						"Load word : Set $t1 to contents of effective memory word address",
+						BasicInstructionFormat.I_FORMAT,
+						"001000 fffff sssss tttttttttttttttt",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						try
+						{
+							RegisterFile.updateRegister(operands[0],
+									Globals.memory.getWord(
+											RegisterFile.getValue(operands[1]) + operands[2]));
+						} 
+						catch (AddressErrorException e)
+						{
+							throw new ProcessingException(statement, e);
+						}
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("lw $t1,$t2,label",
 						"Load word : Set $t1 to contents of effective memory word address",
 						BasicInstructionFormat.I_FORMAT,
 						"001000 fffff sssss tttttttttttttttt",
