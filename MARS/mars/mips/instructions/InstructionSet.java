@@ -1267,6 +1267,31 @@ public class InstructionSet
                   }
                }));
          instructionList.add(        
+                new BasicInstruction("sld $t0, $t1", 
+            	 "Sprite Load : Set Coprocessor register $t0[5:0] to $t1[31:0]",
+            	 BasicInstructionFormat.R_FORMAT,
+                "010011 fffff sssss 0000000000000000",
+                new SimulationCode()
+               {
+                   public void simulate(ProgramStatement statement) throws ProcessingException
+                  {
+                     int[] operands = statement.getOperands();
+					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
+					 int sld = RegisterFile.getValue(operands[1]);
+                     Coprocessor1.updateRegister(OAMindex, sld);
+					 int sslY = sld & 0x000000FF;
+					 int sfa = (sld & 0x0000FF00) >>> 8;
+					 int sft = (sld & 0x00FF0000) >>> 16;
+					 int sslX = (sld & 0xFF000000) >>> 24;
+					 spriteData[OAMindex].setyPosition(sslY);
+					 spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
+					 spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
+					 spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
+					 spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
+					 spriteData[OAMindex].setxPosition(sslX);
+                  }
+               }));
+         instructionList.add(        
                 new BasicInstruction("ssl $t0, $t1", 
             	 "Sprite Set Location : Set Coprocessor register $t0[5:0][31:24] to $t1[7:0] and Set Coprocessor register $t0[7:0] to $t2[7:0]",
             	 BasicInstructionFormat.R_FORMAT,
