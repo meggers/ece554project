@@ -133,11 +133,21 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 		sbt $t0,$t2
 		# sbt $t0,background0333
 	#commented out, kai was testing this on dec 8th
-	#li $t0,0
-	#li $t1,light_bike_small_rotated_index
-	#sft $t0,$t1
-	#li $t1,0
-	#sfa $t0,$t1
+	li $t0,0
+	li $t1,light_bike_small_rotated_index
+	sft $t0,$t1
+	li $t1,0
+	sfa $t0,$t1
+	ssl $t0,$t1
+	li $t1,15
+	ssl $t0,$t1
+	li $t1,3840 #256*15
+	ssl $t0,$t1
+	li $t1,1
+	sfa $t0,$t1
+	li $t1,64 # flip and revert color palette
+	
+	sfa $t0,$t1
 					
 LoadFrontSprites: 	# Load the sprites from the pattern table into the OAM
 					# Set the attributes of the sprites for the beginning of the game
@@ -430,8 +440,7 @@ p1displayupdate:
 		pop $t2
 		pop $t1
 		pop $t0
-		return
-		
+		ret
 		
 		
 	p2displayupdate:
@@ -626,7 +635,7 @@ p1displayupdate:
 		pop $t2
 		pop $t1
 		pop $t0
-		return
+		ret
 
 
 	

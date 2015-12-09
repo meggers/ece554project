@@ -77,6 +77,7 @@ public class InstructionSet
 	int DISPLAY_LOGIC_IMAGE_DIMENSION = 8;
 	int DISPLAY_LOGIC_UNIT_SIZE = 4;
 	BufferedImage[][] groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION];
+	SpriteData[] spriteData = new SpriteData[64];
 	int[][] groundData = new int[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
 	// commented out, use backgroundPatternTable for TronMIPSter; BufferedImage[][][][] background = new BufferedImage[4][4][4][4];
 
@@ -87,6 +88,81 @@ public class InstructionSet
 
 	char[] directions = {'d', 'j'};
 	char[] nextDirections = {'d', 'j'};
+	
+	class SpriteData {
+		BufferedImage bufferedImage;
+		int yPosition;
+		int xPosition;
+		int colorPaletteIndex;
+		boolean isFlipHorizontal;
+		boolean isFlipVertical;
+		
+		public SpriteData(BufferedImage bufferedImage, int yPosition, int xPosition, int colorPaletteIndex, boolean isFlipHorizontal, boolean isFlipVertical) {
+			this.bufferedImage = bufferedImage;
+			this.yPosition = yPosition;
+			this.xPosition = xPosition;
+			this.colorPaletteIndex = colorPaletteIndex;
+			this.isFlipHorizontal = isFlipHorizontal;
+			this.isFlipVertical = isFlipVertical;
+		}
+		
+		public void remove() {
+			bufferedImage = spritePatternTable[255]; 
+			yPosition = 255;
+			xPosition = 255;
+			colorPaletteIndex = 3;
+			isFlipHorizontal = true;
+			isFlipVertical = true;
+		}
+		
+		public BufferedImage getBufferedImage() {
+			return bufferedImage;
+		}
+
+		public void setBufferedImage(BufferedImage bufferedImage) {
+			this.bufferedImage = bufferedImage;
+		}
+
+		public int getyPosition() {
+			return yPosition;
+		}
+
+		public void setyPosition(int yPosition) {
+			this.yPosition = yPosition;
+		}
+
+		public int getxPosition() {
+			return xPosition;
+		}
+
+		public void setxPosition(int xPosition) {
+			this.xPosition = xPosition;
+		}
+
+		public int getColorPaletteIndex() {
+			return colorPaletteIndex;
+		}
+
+		public void setColorPaletteIndex(int colorPaletteIndex) {
+			this.colorPaletteIndex = colorPaletteIndex;
+		}
+
+		public boolean isFlipHorizontal() {
+			return isFlipHorizontal;
+		}
+
+		public void setFlipHorizontal(boolean isFlipHorizontal) {
+			this.isFlipHorizontal = isFlipHorizontal;
+		}
+
+		public boolean isFlipVertical() {
+			return isFlipVertical;
+		}
+
+		public void setFlipVertical(boolean isFlipVertical) {
+			this.isFlipVertical = isFlipVertical;
+		}
+	}
 	
 	class PPUSimulator implements Runnable {
 		public void run() {
@@ -172,6 +248,11 @@ public class InstructionSet
 		nextDirections[0] = 'd';
 		nextDirections[1] = 'j';
 
+		// OAM
+		for (int OAMindex = 0; OAMindex < 64; ++OAMindex) {
+			spriteData[OAMindex] = new SpriteData(spritePatternTable[255], 255, 255, 3, true, true);
+		}
+		
 		// all
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++y) {
@@ -613,91 +694,17 @@ public class InstructionSet
 				}
 			}
 
-			int p1startingTileNumber = spriteAssemblerHash.get("light_bike_small_index"); // index into spritePatternTable
-			int p1attribute = 0;	// determines rotation
-			int p1xOffset = 0;		// determines where to draw head and tail
-			int p1yOffset = 1;		// determines where to draw head and tail
-			int p2startingTileNumber = spriteAssemblerHash.get("light_bike_small_index"); // index into spritePatternTable
-			int p2attribute = 0;	// determines rotation
-			int p2xOffset = 0;		// determines where to draw head and tail
-			int p2yOffset = 1;		// determines where to draw head and tail
-			switch (directions[0]) {
-			case 'a': 
-				p1startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
-				p1attribute = 1;
-				p1xOffset = 1;
-				p1yOffset = 0;
-				break;
-			case 's': 
-				p1attribute = 2;
-				p1xOffset = 0;
-				p1yOffset = -1;
-				break;
-			case 'd': 
-				p1startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
-				p1attribute = 3;
-				p1xOffset = -1;
-				p1yOffset = 0;
-				break;
-			}
-
-			switch (directions[1]) {
-			case 'j': 
-				p2startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
-				p2attribute = 1;
-				p2xOffset = 1;
-				p2yOffset = 0;
-				break;
-			case 'k': 
-				p2attribute = 2; 
-				p2xOffset = 0;
-				p2yOffset = -1;
-				break;
-			case 'l': 
-				p2startingTileNumber = spriteAssemblerHash.get("light_bike_small_rotated_index");
-				p2attribute = 3;
-				p2xOffset = -1;
-				p2yOffset = 0;
-				break;
-			}
-
-			// load tile number
-			BufferedImage player1BikeBufferedImage0 = spritePatternTable[p1startingTileNumber];
-			BufferedImage player1BikeBufferedImage1 = spritePatternTable[p1startingTileNumber + 1];
-			BufferedImage player1BikeBufferedImage2 = spritePatternTable[p1startingTileNumber + 2];
-			BufferedImage player2BikeBufferedImage0 = spritePatternTable[p2startingTileNumber];
-			BufferedImage player2BikeBufferedImage1 = spritePatternTable[p2startingTileNumber + 1];
-			BufferedImage player2BikeBufferedImage2 = spritePatternTable[p2startingTileNumber + 2];
-
-			// set attributes
-			player1BikeBufferedImage0 = setFlip(player1BikeBufferedImage0, p1attribute == 3, p1attribute == 2);
-			player1BikeBufferedImage1 = setFlip(player1BikeBufferedImage1, p1attribute == 3, p1attribute == 2);
-			player1BikeBufferedImage2 = setFlip(player1BikeBufferedImage2, p1attribute == 3, p1attribute == 2);
-			player2BikeBufferedImage0 = setFlip(player2BikeBufferedImage0, p2attribute == 3, p2attribute == 2);
-			player2BikeBufferedImage1 = setFlip(player2BikeBufferedImage1, p2attribute == 3, p2attribute == 2);
-			player2BikeBufferedImage2 = setFlip(player2BikeBufferedImage2, p2attribute == 3, p2attribute == 2);
-
-			// set color palettes
-			int player1ColorPalette = 2;
-			player1BikeBufferedImage0 = setColorPalette(player1BikeBufferedImage0, player1ColorPalette);
-			player1BikeBufferedImage1 = setColorPalette(player1BikeBufferedImage1, player1ColorPalette);
-			player1BikeBufferedImage2 = setColorPalette(player1BikeBufferedImage2, player1ColorPalette);
-			int player2ColorPalette = 0;
-			player2BikeBufferedImage0 = setColorPalette(player2BikeBufferedImage0, player2ColorPalette);
-			player2BikeBufferedImage1 = setColorPalette(player2BikeBufferedImage1, player2ColorPalette);
-			player2BikeBufferedImage2 = setColorPalette(player2BikeBufferedImage2, player2ColorPalette);
-
 			// draw light bikes
-			graphics.drawImage(player1BikeBufferedImage0, p1x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-			graphics.drawImage(player1BikeBufferedImage1, p1x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-			graphics.drawImage(player1BikeBufferedImage2, p1x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p1y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p1yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-			graphics.drawImage(player2BikeBufferedImage0, p2x * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE - 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-			graphics.drawImage(player2BikeBufferedImage1, p2x * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 0 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
-			graphics.drawImage(player2BikeBufferedImage2, p2x * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2xOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, p2y * DISPLAY_LOGIC_UNIT_SIZE + 1 * p2yOffset * DISPLAY_LOGIC_IMAGE_DIMENSION - 2, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			for (int spriteIndex = 63; spriteIndex >= 0; --spriteIndex) {
+				if (spriteData[spriteIndex].getyPosition() == 255) {
+					continue;
+				}
+				graphics.drawImage(setColorPalette(setFlip(spriteData[spriteIndex].getBufferedImage(), spriteData[spriteIndex].isFlipVertical(), spriteData[spriteIndex].isFlipHorizontal()), spriteData[spriteIndex].getColorPaletteIndex()), spriteData[spriteIndex].getxPosition(), spriteData[spriteIndex].getyPosition(), DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			}
 		}
 	}
 	
-	public BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipHorizontal, boolean isFlipVertical) {
+	public BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipVertical, boolean isFlipHorizontal) {
 		
 		BufferedImage outputBufferedImage = new BufferedImage(inputBufferedImage.getWidth(), inputBufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
 		if (!isFlipHorizontal && !isFlipVertical) {
@@ -1171,7 +1178,7 @@ public class InstructionSet
                   }
                }));
 			instructionList.add(
-                new BasicInstruction("return", 
+                new BasicInstruction("ret", 
             	 "Return from a previous function call",
             	 BasicInstructionFormat.J_FORMAT,
                 "000101 ffffffffffffffffffffffffff",
@@ -1254,7 +1261,9 @@ public class InstructionSet
                    public void simulate(ProgramStatement statement) throws ProcessingException
                   {
                      int[] operands = statement.getOperands();
-                     Coprocessor1.updateRegister(RegisterFile.getValue(operands[0]) & 0x0000003F, 0xFFFFFFFF);
+					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
+                     Coprocessor1.updateRegister(OAMindex, 0xFFFFFFFF);
+					 spriteData[OAMindex].remove();
                   }
                }));
          instructionList.add(        
@@ -1269,10 +1278,12 @@ public class InstructionSet
                      int[] operands = statement.getOperands();
 					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 					 int sslY = RegisterFile.getValue(operands[1]) & 0x000000FF;
-					 int sslX = RegisterFile.getValue(operands[1]) & 0x0000FF00;
+					 int sslX = (RegisterFile.getValue(operands[1]) & 0x0000FF00) >>> 8;
 					 // int mask = 0x00FFFF00; mask to keep sprite tile and attribute
 					 Coprocessor1.updateRegister(OAMindex,
-					  ((Coprocessor1.getValue(OAMindex) & 0x00FFFF00) + (sslX << 16) + sslY)); // shift 16 more since it already shifted by 8
+					  ((Coprocessor1.getValue(OAMindex) & 0x00FFFF00) + (sslX << 24) + sslY)); // could have shift 16 more since it already shifted by 8
+					  spriteData[OAMindex].setyPosition(sslY);
+					  spriteData[OAMindex].setxPosition(sslX);
                   }
                }));
          instructionList.add(        
@@ -1289,6 +1300,7 @@ public class InstructionSet
 					 int sft = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 Coprocessor1.updateRegister(OAMindex,
 					  ((Coprocessor1.getValue(OAMindex) & 0xFF00FFFF) + (sft << 16)));
+					  spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
                   }
                }));
          instructionList.add(        
@@ -1304,7 +1316,6 @@ public class InstructionSet
 					 int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 					 int sbt = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 backgroundTile[BGindex] = sbt;
-					 // TODO update visual data as well
 					 groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex]);
                   }
                }));
@@ -1322,6 +1333,9 @@ public class InstructionSet
 					 int sfa = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 Coprocessor1.updateRegister(OAMindex,
 					  ((Coprocessor1.getValue(OAMindex) & 0xFFFF00FF) + (sfa << 8)));
+					  spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
+					  spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
+					  spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
                   }
                }));
          instructionList.add(        
