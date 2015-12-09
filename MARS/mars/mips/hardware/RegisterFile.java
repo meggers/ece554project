@@ -63,8 +63,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          	new Register("$t10", 26, 0),new Register("$au", 27, 0),
          	//new Register("$gp", GLOBAL_POINTER_REGISTER, Memory.globalPointer),
 			new Register("$idr", 28, 0),
-         	//new Register("$sp", STACK_POINTER_REGISTER, Memory.stackPointer),
-			new Register("$sp", STACK_POINTER_REGISTER, 4095 * 4),
+         	new Register("$sp", STACK_POINTER_REGISTER, Memory.stackPointer),
          	//new Register("$fp", 30, 0),
 			new Register("$epc", 30, 0),
 			new Register("$ra", 31, 0)

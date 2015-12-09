@@ -968,15 +968,15 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(29),
-									RegisterFile.getProgramCounter()); // dont have to +4 for push for some reason?
+									RegisterFile.getValue(29) * 4,
+									RegisterFile.getProgramCounter() / 4); // dont have to +4 for push for some reason?
 						}
 						catch (AddressErrorException e)
 						{
 							throw new ProcessingException(statement, e);
 						}
 						// Set the top of the stack with what's in the PC - 1 
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 4);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
 						processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
 					}
 				}));
@@ -984,17 +984,17 @@ public class InstructionSet
 				new BasicInstruction("ret", 
 						"Return from a previous function call",
 						BasicInstructionFormat.J_FORMAT,
-						"000101 ffffffffffffffffffffffffff",
+						"000101 ffffffffffffffffffffffffff", // INTERNAL ERROR: mismatch in number of operands in statement vs mask otherwise
 						new SimulationCode()
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
-						int[] operands = statement.getOperands();
+						// int[] operands = statement.getOperands();
 
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 4);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
 						try
 						{
-							processJump(Globals.memory.getWord(RegisterFile.getValue(29))); // - 4 since PC+1 was pushed, and PC++ occurs after every instruction
+							processJump(Globals.memory.getWord(RegisterFile.getValue(29) * 4) * 4);
 						}
 						catch (AddressErrorException e)
 						{
@@ -1016,14 +1016,14 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(29),			
+									RegisterFile.getValue(29) * 4,			
 									RegisterFile.getValue(operands[0]));		
 						} 
 						catch (AddressErrorException e)
 						{
 							throw new ProcessingException(statement, e);
 						}
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 4);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
 					}
 
 				}));
@@ -1039,12 +1039,11 @@ public class InstructionSet
 					{
 						int[] operands = statement.getOperands();
 
-						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 4);
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
 						try
 						{
-							RegisterFile.updateRegister(operands[0],
-									Globals.memory.getWord(
-											RegisterFile.getValue(29)));		// what's in the PC
+							RegisterFile.updateRegister(operands[0], 
+									Globals.memory.getWord(RegisterFile.getValue(29) * 4));		// what's in the PC
 						} 
 						catch (AddressErrorException e)
 						{

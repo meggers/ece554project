@@ -83,8 +83,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          0x10008000, // Global Pointer $gp)
          0x00000400, // .data base Address
          0x10040000, // heap base address
-         0x00000BFC, // stack pointer $sp (from SPIM not MIPS)
-         0x00000C00, // stack base address
+         0x00000fff, // stack pointer $sp (from SPIM not MIPS)
+         0x00000fff, // stack base address
          0x7fffffff, // highest address in user space
          0x80000000, // lowest address in kernel space
          0x80000000, // .ktext base address
