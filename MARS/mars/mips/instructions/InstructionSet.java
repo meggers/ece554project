@@ -421,268 +421,6 @@ public class InstructionSet
 		}
 	}
 	
-	Integer getVisualIndex(int locationVisual) {
-		switch (locationVisual) {
-		case   0: return spriteAssemblerHash.get("background0000_index");
-		case   1: return spriteAssemblerHash.get("background1000_index");
-		case   2: return spriteAssemblerHash.get("background2000_index");
-		case   3: return spriteAssemblerHash.get("background3000_index");
-		case   4: return spriteAssemblerHash.get("background0100_index");
-		case   5: return spriteAssemblerHash.get("background1100_index");
-		case   6: return spriteAssemblerHash.get("background2100_index");
-		case   7: return spriteAssemblerHash.get("background3100_index");
-		case   8: return spriteAssemblerHash.get("background0200_index");
-		case   9: return spriteAssemblerHash.get("background1200_index");
-		case  10: return spriteAssemblerHash.get("background2200_index");
-		case  11: return spriteAssemblerHash.get("background3200_index");
-		case  12: return spriteAssemblerHash.get("background0300_index");
-		case  13: return spriteAssemblerHash.get("background1300_index");
-		case  14: return spriteAssemblerHash.get("background2300_index");
-		case  15: return spriteAssemblerHash.get("background3300_index");
-		case  16: return spriteAssemblerHash.get("background0010_index");
-		case  17: return spriteAssemblerHash.get("background1010_index");
-		case  18: return spriteAssemblerHash.get("background2010_index");
-		case  19: return spriteAssemblerHash.get("background3010_index");
-		case  20: return spriteAssemblerHash.get("background0110_index");
-		case  21: return spriteAssemblerHash.get("background1110_index");
-		case  22: return spriteAssemblerHash.get("background2110_index");
-		case  23: return spriteAssemblerHash.get("background3110_index");
-		case  24: return spriteAssemblerHash.get("background0210_index");
-		case  25: return spriteAssemblerHash.get("background1210_index");
-		case  26: return spriteAssemblerHash.get("background2210_index");
-		case  27: return spriteAssemblerHash.get("background3210_index");
-		case  28: return spriteAssemblerHash.get("background0310_index");
-		case  29: return spriteAssemblerHash.get("background1310_index");
-		case  30: return spriteAssemblerHash.get("background2310_index");
-		case  31: return spriteAssemblerHash.get("background3310_index");
-		case  32: return spriteAssemblerHash.get("background0020_index");
-		case  33: return spriteAssemblerHash.get("background1020_index");
-		case  34: return spriteAssemblerHash.get("background2020_index");
-		case  35: return spriteAssemblerHash.get("background3020_index");
-		case  36: return spriteAssemblerHash.get("background0120_index");
-		case  37: return spriteAssemblerHash.get("background1120_index");
-		case  38: return spriteAssemblerHash.get("background2120_index");
-		case  39: return spriteAssemblerHash.get("background3120_index");
-		case  40: return spriteAssemblerHash.get("background0220_index");
-		case  41: return spriteAssemblerHash.get("background1220_index");
-		case  42: return spriteAssemblerHash.get("background2220_index");
-		case  43: return spriteAssemblerHash.get("background3220_index");
-		case  44: return spriteAssemblerHash.get("background0320_index");
-		case  45: return spriteAssemblerHash.get("background1320_index");
-		case  46: return spriteAssemblerHash.get("background2320_index");
-		case  47: return spriteAssemblerHash.get("background3320_index");
-		case  48: return spriteAssemblerHash.get("background0030_index");
-		case  49: return spriteAssemblerHash.get("background1030_index");
-		case  50: return spriteAssemblerHash.get("background2030_index");
-		case  51: return spriteAssemblerHash.get("background3030_index");
-		case  52: return spriteAssemblerHash.get("background0130_index");
-		case  53: return spriteAssemblerHash.get("background1130_index");
-		case  54: return spriteAssemblerHash.get("background2130_index");
-		case  55: return spriteAssemblerHash.get("background3130_index");
-		case  56: return spriteAssemblerHash.get("background0230_index");
-		case  57: return spriteAssemblerHash.get("background1230_index");
-		case  58: return spriteAssemblerHash.get("background2230_index");
-		case  59: return spriteAssemblerHash.get("background3230_index");
-		case  60: return spriteAssemblerHash.get("background0330_index");
-		case  61: return spriteAssemblerHash.get("background1330_index");
-		case  62: return spriteAssemblerHash.get("background2330_index");
-		case  63: return spriteAssemblerHash.get("background3330_index");
-		case  64: return spriteAssemblerHash.get("background0001_index");
-		case  65: return spriteAssemblerHash.get("background1001_index");
-		case  66: return spriteAssemblerHash.get("background2001_index");
-		case  67: return spriteAssemblerHash.get("background3001_index");
-		case  68: return spriteAssemblerHash.get("background0101_index");
-		case  69: return spriteAssemblerHash.get("background1101_index");
-		case  70: return spriteAssemblerHash.get("background2101_index");
-		case  71: return spriteAssemblerHash.get("background3101_index");
-		case  72: return spriteAssemblerHash.get("background0201_index");
-		case  73: return spriteAssemblerHash.get("background1201_index");
-		case  74: return spriteAssemblerHash.get("background2201_index");
-		case  75: return spriteAssemblerHash.get("background3201_index");
-		case  76: return spriteAssemblerHash.get("background0301_index");
-		case  77: return spriteAssemblerHash.get("background1301_index");
-		case  78: return spriteAssemblerHash.get("background2301_index");
-		case  79: return spriteAssemblerHash.get("background3301_index");
-		case  80: return spriteAssemblerHash.get("background0011_index");
-		case  81: return spriteAssemblerHash.get("background1011_index");
-		case  82: return spriteAssemblerHash.get("background2011_index");
-		case  83: return spriteAssemblerHash.get("background3011_index");
-		case  84: return spriteAssemblerHash.get("background0111_index");
-		case  85: return spriteAssemblerHash.get("background1111_index");
-		case  86: return spriteAssemblerHash.get("background2111_index");
-		case  87: return spriteAssemblerHash.get("background3111_index");
-		case  88: return spriteAssemblerHash.get("background0211_index");
-		case  89: return spriteAssemblerHash.get("background1211_index");
-		case  90: return spriteAssemblerHash.get("background2211_index");
-		case  91: return spriteAssemblerHash.get("background3211_index");
-		case  92: return spriteAssemblerHash.get("background0311_index");
-		case  93: return spriteAssemblerHash.get("background1311_index");
-		case  94: return spriteAssemblerHash.get("background2311_index");
-		case  95: return spriteAssemblerHash.get("background3311_index");
-		case  96: return spriteAssemblerHash.get("background0021_index");
-		case  97: return spriteAssemblerHash.get("background1021_index");
-		case  98: return spriteAssemblerHash.get("background2021_index");
-		case  99: return spriteAssemblerHash.get("background3021_index");
-		case 100: return spriteAssemblerHash.get("background0121_index");
-		case 101: return spriteAssemblerHash.get("background1121_index");
-		case 102: return spriteAssemblerHash.get("background2121_index");
-		case 103: return spriteAssemblerHash.get("background3121_index");
-		case 104: return spriteAssemblerHash.get("background0221_index");
-		case 105: return spriteAssemblerHash.get("background1221_index");
-		case 106: return spriteAssemblerHash.get("background2221_index");
-		case 107: return spriteAssemblerHash.get("background3221_index");
-		case 108: return spriteAssemblerHash.get("background0321_index");
-		case 109: return spriteAssemblerHash.get("background1321_index");
-		case 110: return spriteAssemblerHash.get("background2321_index");
-		case 111: return spriteAssemblerHash.get("background3321_index");
-		case 112: return spriteAssemblerHash.get("background0031_index");
-		case 113: return spriteAssemblerHash.get("background1031_index");
-		case 114: return spriteAssemblerHash.get("background2031_index");
-		case 115: return spriteAssemblerHash.get("background3031_index");
-		case 116: return spriteAssemblerHash.get("background0131_index");
-		case 117: return spriteAssemblerHash.get("background1131_index");
-		case 118: return spriteAssemblerHash.get("background2131_index");
-		case 119: return spriteAssemblerHash.get("background3131_index");
-		case 120: return spriteAssemblerHash.get("background0231_index");
-		case 121: return spriteAssemblerHash.get("background1231_index");
-		case 122: return spriteAssemblerHash.get("background2231_index");
-		case 123: return spriteAssemblerHash.get("background3231_index");
-		case 124: return spriteAssemblerHash.get("background0331_index");
-		case 125: return spriteAssemblerHash.get("background1331_index");
-		case 126: return spriteAssemblerHash.get("background2331_index");
-		case 127: return spriteAssemblerHash.get("background3331_index");
-		case 128: return spriteAssemblerHash.get("background0002_index");
-		case 129: return spriteAssemblerHash.get("background1002_index");
-		case 130: return spriteAssemblerHash.get("background2002_index");
-		case 131: return spriteAssemblerHash.get("background3002_index");
-		case 132: return spriteAssemblerHash.get("background0102_index");
-		case 133: return spriteAssemblerHash.get("background1102_index");
-		case 134: return spriteAssemblerHash.get("background2102_index");
-		case 135: return spriteAssemblerHash.get("background3102_index");
-		case 136: return spriteAssemblerHash.get("background0202_index");
-		case 137: return spriteAssemblerHash.get("background1202_index");
-		case 138: return spriteAssemblerHash.get("background2202_index");
-		case 139: return spriteAssemblerHash.get("background3202_index");
-		case 140: return spriteAssemblerHash.get("background0302_index");
-		case 141: return spriteAssemblerHash.get("background1302_index");
-		case 142: return spriteAssemblerHash.get("background2302_index");
-		case 143: return spriteAssemblerHash.get("background3302_index");
-		case 144: return spriteAssemblerHash.get("background0012_index");
-		case 145: return spriteAssemblerHash.get("background1012_index");
-		case 146: return spriteAssemblerHash.get("background2012_index");
-		case 147: return spriteAssemblerHash.get("background3012_index");
-		case 148: return spriteAssemblerHash.get("background0112_index");
-		case 149: return spriteAssemblerHash.get("background1112_index");
-		case 150: return spriteAssemblerHash.get("background2112_index");
-		case 151: return spriteAssemblerHash.get("background3112_index");
-		case 152: return spriteAssemblerHash.get("background0212_index");
-		case 153: return spriteAssemblerHash.get("background1212_index");
-		case 154: return spriteAssemblerHash.get("background2212_index");
-		case 155: return spriteAssemblerHash.get("background3212_index");
-		case 156: return spriteAssemblerHash.get("background0312_index");
-		case 157: return spriteAssemblerHash.get("background1312_index");
-		case 158: return spriteAssemblerHash.get("background2312_index");
-		case 159: return spriteAssemblerHash.get("background3312_index");
-		case 160: return spriteAssemblerHash.get("background0022_index");
-		case 161: return spriteAssemblerHash.get("background1022_index");
-		case 162: return spriteAssemblerHash.get("background2022_index");
-		case 163: return spriteAssemblerHash.get("background3022_index");
-		case 164: return spriteAssemblerHash.get("background0122_index");
-		case 165: return spriteAssemblerHash.get("background1122_index");
-		case 166: return spriteAssemblerHash.get("background2122_index");
-		case 167: return spriteAssemblerHash.get("background3122_index");
-		case 168: return spriteAssemblerHash.get("background0222_index");
-		case 169: return spriteAssemblerHash.get("background1222_index");
-		case 170: return spriteAssemblerHash.get("background2222_index");
-		case 171: return spriteAssemblerHash.get("background3222_index");
-		case 172: return spriteAssemblerHash.get("background0322_index");
-		case 173: return spriteAssemblerHash.get("background1322_index");
-		case 174: return spriteAssemblerHash.get("background2322_index");
-		case 175: return spriteAssemblerHash.get("background3322_index");
-		case 176: return spriteAssemblerHash.get("background0032_index");
-		case 177: return spriteAssemblerHash.get("background1032_index");
-		case 178: return spriteAssemblerHash.get("background2032_index");
-		case 179: return spriteAssemblerHash.get("background3032_index");
-		case 180: return spriteAssemblerHash.get("background0132_index");
-		case 181: return spriteAssemblerHash.get("background1132_index");
-		case 182: return spriteAssemblerHash.get("background2132_index");
-		case 183: return spriteAssemblerHash.get("background3132_index");
-		case 184: return spriteAssemblerHash.get("background0232_index");
-		case 185: return spriteAssemblerHash.get("background1232_index");
-		case 186: return spriteAssemblerHash.get("background2232_index");
-		case 187: return spriteAssemblerHash.get("background3232_index");
-		case 188: return spriteAssemblerHash.get("background0332_index");
-		case 189: return spriteAssemblerHash.get("background1332_index");
-		case 190: return spriteAssemblerHash.get("background2332_index");
-		case 191: return spriteAssemblerHash.get("background3332_index");
-		case 192: return spriteAssemblerHash.get("background0003_index");
-		case 193: return spriteAssemblerHash.get("background1003_index");
-		case 194: return spriteAssemblerHash.get("background2003_index");
-		case 195: return spriteAssemblerHash.get("background3003_index");
-		case 196: return spriteAssemblerHash.get("background0103_index");
-		case 197: return spriteAssemblerHash.get("background1103_index");
-		case 198: return spriteAssemblerHash.get("background2103_index");
-		case 199: return spriteAssemblerHash.get("background3103_index");
-		case 200: return spriteAssemblerHash.get("background0203_index");
-		case 201: return spriteAssemblerHash.get("background1203_index");
-		case 202: return spriteAssemblerHash.get("background2203_index");
-		case 203: return spriteAssemblerHash.get("background3203_index");
-		case 204: return spriteAssemblerHash.get("background0303_index");
-		case 205: return spriteAssemblerHash.get("background1303_index");
-		case 206: return spriteAssemblerHash.get("background2303_index");
-		case 207: return spriteAssemblerHash.get("background3303_index");
-		case 208: return spriteAssemblerHash.get("background0013_index");
-		case 209: return spriteAssemblerHash.get("background1013_index");
-		case 210: return spriteAssemblerHash.get("background2013_index");
-		case 211: return spriteAssemblerHash.get("background3013_index");
-		case 212: return spriteAssemblerHash.get("background0113_index");
-		case 213: return spriteAssemblerHash.get("background1113_index");
-		case 214: return spriteAssemblerHash.get("background2113_index");
-		case 215: return spriteAssemblerHash.get("background3113_index");
-		case 216: return spriteAssemblerHash.get("background0213_index");
-		case 217: return spriteAssemblerHash.get("background1213_index");
-		case 218: return spriteAssemblerHash.get("background2213_index");
-		case 219: return spriteAssemblerHash.get("background3213_index");
-		case 220: return spriteAssemblerHash.get("background0313_index");
-		case 221: return spriteAssemblerHash.get("background1313_index");
-		case 222: return spriteAssemblerHash.get("background2313_index");
-		case 223: return spriteAssemblerHash.get("background3313_index");
-		case 224: return spriteAssemblerHash.get("background0023_index");
-		case 225: return spriteAssemblerHash.get("background1023_index");
-		case 226: return spriteAssemblerHash.get("background2023_index");
-		case 227: return spriteAssemblerHash.get("background3023_index");
-		case 228: return spriteAssemblerHash.get("background0123_index");
-		case 229: return spriteAssemblerHash.get("background1123_index");
-		case 230: return spriteAssemblerHash.get("background2123_index");
-		case 231: return spriteAssemblerHash.get("background3123_index");
-		case 232: return spriteAssemblerHash.get("background0223_index");
-		case 233: return spriteAssemblerHash.get("background1223_index");
-		case 234: return spriteAssemblerHash.get("background2223_index");
-		case 235: return spriteAssemblerHash.get("background3223_index");
-		case 236: return spriteAssemblerHash.get("background0323_index");
-		case 237: return spriteAssemblerHash.get("background1323_index");
-		case 238: return spriteAssemblerHash.get("background2323_index");
-		case 239: return spriteAssemblerHash.get("background3323_index");
-		case 240: return spriteAssemblerHash.get("background0033_index");
-		case 241: return spriteAssemblerHash.get("background1033_index");
-		case 242: return spriteAssemblerHash.get("background2033_index");
-		case 243: return spriteAssemblerHash.get("background3033_index");
-		case 244: return spriteAssemblerHash.get("background0133_index");
-		case 245: return spriteAssemblerHash.get("background1133_index");
-		case 246: return spriteAssemblerHash.get("background2133_index");
-		case 247: return spriteAssemblerHash.get("background3133_index");
-		case 248: return spriteAssemblerHash.get("background0233_index");
-		case 249: return spriteAssemblerHash.get("background1233_index");
-		case 250: return spriteAssemblerHash.get("background2233_index");
-		case 251: return spriteAssemblerHash.get("background3233_index");
-		case 252: return spriteAssemblerHash.get("background0333_index");
-		case 253: return spriteAssemblerHash.get("background1333_index");
-		case 254: return spriteAssemblerHash.get("background2333_index");
-		case 255: return spriteAssemblerHash.get("background3333_index");
-		default: return 0;
-		}
-	}
-	
 	public class PPU extends JPanel {
 		public void paintComponent(Graphics graphics) {
 			super.paintComponent(graphics);
@@ -696,10 +434,20 @@ public class InstructionSet
 
 			// draw light bikes
 			for (int spriteIndex = 63; spriteIndex >= 0; --spriteIndex) {
-				if (spriteData[spriteIndex].getyPosition() == 255) {
+				int sld = Coprocessor1.getValue(spriteIndex);
+				int sslY = sld & 0x000000FF;
+				if (sslY == 255) {
 					continue;
 				}
-				graphics.drawImage(setColorPalette(setFlip(spriteData[spriteIndex].getBufferedImage(), spriteData[spriteIndex].isFlipVertical(), spriteData[spriteIndex].isFlipHorizontal()), spriteData[spriteIndex].getColorPaletteIndex()), spriteData[spriteIndex].getxPosition(), spriteData[spriteIndex].getyPosition(), DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				int sfa = (sld & 0x0000FF00) >>> 8;
+				int colorPaletteIndex = sfa & 0x00000003;
+				boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
+				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x0000004;
+				int sft = (sld & 0x00FF0000) >>> 16;
+				BufferedImage bufferedImage = spritePatternTable[sft];
+				int sslX = (sld & 0xFF000000) >>> 24;
+
+				graphics.drawImage(setColorPalette(setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex), sslX, sslY, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
 			}
 		}
 	}
@@ -824,7 +572,6 @@ public class InstructionSet
       
         // ////////////////////////////////////   BASIC INSTRUCTIONS START HERE ////////////////////////////////
       
-		
          instructionList.add(
                 new BasicInstruction("nop",
             	 "Null operation : machine code is all zeroes",
@@ -1063,7 +810,7 @@ public class InstructionSet
                   }
                }));
          instructionList.add(
-                new BasicInstruction("lw $t1, $t2, -100",
+                new BasicInstruction("lw $t1,$t2,-100",
             	 "Load word : Set $t1 to contents of effective memory word address",
                 BasicInstructionFormat.I_FORMAT,
                 "001000 fffff sssss tttttttttttttttt",
@@ -1107,7 +854,7 @@ public class InstructionSet
                   }
                }));
          instructionList.add(
-                new BasicInstruction("sw $t1, $t2, -100",
+                new BasicInstruction("sw $t1,$t2,-100",
                 "Store word : Store contents of $t1 into effective memory word address",
             	 BasicInstructionFormat.I_FORMAT,
                 "001100 fffff sssss tttttttttttttttt",
@@ -1305,7 +1052,7 @@ public class InstructionSet
                      int[] operands = statement.getOperands();
 					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
                      Coprocessor1.updateRegister(OAMindex, 0xFFFFFFFF);
-					 spriteData[OAMindex].remove();
+					 //spriteData[OAMindex].remove();
                   }
                }));
          instructionList.add(        
@@ -1321,16 +1068,16 @@ public class InstructionSet
 					 int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 					 int sld = RegisterFile.getValue(operands[1]);
                      Coprocessor1.updateRegister(OAMindex, sld);
-					 int sslY = sld & 0x000000FF;
-					 int sfa = (sld & 0x0000FF00) >>> 8;
-					 int sft = (sld & 0x00FF0000) >>> 16;
-					 int sslX = (sld & 0xFF000000) >>> 24;
-					 spriteData[OAMindex].setyPosition(sslY);
-					 spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
-					 spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
-					 spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
-					 spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
-					 spriteData[OAMindex].setxPosition(sslX);
+					 //int sslY = sld & 0x000000FF;
+					 //int sfa = (sld & 0x0000FF00) >>> 8;
+					 //int sft = (sld & 0x00FF0000) >>> 16;
+					 //int sslX = (sld & 0xFF000000) >>> 24;
+					 //spriteData[OAMindex].setyPosition(sslY);
+					 //spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
+					 //spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
+					 //spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
+					 //spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
+					 //spriteData[OAMindex].setxPosition(sslX);
                   }
                }));
          instructionList.add(        
@@ -1349,8 +1096,8 @@ public class InstructionSet
 					 // int mask = 0x00FFFF00; mask to keep sprite tile and attribute
 					 Coprocessor1.updateRegister(OAMindex,
 					  ((Coprocessor1.getValue(OAMindex) & 0x00FFFF00) + (sslX << 24) + sslY)); // could have shift 16 more since it already shifted by 8
-					  spriteData[OAMindex].setyPosition(sslY);
-					  spriteData[OAMindex].setxPosition(sslX);
+					  //spriteData[OAMindex].setyPosition(sslY);
+					  //spriteData[OAMindex].setxPosition(sslX);
                   }
                }));
          instructionList.add(        
@@ -1367,7 +1114,7 @@ public class InstructionSet
 					 int sft = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 Coprocessor1.updateRegister(OAMindex,
 					  ((Coprocessor1.getValue(OAMindex) & 0xFF00FFFF) + (sft << 16)));
-					  spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
+					 //spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
                   }
                }));
          instructionList.add(        
@@ -1400,9 +1147,9 @@ public class InstructionSet
 					 int sfa = RegisterFile.getValue(operands[1]) & 0x000000FF;
 					 Coprocessor1.updateRegister(OAMindex,
 					  ((Coprocessor1.getValue(OAMindex) & 0xFFFF00FF) + (sfa << 8)));
-					  spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
-					  spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
-					  spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
+					 //spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
+					 //spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
+					 //spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
                   }
                }));
          instructionList.add(        
@@ -3295,6 +3042,268 @@ public class InstructionSet
 		public BasicInstruction find(int instr) {
 			int match = Integer.valueOf(instr & mask);
 			return (BasicInstruction) matchMap.get(match);
+		}
+	}
+		
+	Integer getVisualIndex(int locationVisual) {
+		switch (locationVisual) {
+		case   0: return spriteAssemblerHash.get("background0000_index");
+		case   1: return spriteAssemblerHash.get("background1000_index");
+		case   2: return spriteAssemblerHash.get("background2000_index");
+		case   3: return spriteAssemblerHash.get("background3000_index");
+		case   4: return spriteAssemblerHash.get("background0100_index");
+		case   5: return spriteAssemblerHash.get("background1100_index");
+		case   6: return spriteAssemblerHash.get("background2100_index");
+		case   7: return spriteAssemblerHash.get("background3100_index");
+		case   8: return spriteAssemblerHash.get("background0200_index");
+		case   9: return spriteAssemblerHash.get("background1200_index");
+		case  10: return spriteAssemblerHash.get("background2200_index");
+		case  11: return spriteAssemblerHash.get("background3200_index");
+		case  12: return spriteAssemblerHash.get("background0300_index");
+		case  13: return spriteAssemblerHash.get("background1300_index");
+		case  14: return spriteAssemblerHash.get("background2300_index");
+		case  15: return spriteAssemblerHash.get("background3300_index");
+		case  16: return spriteAssemblerHash.get("background0010_index");
+		case  17: return spriteAssemblerHash.get("background1010_index");
+		case  18: return spriteAssemblerHash.get("background2010_index");
+		case  19: return spriteAssemblerHash.get("background3010_index");
+		case  20: return spriteAssemblerHash.get("background0110_index");
+		case  21: return spriteAssemblerHash.get("background1110_index");
+		case  22: return spriteAssemblerHash.get("background2110_index");
+		case  23: return spriteAssemblerHash.get("background3110_index");
+		case  24: return spriteAssemblerHash.get("background0210_index");
+		case  25: return spriteAssemblerHash.get("background1210_index");
+		case  26: return spriteAssemblerHash.get("background2210_index");
+		case  27: return spriteAssemblerHash.get("background3210_index");
+		case  28: return spriteAssemblerHash.get("background0310_index");
+		case  29: return spriteAssemblerHash.get("background1310_index");
+		case  30: return spriteAssemblerHash.get("background2310_index");
+		case  31: return spriteAssemblerHash.get("background3310_index");
+		case  32: return spriteAssemblerHash.get("background0020_index");
+		case  33: return spriteAssemblerHash.get("background1020_index");
+		case  34: return spriteAssemblerHash.get("background2020_index");
+		case  35: return spriteAssemblerHash.get("background3020_index");
+		case  36: return spriteAssemblerHash.get("background0120_index");
+		case  37: return spriteAssemblerHash.get("background1120_index");
+		case  38: return spriteAssemblerHash.get("background2120_index");
+		case  39: return spriteAssemblerHash.get("background3120_index");
+		case  40: return spriteAssemblerHash.get("background0220_index");
+		case  41: return spriteAssemblerHash.get("background1220_index");
+		case  42: return spriteAssemblerHash.get("background2220_index");
+		case  43: return spriteAssemblerHash.get("background3220_index");
+		case  44: return spriteAssemblerHash.get("background0320_index");
+		case  45: return spriteAssemblerHash.get("background1320_index");
+		case  46: return spriteAssemblerHash.get("background2320_index");
+		case  47: return spriteAssemblerHash.get("background3320_index");
+		case  48: return spriteAssemblerHash.get("background0030_index");
+		case  49: return spriteAssemblerHash.get("background1030_index");
+		case  50: return spriteAssemblerHash.get("background2030_index");
+		case  51: return spriteAssemblerHash.get("background3030_index");
+		case  52: return spriteAssemblerHash.get("background0130_index");
+		case  53: return spriteAssemblerHash.get("background1130_index");
+		case  54: return spriteAssemblerHash.get("background2130_index");
+		case  55: return spriteAssemblerHash.get("background3130_index");
+		case  56: return spriteAssemblerHash.get("background0230_index");
+		case  57: return spriteAssemblerHash.get("background1230_index");
+		case  58: return spriteAssemblerHash.get("background2230_index");
+		case  59: return spriteAssemblerHash.get("background3230_index");
+		case  60: return spriteAssemblerHash.get("background0330_index");
+		case  61: return spriteAssemblerHash.get("background1330_index");
+		case  62: return spriteAssemblerHash.get("background2330_index");
+		case  63: return spriteAssemblerHash.get("background3330_index");
+		case  64: return spriteAssemblerHash.get("background0001_index");
+		case  65: return spriteAssemblerHash.get("background1001_index");
+		case  66: return spriteAssemblerHash.get("background2001_index");
+		case  67: return spriteAssemblerHash.get("background3001_index");
+		case  68: return spriteAssemblerHash.get("background0101_index");
+		case  69: return spriteAssemblerHash.get("background1101_index");
+		case  70: return spriteAssemblerHash.get("background2101_index");
+		case  71: return spriteAssemblerHash.get("background3101_index");
+		case  72: return spriteAssemblerHash.get("background0201_index");
+		case  73: return spriteAssemblerHash.get("background1201_index");
+		case  74: return spriteAssemblerHash.get("background2201_index");
+		case  75: return spriteAssemblerHash.get("background3201_index");
+		case  76: return spriteAssemblerHash.get("background0301_index");
+		case  77: return spriteAssemblerHash.get("background1301_index");
+		case  78: return spriteAssemblerHash.get("background2301_index");
+		case  79: return spriteAssemblerHash.get("background3301_index");
+		case  80: return spriteAssemblerHash.get("background0011_index");
+		case  81: return spriteAssemblerHash.get("background1011_index");
+		case  82: return spriteAssemblerHash.get("background2011_index");
+		case  83: return spriteAssemblerHash.get("background3011_index");
+		case  84: return spriteAssemblerHash.get("background0111_index");
+		case  85: return spriteAssemblerHash.get("background1111_index");
+		case  86: return spriteAssemblerHash.get("background2111_index");
+		case  87: return spriteAssemblerHash.get("background3111_index");
+		case  88: return spriteAssemblerHash.get("background0211_index");
+		case  89: return spriteAssemblerHash.get("background1211_index");
+		case  90: return spriteAssemblerHash.get("background2211_index");
+		case  91: return spriteAssemblerHash.get("background3211_index");
+		case  92: return spriteAssemblerHash.get("background0311_index");
+		case  93: return spriteAssemblerHash.get("background1311_index");
+		case  94: return spriteAssemblerHash.get("background2311_index");
+		case  95: return spriteAssemblerHash.get("background3311_index");
+		case  96: return spriteAssemblerHash.get("background0021_index");
+		case  97: return spriteAssemblerHash.get("background1021_index");
+		case  98: return spriteAssemblerHash.get("background2021_index");
+		case  99: return spriteAssemblerHash.get("background3021_index");
+		case 100: return spriteAssemblerHash.get("background0121_index");
+		case 101: return spriteAssemblerHash.get("background1121_index");
+		case 102: return spriteAssemblerHash.get("background2121_index");
+		case 103: return spriteAssemblerHash.get("background3121_index");
+		case 104: return spriteAssemblerHash.get("background0221_index");
+		case 105: return spriteAssemblerHash.get("background1221_index");
+		case 106: return spriteAssemblerHash.get("background2221_index");
+		case 107: return spriteAssemblerHash.get("background3221_index");
+		case 108: return spriteAssemblerHash.get("background0321_index");
+		case 109: return spriteAssemblerHash.get("background1321_index");
+		case 110: return spriteAssemblerHash.get("background2321_index");
+		case 111: return spriteAssemblerHash.get("background3321_index");
+		case 112: return spriteAssemblerHash.get("background0031_index");
+		case 113: return spriteAssemblerHash.get("background1031_index");
+		case 114: return spriteAssemblerHash.get("background2031_index");
+		case 115: return spriteAssemblerHash.get("background3031_index");
+		case 116: return spriteAssemblerHash.get("background0131_index");
+		case 117: return spriteAssemblerHash.get("background1131_index");
+		case 118: return spriteAssemblerHash.get("background2131_index");
+		case 119: return spriteAssemblerHash.get("background3131_index");
+		case 120: return spriteAssemblerHash.get("background0231_index");
+		case 121: return spriteAssemblerHash.get("background1231_index");
+		case 122: return spriteAssemblerHash.get("background2231_index");
+		case 123: return spriteAssemblerHash.get("background3231_index");
+		case 124: return spriteAssemblerHash.get("background0331_index");
+		case 125: return spriteAssemblerHash.get("background1331_index");
+		case 126: return spriteAssemblerHash.get("background2331_index");
+		case 127: return spriteAssemblerHash.get("background3331_index");
+		case 128: return spriteAssemblerHash.get("background0002_index");
+		case 129: return spriteAssemblerHash.get("background1002_index");
+		case 130: return spriteAssemblerHash.get("background2002_index");
+		case 131: return spriteAssemblerHash.get("background3002_index");
+		case 132: return spriteAssemblerHash.get("background0102_index");
+		case 133: return spriteAssemblerHash.get("background1102_index");
+		case 134: return spriteAssemblerHash.get("background2102_index");
+		case 135: return spriteAssemblerHash.get("background3102_index");
+		case 136: return spriteAssemblerHash.get("background0202_index");
+		case 137: return spriteAssemblerHash.get("background1202_index");
+		case 138: return spriteAssemblerHash.get("background2202_index");
+		case 139: return spriteAssemblerHash.get("background3202_index");
+		case 140: return spriteAssemblerHash.get("background0302_index");
+		case 141: return spriteAssemblerHash.get("background1302_index");
+		case 142: return spriteAssemblerHash.get("background2302_index");
+		case 143: return spriteAssemblerHash.get("background3302_index");
+		case 144: return spriteAssemblerHash.get("background0012_index");
+		case 145: return spriteAssemblerHash.get("background1012_index");
+		case 146: return spriteAssemblerHash.get("background2012_index");
+		case 147: return spriteAssemblerHash.get("background3012_index");
+		case 148: return spriteAssemblerHash.get("background0112_index");
+		case 149: return spriteAssemblerHash.get("background1112_index");
+		case 150: return spriteAssemblerHash.get("background2112_index");
+		case 151: return spriteAssemblerHash.get("background3112_index");
+		case 152: return spriteAssemblerHash.get("background0212_index");
+		case 153: return spriteAssemblerHash.get("background1212_index");
+		case 154: return spriteAssemblerHash.get("background2212_index");
+		case 155: return spriteAssemblerHash.get("background3212_index");
+		case 156: return spriteAssemblerHash.get("background0312_index");
+		case 157: return spriteAssemblerHash.get("background1312_index");
+		case 158: return spriteAssemblerHash.get("background2312_index");
+		case 159: return spriteAssemblerHash.get("background3312_index");
+		case 160: return spriteAssemblerHash.get("background0022_index");
+		case 161: return spriteAssemblerHash.get("background1022_index");
+		case 162: return spriteAssemblerHash.get("background2022_index");
+		case 163: return spriteAssemblerHash.get("background3022_index");
+		case 164: return spriteAssemblerHash.get("background0122_index");
+		case 165: return spriteAssemblerHash.get("background1122_index");
+		case 166: return spriteAssemblerHash.get("background2122_index");
+		case 167: return spriteAssemblerHash.get("background3122_index");
+		case 168: return spriteAssemblerHash.get("background0222_index");
+		case 169: return spriteAssemblerHash.get("background1222_index");
+		case 170: return spriteAssemblerHash.get("background2222_index");
+		case 171: return spriteAssemblerHash.get("background3222_index");
+		case 172: return spriteAssemblerHash.get("background0322_index");
+		case 173: return spriteAssemblerHash.get("background1322_index");
+		case 174: return spriteAssemblerHash.get("background2322_index");
+		case 175: return spriteAssemblerHash.get("background3322_index");
+		case 176: return spriteAssemblerHash.get("background0032_index");
+		case 177: return spriteAssemblerHash.get("background1032_index");
+		case 178: return spriteAssemblerHash.get("background2032_index");
+		case 179: return spriteAssemblerHash.get("background3032_index");
+		case 180: return spriteAssemblerHash.get("background0132_index");
+		case 181: return spriteAssemblerHash.get("background1132_index");
+		case 182: return spriteAssemblerHash.get("background2132_index");
+		case 183: return spriteAssemblerHash.get("background3132_index");
+		case 184: return spriteAssemblerHash.get("background0232_index");
+		case 185: return spriteAssemblerHash.get("background1232_index");
+		case 186: return spriteAssemblerHash.get("background2232_index");
+		case 187: return spriteAssemblerHash.get("background3232_index");
+		case 188: return spriteAssemblerHash.get("background0332_index");
+		case 189: return spriteAssemblerHash.get("background1332_index");
+		case 190: return spriteAssemblerHash.get("background2332_index");
+		case 191: return spriteAssemblerHash.get("background3332_index");
+		case 192: return spriteAssemblerHash.get("background0003_index");
+		case 193: return spriteAssemblerHash.get("background1003_index");
+		case 194: return spriteAssemblerHash.get("background2003_index");
+		case 195: return spriteAssemblerHash.get("background3003_index");
+		case 196: return spriteAssemblerHash.get("background0103_index");
+		case 197: return spriteAssemblerHash.get("background1103_index");
+		case 198: return spriteAssemblerHash.get("background2103_index");
+		case 199: return spriteAssemblerHash.get("background3103_index");
+		case 200: return spriteAssemblerHash.get("background0203_index");
+		case 201: return spriteAssemblerHash.get("background1203_index");
+		case 202: return spriteAssemblerHash.get("background2203_index");
+		case 203: return spriteAssemblerHash.get("background3203_index");
+		case 204: return spriteAssemblerHash.get("background0303_index");
+		case 205: return spriteAssemblerHash.get("background1303_index");
+		case 206: return spriteAssemblerHash.get("background2303_index");
+		case 207: return spriteAssemblerHash.get("background3303_index");
+		case 208: return spriteAssemblerHash.get("background0013_index");
+		case 209: return spriteAssemblerHash.get("background1013_index");
+		case 210: return spriteAssemblerHash.get("background2013_index");
+		case 211: return spriteAssemblerHash.get("background3013_index");
+		case 212: return spriteAssemblerHash.get("background0113_index");
+		case 213: return spriteAssemblerHash.get("background1113_index");
+		case 214: return spriteAssemblerHash.get("background2113_index");
+		case 215: return spriteAssemblerHash.get("background3113_index");
+		case 216: return spriteAssemblerHash.get("background0213_index");
+		case 217: return spriteAssemblerHash.get("background1213_index");
+		case 218: return spriteAssemblerHash.get("background2213_index");
+		case 219: return spriteAssemblerHash.get("background3213_index");
+		case 220: return spriteAssemblerHash.get("background0313_index");
+		case 221: return spriteAssemblerHash.get("background1313_index");
+		case 222: return spriteAssemblerHash.get("background2313_index");
+		case 223: return spriteAssemblerHash.get("background3313_index");
+		case 224: return spriteAssemblerHash.get("background0023_index");
+		case 225: return spriteAssemblerHash.get("background1023_index");
+		case 226: return spriteAssemblerHash.get("background2023_index");
+		case 227: return spriteAssemblerHash.get("background3023_index");
+		case 228: return spriteAssemblerHash.get("background0123_index");
+		case 229: return spriteAssemblerHash.get("background1123_index");
+		case 230: return spriteAssemblerHash.get("background2123_index");
+		case 231: return spriteAssemblerHash.get("background3123_index");
+		case 232: return spriteAssemblerHash.get("background0223_index");
+		case 233: return spriteAssemblerHash.get("background1223_index");
+		case 234: return spriteAssemblerHash.get("background2223_index");
+		case 235: return spriteAssemblerHash.get("background3223_index");
+		case 236: return spriteAssemblerHash.get("background0323_index");
+		case 237: return spriteAssemblerHash.get("background1323_index");
+		case 238: return spriteAssemblerHash.get("background2323_index");
+		case 239: return spriteAssemblerHash.get("background3323_index");
+		case 240: return spriteAssemblerHash.get("background0033_index");
+		case 241: return spriteAssemblerHash.get("background1033_index");
+		case 242: return spriteAssemblerHash.get("background2033_index");
+		case 243: return spriteAssemblerHash.get("background3033_index");
+		case 244: return spriteAssemblerHash.get("background0133_index");
+		case 245: return spriteAssemblerHash.get("background1133_index");
+		case 246: return spriteAssemblerHash.get("background2133_index");
+		case 247: return spriteAssemblerHash.get("background3133_index");
+		case 248: return spriteAssemblerHash.get("background0233_index");
+		case 249: return spriteAssemblerHash.get("background1233_index");
+		case 250: return spriteAssemblerHash.get("background2233_index");
+		case 251: return spriteAssemblerHash.get("background3233_index");
+		case 252: return spriteAssemblerHash.get("background0333_index");
+		case 253: return spriteAssemblerHash.get("background1333_index");
+		case 254: return spriteAssemblerHash.get("background2333_index");
+		case 255: return spriteAssemblerHash.get("background3333_index");
+		default: return 0;
 		}
 	}
    }
