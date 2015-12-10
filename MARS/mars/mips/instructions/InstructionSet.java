@@ -1012,7 +1012,20 @@ public class InstructionSet
 						}
 					}
 				}));
-
+		instructionList.add(
+				new BasicInstruction("jr $t1",
+						"Jump register : Unconditionally jump to address in $t1",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000110 fffff 000000000000000000000",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						
+						processJump(RegisterFile.getValue(operands[0]) << 2);
+					}
+				}));
 		instructionList.add(
 				new BasicInstruction("call label", 
 						"Call a label : Update the PC and save the return address on the stack",
