@@ -500,6 +500,23 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                "store address not aligned on word boundary ",
                Exceptions.ADDRESS_EXCEPTION_STORE,address);
          }
+		 boolean isTronsmipsterCPUtest = true;
+			if (isTronsmipsterCPUtest) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(Integer.toHexString(address / 4));
+				while (sb.length() < 3) {
+					sb.insert(0, '0'); // pad with leading zero if needed
+				}
+				
+				StringBuilder sb2 = new StringBuilder();
+				sb2.append(Integer.toHexString(value));
+				while (sb2.length() < 8) {
+					sb2.insert(0, '0'); // pad with leading zero if needed
+				}
+				System.out.println();
+				System.out.println("ADDRESS x" + sb.toString() + " = " + sb2.toString());
+				System.out.println();
+			}
          return (Globals.getSettings().getBackSteppingEnabled())
             ? Globals.program.getBackStepper().addMemoryRestoreWord(address,set(address, value, WORD_LENGTH_BYTES))
             : set(address, value, WORD_LENGTH_BYTES);

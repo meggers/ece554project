@@ -101,6 +101,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             //System.out.println("You can not change the value of the zero register.");
          }
          else {
+			boolean isTronsmipsterCPUtest = true;
+			if (isTronsmipsterCPUtest) {
+				StringBuilder sb = new StringBuilder();
+				sb.append(Integer.toHexString(val));
+				while (sb.length() < 8) {
+					sb.insert(0, '0'); // pad with leading zero if needed
+				}
+				System.out.println("R" + num + (num < 10 ? " " : "") + " = " + sb.toString());
+			}
             for (int i=0; i< regFile.length; i++){
                if(regFile[i].getNumber()== num) {
                   old = (Globals.getSettings().getBackSteppingEnabled())

@@ -360,7 +360,7 @@ public class InstructionSet
 			}
 
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
-			System.out.println("timer interrupt has occured");
+			// System.out.println("timer interrupt has occured");
 
 			/*
 			// update direction
@@ -534,7 +534,7 @@ public class InstructionSet
 	class TimerInterrupt implements Runnable {
 		public void run() {
 			try {
-				Thread.sleep(500);
+				Thread.sleep(5000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
