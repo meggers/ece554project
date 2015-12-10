@@ -895,7 +895,7 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(operands[2]) + operands[1] * 4,
+									(RegisterFile.getValue(operands[2]) + operands[1]) * 4,
 									RegisterFile.getValue(operands[0]));
 						} 
 						catch (AddressErrorException e)
@@ -917,7 +917,7 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(operands[1]) + operands[2] * 4,
+									(RegisterFile.getValue(operands[1]) + operands[2]) * 4,
 									RegisterFile.getValue(operands[0]));
 						} 
 						catch (AddressErrorException e)
@@ -939,7 +939,7 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(operands[1]) + operands[2] * 4,
+									(RegisterFile.getValue(operands[1]) + operands[2]) * 4,
 									RegisterFile.getValue(operands[0]));
 						} 
 						catch (AddressErrorException e)
