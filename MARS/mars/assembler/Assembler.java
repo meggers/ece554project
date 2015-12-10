@@ -830,7 +830,7 @@
                   return;
                }
                int value = Binary.stringToInt(tokens.get(1).getValue()); // KENV 1/6/05
-               this.dataAddress.increment(value);
+               this.dataAddress.increment(value * 4); // ECE554, a space is a word
             }
          } 
          else if (direct == Directives.EXTERN) {

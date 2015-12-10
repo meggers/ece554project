@@ -68,9 +68,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             errors.add(new ErrorMessage(token.getSourceMIPSprogram(), token.getSourceLine(),token.getStartPos(),"label \""+label+"\" already defined"));
          } 
          else {
+			if (b) address /= 4; // ECE554 changing byte-addressable to word-addressable
             Symbol s= new Symbol(label, address, b);
             table.add(s);
-            if (Globals.debug) System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
+			if (Globals.debug) System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
          }
       }
    

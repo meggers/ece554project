@@ -830,7 +830,7 @@ public class InstructionSet
 						{
 							RegisterFile.updateRegister(operands[0],
 									Globals.memory.getWord(
-											RegisterFile.getValue(operands[2]) + operands[1]));
+											RegisterFile.getValue(operands[2]) + operands[1] * 4));
 						} 
 						catch (AddressErrorException e)
 						{
@@ -852,7 +852,7 @@ public class InstructionSet
 						{
 							RegisterFile.updateRegister(operands[0],
 									Globals.memory.getWord(
-											RegisterFile.getValue(operands[1]) + operands[2]));
+											RegisterFile.getValue(operands[1]) + operands[2] * 4));
 						} 
 						catch (AddressErrorException e)
 						{
@@ -874,7 +874,7 @@ public class InstructionSet
 						{
 							RegisterFile.updateRegister(operands[0],
 									Globals.memory.getWord(
-											RegisterFile.getValue(operands[1]) + operands[2]));
+											RegisterFile.getValue(operands[1]) + operands[2] * 4));
 						} 
 						catch (AddressErrorException e)
 						{
@@ -895,7 +895,7 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(operands[2]) + operands[1],
+									RegisterFile.getValue(operands[2]) + operands[1] * 4,
 									RegisterFile.getValue(operands[0]));
 						} 
 						catch (AddressErrorException e)
@@ -917,7 +917,29 @@ public class InstructionSet
 						try
 						{
 							Globals.memory.setWord(
-									RegisterFile.getValue(operands[1]) + operands[2],
+									RegisterFile.getValue(operands[1]) + operands[2] * 4,
+									RegisterFile.getValue(operands[0]));
+						} 
+						catch (AddressErrorException e)
+						{
+							throw new ProcessingException(statement, e);
+						}
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("sw $t1,$t2,label",
+						"Store word : Store contents of $t1 into effective memory word address",
+						BasicInstructionFormat.I_FORMAT,
+						"001100 fffff sssss tttttttttttttttt",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						try
+						{
+							Globals.memory.setWord(
+									RegisterFile.getValue(operands[1]) + operands[2] * 4,
 									RegisterFile.getValue(operands[0]));
 						} 
 						catch (AddressErrorException e)
