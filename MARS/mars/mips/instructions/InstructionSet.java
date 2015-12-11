@@ -624,15 +624,18 @@ public class InstructionSet
 						int add1 = RegisterFile.getValue(operands[1]);
 						int add2 = RegisterFile.getValue(operands[2]);
 						int sum = add1 + add2;
+						
+						Coprocessor0.updateRegister(16, (sum == 0 ? 1 : 0));
+						Coprocessor0.updateRegister(17, (sum < 0 ? 1 : 0));
 						// overflow on A+B detected when A and B have same sign and A+B has other sign.
 						if ((add1 >= 0 && add2 >= 0 && sum < 0)
 								|| (add1 < 0 && add2 < 0 && sum >= 0))
 						{
-							throw new ProcessingException(statement,
-									"arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
+							// throw new ProcessingException(statement,"arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
+							Coprocessor0.updateRegister(18, 1);
+						} else {
+							Coprocessor0.updateRegister(18, 0);
 						}
-						Coprocessor0.updateRegister(16, (sum == 0 ? 1 : 0));
-						Coprocessor0.updateRegister(17, (sum < 0 ? 1 : 0));
 						RegisterFile.updateRegister(operands[0], sum);
 					}
 				}));
@@ -650,18 +653,18 @@ public class InstructionSet
 						int sub1 = RegisterFile.getValue(operands[1]);
 						int sub2 = RegisterFile.getValue(operands[2]);
 						int dif = sub1 - sub2;
+						
+						Coprocessor0.updateRegister(16, (dif == 0 ? 1 : 0));
+						Coprocessor0.updateRegister(17, (dif < 0 ? 1 : 0));
 						// overflow on A-B detected when A and B have opposite signs and A-B has B's sign
 						if ((sub1 >= 0 && sub2 < 0 && dif < 0)
 								|| (sub1 < 0 && sub2 >= 0 && dif >= 0))
 						{
 							Coprocessor0.updateRegister(18, 1);
-							throw new ProcessingException(statement,
-									"arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
+							//throw new ProcessingException(statement,"arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
 						} else {
 							Coprocessor0.updateRegister(18, 0);
 						}
-						Coprocessor0.updateRegister(16, (dif == 0 ? 1 : 0));
-						Coprocessor0.updateRegister(17, (dif < 0 ? 1 : 0));
 						RegisterFile.updateRegister(operands[0], dif);
 					}
 				}));
@@ -680,15 +683,18 @@ public class InstructionSet
 						int add1 = RegisterFile.getValue(operands[1]);
 						int add2 = operands[2] << 16 >> 16;
 						int sum = add1 + add2;
+						
+						Coprocessor0.updateRegister(16, (sum == 0 ? 1 : 0));
+						Coprocessor0.updateRegister(17, (sum < 0 ? 1 : 0));
 						// overflow on A+B detected when A and B have same sign and A+B has other sign.
 						if ((add1 >= 0 && add2 >= 0 && sum < 0)
 								|| (add1 < 0 && add2 < 0 && sum >= 0))
 						{
-							throw new ProcessingException(statement,
-									"arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
+							//throw new ProcessingException(statement,"arithmetic overflow",Exceptions.ARITHMETIC_OVERFLOW_EXCEPTION);
+							Coprocessor0.updateRegister(18, 1);
+						} else {
+							Coprocessor0.updateRegister(18, 0);
 						}
-						Coprocessor0.updateRegister(16, (sum == 0 ? 1 : 0));
-						Coprocessor0.updateRegister(17, (sum < 0 ? 1 : 0));
 						RegisterFile.updateRegister(operands[0], sum);
 					}
 				}));
@@ -856,7 +862,7 @@ public class InstructionSet
 						{
 							RegisterFile.updateRegister(operands[0],
 									Globals.memory.getWord(
-											RegisterFile.getValue(operands[2]) + operands[1] * 4));
+											(RegisterFile.getValue(operands[2]) + operands[1]) * 4));
 						} 
 						catch (AddressErrorException e)
 						{
@@ -877,8 +883,7 @@ public class InstructionSet
 						try
 						{
 							RegisterFile.updateRegister(operands[0],
-									Globals.memory.getWord(
-											RegisterFile.getValue(operands[1]) + operands[2] * 4));
+									Globals.memory.getWord((RegisterFile.getValue(operands[1]) + operands[2]) * 4));
 						} 
 						catch (AddressErrorException e)
 						{
@@ -900,7 +905,7 @@ public class InstructionSet
 						{
 							RegisterFile.updateRegister(operands[0],
 									Globals.memory.getWord(
-											RegisterFile.getValue(operands[1]) + operands[2] * 4));
+											(RegisterFile.getValue(operands[1]) + operands[2]) * 4));
 						} 
 						catch (AddressErrorException e)
 						{
