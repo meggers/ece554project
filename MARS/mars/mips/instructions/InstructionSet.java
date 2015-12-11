@@ -458,20 +458,24 @@ public class InstructionSet
 					continue;
 				}
 				int sfa = (sld & 0x0000FF00) >>> 8;
-		int colorPaletteIndex = sfa & 0x00000003;
-		boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
-		boolean isFlipHorizontal = (sfa & 0x00000040) == 0x0000004;
-		int sft = (sld & 0x00FF0000) >>> 16;
-		BufferedImage bufferedImage = spritePatternTable[sft];
-		int sslX = (sld & 0xFF000000) >>> 24;
+				int colorPaletteIndex = sfa & 0x00000003;
+				boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
+				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x0000004;
+				int sft = (sld & 0x00FF0000) >>> 16;
+				BufferedImage bufferedImage = spritePatternTable[sft];
+				int sslX = (sld & 0xFF000000) >>> 24;
 
-		graphics.drawImage(setColorPalette(setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex), sslX, sslY, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(setColorPalette(setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex), sslX, sslY, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
 			}
 		}
 	}
 
 	public BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipVertical, boolean isFlipHorizontal) {
 
+		if (inputBufferedImage == null) {
+			return new BufferedImage(8, 8, BufferedImage.TYPE_INT_RGB);
+		}
+		
 		BufferedImage outputBufferedImage = new BufferedImage(inputBufferedImage.getWidth(), inputBufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
 		if (!isFlipHorizontal && !isFlipVertical) {
 			return inputBufferedImage;
@@ -499,6 +503,10 @@ public class InstructionSet
 
 	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex) {
 
+		if (inputBufferedImage == null) {
+			return new BufferedImage(8, 8, BufferedImage.TYPE_INT_RGB);
+		}
+		
 		// colorPaletteIndex0 = BlRGB
 		// colorPaletteIndex1 = BlCMY
 		// colorPaletteIndex2 = BlBRG
