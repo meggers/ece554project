@@ -78,6 +78,7 @@ public class InstructionSet
 	int DISPLAY_LOGIC_UNIT_SIZE = 4;
 	BufferedImage[][] groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION];
 	SpriteData[] spriteData = new SpriteData[64];
+	int[] clonedStatusRegisters = new int[3];
 	int[][] groundData = new int[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
 	// commented out, use backgroundPatternTable for TronMIPSter; BufferedImage[][][][] background = new BufferedImage[4][4][4][4];
 
@@ -319,7 +320,12 @@ public class InstructionSet
 				char characterPressed = arg0.getKeyChar();
 				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
 				System.out.println("key press interrupt has occured, key = " + characterPressed);
-				RegisterFile.updateRegister(28, characterPressed);    
+				RegisterFile.updateRegister(28, characterPressed);
+				RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
+				clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+				clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+				clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+				processJump(4088); // 0x3FE * 4, then converted to decimal
 				/*
 				if ("WwAaSsDdIiJjKkLl".contains("" + characterPressed)) {
 					characterPressed = ("" + characterPressed).toLowerCase().charAt(0);
@@ -360,8 +366,13 @@ public class InstructionSet
 			}
 
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
-			// System.out.println("timer interrupt has occured");
-
+			System.out.println("timer interrupt has occured");
+			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
+			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+			clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+			processJump(4084); // 0x3FD * 4, then converted to decimal
+			
 			/*
 			// update direction
 			switch (directions[0]) {
@@ -1022,7 +1033,11 @@ public class InstructionSet
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
 						int[] operands = statement.getOperands();
-						
+						if (operands[0] == 30) {
+							Coprocessor0.updateRegister(16, clonedStatusRegisters[0]);
+							Coprocessor0.updateRegister(17, clonedStatusRegisters[1]);
+							Coprocessor0.updateRegister(17, clonedStatusRegisters[2]);
+						}
 						processJump(RegisterFile.getValue(operands[0]) << 2);
 					}
 				}));

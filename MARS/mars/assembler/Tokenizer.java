@@ -132,6 +132,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                source.set(i,new SourceLine(spriteAssemble(currentLineTokens.getProcessedLine()),source.get(i).getMIPSprogram(), source.get(i).getLineNumber())); 
             } 
          }
+		 // ece554 nops
+		 for (int i = source.size(); i < 50; ++i) {
+			// source.set(i,new SourceLine(spriteAssemble(currentLineTokens.getProcessedLine()),source.get(i).getMIPSprogram(), source.get(i).getLineNumber())); 
+		 }
          if (errors.errorsOccurred()) {
             throw new ProcessingException(errors);
          }
