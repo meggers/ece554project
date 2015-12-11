@@ -713,7 +713,7 @@ public class InstructionSet
 
 		instructionList.add(
 				new BasicInstruction("andi $t1,$t2,100",
-						"Bitwise AND immediate : Set $t1 to bitwise AND of $t2 and zero-extended 16-bit immediate",
+						"Bitwise AND immediate : Set $t1 to bitwise AND of $t2 and sign-extended 16-bit immediate",
 						BasicInstructionFormat.I_FORMAT,
 						"100101 fffff sssss tttttttttttttttt",
 						new SimulationCode()
@@ -721,7 +721,7 @@ public class InstructionSet
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
 						int[] operands = statement.getOperands();
-						int and = RegisterFile.getValue(operands[1]) & (operands[2] & 0x0000FFFF);
+						int and = RegisterFile.getValue(operands[1]) & (operands[2] << 16 >> 16);
 						// ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
 						Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
@@ -986,7 +986,7 @@ public class InstructionSet
 						int[] operands = statement.getOperands();
 
 						//System.out.println("got branch instruction properly, going to " + (operands[0] << 6 >> 6));
-						processBranch(operands[0] << 6 >> 6); // maybe missing sign extend.
+						processBranch(operands[0] << 6 >> 6); // added sign extend
 					}
 				}));
 		instructionList.add(
@@ -1002,7 +1002,7 @@ public class InstructionSet
 
 						if (Coprocessor0.getValue(16) == 1)
 						{
-							processBranch(operands[0]);
+							processBranch(operands[0] << 6 >> 6);
 						}
 					}
 				}));
@@ -1019,7 +1019,7 @@ public class InstructionSet
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(16) == 0)
 						{
-							processBranch(operands[0]);
+							processBranch(operands[0] << 6 >> 6);
 						}
 					}
 				}));
@@ -1036,7 +1036,7 @@ public class InstructionSet
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
 						{
-							processBranch(operands[0]);
+							processBranch(operands[0] << 6 >> 6);
 						}
 					}
 				}));

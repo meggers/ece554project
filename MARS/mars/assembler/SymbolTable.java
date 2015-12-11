@@ -82,7 +82,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			if (label.equals("stack_ov_interrupt")) {
 				Globals.stack_ov_address = address;
 			}
-			System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
+			// System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
 			if (Globals.debug) System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
          }
       }
