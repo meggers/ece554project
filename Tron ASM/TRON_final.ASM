@@ -41,7 +41,7 @@
 	p1xCoord:	.word	64
 	p1yCoord:	.word	128
 	p1dir:		.byte	0x64 # used for PPU, not here
-	p2xCoord:	.word	192
+	p2xCoord:	.word	5
 	p2yCoord:	.word	128
 	p2dir:		.byte	0x6A # used for PPU, not here
 	input:		.word	0
@@ -151,36 +151,38 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 
 
 LoadGameData:
-	# TODO tweak starting locations
-	# p1 x coord = 12
-	lw $s0,($0)p1xCoord
-	# p1 y coord = 32
-	lw $s1,($0)p1yCoord
+	# p1 x coord = 64
+	lw $s0,$0,p1xCoord
+	# p1 y coord = 128
+	lw $s1,$0,p1yCoord
 	# player 1 direction = 'd'
 	li $s2, 0x64
 	
-	# p2 x coord = 51
-	lw $s4,($0)p2xCoord
-	# p2 y coord = 32
-	lw $s5,($0)p2yCoord
+	# p2 x coord = 192
+	#lw $s4,$0,p2xCoord
+	li $s4,192
+	# p2 y coord = 128
+	lw $s5,$0,p2yCoord
 	# player 2 direction = 'j'
 	li $s6, 0x6A
 					
-LoadFrontSprites: 	# Load the sprites from the pattern table into the OAM
-					# Set the attributes of the sprites for the beginning of the game
+LoadFrontSprites: 
 
 	
 	# Put one copy of light_bike (p1) rotated pi/2 right into OAM
 	add $t0,$zero,$zero
 	li $t1,light_bike_small_rotated_index
 	sft $t0,$t1
+	
 	# Set the proper location
-	add $t2,$s0,$zero
+	# addi ... 8 because the middle is "where the bike is"
+	addi $t2,$s0,8
 	sll $t2,$t2,8
 	add $t2,$t2,$s1
 	ssl $t0,$t2
+
 	# Set attributes
-	addi $t3,$zero,0x41
+	addi $t3,$zero,0x01
 	sfa $t0,$t3
 	
 	# Add 2nd sprite of p1 to OAM
@@ -209,7 +211,7 @@ LoadFrontSprites: 	# Load the sprites from the pattern table into the OAM
 	sft $t0,$t1
 	
 	# Set the proper Location
-	add $t2,$s4,$zero
+	addi $t2,$s4,-8
 	sll $t2,$t2,8
 	add $t2,$t2,$s5
 	ssl $t0,$t2
@@ -243,49 +245,61 @@ GameLoop:
 		sub $zero,$t0,$s2
 		bne testaUpdate
 		addi $s1, $s1, -1
-		call p1displayupdate
+		b endP1DisplayUpdate
 	testaUpdate:
 		li $t0,0x61
 		sub $zero,$t0,$s2
 		bne testsUpdate
 		addi $s0, $s0, -1
-		call p1displayupdate
+		b endP1DisplayUpdate
 	testsUpdate:
 		li $t0,0x73
 		sub $zero,$t0,$s2
 		bne testdUpdate
 		addi $s1, $s1, 1
-		call p1displayupdate
+		b endP1DisplayUpdate
 	testdUpdate:
 		li $t0,0x64
-		#bne $t0,$t2,p1displayupdate
-		addi $s0, $s0, 1
+		sub $zero,$t0,$s2
+		bne updateP2Postion
+		addi $s0,$s0,1
+		b endP1DisplayUpdate
+		
+		
+		
+	endP1DisplayUpdate:
+		nop
 		call p1displayupdate
+
 	
 	# Update p2's position and orientation
 		updateP2Postion:
 		li $t0,0x69
 		sub $zero,$t0,$s6
 		bne testjUpdate
-		addi $s1, $s1, -1
-		call p2displayupdate
+		addi $s5, $s5, -1
+		b endP2DisplayUpdate
 	testjUpdate:
 		li $t0,0x6A
 		sub $zero,$t0,$s6
 		bne testkUpdate
-		addi $s0, $s0, -1
-		call p2displayupdate
+		addi $s4, $s4, -1
+		b endP2DisplayUpdate
 	testkUpdate:
 		li $t0,0x6B
 		sub $zero,$t0,$s6
 		bne testlUpdate
-		addi $s1, $s1, 1
-		call p2displayupdate
+		addi $s5, $s5, 1
+		b endP2DisplayUpdate
 	testlUpdate:
 		li $t0,0x6C
 		sub $zero,$t0,$s6
 		bne gameLoopSpin
-		addi $s0, $s0, 1
+		addi $s4, $s4, 1
+		b endP2DisplayUpdate
+		
+	endP2DisplayUpdate:
+		nop
 		call p2displayupdate
 	
 	# Update array 
@@ -293,13 +307,14 @@ GameLoop:
 	# Check for collision (Branch to end if collision)
 gameLoopSpin:
 	nop
-	b gameLoopSpin
+	# b gameLoopSpin
+	# NO INTERRUPTS FOR TESTING
+	# NO CRYING IN BASEBALL
+	b GameLoop
 
 
 
 p1displayupdate:
-	# Push the ret address 
-		push $ra
 	# $t0 holds comparison values 
 		push $t0
 	# t1 holds OAM value of sprite
@@ -308,6 +323,8 @@ p1displayupdate:
 		push $t2
 	# t3 holds the attributes of the sprite 
 		push $t3
+	# t4 holds the current sprite in the pattern table
+		push $t4
 		
 		
 	# what do we do if p1 is facing 'w'
@@ -315,64 +332,48 @@ p1displayupdate:
 	updatespritew:
 		li $t0,0x77
 		sub $zero,$t0,$s2
-		bne updatespritea
-		
-		# $a0 = sprite index
-		li $a0,0
-		# $a1 = sprite height
-		li $a1,3
-		# $a2 = sprite width
-		li $a2,1
-		# $a3 = starting attribute
-		li $a3,0x01
-		call load_sprite_img
-		
-		# $a0 - Sprite Register Layout formatted data
-		li $a0,0
-		# $a1 - x data to set (lsb 8 bits)
-		add $a1,$zero,$s0
-		call set_x
-		
-		# $a0 - Sprite Register Layout formatted data
-		li $a0,0
-		# $a1 - y data to set (lsb 8 bits)
-		add $a1,$zero,$s1
-		call set_y
-		
+		bne updatespritea		
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike2_0
+		li $t4,light_bike_small_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		addi $t2,$s0,0
+		sll $t2,$t2,8
+		add $t2,$t2,$s1
+	# add 8 so the center of the bike is its location
+		addi $t2,$t2,-8
+		ssl $t1,$t2
 	# set the attributes (flip) of the sprite
-	# TODO determine color palette
-		li $t3,0x00
+		li $t3,0x01
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
-		addi $t2,$s1,8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,8
+		ssl $t1,$t2
 	# set the attributes (flip) of the sprite
 	# TODO determine color palette
-		li $t3,0x00
+		li $t3,0x01
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_2
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
-		addi $t2,$s1,8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,8
+		ssl $t1,$t2
 	# set the attributes (flip) of the sprite
 	# TODO determine color palette
-		li $t3,0x00
+		li $t3,0x01
 		sfa $t1,$t3
 		b end_p1displayupdate
 		
@@ -383,41 +384,47 @@ p1displayupdate:
 		bne updatesprites
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_small_rotated_0
+		li $t4,light_bike_small_rotated_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		addi $t2,$s0,0
+		sll $t2,$t2,8
+		add $t2,$t2,$s1
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip both x, y, so MSB is 0xC
 	# TODO determine color palette
-		li $t3,0xC0
+		li $t3,0xC1
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is left, so next sprite is 8 right of
 	# the last sprite 
-		addi $t2,$s0,8
-		# ssl $t1,$t2,$s1
+		addi $t2,$t2,-0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip both x, y, so MSB is 0xC
 	# TODO determine color palette
-		li $t3,0xC0
+		li $t3,0xC1
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_0
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
-	# direction is up, so next sprite is 8 right of
+	# direction is left, so next sprite is 8 right of
 	# the last sprite 
-		addi $t2,$s0,8
-		# ssl $t1,$t2,$s1
+		addi $t2,$t2,-0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip both x, y, so MSB is 0xC
 	# TODO determine color palette
-		li $t3,0xC0
+		li $t3,0xC1
 		sfa $t1,$t3
 		b end_p1displayupdate
 		
@@ -427,101 +434,109 @@ p1displayupdate:
 		bne updatesprited
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike2_0
+		li $t4,light_bike_small_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		add $t2,$zero,$s0
+		sll $t2,$t2,8
+		add $t2,$t2,$s1
+		addi $t2,$t2,8
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip just y, so MSB is 0x8
-	# TODO determine color palette
-		li $t3,0x80
+		li $t3,0x81
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
-		addi $t2,$s1,-8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,-8
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip just y, so MSB is 0x8
-	# TODO determine color palette
-		li $t3,0x80
+		li $t3,0x81
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_0
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
-		addi $t2,$s1,-8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,-8
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip just y, so MSB is 0x8
 	# TODO determine color palette
-		li $t3,0x80
+		li $t3,0x81
 		sfa $t1,$t3
 		b end_p1displayupdate
 		
 	updatesprited:
 		li $t0,0x64
 		sub $zero,$t0,$s2
-		bne updatesprited
+		bne end_p1displayupdate
+				
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_small_rotated_0
+		li $t4,light_bike_small_rotated_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		add $t2,$s0,8
+		sll $t2,$t2,8
+		add $t2,$t2,$s1
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# no flip, so MSB is 0x0
-	# TODO determine color palette
-		li $t3,0x80
+	# Color pallette is 1, LSB is 0x1
+		li $t3,0x81
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
-		addi $t2,$s0,-8
-		# ssl $t1,$t1,$s1
+		addi $t2,$t2,-0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# no flip, so MSB is 0x0
-	# TODO determine color palette
-		li $t3,0x80
+		li $t3,0x81
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_2
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
-		addi $t2,$s0,-8
-		# ssl $t1,$t1,$s1
+		addi $t2,$t2,-0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# no flip, so MSB is 0x0
-	# TODO determine color palette
-		li $t3,0x80
+		li $t3,0x81
 		sfa $t1,$t3
 		
 		
 	end_p1displayupdate:
+		pop $t4
 		pop $t3
 		pop $t2
 		pop $t1
 		pop $t0
-		pop $ra
 		ret
 		
 		
 		
 	p2displayupdate:
-	# Push the ret address
-		push $ra
 	# $t0 holds comparison values 
 		push $t0
 	# t1 holds OAM value of sprite
@@ -530,6 +545,8 @@ p1displayupdate:
 		push $t2
 	# t3 holds the attributes of the sprite 
 		push $t3
+	# t4 holds the sprite index in the pallatte table
+		push $t4
 		
 		
 	# what do we do if p2 is facing 'i'
@@ -537,41 +554,48 @@ p1displayupdate:
 	updatespritei:
 		li $t0,0x69
 		sub $zero,$t0,$s6
-		bne updatespritea
+		bne updatespritej
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike2_0
+		li $t4,light_bike_small_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		add $t2,$s4,$zero
+		sll $t2,$t2,8
+		add $t2,$t2,$s5
+		addi $t2,$t2,-8
+		ssl $t1,$t2
 	# set the attributes (flip) of the sprite
 	# TODO determine color palette
-		li $t3,0x0F
+		li $t3,0x02
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
-		addi $t2,$s1,8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,8
+		ssl $t1,$t2
 	# set the attributes (flip) of the sprite
 	# TODO determine color palette
-		li $t3,0x0F
+		li $t3,0x02
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_0
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is up, so next sprite is 8 below
 	# the last sprite 
-		addi $t2,$s1,8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,8
+		ssl $t1,$t2
 	# set the attributes (flip) of the sprite
 	# TODO determine color palette
-		li $t3,0x0F
+		li $t3,0x02
 		sfa $t1,$t3
 		b end_p2displayupdate
 		
@@ -579,196 +603,183 @@ p1displayupdate:
 	updatespritej:
 		li $t0,0x6A
 		sub $zero,$t0,$s6
-		bne updatesprites
+		bne updatespritek
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_small_rotated_0
+		li $t4,light_bike_small_rotated_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		addi $t2,$s4,-8
+		sll $t2,$t2,8
+		add $t2,$t2,$s5
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip both x, y, so MSB is 0xC
 	# TODO determine color palette
-		li $t3,0xCF
+		li $t3,0xC2
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is left, so next sprite is 8 right of
 	# the last sprite 
-		addi $t2,$s0,8
-		# ssl $t1,$t2,$s1
+		addi $t2,$t2,0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip both x, y, so MSB is 0xC
 	# TODO determine color palette
-		li $t3,0xCF
+		li $t3,0xC2
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_rot_0
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
-	# direction is up, so next sprite is 8 right of
+	# direction is left, so next sprite is 8 right of
 	# the last sprite 
-		addi $t2,$s0,8
-		# ssl $t1,$t2,$s1
+		addi $t2,$t2,0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip both x, y, so MSB is 0xC
 	# TODO determine color palette
-		li $t3,0xCF
+		li $t3,0xC2
 		sfa $t1,$t3
 		b end_p2displayupdate
 		
 	updatespritek:
 		li $t0,0x6B
 		sub $zero,$t0,$s6
-		bne updatesprited
+		bne updatespritel
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike2_0
+		li $t4,light_bike_small_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		add $t2,$s4,$zero
+		sll $t2,$t2,8
+		add $t2,$t2,$s5
+		addi $t2,$t2,8
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip just y, so MSB is 0x8
-	# TODO determine color palette
-		li $t3,0x8F
+		li $t3,0x82
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
-		addi $t2,$s1,-8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,-8
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip just y, so MSB is 0x8
-	# TODO determine color palette
-		li $t3,0x8F
+		li $t3,0x82
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike2_0
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is down, so next sprite is 8 above
 	# the last sprite 
-		addi $t2,$s1,-8
-		# ssl $t1,$s0,$t2
+		addi $t2,$t2,-8
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# flip just y, so MSB is 0x8
 	# TODO determine color palette
-		li $t3,0x8F
+		li $t3,0x82
 		sfa $t1,$t3
 		b end_p2displayupdate
 		
 	updatespritel:
 		li $t0,0x6C
 		sub $zero,$t0,$s6
-		bne updatesprited
+		bne end_p2displayupdate
 		
 	# put the sprite in the OAM
-		# sft $t1,light_bike_small_rotated_0
+		li $t4,light_bike_small_rotated_index
+		sft $t1,$t4
 	# set the location of the sprite
-		# ssl $t1,$s0,$s1
+		addi $t2,$s4,8
+		sll $t2,$t2,8
+		add $t2,$t2,$s5
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# no flip, so MSB is 0x0
 	# TODO determine color palette
-		li $t3,0x8F
+		li $t3,0x82
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_1
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
-		addi $t2,$s0,-8
-		# ssl $t1,$t1,$s1
+		addi $t2,$t2,-0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# no flip, so MSB is 0x0
-	# TODO determine color palette
-		li $t3,0x8F
+		li $t3,0x82
 		sfa $t1,$t3
 		
 	# put the sprite in the OAM
 		addi $t1,$t1,1
-		# sft $t1,light_bike_small_rotated_2
+		addi $t4,$t4,1
+		sft $t1,$t4
 	# set the location of the sprite
 	# direction is right, so next sprite is 8 left of
 	# the last sprite 
-		addi $t2,$s0,-8
-		# ssl $t1,$t1,$s1
+		addi $t2,$t2,-0x800
+		ssl $t1,$t2
 	# set the attributes of the sprite
 	# no flip, so MSB is 0x0
 	# TODO determine color palette
-		li $t3,0x8F
+		li $t3,0x82
 		sfa $t1,$t3
 		
 		
 	end_p2displayupdate:
+		pop $t4
 		pop $t3
 		pop $t2
 		pop $t1
 		pop $t0
-		pop $ra
 		ret
 
 
-#####################################
-#                                   #
-# FUNCTION: load_sprite_img         #
-#                                   #
-# DEFN: load sprite into oam        #
-#                                   #
-# ARGUMENTS:                        #
-#   $a0: sprite index               #
-#   $a1: sprite height              #
-#   $a2: sprite width               #
-#   $a3: Starting Attr              #
-#    (in Sprite Register Layout)    #
-#                                   #
-#####################################
-load_sprite_img:                    #
-    push $ra                        #
-    push $t0                        #
-    push $t1                        #
-    push $t2                        #
-                                    #
-    li $t0,0                        # $t0 = 0 ; outer loop index (height)
-    li $t1,0                        # $t1 = 0 ; inner loop index (width)
-    li $t3,0                        # cur_sprite = 0
-                                    #
-    load_sprite_oloop:              #
-        sub $zero,$t0,$a1           #
-        beq load_sprite_ret         #
-                                    #
-        load_sprite_iloop:          #
-            sub $zero,$t1,$a2       #
-            beq rst_sprite_iloop    #
-                                    #            
-            add $t2,$a0,$t3         # $t2 = sprite index + loop index
-            sft $a3,$t2             # set sprite index in oam
-            addi $t3,$t3,1          # $t0 += 1 ; Increment loop index
-            addi $a3,$a3,1          # $a3 += 1 ; Increment oam index
-                                    #
-            addi $t1,$t1,1          # increment inner loop index
-            b load_sprite_iloop     #
-                                    #
-        rst_sprite_iloop:           #
-            li $t1,0                # reset inner loop index
-            addi $t0,$t0,1          # increment outer loop index
-            b load_sprite_oloop     # 
-                                    #
-    load_sprite_ret:                #
-    	pop $t2                     #
-    	pop $t1                     #
-    	pop $t0                     #
-    	pop $ra                     #
-        ret                         #
         
+#####################################################
+# set_y: Sets y value in sprite register layout data
+#
+# Arguments:
+#   $a0 - Sprite Register Layout formatted data
+#   $a1 - y data to set (lsb 8 bits)
+#
+# Returns:
+#   $v0 - SRL data with new y
+#
+#####################################################
+set_y: nop
+    push $t0
+    push $t1
+    lw $t0,$0,y_mask
+    and $t1,$t0,$a1
+    nand $t0,$t0,$t0
+    and $v0,$a0,$t0
+    xor $v0,$v0,$t1
+    pop $t1
+    pop $t0
+    ret
 #####################################################
 # set_x: Sets x value in sprite register layout data
 #
@@ -780,31 +791,14 @@ load_sprite_img:                    #
 #   $v0 - SRL data with new x
 #
 #####################################################
-set_x:
-    lw $t0,($0)x_mask
+set_x: nop
+    push $t0
+    lw $t0,$0,x_mask
     nand $t0,$t0,$t0
     and $v0,$a0,$t0
     sll $a1,$a1,24
     xor $v0,$v0,$a1
-    ret
-    
-#####################################################
-# set_x: Sets y value in sprite register layout data
-#
-# Arguments:
-#   $a0 - Sprite Register Layout formatted data
-#   $a1 - y data to set (lsb 8 bits)
-#
-# Returns:
-#   $v0 - SRL data with new y
-#
-#####################################################
-set_y:
-    lw $t0,($0)y_mask
-    and $t1,$t0,$a1
-    nand $t0,$t0,$t0
-    and $v0,$a0,$t0
-    xor $v0,$v0,$t1
+    pop $t0
     ret
         
 kb_handler:
