@@ -40,11 +40,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       private static String startLabel = "main";
       private String filename;
       private ArrayList table;
+	  
    	// Note -1 is legal 32 bit address (0xFFFFFFFF) but it is the high address in 
    	// kernel address space so highly unlikely that any symbol will have this as 
    	// its associated address!
       public static final int NOT_FOUND = -1;  
-      		
+
    	/**
    	 * Create a new empty symbol table for given file
    	 * @param filename name of file this symbol table is associated with.  Will be
@@ -71,6 +72,17 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			if (b) address /= 4; // ECE554 changing byte-addressable to word-addressable
             Symbol s= new Symbol(label, address, b);
             table.add(s);
+			// ECE554
+			if (label.equals("game_tick_interrupt")) {
+				Globals.game_tick_address = address;
+			}
+			if (label.equals("keyboard_interrupt")) {
+				Globals.keyboard_address = address;
+			}
+			if (label.equals("stack_ov_interrupt")) {
+				Globals.stack_ov_address = address;
+			}
+			System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
 			if (Globals.debug) System.out.println("The symbol " + label + " with address " + address + " has been added to the "+this.filename+" symbol table.");
          }
       }

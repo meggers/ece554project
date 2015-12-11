@@ -113,6 +113,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
        public static Settings getSettings() {
          return settings;
       }
+	  
+	  public static int game_tick_address = 0;
+	  public static int keyboard_address = 0;
+	  public static int stack_ov_address = 0;
    
     /**
      * Method called once upon system initialization to create the global data structures.
