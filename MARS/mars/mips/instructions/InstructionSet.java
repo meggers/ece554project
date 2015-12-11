@@ -320,6 +320,7 @@ public class InstructionSet
 				char characterPressed = arg0.getKeyChar();
 				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
 				System.out.println("key press interrupt has occured, key = " + characterPressed);
+
 				RegisterFile.updateRegister(28, characterPressed);
 				RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 				clonedStatusRegisters[0] = Coprocessor0.getValue(16);
@@ -367,6 +368,17 @@ public class InstructionSet
 
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
 			System.out.println("timer interrupt has occured");
+			try {
+				System.out.println("a");
+				// 0x3Fd * 4 (to change to word addressing), then convert to decimal
+				Globals.memory.setStatement(4084, new ProgramStatement(0x19200000, 4084));
+				// Globals.memory.setStatement(4084, new ProgramStatement(0xfc000000, 4084));
+				System.out.println("b");
+				System.out.println(Globals.memory.getStatement(4084));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("c"); // TODO setRawWord(int address, int value)
 			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
@@ -545,7 +557,7 @@ public class InstructionSet
 	class TimerInterrupt implements Runnable {
 		public void run() {
 			try {
-				Thread.sleep(5000);
+				Thread.sleep(10000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
