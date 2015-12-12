@@ -319,18 +319,31 @@ public class InstructionSet
 			public void keyPressed(KeyEvent arg0) {
 				char characterPressed = arg0.getKeyChar();
 				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
-				System.out.println("key press interrupt has occured, key = " + characterPressed);
-				int keyboardInterruptAddress = 4088 * 4;
-				try { 
-					// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
-					Globals.memory.setStatement(keyboardInterruptAddress, new ProgramStatement(0x0c000000 + ((-4088) << 6 >>> 6) + (Globals.keyboard_address / 4) - 1, keyboardInterruptAddress)); 
-				} catch (Exception e) { e.printStackTrace(); }
-				RegisterFile.updateRegister(28, characterPressed);
-				RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
-				clonedStatusRegisters[0] = Coprocessor0.getValue(16);
-				clonedStatusRegisters[1] = Coprocessor0.getValue(17);
-				clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-				processJump(keyboardInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+				if (characterPressed == 'z' || characterPressed == 'g') {
+					System.out.println("timer interrupt has occurred");
+					int gameTickInterruptAddress = 4084 * 4;
+					try { 
+						Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
+					} catch (Exception e) { e.printStackTrace(); }
+					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
+					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+					processJump(gameTickInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+				} else {
+					System.out.println("key press interrupt has occured, key = " + characterPressed);
+					int keyboardInterruptAddress = 4088 * 4;
+					try { 
+						// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
+						Globals.memory.setStatement(keyboardInterruptAddress, new ProgramStatement(0x0c000000 + ((-4088) << 6 >>> 6) + (Globals.keyboard_address / 4) - 1, keyboardInterruptAddress)); 
+					} catch (Exception e) { e.printStackTrace(); }
+					RegisterFile.updateRegister(28, characterPressed);
+					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
+					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+					processJump(keyboardInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+				}
 			}
 
 			@Override
@@ -1542,7 +1555,6 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						RegisterFile.updateRegister(operands[0],
 								Coprocessor0.getValue(operands[1]));
@@ -1557,13 +1569,11 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						Coprocessor0.updateRegister(operands[1],
 								RegisterFile.getValue(operands[0]));
 					}
 				}));
-
 		/////////////////////// Floating Point Instructions Start Here ////////////////
 		instructionList.add(
 				new BasicInstruction("add.s $f0,$f1,$f3",
@@ -1574,7 +1584,6 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{ 
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						float add1 = Float.intBitsToFloat(Coprocessor1.getValue(operands[1]));
 						float add2 = Float.intBitsToFloat(Coprocessor1.getValue(operands[2]));
