@@ -82,7 +82,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			  source = source.replace(" " + string, " " + spriteAssemblerHash.get(string));
 			  source = source.replace("," + string, "," + spriteAssemblerHash.get(string));
 		  }
-		  System.out.println();
+		  //System.out.println();
 		  return source;
 	  }
    /**

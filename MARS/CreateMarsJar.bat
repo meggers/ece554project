@@ -1,5 +1,6 @@
 javac mars/mips/instructions/*.java -Xlint
 javac mars/mips/hardware/*.java -Xlint
+javac mars/mips/dump/*.java -Xlint
 javac mars/assembler/*.java -Xlint
 javac mars/tools/*.java -Xlint
 javac mars/venus/*.java -Xlint

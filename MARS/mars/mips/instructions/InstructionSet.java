@@ -322,9 +322,12 @@ public class InstructionSet
 				if (characterPressed == 'z' || characterPressed == 'g') {
 					System.out.println("timer interrupt has occurred");
 					int gameTickInterruptAddress = 4084 * 4;
-					try { 
-						Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
-					} catch (Exception e) { e.printStackTrace(); }
+					if (!Globals.isGameTickInstructionSet) {
+						Globals.isGameTickInstructionSet = true;
+						try {
+							Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
+						} catch (Exception e) { e.printStackTrace(); }
+					}
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
@@ -334,10 +337,13 @@ public class InstructionSet
 				} else {
 					System.out.println("key press interrupt has occured, key = " + characterPressed);
 					int keyboardInterruptAddress = 4088 * 4;
-					try { 
-						// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
-						Globals.memory.setStatement(keyboardInterruptAddress, new ProgramStatement(0x0c000000 + ((-4088) << 6 >>> 6) + (Globals.keyboard_address / 4) - 1, keyboardInterruptAddress)); 
-					} catch (Exception e) { e.printStackTrace(); }
+					if (!Globals.isKeyboardInstructionSet) {
+						Globals.isKeyboardInstructionSet = true;
+						try { 
+							// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
+							Globals.memory.setStatement(keyboardInterruptAddress, new ProgramStatement(0x0c000000 + ((-4088) << 6 >>> 6) + (Globals.keyboard_address / 4) - 1, keyboardInterruptAddress)); 
+						} catch (Exception e) { e.printStackTrace(); }
+					}
 					RegisterFile.updateRegister(28, characterPressed);
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
@@ -377,17 +383,21 @@ public class InstructionSet
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
 			System.out.println("timer interrupt has occurred");
 			int gameTickInterruptAddress = 4084 * 4;
-			try { 
-				//Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6), gameTickInterruptAddress)); 
-				// now PC = 4084 (or 4084 * 4 internally), so need to add b (branch) opcode plus jump up 4084 plus label address minus 1 (to cancel PC always incrementing)
-				Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
-				//System.out.println("(Globals.game_tick_address - gameTickInterruptAddress) = " + (Globals.game_tick_address - gameTickInterruptAddress));
-				//System.out.println("((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6) = " + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6));
-				//System.out.println(Globals.game_tick_address);
-				//System.out.println(Globals.keyboard_address);
-				//System.out.println(Globals.stack_ov_address);
-				//System.out.println(Globals.memory.getStatement(gameTickInterruptAddress)); 
-			} catch (Exception e) { e.printStackTrace(); }
+			if (!Globals.isGameTickInstructionSet) {
+				Globals.isGameTickInstructionSet = true;
+				try { 
+					//Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6), gameTickInterruptAddress)); 
+					// now PC = 4084 (or 4084 * 4 internally), so need to add b (branch) opcode plus jump up 4084 plus label address minus 1 (to cancel PC always incrementing)
+					
+					Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
+					//System.out.println("(Globals.game_tick_address - gameTickInterruptAddress) = " + (Globals.game_tick_address - gameTickInterruptAddress));
+					//System.out.println("((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6) = " + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6));
+					//System.out.println(Globals.game_tick_address);
+					//System.out.println(Globals.keyboard_address);
+					//System.out.println(Globals.stack_ov_address);
+					//System.out.println(Globals.memory.getStatement(gameTickInterruptAddress)); 
+				} catch (Exception e) { e.printStackTrace(); }
+			}
 			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 			clonedStatusRegisters[1] = Coprocessor0.getValue(17);

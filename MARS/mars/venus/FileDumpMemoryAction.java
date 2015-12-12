@@ -247,9 +247,12 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             }
             if (operationOK) {
                try {
-				   System.out.println("theFile = " + theFile);
-				   System.out.println("firstAddress = " + firstAddress);
-				   System.out.println("lastAddress = " + lastAddress);
+				   //System.out.println("format = " + format);
+				   //System.out.println("theFile = " + theFile);
+				   //System.out.println("firstAddress = " + firstAddress);
+				   //System.out.println("lastAddress = " + lastAddress);
+				   //firstAddress = 0;
+				   //lastAddress = 16380;// 4092; 4092 is instructions only
                   format.dumpMemoryRange(theFile, firstAddress, lastAddress);
                } 
                    catch (AddressErrorException aee) {
