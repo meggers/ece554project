@@ -734,7 +734,23 @@ public class InstructionSet
 						RegisterFile.updateRegister(operands[0], and);
 					}
 				}));
-
+		instructionList.add(
+				new BasicInstruction("andi $t1,$t2,-100",
+						"Bitwise AND immediate : Set $t1 to bitwise AND of $t2 and sign-extended 16-bit immediate",
+						BasicInstructionFormat.I_FORMAT,
+						"100101 fffff sssss tttttttttttttttt",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						int and = RegisterFile.getValue(operands[1]) & (operands[2] << 16 >> 16);
+						// ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
+						Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
+						Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
+						RegisterFile.updateRegister(operands[0], and);
+					}
+				}));
 		instructionList.add(
 				new BasicInstruction("xor $t1,$t2,$t3",
 						"Bitwise XOR (exclusive OR) : Set $t1 to bitwise XOR of $t2 and $t3",
@@ -995,6 +1011,36 @@ public class InstructionSet
 					}
 				}));
 		instructionList.add(
+				new BasicInstruction("b 100",
+						"Branch unconditional : Branch to statement at 100 from address",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000011 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+
+						//System.out.println("got branch instruction properly, going to " + (operands[0] << 6 >> 6));
+						processBranch(operands[0] << 6 >> 6); // added sign extend
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("b -100",
+						"Branch unconditional : Branch to statement at -100 from address",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000011 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+
+						//System.out.println("got branch instruction properly, going to " + (operands[0] << 6 >> 6));
+						processBranch(operands[0] << 6 >> 6); // added sign extend
+					}
+				}));
+		instructionList.add(
 				new BasicInstruction("beq label",
 						"Branch if equal : Branch to statement at label's address if $t1 and $t2 are equal",
 						BasicInstructionFormat.I_BRANCH_FORMAT,
@@ -1011,7 +1057,40 @@ public class InstructionSet
 						}
 					}
 				}));
+		instructionList.add(
+				new BasicInstruction("beq 100",
+						"Branch if equal : Branch to statement at 100 from address",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000000 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
 
+						if (Coprocessor0.getValue(16) == 1)
+						{
+							processBranch(operands[0] << 6 >> 6);
+						}
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("beq -100",
+						"Branch if equal : Branch to statement at -100 from address",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000000 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+
+						if (Coprocessor0.getValue(16) == 1)
+						{
+							processBranch(operands[0] << 6 >> 6);
+						}
+					}
+				}));
 		instructionList.add(
 				new BasicInstruction("bne label",
 						"Branch if not equal : Branch to statement at label's address if $t1 and $t2 are not equal",
@@ -1028,9 +1107,72 @@ public class InstructionSet
 						}
 					}
 				}));
-
+		instructionList.add(
+				new BasicInstruction("bne 100",
+						"Branch if not equal : Branch to statement at label's address if $t1 and $t2 are not equal",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000001 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						if (Coprocessor0.getValue(16) == 0)
+						{
+							processBranch(operands[0] << 6 >> 6);
+						}
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("bne -100",
+						"Branch if not equal : Branch to statement at label's address if $t1 and $t2 are not equal",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000001 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						if (Coprocessor0.getValue(16) == 0)
+						{
+							processBranch(operands[0] << 6 >> 6);
+						}
+					}
+				}));
 		instructionList.add(
 				new BasicInstruction("blt label",
+						"Branch if less than: Branch to statement at label's address if $t1 is less $t2",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000010 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
+						{
+							processBranch(operands[0] << 6 >> 6);
+						}
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("blt 100",
+						"Branch if less than: Branch to statement at label's address if $t1 is less $t2",
+						BasicInstructionFormat.I_BRANCH_FORMAT,
+						"000010 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
+						{
+							processBranch(operands[0] << 6 >> 6);
+						}
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("blt -100",
 						"Branch if less than: Branch to statement at label's address if $t1 is less $t2",
 						BasicInstructionFormat.I_BRANCH_FORMAT,
 						"000010 ffffffffffffffffffffffffff",
@@ -1065,6 +1207,56 @@ public class InstructionSet
 				}));
 		instructionList.add(
 				new BasicInstruction("call label", 
+						"Call a label : Update the PC and save the return address on the stack",
+						BasicInstructionFormat.J_FORMAT,
+						"000100 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						try
+						{
+							Globals.memory.setWord(
+									RegisterFile.getValue(29) * 4,
+									RegisterFile.getProgramCounter() / 4); // dont have to +4 for push for some reason?
+						}
+						catch (AddressErrorException e)
+						{
+							throw new ProcessingException(statement, e);
+						}
+						// Set the top of the stack with what's in the PC - 1 
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
+						processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("call 100", 
+						"Call a label : Update the PC and save the return address on the stack",
+						BasicInstructionFormat.J_FORMAT,
+						"000100 ffffffffffffffffffffffffff",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						try
+						{
+							Globals.memory.setWord(
+									RegisterFile.getValue(29) * 4,
+									RegisterFile.getProgramCounter() / 4); // dont have to +4 for push for some reason?
+						}
+						catch (AddressErrorException e)
+						{
+							throw new ProcessingException(statement, e);
+						}
+						// Set the top of the stack with what's in the PC - 1 
+						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
+						processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
+					}
+				}));
+		instructionList.add(
+				new BasicInstruction("call -100", 
 						"Call a label : Update the PC and save the return address on the stack",
 						BasicInstructionFormat.J_FORMAT,
 						"000100 ffffffffffffffffffffffffff",
