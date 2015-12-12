@@ -559,11 +559,15 @@ public class InstructionSet
 
 	class TimerInterrupt implements Runnable {
 		public void run() {
-			try {
-				Thread.sleep(10000);
-			} catch (Exception e) {
-				e.printStackTrace();
+			while (Coprocessor0.getValue(15) > 0) {
+				
 			}
+			Coprocessor0.updateRegister(15, 4096);
+			//try {
+			//	Thread.sleep(10000);
+			//} catch (Exception e) {
+			//	e.printStackTrace();
+			//}
 		}
 	}
 
@@ -607,6 +611,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						// Hey I like this so far!
 					}
 				}));
@@ -620,6 +625,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int add1 = RegisterFile.getValue(operands[1]);
 						int add2 = RegisterFile.getValue(operands[2]);
@@ -649,6 +655,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int sub1 = RegisterFile.getValue(operands[1]);
 						int sub2 = RegisterFile.getValue(operands[2]);
@@ -679,6 +686,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int add1 = RegisterFile.getValue(operands[1]);
 						int add2 = operands[2] << 16 >> 16;
@@ -708,6 +716,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int and = RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]);
 						Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
@@ -726,6 +735,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int and = RegisterFile.getValue(operands[1]) & (operands[2] << 16 >> 16);
 						// ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
@@ -743,6 +753,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int and = RegisterFile.getValue(operands[1]) & (operands[2] << 16 >> 16);
 						// ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
@@ -760,6 +771,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int xor = RegisterFile.getValue(operands[1]) ^ RegisterFile.getValue(operands[2]);
 						Coprocessor0.updateRegister(16, (xor == 0 ? 1 : 0));
@@ -778,6 +790,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int nand = ~(RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]));
 						Coprocessor0.updateRegister(16, (nand == 0 ? 1 : 0));
@@ -796,6 +809,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int sll = RegisterFile.getValue(operands[1]) << operands[2];
 						Coprocessor0.updateRegister(16, (sll == 0 ? 1 : 0));
@@ -813,6 +827,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						// must zero-fill, so use ">>>" instead of ">>".
 						int srl = RegisterFile.getValue(operands[1]) >>> operands[2];
@@ -830,9 +845,11 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						// RegisterFile.updateRegister(operands[0], operands[1]);
 						// sign extending the li
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
 				}));		
@@ -845,8 +862,10 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						// sign extending the li
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
 				}));
@@ -859,8 +878,10 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						// sign extending the li
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
 				}));			
@@ -873,6 +894,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -895,6 +917,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -916,6 +939,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -938,6 +962,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -960,6 +985,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -982,6 +1008,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -1004,6 +1031,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						//System.out.println("got branch instruction properly, going to " + (operands[0] << 6 >> 6));
@@ -1019,6 +1047,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						//System.out.println("got branch instruction properly, going to " + (operands[0] << 6 >> 6));
@@ -1034,6 +1063,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						//System.out.println("got branch instruction properly, going to " + (operands[0] << 6 >> 6));
@@ -1049,6 +1079,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						if (Coprocessor0.getValue(16) == 1)
@@ -1066,6 +1097,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						if (Coprocessor0.getValue(16) == 1)
@@ -1083,6 +1115,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						if (Coprocessor0.getValue(16) == 1)
@@ -1100,6 +1133,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(16) == 0)
 						{
@@ -1116,6 +1150,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(16) == 0)
 						{
@@ -1132,6 +1167,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(16) == 0)
 						{
@@ -1148,6 +1184,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
 						{
@@ -1164,6 +1201,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
 						{
@@ -1180,6 +1218,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (Coprocessor0.getValue(17) == 1 && Coprocessor0.getValue(18) == 0)
 						{
@@ -1196,6 +1235,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (operands[0] == 30) {
 							Coprocessor0.updateRegister(16, clonedStatusRegisters[0]);
@@ -1214,6 +1254,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -1239,6 +1280,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -1264,6 +1306,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -1289,6 +1332,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						// int[] operands = statement.getOperands();
 
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
@@ -1312,6 +1356,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						try
 						{
@@ -1337,6 +1382,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
@@ -1361,6 +1407,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						Coprocessor1.updateRegister(OAMindex, 0xFFFFFFFF);
@@ -1376,6 +1423,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						int sld = RegisterFile.getValue(operands[1]);
@@ -1401,6 +1449,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						int sslY = RegisterFile.getValue(operands[1]) & 0x000000FF;
@@ -1421,6 +1470,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						int sft = RegisterFile.getValue(operands[1]) & 0x000000FF;
@@ -1438,6 +1488,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 						int sbt = RegisterFile.getValue(operands[1]) & 0x000000FF;
@@ -1454,6 +1505,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						int sfa = RegisterFile.getValue(operands[1]) & 0x000000FF;
@@ -1473,6 +1525,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 						int sba = RegisterFile.getValue(operands[1]) & 0x00000003;
@@ -1489,6 +1542,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						RegisterFile.updateRegister(operands[0],
 								Coprocessor0.getValue(operands[1]));
@@ -1503,6 +1557,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						Coprocessor0.updateRegister(operands[1],
 								RegisterFile.getValue(operands[0]));
@@ -1519,6 +1574,7 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{ 
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						float add1 = Float.intBitsToFloat(Coprocessor1.getValue(operands[1]));
 						float add2 = Float.intBitsToFloat(Coprocessor1.getValue(operands[2]));
