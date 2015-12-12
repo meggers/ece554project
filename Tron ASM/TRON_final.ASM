@@ -37,7 +37,7 @@
 	# $s6 = p2dir
 	# $s7 = p2location
 	
-	groundData:	.space	4096
+	groundData:	.space	1024
 	p1xCoord:	.word	64
 	p1yCoord:	.word	128
 	p1dir:		.byte	0x64 # used for PPU, not here
@@ -56,9 +56,7 @@
 	y_mask:             .word 0x000000FF
 
 	oam_copy: .space 64
-	
-	# We need a 2d array of game positions covering the entire board for background information (where
-	# the line was) and collision detection idk how to do this lol
+
 	
 	
 .text # Code Used for This Program #################################################################
@@ -165,6 +163,53 @@ LoadGameData:
 	lw $s5,$0,p2yCoord
 	# player 2 direction = 'j'
 	li $s6, 0x6A
+	
+	
+	# Store the background and the starting position in the collision detection array
+	li $t0,0
+	li $t1,7
+	li $t2,0xFFFFFFFF
+	GroundDataTop:
+		sub $zero,$t1,$t0
+		blt GroundDataLeft
+		sw $t2,$t0,groundData
+		addi $t0,$t0,1
+		b GroundDataTop
+	
+
+	GroundDataLeft:
+		li $t0,8
+		li $t1,63
+		li $t2,0xFF
+		sll $t2,$t2,24
+		WhileLoopGroundDataLeft:
+			sub $zero,$t1,$t0
+			blt GroundDataRight
+			sw $t2,$t0,groundData
+			addi $t0,$t0,8
+			b WhileLoopGroundDataLeft
+		
+	GroundDataRight:
+		li $t0,15
+		li $t1,63
+		li $t2,0xFF
+		WhileLoopGroundDataRight:
+			sub $zero,$t1,$t0
+			blt GroundDataBottom
+			sw $t2,$t0,groundData
+			addi $t0,$t0,8
+			b WhileLoopGroundDataRight
+			
+	GroundDataBottom:
+	li $t0,56
+	li $t1,63
+	li $t2,0xFFFFFFFF
+	WhileLoopGroundDataBottom:
+			sub $zero,$t1,$t0
+			blt LoadFrontSprites
+			sw $t2,$t0,groundData
+			addi $t0,$t0,1
+			b WhileLoopGroundDataBottom
 					
 LoadFrontSprites: 
 
@@ -182,7 +227,7 @@ LoadFrontSprites:
 	ssl $t0,$t2
 
 	# Set attributes
-	addi $t3,$zero,0x01
+	addi $t3,$zero,0x41
 	sfa $t0,$t3
 	
 	# Add 2nd sprite of p1 to OAM
@@ -244,19 +289,24 @@ GameLoop:
 		li $t0,0x77
 		sub $zero,$t0,$s2
 		bne testaUpdate
-		addi $s1, $s1, -1
+		addi $s1,$s1,-1
+		# update the ground
+		# find the coordinate
+		sll $t1,$s1,8
+		add $t1,$t1,$s2
+		srl $t1,$t1,3
 		b endP1DisplayUpdate
 	testaUpdate:
 		li $t0,0x61
 		sub $zero,$t0,$s2
 		bne testsUpdate
-		addi $s0, $s0, -1
+		addi $s0,$s0,-1
 		b endP1DisplayUpdate
 	testsUpdate:
 		li $t0,0x73
 		sub $zero,$t0,$s2
 		bne testdUpdate
-		addi $s1, $s1, 1
+		addi $s1,$s1,1
 		b endP1DisplayUpdate
 	testdUpdate:
 		li $t0,0x64
@@ -272,24 +322,27 @@ GameLoop:
 		call p1displayupdate
 
 	
-	# Update p2's position and orientation
+	# Update p2's position and orientation and update the ground
 		updateP2Postion:
 		li $t0,0x69
 		sub $zero,$t0,$s6
 		bne testjUpdate
-		addi $s5, $s5, -1
+		addi $s5,$s5,-1
+		# update the ground
+		# find the coordinate
+		sll $t1,$s5,4
 		b endP2DisplayUpdate
 	testjUpdate:
 		li $t0,0x6A
 		sub $zero,$t0,$s6
 		bne testkUpdate
-		addi $s4, $s4, -1
+		addi $s4,$s4,-1
 		b endP2DisplayUpdate
 	testkUpdate:
 		li $t0,0x6B
 		sub $zero,$t0,$s6
 		bne testlUpdate
-		addi $s5, $s5, 1
+		addi $s5,$s5,1
 		b endP2DisplayUpdate
 	testlUpdate:
 		li $t0,0x6C
@@ -301,10 +354,15 @@ GameLoop:
 	endP2DisplayUpdate:
 		nop
 		call p2displayupdate
+
+		
 	
-	# Update array 
 	
 	# Check for collision (Branch to end if collision)
+	
+	add $t0,$s1,$zero
+	sll $t0,$t0,4
+	add $t0,$t0,$s2
 gameLoopSpin:
 	nop
 	# b gameLoopSpin
