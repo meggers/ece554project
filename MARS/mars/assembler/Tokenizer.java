@@ -109,6 +109,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				spriteAssemblerHash.put(lineTokens[0] + "_index", lineTokens[1]);
 				spriteAssemblerHash.put(lineTokens[0] + "_height", lineTokens[2]);
 				spriteAssemblerHash.put(lineTokens[0] + "_width", lineTokens[3]);
+				spriteAssemblerHash.put(lineTokens[0] + "_size", lineTokens[4]);
 		    }
 		} catch (Exception e) {
 			e.printStackTrace();

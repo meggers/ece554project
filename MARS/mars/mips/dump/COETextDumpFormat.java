@@ -78,6 +78,10 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 			
 			firstAddress = 0;
 			lastAddress = 16380;// 4092; 4092 is instructions only
+			
+			System.out.println("Globals.game_tick_address = " + Globals.game_tick_address);
+			System.out.println("Globals.keyboard_address = " + Globals.keyboard_address);
+			System.out.println("Globals.stack_ov_address = " + Globals.stack_ov_address);
 			out.println("memory_initialization_radix=16;");
 			out.println("memory_initialization_vector=");
 			for (int address = firstAddress; address <= lastAddress; address += Memory.WORD_LENGTH_BYTES) {
@@ -86,13 +90,13 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 					if (address < 4096) {	// if in instruction memory
 						temp = 0xfc000000;
 						if (address == 4084) {
-							temp = 0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1;
+							temp = 0x0c000000 + (-4084  << 6 >>> 6 + Globals.game_tick_address) / 4 - 1;
 						}
 						if (address == 4088) {
-							temp = 0x0c000000 + ((-4088) << 6 >>> 6) + (Globals.keyboard_address / 4) - 1;
+							temp = 0x0c000000 + (-4088 << 6 >>> 6 + Globals.keyboard_address) / 4 - 1;
 						}
 						if (address == 4092) {
-							temp = 0x0c000000 + ((-4092) << 6 >>> 6) + (Globals.stack_ov_address / 4) - 1;
+							temp = 0x0c000000 + (-4092 << 6 >>> 6 + Globals.stack_ov_address) / 4 - 1;
 						}
 					} else {
 						temp = 0x00000000;

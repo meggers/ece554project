@@ -194,6 +194,7 @@ public class InstructionSet
 					spriteAssemblerHash.put(lineTokens[0] + "_index", Integer.parseInt(lineTokens[1]));
 					spriteAssemblerHash.put(lineTokens[0] + "_height", Integer.parseInt(lineTokens[2]));
 					spriteAssemblerHash.put(lineTokens[0] + "_width", Integer.parseInt(lineTokens[3]));
+					spriteAssemblerHash.put(lineTokens[0] + "_size", Integer.parseInt(lineTokens[4]));
 					imageFile = new File("images/foreground/" + lineTokens[0] + ".png");
 					if (imageFile.exists()) {
 						// System.out.println(lineTokens[0] + " is sprite");
@@ -321,27 +322,29 @@ public class InstructionSet
 				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
 				if (characterPressed == 'z' || characterPressed == 'g') {
 					System.out.println("timer interrupt has occurred");
-					int gameTickInterruptAddress = 4084 * 4;
+					int gameTickInterruptAddressWord = 4084;
 					if (!Globals.isGameTickInstructionSet) {
+						int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
 						Globals.isGameTickInstructionSet = true;
 						try {
-							Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
+							Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (-gameTickInterruptAddressWord << 6 >>> 6 + Globals.game_tick_address) / 4 - 1, gameTickInterruptAddressByte)); 
 						} catch (Exception e) { e.printStackTrace(); }
 					}
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-					processJump(gameTickInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+					processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
 					jFrame.repaint();
 				} else {
 					System.out.println("key press interrupt has occured, key = " + characterPressed);
-					int keyboardInterruptAddress = 4088 * 4;
+					int keyboardInterruptAddressWord = 4088;
 					if (!Globals.isKeyboardInstructionSet) {
+						int keyboardInterruptAddressByte = keyboardInterruptAddressWord * 4;
 						Globals.isKeyboardInstructionSet = true;
 						try { 
 							// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
-							Globals.memory.setStatement(keyboardInterruptAddress, new ProgramStatement(0x0c000000 + ((-4088) << 6 >>> 6) + (Globals.keyboard_address / 4) - 1, keyboardInterruptAddress)); 
+							Globals.memory.setStatement(keyboardInterruptAddressByte, new ProgramStatement(0x0c000000 + (-keyboardInterruptAddressWord << 6 >>> 6 + Globals.keyboard_address) / 4 - 1, keyboardInterruptAddressByte)); 
 						} catch (Exception e) { e.printStackTrace(); }
 					}
 					RegisterFile.updateRegister(28, characterPressed);
@@ -349,7 +352,7 @@ public class InstructionSet
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-					processJump(keyboardInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+					processJump(keyboardInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
 				}
 			}
 
@@ -381,15 +384,14 @@ public class InstructionSet
 			}
 
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
-			System.out.println("timer interrupt has occurred");
-			int gameTickInterruptAddress = 4084 * 4;
+			int gameTickInterruptAddressWord = 4084;
 			if (!Globals.isGameTickInstructionSet) {
+				int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
 				Globals.isGameTickInstructionSet = true;
-				try { 
+				try {
 					//Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6), gameTickInterruptAddress)); 
 					// now PC = 4084 (or 4084 * 4 internally), so need to add b (branch) opcode plus jump up 4084 plus label address minus 1 (to cancel PC always incrementing)
-					
-					Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((-4084) << 6 >>> 6) + (Globals.game_tick_address / 4) - 1, gameTickInterruptAddress)); 
+					Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (-gameTickInterruptAddressWord << 6 >>> 6 + Globals.game_tick_address) / 4 - 1, gameTickInterruptAddressByte)); 
 					//System.out.println("(Globals.game_tick_address - gameTickInterruptAddress) = " + (Globals.game_tick_address - gameTickInterruptAddress));
 					//System.out.println("((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6) = " + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6));
 					//System.out.println(Globals.game_tick_address);
@@ -397,12 +399,12 @@ public class InstructionSet
 					//System.out.println(Globals.stack_ov_address);
 					//System.out.println(Globals.memory.getStatement(gameTickInterruptAddress)); 
 				} catch (Exception e) { e.printStackTrace(); }
-			}
+			}					
 			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 			clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-			processJump(gameTickInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+			processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
 			
 			/*
 			// update direction
@@ -1266,7 +1268,7 @@ public class InstructionSet
 							Coprocessor0.updateRegister(17, clonedStatusRegisters[1]);
 							Coprocessor0.updateRegister(17, clonedStatusRegisters[2]);
 						}
-						processJump(RegisterFile.getValue(operands[0]) << 2);
+						processJump(RegisterFile.getValue(operands[0]));
 					}
 				}));
 		instructionList.add(
@@ -1292,7 +1294,9 @@ public class InstructionSet
 						}
 						// Set the top of the stack with what's in the PC - 1 
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
-						processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
+						
+						processJump(operands[0] << 6 >> 6); // added sign extend
+						// processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
 					}
 				}));
 		instructionList.add(
@@ -1318,7 +1322,9 @@ public class InstructionSet
 						}
 						// Set the top of the stack with what's in the PC - 1 
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
-						processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
+						
+						processJump(operands[0] << 6 >> 6); // added sign extend
+						// processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
 					}
 				}));
 		instructionList.add(
@@ -1344,7 +1350,9 @@ public class InstructionSet
 						}
 						// Set the top of the stack with what's in the PC - 1 
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) - 1);
-						processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
+						
+						processJump(operands[0] << 6 >> 6); // added sign extend
+						// processJump(((RegisterFile.getProgramCounter() & 0xF0000000) | (operands[0] << 2)));  
 					}
 				}));
 		instructionList.add(
@@ -1362,7 +1370,7 @@ public class InstructionSet
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
 						try
 						{
-							processJump(Globals.memory.getWord(RegisterFile.getValue(29) * 4) * 4);
+							processJump(Globals.memory.getWord(RegisterFile.getValue(29) * 4)); // not sure if ret works
 						}
 						catch (AddressErrorException e)
 						{
@@ -3385,10 +3393,10 @@ public class InstructionSet
 		//System.out.println("RegisterFile.getProgramCounter() = " + RegisterFile.getProgramCounter());
 		//System.out.println("targetAddress = " + targetAddress);
 		if (Globals.getSettings().getDelayedBranchingEnabled()) {
-			DelayedBranch.register(targetAddress);
+			DelayedBranch.register(targetAddress * 4);
 		} 
 		else {
-			RegisterFile.setProgramCounter(targetAddress);
+			RegisterFile.setProgramCounter(targetAddress * 4);
 		}	 
 	}
 
