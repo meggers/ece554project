@@ -330,6 +330,7 @@ public class InstructionSet
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
 					processJump(gameTickInterruptAddress); // 0x3FD * 4 (since word addressing), then converted to decimal
+					jFrame.repaint();
 				} else {
 					System.out.println("key press interrupt has occured, key = " + characterPressed);
 					int keyboardInterruptAddress = 4088 * 4;
