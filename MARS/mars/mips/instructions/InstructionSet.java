@@ -79,7 +79,6 @@ public class InstructionSet
 	BufferedImage[][] groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION];
 	SpriteData[] spriteData = new SpriteData[64];
 	int[] clonedStatusRegisters = new int[3];
-	int[][] groundData = new int[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
 	// commented out, use backgroundPatternTable for TronMIPSter; BufferedImage[][][][] background = new BufferedImage[4][4][4][4];
 
 	int p1x;
@@ -237,8 +236,7 @@ public class InstructionSet
 		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
-		groundData = new int[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE];
-
+		
 		p1x = DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE / 5;		// give three fifth of screen of bikes to run into each other
 		p2x = DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE * 4 / 5;
 
@@ -255,62 +253,14 @@ public class InstructionSet
 			spriteData[OAMindex] = new SpriteData(spritePatternTable[255], 255, 255, 3, true, true);
 		}
 
-		// all
-		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++x) {
-			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++y) {
-				groundData[x][y] = 0;
-			}
-		}
-		BufferedImage initialBackgroundImage = setColorPalette(backgroundPatternTable[0], 0);
+		// background
+		BufferedImage initialBackgroundImage = setColorPalette(backgroundPatternTable[0], 0, false);
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
 				// commented out, do this with TronMIPStor ISA instead; groundVisual[x][y] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0000_index")], 0);
 				groundVisual[x][y] = initialBackgroundImage;
 			}
 		}
-
-		// top
-		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
-			groundData[i][0] = 3;
-		}
-		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			// commented out, do this with TronMIPStor ISA instead; groundVisual[i][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3300_index")], 0);
-		}
-
-		// left
-		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
-			groundData[0][i] = 3;
-		}
-		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			// commented out, do this with TronMIPStor ISA instead; groundVisual[0][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3030_index")], 0);
-		}
-
-		// right
-		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
-			groundData[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE - 1][i] = 3;
-		}
-		for (int i = 0; i < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			// commented out, do this with TronMIPStor ISA instead; groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][i] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0303_index")], 0);
-		}
-
-		// bottom
-		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_UNIT_SIZE; ++i) {
-			groundData[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_UNIT_SIZE - 1] = 3;
-		}
-		for (int i = 0; i < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++i) {
-			// commented out, do this with TronMIPStor ISA instead; groundVisual[i][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0033_index")], 0);
-		}
-
-		// need to recover the corners since images overwrite each other
-		// commented out, do this with TronMIPStor ISA instead; 
-		// groundVisual[0][0] = ImageIO.read(new File("images/background/background3330.png"));
-		//groundVisual[0][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3330_index")], 0);
-		// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = ImageIO.read(new File("images/background/background3303.png"));
-		//groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][0] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3303_index")], 0);
-		// groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background3033.png"));
-		//groundVisual[0][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background3033_index")], 0);
-		// groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = ImageIO.read(new File("images/background/background0333.png"));
-		//groundVisual[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION - 1][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION - 1] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0333_index")], 0);
 
 		PPU ppu = new PPU();
 		jFrame.add(ppu);
@@ -325,13 +275,13 @@ public class InstructionSet
 				if (characterPressed == 'z' || characterPressed == 'g') {
 					System.out.println("timer interrupt has occurred");
 					int gameTickInterruptAddressWord = 1021; // 0x3fd
-					//if (!Globals.isGameTickInstructionSet) {
+					if (!Globals.isGameTickInstructionSet) {
 						int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
 						Globals.isGameTickInstructionSet = true;
 						try {
-							Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressByte / 4) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
+							Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
 						} catch (Exception e) { e.printStackTrace(); }
-					//}
+					}
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
@@ -341,14 +291,14 @@ public class InstructionSet
 				} else {
 					System.out.println("key press interrupt has occured, key = " + characterPressed);
 					int keyboardInterruptAddressWord = 1022; // 0x3fe
-					//if (!Globals.isKeyboardInstructionSet) {
+					if (!Globals.isKeyboardInstructionSet) {
 						int keyboardInterruptAddressByte = keyboardInterruptAddressWord * 4;
 						Globals.isKeyboardInstructionSet = true;
 						try { 
 							// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
-							Globals.memory.setStatement(keyboardInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressByte / 4) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, keyboardInterruptAddressByte)); 
+							Globals.memory.setStatement(keyboardInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, keyboardInterruptAddressByte)); 
 						} catch (Exception e) { e.printStackTrace(); }
-					//}
+					}
 					RegisterFile.updateRegister(28, characterPressed);
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
@@ -387,83 +337,19 @@ public class InstructionSet
 
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
 			int gameTickInterruptAddressWord = 1021; // 0x3fd
-			//if (!Globals.isGameTickInstructionSet) {
+			if (!Globals.isGameTickInstructionSet) {
 				int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
 				Globals.isGameTickInstructionSet = true;
 				try {
-					//Globals.memory.setStatement(gameTickInterruptAddress, new ProgramStatement(0x0c000000 + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6), gameTickInterruptAddress)); 
-					// now PC = 4084 (or 4084 * 4 internally), so need to add b (branch) opcode plus jump up 4084 plus label address minus 1 (to cancel PC always incrementing)
 					Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressByte / 4) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
-					//Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (-gameTickInterruptAddressWord << 6 >>> 6 + Globals.game_tick_address) / 4 - 1, gameTickInterruptAddressByte)); 
-					//System.out.println("(Globals.game_tick_address - gameTickInterruptAddress) = " + (Globals.game_tick_address - gameTickInterruptAddress));
-					//System.out.println("((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6) = " + ((Globals.game_tick_address - gameTickInterruptAddress) << 6 >>> 6));
-					//System.out.println(Globals.game_tick_address);
-					//System.out.println(Globals.keyboard_address);
-					//System.out.println(Globals.stack_ov_address);
-					//System.out.println(Globals.memory.getStatement(gameTickInterruptAddress)); 
 				} catch (Exception e) { e.printStackTrace(); }
-			//}					
+			}					
 			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 			clonedStatusRegisters[2] = Coprocessor0.getValue(18);
 			processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
 			
-			/*
-			// update direction
-			switch (directions[0]) {
-			case 'w': p1y--; break;
-			case 'a': p1x--; break;
-			case 's': p1y++; break;
-			case 'd': p1x++; break;
-			}
-			switch (directions[1]) {
-			case 'i': p2y--; break;
-			case 'j': p2x--; break;
-			case 'k': p2y++; break;
-			case 'l': p2x++; break;
-			}
-
-			// check for collision
-			if (groundData[p1x][p1y] != 0) {
-				if (groundData[p2x][p2y] != 0) {
-					System.out.println("tied");
-				} else {
-					System.out.println("player 2 wins");
-				}
-				jFrame.setVisible(false);
-				return;
-			} else {
-				if (groundData[p2x][p2y] != 0) {
-					System.out.println("player 1 wins");
-					jFrame.setVisible(false);
-					return;
-				}
-			}
-			//			
-			//			// update background to leave trail
-			groundData[p1x][p1y] = 1;
-			int p1xVisual = p1x / 2;
-			int p1yVisual = p1y / 2;
-			groundData[p2x][p2y] = 2;
-			int p2xVisual = p2x / 2;
-			int p2yVisual = p2y / 2;
-
-			//			System.out.println("before = " + p1x + "; after = " + p1xVisual);
-			//			System.out.println("pulling from background[groundData[" + p1xVisual + "][" + p1yVisual + "]][groundData[][]][groundData[][]][groundData[][]]");
-			//			System.out.println("which equals to background[" + groundData[p1xVisual][p1yVisual] + "][" + groundData[p1xVisual + 1][p1yVisual] + "][" + groundData[p1xVisual][p1yVisual + 1] + "][" + groundData[p1xVisual + 1][p1yVisual + 1] + "]");
-
-			//groundVisual[p1xVisual][p1yVisual] = background[groundData[2 * p1xVisual][2 * p1yVisual]][groundData[2 * p1xVisual + 1][2 * p1yVisual]][groundData[2 * p1xVisual][2 * p1yVisual + 1]][groundData[2 * p1xVisual + 1][2 * p1yVisual + 1]];
-			int p1LocationVisual = getVisualIndex((groundData[2 * p1xVisual][2 * p1yVisual]) + 4*(groundData[2 * p1xVisual + 1][2 * p1yVisual]) + 16*(groundData[2 * p1xVisual][2 * p1yVisual + 1]) + 64*(groundData[2 * p1xVisual + 1][2 * p1yVisual + 1]));
-			groundVisual[p1xVisual][p1yVisual] = setColorPalette(backgroundPatternTable[p1LocationVisual], 0);
-			//groundVisual[p2xVisual][p2yVisual] = background[groundData[2 * p2xVisual][2 * p2yVisual]][groundData[2 * p2xVisual + 1][2 * p2yVisual]][groundData[2 * p2xVisual][2 * p2yVisual + 1]][groundData[2 * p2xVisual + 1][2 * p2yVisual + 1]];
-			int p2LocationVisual = getVisualIndex((groundData[2 * p2xVisual][2 * p2yVisual]) + 4*(groundData[2 * p2xVisual + 1][2 * p2yVisual]) + 16*(groundData[2 * p2xVisual][2 * p2yVisual + 1]) + 64*(groundData[2 * p2xVisual + 1][2 * p2yVisual + 1]));
-			groundVisual[p2xVisual][p2yVisual] = setColorPalette(backgroundPatternTable[p2LocationVisual], 0);
-
-			directions[0] = nextDirections[0];
-			directions[1] = nextDirections[1];
-			 */
-
 			jFrame.repaint();
 		}
 	}
@@ -494,7 +380,7 @@ public class InstructionSet
 				BufferedImage bufferedImage = spritePatternTable[sft];
 				int sslX = (sld & 0xFF000000) >>> 24;
 
-				graphics.drawImage(setColorPalette(setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex), sslX, sslY, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				graphics.drawImage(setColorPalette(setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex, true), sslX, sslY, DISPLAY_LOGIC_IMAGE_DIMENSION, DISPLAY_LOGIC_IMAGE_DIMENSION, null);
 			}
 		}
 	}
@@ -530,7 +416,7 @@ public class InstructionSet
 		return outputBufferedImage;
 	}
 
-	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex) {
+	public BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex, boolean isForeground) {
 
 		if (inputBufferedImage == null) {
 			return new BufferedImage(8, 8, BufferedImage.TYPE_INT_RGB);
@@ -541,7 +427,7 @@ public class InstructionSet
 		// colorPaletteIndex2 = BlBRG
 		// colorPaletteIndex3 = BlBBB
 
-		int[] colors = { Color.PINK.getRGB(), Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
+		int[] colors = { Color.BLACK.getRGB(), Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
 		//	^ is the global background color
 		switch (colorPaletteIndex) {
 		case 1: 
@@ -565,7 +451,7 @@ public class InstructionSet
 		for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
 			for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
 				if (inputBufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
-					outputBufferedImage.setRGB(x, y, colors[0]);
+					outputBufferedImage.setRGB(x, y, isForeground ? BufferedImage.OPAQUE : colors[0]);
 				} else if (inputBufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
 					outputBufferedImage.setRGB(x, y, colors[1]);
 				} else if (inputBufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
@@ -1528,7 +1414,7 @@ public class InstructionSet
 						int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 						int sbt = RegisterFile.getValue(operands[1]) & 0x000000FF;
 						backgroundTile[BGindex] = sbt;
-						groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex]);
+						groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex], false);
 					}
 				}));
 		instructionList.add(        
@@ -1565,7 +1451,7 @@ public class InstructionSet
 						int BGindex = RegisterFile.getValue(operands[0]) & 0x000003FF;
 						int sba = RegisterFile.getValue(operands[1]) & 0x00000003;
 						backgroundAttribute[BGindex] = sba;
-						groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex]);
+						groundVisual[BGindex % (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)][BGindex / (DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION)] = setColorPalette(backgroundPatternTable[backgroundTile[BGindex]], backgroundAttribute[BGindex], false);
 					}
 				}));
 		instructionList.add(        
