@@ -322,6 +322,7 @@ public class Simulator extends Observable {
 
 			int pc = 0;  // added: 7/26/06 (explanation above)
 
+			System.out.println("starting simulator\n\n\n");
 			while (statement != null) {
 				pc = RegisterFile.getProgramCounter(); // added: 7/26/06 (explanation above)
 				RegisterFile.incrementPC();           	
@@ -437,7 +438,6 @@ public class Simulator extends Observable {
 					}
 				}
 
-
 				// Get next instruction in preparation for next iteration.
 
 				try {
@@ -461,7 +461,7 @@ public class Simulator extends Observable {
 							System.out.println("new statement = " + statement);
 						}
 					}
-				} 
+				}
 				catch (AddressErrorException e) {
 					ErrorList el = new ErrorList();
 					el.add(new ErrorMessage((MIPSprogram)null,0,0,"invalid program counter value: "+Binary.intToHexString(RegisterFile.getProgramCounter())));

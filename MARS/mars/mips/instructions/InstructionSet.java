@@ -272,22 +272,26 @@ public class InstructionSet
 			public void keyPressed(KeyEvent arg0) {
 				char characterPressed = arg0.getKeyChar();
 				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
+				int epc = RegisterFile.getProgramCounter() / 4;
 				if (characterPressed == 'z' || characterPressed == 'g') {
-					System.out.println("timer interrupt has occurred");
-					int gameTickInterruptAddressWord = 1021; // 0x3fd
-					int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
-					Globals.isGameTickInstructionSet = true;
-					try {
-						Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
-					} catch (Exception e) { e.printStackTrace(); }
-					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
-					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
-					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
-					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-					processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
-					jFrame.repaint();
+					if (!Globals.isInInterruptHandler) {
+						System.out.println("timer interrupt has occurred, storing $epc = " + epc);
+						int gameTickInterruptAddressWord = 1021; // 0x3fd
+						int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
+						Globals.isGameTickInstructionSet = true;
+						try {
+							Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
+						} catch (Exception e) { e.printStackTrace(); }
+						RegisterFile.updateRegister(30, epc);
+						clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+						clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+						clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+						Globals.isInInterruptHandler = true;
+						processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
+						jFrame.repaint();
+					}
 				} else {
-					System.out.println("key press interrupt has occured, key = " + characterPressed);
+					System.out.println("key press interrupt has occured, key = " + characterPressed + ", storing $epc = " + epc);
 					int keyboardInterruptAddressWord = 1022; // 0x3fe
 					int keyboardInterruptAddressByte = keyboardInterruptAddressWord * 4;
 					Globals.isKeyboardInstructionSet = true;
@@ -296,7 +300,7 @@ public class InstructionSet
 						Globals.memory.setStatement(keyboardInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, keyboardInterruptAddressByte)); 
 					} catch (Exception e) { e.printStackTrace(); }
 					RegisterFile.updateRegister(28, characterPressed);
-					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
+					RegisterFile.updateRegister(30, epc);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
@@ -1287,7 +1291,7 @@ public class InstructionSet
 						RegisterFile.updateRegister(29, RegisterFile.getValue(29) + 1);
 						try
 						{
-							processJump(Globals.memory.getWord(RegisterFile.getValue(29) * 4)); // not sure if ret works
+							processJump(Globals.memory.getWord(RegisterFile.getValue(29) * 4)); // stack pointer is word addressing, so * 4 to get byte (internal data structure)
 						}
 						catch (AddressErrorException e)
 						{
