@@ -327,6 +327,14 @@ public class InstructionSet
 		}
 		
 		while(true) {
+			while (Globals.isInInterruptHandler) {
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println("Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+			}
 			Thread thread = new Thread(new TimerInterrupt());
 			thread.start();
 			try {
@@ -335,13 +343,14 @@ public class InstructionSet
 				e1.printStackTrace();
 			}
 
+			System.out.println("timer interrupt has occurred");
 			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
 			int gameTickInterruptAddressWord = 1021; // 0x3fd
 			if (!Globals.isGameTickInstructionSet) {
 				int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
 				Globals.isGameTickInstructionSet = true;
 				try {
-					Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressByte / 4) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
+					Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
 				} catch (Exception e) { e.printStackTrace(); }
 			}					
 			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
@@ -351,6 +360,7 @@ public class InstructionSet
 			processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
 			
 			jFrame.repaint();
+			
 		}
 	}
 
@@ -473,11 +483,12 @@ public class InstructionSet
 	}
 
 	class TimerInterrupt implements Runnable {
+
 		public void run() {
-			while (Coprocessor0.getValue(15) > 0) {
-				
-			}
-			Coprocessor0.updateRegister(15, 4096);
+			System.out.println("started checking r15, initial value = " + Globals.isInInterruptHandler);
+			while (Coprocessor0.getValue(15) > 0);
+			System.out.println("in trap handler");
+			Globals.isInInterruptHandler = true;
 			//try {
 			//	Thread.sleep(10000);
 			//} catch (Exception e) {
@@ -764,7 +775,6 @@ public class InstructionSet
 						int[] operands = statement.getOperands();
 						// RegisterFile.updateRegister(operands[0], operands[1]);
 						// sign extending the li
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
 				}));		
@@ -780,7 +790,6 @@ public class InstructionSet
 						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						// sign extending the li
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
 				}));
@@ -796,7 +805,6 @@ public class InstructionSet
 						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						// sign extending the li
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						RegisterFile.updateRegister(operands[0], (operands[1] << 16 >> 16));
 					}
 				}));			
@@ -1150,12 +1158,16 @@ public class InstructionSet
 				{
 					public void simulate(ProgramStatement statement) throws ProcessingException
 					{
-						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						int[] operands = statement.getOperands();
 						if (operands[0] == 30) {
+							Coprocessor0.updateRegister(15, 20);
 							Coprocessor0.updateRegister(16, clonedStatusRegisters[0]);
 							Coprocessor0.updateRegister(17, clonedStatusRegisters[1]);
-							Coprocessor0.updateRegister(17, clonedStatusRegisters[2]);
+							Coprocessor0.updateRegister(18, clonedStatusRegisters[2]);
+							System.out.println("finished trap handler, previous Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+							Globals.isInInterruptHandler = false;
+						} else {
+							Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
 						}
 						processJump(RegisterFile.getValue(operands[0]));
 					}

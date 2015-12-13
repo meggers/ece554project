@@ -120,6 +120,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	  public static boolean isGameTickInstructionSet = false;
 	  public static boolean isKeyboardInstructionSet = false;
 	  public static boolean isStackOvInstructionSet = false;
+	  public static Boolean isInInterruptHandler = false;
    
     /**
      * Method called once upon system initialization to create the global data structures.
