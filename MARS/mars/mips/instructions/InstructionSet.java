@@ -261,9 +261,11 @@ public class InstructionSet
 				groundData[x][y] = 0;
 			}
 		}
+		BufferedImage initialBackgroundImage = setColorPalette(backgroundPatternTable[0], 0);
 		for (int x = 0; x < DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
 			for (int y = 0; y < DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
 				// commented out, do this with TronMIPStor ISA instead; groundVisual[x][y] = setColorPalette(backgroundPatternTable[spriteAssemblerHash.get("background0000_index")], 0);
+				groundVisual[x][y] = initialBackgroundImage;
 			}
 		}
 
@@ -373,7 +375,7 @@ public class InstructionSet
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+		
 		while(true) {
 			Thread thread = new Thread(new TimerInterrupt());
 			thread.start();
