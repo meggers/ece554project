@@ -31,13 +31,13 @@
 	# $s0 = p1xCoord
 	# $s1 = p1yCoord
 	# $s2 = p1dir
-	# $s3 = p1location
+	# $s3 = WHICH ONE LOST
 	# $s4 = p2xCoord
 	# $s5 = p2yCoord
 	# $s6 = p2dir
 	# $s7 = p2location
 	
-	groundData:	.space	1024
+	groundData:	.space	32
 	p1xCoord:	.word	64
 	p1yCoord:	.word	128
 	p1dir:		.byte	0x64 # used for PPU, not here
@@ -60,6 +60,7 @@
 	
 	
 .text # Code Used for This Program #################################################################
+
 
 LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 
@@ -165,51 +166,26 @@ LoadGameData:
 	li $s6, 0x6A
 	
 	
-	# Store the background and the starting position in the collision detection array
+# Store the background and the starting position in the collision detection array
 	li $t0,0
-	li $t1,7
+	li $t1,30
 	li $t2,0xFFFFFFFF
-	GroundDataTop:
+	sw $t2,$t0,groundData
+	li $t2,1
+	sll $t2,$t2,31
+	addi $t2,$t2,1
+	addi $t0,$t0,1
+	
+	loadSidesGround:nop
 		sub $zero,$t1,$t0
-		blt GroundDataLeft
+		blt endLoadSidesGround
 		sw $t2,$t0,groundData
 		addi $t0,$t0,1
-		b GroundDataTop
-	
+		b loadSidesGround
+	endLoadSidesGround:
+		li $t2,0xFFFFFFFF
+		sw $t2,$t0,groundData
 
-	GroundDataLeft:
-		li $t0,8
-		li $t1,63
-		li $t2,0xFF
-		sll $t2,$t2,24
-		WhileLoopGroundDataLeft:
-			sub $zero,$t1,$t0
-			blt GroundDataRight
-			sw $t2,$t0,groundData
-			addi $t0,$t0,8
-			b WhileLoopGroundDataLeft
-		
-	GroundDataRight:
-		li $t0,15
-		li $t1,63
-		li $t2,0xFF
-		WhileLoopGroundDataRight:
-			sub $zero,$t1,$t0
-			blt GroundDataBottom
-			sw $t2,$t0,groundData
-			addi $t0,$t0,8
-			b WhileLoopGroundDataRight
-			
-	GroundDataBottom:
-	li $t0,56
-	li $t1,63
-	li $t2,0xFFFFFFFF
-	WhileLoopGroundDataBottom:
-			sub $zero,$t1,$t0
-			blt LoadFrontSprites
-			sw $t2,$t0,groundData
-			addi $t0,$t0,1
-			b WhileLoopGroundDataBottom
 					
 LoadFrontSprites: 
 
@@ -290,35 +266,38 @@ GameLoop:
 		sub $zero,$t0,$s2
 		bne testaUpdate
 		addi $s1,$s1,-1
-		# update the ground
-		# find the coordinate
-		sll $t1,$s1,8
-		add $t1,$t1,$s2
-		srl $t1,$t1,3
+		addi $a2,$zero,0
 		b endP1DisplayUpdate
 	testaUpdate:
 		li $t0,0x61
 		sub $zero,$t0,$s2
 		bne testsUpdate
 		addi $s0,$s0,-1
+		addi $a2,$zero,1
 		b endP1DisplayUpdate
 	testsUpdate:
 		li $t0,0x73
 		sub $zero,$t0,$s2
 		bne testdUpdate
 		addi $s1,$s1,1
+		addi $a2,$zero,2
 		b endP1DisplayUpdate
 	testdUpdate:
 		li $t0,0x64
 		sub $zero,$t0,$s2
 		bne updateP2Postion
 		addi $s0,$s0,1
+		addi $a2,$zero,3
 		b endP1DisplayUpdate
 		
 		
 		
 	endP1DisplayUpdate:
+		add $a0,$s0,$zero
+		add $a1,$s1,$zero
+		call updateGround
 		nop
+		sll $s3,$s3,1
 		call p1displayupdate
 
 	
@@ -328,41 +307,42 @@ GameLoop:
 		sub $zero,$t0,$s6
 		bne testjUpdate
 		addi $s5,$s5,-1
-		# update the ground
-		# find the coordinate
-		sll $t1,$s5,4
+		addi $a2,$zero,0
 		b endP2DisplayUpdate
 	testjUpdate:
 		li $t0,0x6A
 		sub $zero,$t0,$s6
 		bne testkUpdate
 		addi $s4,$s4,-1
+		addi $a2,$zero,1
 		b endP2DisplayUpdate
 	testkUpdate:
 		li $t0,0x6B
 		sub $zero,$t0,$s6
 		bne testlUpdate
 		addi $s5,$s5,1
+		addi $a2,$zero,2
 		b endP2DisplayUpdate
 	testlUpdate:
 		li $t0,0x6C
 		sub $zero,$t0,$s6
 		bne gameLoopSpin
 		addi $s4, $s4, 1
+		addi $a2,$zero,3
 		b endP2DisplayUpdate
 		
 	endP2DisplayUpdate:
+		add $a0,$s4,$zero
+		add $a1,$s5,$zero
+		call updateGround
 		nop
 		call p2displayupdate
 
 		
 	
 	
-	# Check for collision (Branch to end if collision)
-	
-	add $t0,$s1,$zero
-	sll $t0,$t0,4
-	add $t0,$t0,$s2
+		add $zero,$s3,$zero
+		bne GameFail
 gameLoopSpin:
 	nop
 	# b gameLoopSpin
@@ -370,6 +350,118 @@ gameLoopSpin:
 	# NO CRYING IN BASEBALL
 	b GameLoop
 
+
+updateGround:
+	# params:
+	# $a0 x coord
+	# $a1 y coord
+	# $a2 which dir we're facing (0:up 1:left 2:down 3:right)
+	nop
+	# t0 holds the shifted y coord
+	push $t0
+	# t1 holds the word in the ground table
+	push $t1
+	# t2 holds the position to be put in the groundTable
+	push $t2
+	# t3 holds the x value that is destroyed to give $t2
+	push $t3
+	# t4 holds temp values for generating $t2
+	push $t4
+	
+	srl $t0,$a1,3
+	srl $t3,$a0,3
+	lw $t1,$t0,groundData
+	li $t2,1
+	
+	li $t4,16
+	sub $zero,$t3,$t4
+	blt shift8
+	sub $t3,$t3,16
+	sll $t2,$t2,16
+	
+	shift8:
+	li $t4,8
+	sub $zero,$t3,$t4
+	blt shift4
+	sub $t3,$t3,8
+	sll $t2,$t2,8
+	
+	shift4:
+	li $t4,4
+	sub $zero,$t3,$t4
+	blt shift2
+	sub $t3,$t3,4
+	sll $t2,$t2,4
+	
+	shift2:
+	li $t4,2
+	sub $zero,$t3,$t4
+	blt shift1
+	sub $t3,$t3,2
+	sll $t2,$t2,2
+	
+	shift1:
+	li $t4,1
+	sub $zero,$t3,$t4
+	blt endShift
+	sub $t3,$t3,1
+	sll $t2,$t2,1
+	
+	endShift:
+	add $a0,$t2,$zero
+	add $a1,$t1,$zero
+	call or
+	
+	sw $v0,$t0,groundData
+	
+	# CHECK FOR COLISSIONS
+	li $t3,0
+	sub $zero,$t3,$a2
+	bne checkLeft
+	addi $t0,$t0,-1
+	lw $t1,$t0,groundData
+	and $t5,$t1,$t2
+	beq checkLeft
+	addi $s3,$zero,1
+	
+	checkLeft:
+	li $t3,1
+	sub $zero,$t3,$a2
+	bne checkDown
+	sll $t2,$t2,1
+	lw $t1,$t0,groundData
+	and $t5,$t1,$t2
+	beq checkDown
+	addi $s3,$zero,1
+	
+	checkDown:
+	li $t3,2
+	sub $zero,$t3,$a2
+	bne checkRight
+	addi $t0,$t0,1
+	lw $t1,$t0,groundData
+	and $t5,$t1,$t2
+	beq checkRight
+	addi $s3,$zero,1
+	
+	checkRight:
+	li $t3,3
+	sub $zero,$t3,$a2
+	bne endCheck
+	srl $t2,$t2,1
+	lw $t1,$t0,groundData
+	and $t5,$t1,$t2
+	beq endCheck
+	addi $s3,$zero,1
+	
+	
+	endCheck:
+	pop $t4
+	pop $t3
+	pop $t2
+	pop $t1
+	pop $t0
+	ret
 
 
 p1displayupdate:
@@ -813,51 +905,53 @@ p1displayupdate:
 		pop $t1
 		pop $t0
 		ret
+		
+		
+		
+GameFail:
+	li $t1,middle_finger_index
+	li $t0,6
+	sft $t0,$t1
+	
+	# Set the proper location
+	# addi ... 8 because the middle is "where the bike is"
+	li $t2,128
+	sll $t2,$t2,8
+	addi $t2,$t2,126
+	ssl $t0,$t2
 
-
-        
+	# Set attributes
+	addi $t3,$zero,0x41
+	sfa $t0,$t3
+	nop
+	nop
+	nop
+	
+	
 #####################################################
-# set_y: Sets y value in sprite register layout data
+# or: Gives the logical or of two arguments
+# Someone please put me out of my misery 
 #
 # Arguments:
-#   $a0 - Sprite Register Layout formatted data
-#   $a1 - y data to set (lsb 8 bits)
+#   $a0 - A
+#   $a1 - B
 #
 # Returns:
-#   $v0 - SRL data with new y
+#   $v0 - A OR B
 #
-#####################################################
-set_y: nop
+##################################################### 
+or: nop
     push $t0
     push $t1
-    lw $t0,$0,y_mask
-    and $t1,$t0,$a1
-    nand $t0,$t0,$t0
-    and $v0,$a0,$t0
-    xor $v0,$v0,$t1
+    nand $t0,$a0,$a0
+    #addi $t0,$t0,1
+    nand $t1,$a1,$a1
+    #addi $t1,$t1,1 
+    nand $v0,$t0,$t1
     pop $t1
     pop $t0
-    ret
-#####################################################
-# set_x: Sets x value in sprite register layout data
-#
-# Arguments:
-#   $a0 - Sprite Register Layout formatted data
-#   $a1 - x data to set (lsb 8 bits)
-#
-# Returns:
-#   $v0 - SRL data with new x
-#
-#####################################################
-set_x: nop
-    push $t0
-    lw $t0,$0,x_mask
-    nand $t0,$t0,$t0
-    and $v0,$a0,$t0
-    sll $a1,$a1,24
-    xor $v0,$v0,$a1
-    pop $t0
-    ret
+    ret  
+	
         
 kb_handler:
 		
