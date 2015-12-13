@@ -327,6 +327,12 @@ public class InstructionSet
 		}
 		
 		while(true) {
+			// sleep for 200 ms to not overload the processor and freeze
+			try {
+				Thread.sleep(200);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			/*
 			while (Globals.isInInterruptHandler) {
 				try {
@@ -383,11 +389,11 @@ public class InstructionSet
 				if (sslY == 255) {
 					continue;
 				}
-				int sfa = (sld & 0x0000FF00) >>> 8;
+				int sfa = (sld & 0x00FF0000) >>> 16;
 				int colorPaletteIndex = sfa & 0x00000003;
 				boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
 				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x0000004;
-				int sft = (sld & 0x00FF0000) >>> 16;
+				int sft = (sld & 0x0000FF00) >>> 8;
 				BufferedImage bufferedImage = spritePatternTable[sft];
 				int sslX = (sld & 0xFF000000) >>> 24;
 
@@ -1409,7 +1415,7 @@ public class InstructionSet
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						int sft = RegisterFile.getValue(operands[1]) & 0x000000FF;
 						Coprocessor1.updateRegister(OAMindex,
-								((Coprocessor1.getValue(OAMindex) & 0xFF00FFFF) + (sft << 16)));
+								((Coprocessor1.getValue(OAMindex) & 0xFFFF00FF) + (sft << 8)));
 						//spriteData[OAMindex].setBufferedImage(spritePatternTable[sft]);
 					}
 				}));
@@ -1443,8 +1449,7 @@ public class InstructionSet
 						int[] operands = statement.getOperands();
 						int OAMindex = RegisterFile.getValue(operands[0]) & 0x0000003F;
 						int sfa = RegisterFile.getValue(operands[1]) & 0x000000FF;
-						Coprocessor1.updateRegister(OAMindex,
-								((Coprocessor1.getValue(OAMindex) & 0xFFFF00FF) + (sfa << 8)));
+						Coprocessor1.updateRegister(OAMindex, ((Coprocessor1.getValue(OAMindex) & 0xFF00FFFF) + (sfa << 16)));
 						//spriteData[OAMindex].setColorPaletteIndex(sfa & 0x00000003);
 						//spriteData[OAMindex].setFlipVertical((sfa & 0x00000080) == 0x00000080);
 						//spriteData[OAMindex].setFlipHorizontal((sfa & 0x00000040) == 0x00000040);
