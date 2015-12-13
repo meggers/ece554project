@@ -275,13 +275,11 @@ public class InstructionSet
 				if (characterPressed == 'z' || characterPressed == 'g') {
 					System.out.println("timer interrupt has occurred");
 					int gameTickInterruptAddressWord = 1021; // 0x3fd
-					if (!Globals.isGameTickInstructionSet) {
-						int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
-						Globals.isGameTickInstructionSet = true;
-						try {
-							Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
-						} catch (Exception e) { e.printStackTrace(); }
-					}
+					int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
+					Globals.isGameTickInstructionSet = true;
+					try {
+						Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
+					} catch (Exception e) { e.printStackTrace(); }
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
@@ -291,20 +289,18 @@ public class InstructionSet
 				} else {
 					System.out.println("key press interrupt has occured, key = " + characterPressed);
 					int keyboardInterruptAddressWord = 1022; // 0x3fe
-					if (!Globals.isKeyboardInstructionSet) {
-						int keyboardInterruptAddressByte = keyboardInterruptAddressWord * 4;
-						Globals.isKeyboardInstructionSet = true;
-						try { 
-							// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
-							Globals.memory.setStatement(keyboardInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, keyboardInterruptAddressByte)); 
-						} catch (Exception e) { e.printStackTrace(); }
-					}
+					int keyboardInterruptAddressByte = keyboardInterruptAddressWord * 4;
+					Globals.isKeyboardInstructionSet = true;
+					try { 
+						// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
+						Globals.memory.setStatement(keyboardInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, keyboardInterruptAddressByte)); 
+					} catch (Exception e) { e.printStackTrace(); }
 					RegisterFile.updateRegister(28, characterPressed);
 					RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
 					clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 					clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 					clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-					processJump(keyboardInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
+					processJump(keyboardInterruptAddressWord); // 0x3FE * 4 (since word addressing), then converted to decimal
 				}
 			}
 
@@ -647,6 +643,7 @@ public class InstructionSet
 						int and = RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]);
 						Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], and);
 					}
 				}));
@@ -667,6 +664,7 @@ public class InstructionSet
 						// ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
 						Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], and);
 					}
 				}));
@@ -685,6 +683,7 @@ public class InstructionSet
 						// ANDing with 0x0000FFFF zero-extends the immediate (high 16 bits always 0).
 						Coprocessor0.updateRegister(16, (and == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (and < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], and);
 					}
 				}));
@@ -702,11 +701,28 @@ public class InstructionSet
 						int xor = RegisterFile.getValue(operands[1]) ^ RegisterFile.getValue(operands[2]);
 						Coprocessor0.updateRegister(16, (xor == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (xor < 0 ? 1 : 0));
-						Coprocessor0.updateRegister(18, 1);
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], xor);
 					}
 				}));
-
+		instructionList.add(
+				new BasicInstruction("or $t1,$t2,$t3",
+						"Bitwise OR : Set $t1 to bitwise OR of $t2 and $t3",
+						BasicInstructionFormat.R_FORMAT,
+						"101010 fffff sssss ttttt 00000 000000",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						Coprocessor0.updateRegister(15, Coprocessor0.getValue(15) - 1);
+						int[] operands = statement.getOperands();
+						int or = RegisterFile.getValue(operands[1]) | RegisterFile.getValue(operands[2]);
+						Coprocessor0.updateRegister(16, (or == 0 ? 1 : 0));
+						Coprocessor0.updateRegister(17, (or < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
+						RegisterFile.updateRegister(operands[0], or);
+					}
+				}));
 		instructionList.add(
 				new BasicInstruction("nand $t1,$t2,$t3",
 						"Bitwise NAND: Set $t1 to bitwise NAND of $t2 and $t3",
@@ -721,7 +737,7 @@ public class InstructionSet
 						int nand = ~(RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]));
 						Coprocessor0.updateRegister(16, (nand == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (nand < 0 ? 1 : 0));
-						Coprocessor0.updateRegister(18, 1);
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], nand);
 					}
 				}));

@@ -444,15 +444,22 @@ public class Simulator extends Observable {
 					statement = Globals.memory.getStatement(RegisterFile.getProgramCounter());
 					int pc2 = RegisterFile.getProgramCounter();
 					if (statement == null) {
+						
 						int gameTickInterruptAddressWord = 1021; // 0x3fd
+						int keyboardInterruptAddressWord = 1022; // 0x3fe
+						int stackOvInterruptAddressWord = 1023;
 						if (pc2 == 4 * gameTickInterruptAddressWord) {
 							statement = new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, 4 * gameTickInterruptAddressWord);
-						}
-						int keyboardInterruptAddressWord = 1022; // 0x3fd
-						if (pc2 == 4 * keyboardInterruptAddressWord) {
+						} else if (pc2 == 4 * keyboardInterruptAddressWord) {
 							statement = new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, 4 * keyboardInterruptAddressWord);
+						} else if (pc2 == 4 * stackOvInterruptAddressWord) {
+							statement = new ProgramStatement(0x0c000000 + (((-stackOvInterruptAddressWord) << 6 >>> 6) + Globals.stack_ov_address / 4) - 1, 4 * stackOvInterruptAddressWord);
 						}
-						System.out.println("statement = " + statement + "; RegisterFile.getProgramCounter() = " + RegisterFile.getProgramCounter() + "; pc (bytes) = " + pc + "; pc (words) = " + pc/4);
+						System.out.println("statement = " + statement + "; RegisterFile.getProgramCounter() = " + RegisterFile.getProgramCounter() + "; pc_before_interrupt (bytes) = " + pc + "; pc_before_interrupt (words) = " + pc/4);
+						if (statement == null) {
+							statement = Globals.memory.getStatement(RegisterFile.getProgramCounter());
+							System.out.println("new statement = " + statement);
+						}
 					}
 				} 
 				catch (AddressErrorException e) {
