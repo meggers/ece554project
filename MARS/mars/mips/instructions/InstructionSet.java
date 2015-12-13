@@ -319,13 +319,6 @@ public class InstructionSet
 
 		jFrame.addKeyListener(keyListener);
 
-		try {
-			// 0x3Fd * 4 (to change to word addressing), then convert to decimal
-			Globals.memory.setStatement(4084, new ProgramStatement(0x19200000, 4084));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 		while(true) {
 			// sleep for 200 ms to not overload the processor and freeze
 			try {
