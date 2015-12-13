@@ -442,19 +442,18 @@ public class Simulator extends Observable {
 
 				try {
 					statement = Globals.memory.getStatement(RegisterFile.getProgramCounter());
+					int pc2 = RegisterFile.getProgramCounter();
 					if (statement == null) {
 						int gameTickInterruptAddressWord = 1021; // 0x3fd
-						if (pc == 4 * gameTickInterruptAddressWord) {
+						if (pc2 == 4 * gameTickInterruptAddressWord) {
 							statement = new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, 4 * gameTickInterruptAddressWord);
 						}
 						int keyboardInterruptAddressWord = 1022; // 0x3fd
-						if (pc == 4 * keyboardInterruptAddressWord) {
+						if (pc2 == 4 * keyboardInterruptAddressWord) {
 							statement = new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, 4 * keyboardInterruptAddressWord);
 						}
-						System.out.println("statement = " + statement + "; pc (bytes) = " + pc + "; pc (words) = " + pc/4);
-						//statement = new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte);
+						System.out.println("statement = " + statement + "; RegisterFile.getProgramCounter() = " + RegisterFile.getProgramCounter() + "; pc (bytes) = " + pc + "; pc (words) = " + pc/4);
 					}
-					//System.out.println("statement = " + statement + "; pc = " + pc);
 				} 
 				catch (AddressErrorException e) {
 					ErrorList el = new ErrorList();
