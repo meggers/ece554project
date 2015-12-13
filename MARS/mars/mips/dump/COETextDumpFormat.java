@@ -90,13 +90,13 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 					if (address < 4096) {	// if in instruction memory
 						temp = 0xfc000000;
 						if (address == 4084) {
-							temp = 0x0c000000 + (-4084  << 6 >>> 6 + Globals.game_tick_address) / 4 - 1;
+							temp = 0x0c000000 + (((-4084 / 4) << 6 >>> 6) + Globals.game_tick_address / 4) - 1;
 						}
 						if (address == 4088) {
-							temp = 0x0c000000 + (-4088 << 6 >>> 6 + Globals.keyboard_address) / 4 - 1;
+							temp = 0x0c000000 + (((-4088 / 4) << 6 >>> 6) + Globals.keyboard_address / 4) - 1;
 						}
 						if (address == 4092) {
-							temp = 0x0c000000 + (-4092 << 6 >>> 6 + Globals.stack_ov_address) / 4 - 1;
+							temp = 0x0c000000 + (((-4092 / 4) << 6 >>> 6) + Globals.stack_ov_address / 4) - 1;
 						}
 					} else {
 						temp = 0x00000000;
