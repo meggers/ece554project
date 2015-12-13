@@ -327,6 +327,7 @@ public class InstructionSet
 		}
 		
 		while(true) {
+			/*
 			while (Globals.isInInterruptHandler) {
 				try {
 					Thread.sleep(1000);
@@ -358,7 +359,7 @@ public class InstructionSet
 			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 			clonedStatusRegisters[2] = Coprocessor0.getValue(18);
 			processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
-			
+			*/
 			jFrame.repaint();
 			
 		}
