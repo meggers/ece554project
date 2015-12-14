@@ -75,7 +75,7 @@ public class Simulator extends Observable {
 	public static final int CLIFF_TERMINATION = 5; // run off bottom of program
 	public static final int PAUSE_OR_STOP = 6;
 	
-	public static int tronMIPStorCounter = 0;
+	public static volatile int tronMIPStorCounter = 0;
 
 	JFrame jFrame;
 	HashMap<String, Integer> spriteAssemblerHash; // will be handled by the assembler
@@ -314,7 +314,7 @@ public class Simulator extends Observable {
 			public void keyPressed(KeyEvent arg0) {
 				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
 				//int epc = RegisterFile.getProgramCounter() / 4;
-				System.out.println("Globals.interruptStatus = " + Globals.interruptStatus + "; Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+				//System.out.println("Globals.interruptStatus = " + Globals.interruptStatus + "; Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
 				if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
 					char characterPressed = arg0.getKeyChar();
 					if (characterPressed == 'z' || characterPressed == 'g') {
@@ -339,44 +339,36 @@ public class Simulator extends Observable {
 
 		while(true) {
 			// sleep for 200 ms to not overload the processor and freeze
-			try {
-				Thread.sleep(200);
-			} catch (Exception e) {
-				e.printStackTrace();
+			//try {
+			//	Thread.sleep(200);
+			//} catch (Exception e) {
+			//	e.printStackTrace();
+			//}
+			//
+			//while (Globals.isInInterruptHandler) {
+			//	try {
+			//		Thread.sleep(1000);
+			//	} catch (Exception e) {
+			//		e.printStackTrace();
+			//	}
+			//	System.out.println("Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+			//}
+			//Thread thread = new Thread(new TimerInterrupt());
+			//thread.start();
+			//try {
+			//	thread.join();
+			//} catch (InterruptedException e1) {
+			//	e1.printStackTrace();
+			//}
+			
+			while (tronMIPStorCounter % 4096 != 0) {
+				//System.out.println("tronMIPStorCounter = " + tronMIPStorCounter);
 			}
-			/*
-			while (Globals.isInInterruptHandler) {
-				try {
-					Thread.sleep(1000);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				System.out.println("Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
-			}
-			Thread thread = new Thread(new TimerInterrupt());
-			thread.start();
-			try {
-				thread.join();
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
+			
+			if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
+				Globals.interruptStatus = 1;
 			}
 
-			System.out.println("timer interrupt has occurred");
-			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
-			int gameTickInterruptAddressWord = 1021; // 0x3fd
-			if (!Globals.isGameTickInstructionSet) {
-				int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
-				Globals.isGameTickInstructionSet = true;
-				try {
-					Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
-				} catch (Exception e) { e.printStackTrace(); }
-			}					
-			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
-			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
-			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
-			clonedStatusRegisters[2] = Coprocessor0.getValue(18);
-			processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
-			*/
 			jFrame.repaint();
 			
 		}
@@ -424,10 +416,10 @@ public class Simulator extends Observable {
 	class TimerInterrupt implements Runnable {
 
 		public void run() {
-			System.out.println("started checking r15, initial value = " + Globals.isInInterruptHandler);
-			while (Coprocessor0.getValue(15) > 0);
-			System.out.println("in trap handler");
-			Globals.isInInterruptHandler = true;
+			//System.out.println("started checking r15, initial value = " + Globals.isInInterruptHandler);
+			while (tronMIPStorCounter % 1024 != 0);
+			//System.out.println("in trap handler");
+			//Globals.isInInterruptHandler = true;
 			//try {
 			//	Thread.sleep(10000);
 			//} catch (Exception e) {
@@ -590,13 +582,12 @@ public class Simulator extends Observable {
 						++tronMIPStorCounter;
 						//System.out.println("started simulating, tronMIPStorCounter = " + tronMIPStorCounter++);
 						if (Globals.interruptStatus == 1) {
-								System.out.println("timer interrupt is simulating");
+								//System.out.println("timer interrupt is simulating");
 								Globals.clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 								Globals.clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 								Globals.clonedStatusRegisters[2] = Coprocessor0.getValue(18);
 								Globals.isInInterruptHandler = true;
 								RegisterFile.updateRegister(30, (RegisterFile.getProgramCounter() - Instruction.INSTRUCTION_LENGTH) / 4); // save last pc that didn't simulate
-								
 								
 								int gameTickInterruptAddressWord = 1021; // 0x3fd
 								int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
@@ -609,7 +600,7 @@ public class Simulator extends Observable {
 								Globals.interruptStatus = 0;
 						}
 						if (Globals.interruptStatus == 2) {
-								System.out.println("key press interrupt has occured, key = " + lastKey);
+								//System.out.println("key press interrupt has occured, key = " + lastKey);
 								Globals.clonedStatusRegisters[0] = Coprocessor0.getValue(16);
 								Globals.clonedStatusRegisters[1] = Coprocessor0.getValue(17);
 								Globals.clonedStatusRegisters[2] = Coprocessor0.getValue(18);
@@ -627,9 +618,21 @@ public class Simulator extends Observable {
 								RegisterFile.setProgramCounter(keyboardInterruptAddressByte);
 								Globals.interruptStatus = 0;
 						}
+						
+						//System.out.println(statement + ";;;;'" + statement.getMachineStatement() + "';");
+						
 						// THIS IS WHERE THE INSTRUCTION EXECUTION IS ACTUALLY SIMULATED!
 						instruction.getSimulationCode().simulate(statement);
-
+						
+						if (Globals.isInInterruptHandler && statement != null && statement.getMachineStatement() != null && (statement.getMachineStatement().equals("00011011110000000000000000000000") || statement.getMachineStatement().equals("00001100000000000000000000000000"))) {
+							Coprocessor0.updateRegister(15, 20);
+							Coprocessor0.updateRegister(16, Globals.clonedStatusRegisters[0]);
+							Coprocessor0.updateRegister(17, Globals.clonedStatusRegisters[1]);
+							Coprocessor0.updateRegister(18, Globals.clonedStatusRegisters[2]);
+							//System.out.println("finished trap handler, previous Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+							Globals.isInInterruptHandler = false;
+						}
+						
 						// IF statement added 7/26/06 (explanation above)
 						if (Globals.getSettings().getBackSteppingEnabled()) {
 							Globals.program.getBackStepper().addDoNothing(pc);

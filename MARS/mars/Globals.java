@@ -140,14 +140,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	  public static int[] clonedStatusRegisters = new int[3];
 	  public static BufferedImage[][] groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION];
 	  
-	  public static int interruptStatus = 0;
+	  public static volatile int interruptStatus = 0;
 	  public static int game_tick_address = 0;
 	  public static int keyboard_address = 0;
 	  public static int stack_ov_address = 0;
 	  public static boolean isGameTickInstructionSet = false;
 	  public static boolean isKeyboardInstructionSet = false;
 	  public static boolean isStackOvInstructionSet = false;
-	  public static Boolean isInInterruptHandler = false;
+	  public static volatile boolean isInInterruptHandler = false;
 	  
 	  public static BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipVertical, boolean isFlipHorizontal) {
 
