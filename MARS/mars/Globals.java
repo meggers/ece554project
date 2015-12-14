@@ -7,6 +7,21 @@
    import mars.util.*;
    import java.io.*;
    import java.util.*;
+   
+   import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 	
 /*
 Copyright (c) 2003-2008,  Pete Sanderson and Kenneth Vollmar
@@ -114,6 +129,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          return settings;
       }
 	  
+	  public static int DISPLAY_LOGIC_WIDTH = 256;
+	  public static int DISPLAY_LOGIC_HEIGHT = 256;
+	  public static int DISPLAY_LOGIC_IMAGE_DIMENSION = 8;
+	  public static int DISPLAY_LOGIC_UNIT_SIZE = 4;
+	  
+	  public static int[] backgroundTile = new int[1024];
+	  public static int[] backgroundAttribute = new int[1024];
+	  public static BufferedImage[] backgroundPatternTable = new BufferedImage[256]; // index into background visual data, use assembler for index
+	  public static int[] clonedStatusRegisters = new int[3];
+	  public static BufferedImage[][] groundVisual = new BufferedImage[DISPLAY_LOGIC_WIDTH / DISPLAY_LOGIC_IMAGE_DIMENSION][DISPLAY_LOGIC_HEIGHT / DISPLAY_LOGIC_IMAGE_DIMENSION];
+	  
+	  public static int interruptStatus = 0;
 	  public static int game_tick_address = 0;
 	  public static int keyboard_address = 0;
 	  public static int stack_ov_address = 0;
@@ -121,6 +148,85 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	  public static boolean isKeyboardInstructionSet = false;
 	  public static boolean isStackOvInstructionSet = false;
 	  public static Boolean isInInterruptHandler = false;
+	  
+	  public static BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipVertical, boolean isFlipHorizontal) {
+
+		if (inputBufferedImage == null) {
+			return new BufferedImage(8, 8, BufferedImage.TYPE_INT_RGB);
+		}
+		
+		BufferedImage outputBufferedImage = new BufferedImage(inputBufferedImage.getWidth(), inputBufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+		if (!isFlipHorizontal && !isFlipVertical) {
+			return inputBufferedImage;
+		} else if (!isFlipHorizontal && isFlipVertical) {
+			for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+				for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+					outputBufferedImage.setRGB(x, y, inputBufferedImage.getRGB(x, inputBufferedImage.getHeight() - 1 - y));
+				}
+			}
+		} else if (isFlipHorizontal && !isFlipVertical) {
+			for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+				for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+					outputBufferedImage.setRGB(x, y, inputBufferedImage.getRGB(inputBufferedImage.getWidth() - 1 - x, y));
+				}
+			}
+		} else {
+			for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+				for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+					outputBufferedImage.setRGB(x, y, inputBufferedImage.getRGB(inputBufferedImage.getWidth() - 1 - x, inputBufferedImage.getHeight() - 1 - y));
+				}
+			}
+		}
+		return outputBufferedImage;
+	}
+
+	public static BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex, boolean isForeground) {
+
+		if (inputBufferedImage == null) {
+			return new BufferedImage(8, 8, BufferedImage.TYPE_INT_RGB);
+		}
+		
+		// colorPaletteIndex0 = BlRGB
+		// colorPaletteIndex1 = BlCMY
+		// colorPaletteIndex2 = BlBRG
+		// colorPaletteIndex3 = BlBBB
+
+		int[] colors = { Color.BLACK.getRGB(), Color.RED.getRGB(), Color.GREEN.getRGB(), Color.BLUE.getRGB() };
+		//	^ is the global background color
+		switch (colorPaletteIndex) {
+		case 1: 
+			colors[1] = Color.CYAN.getRGB();
+			colors[2] = Color.MAGENTA.getRGB();
+			colors[3] = Color.YELLOW.getRGB();
+			break;
+		case 2: 
+			colors[1] = Color.GREEN.getRGB();
+			colors[2] = Color.RED.getRGB();
+			colors[3] = Color.BLUE.getRGB();
+			break;
+		case 3: 
+			colors[1] = Color.BLUE.getRGB();
+			colors[2] = Color.BLUE.getRGB();
+			colors[3] = Color.BLUE.getRGB();
+			break;
+		}
+
+		BufferedImage outputBufferedImage = new BufferedImage(inputBufferedImage.getWidth(), inputBufferedImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+		for (int x = 0; x < inputBufferedImage.getWidth(); ++x) {
+			for (int y = 0; y < inputBufferedImage.getHeight(); ++y) {
+				if (inputBufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
+					outputBufferedImage.setRGB(x, y, isForeground ? BufferedImage.OPAQUE : colors[0]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[1]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[2]);
+				} else if (inputBufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
+					outputBufferedImage.setRGB(x, y, colors[3]);
+				}
+			}
+		}
+		return outputBufferedImage;
+	}
    
     /**
      * Method called once upon system initialization to create the global data structures.

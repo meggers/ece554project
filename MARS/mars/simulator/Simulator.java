@@ -8,6 +8,21 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /*
 Copyright (c) 2003-2010,  Pete Sanderson and Kenneth Vollmar
 
@@ -59,6 +74,14 @@ public class Simulator extends Observable {
 	public static final int NORMAL_TERMINATION = 4;
 	public static final int CLIFF_TERMINATION = 5; // run off bottom of program
 	public static final int PAUSE_OR_STOP = 6;
+	
+	public static int tronMIPStorCounter = 0;
+
+	JFrame jFrame;
+	HashMap<String, Integer> spriteAssemblerHash; // will be handled by the assembler
+	BufferedImage[] spritePatternTable = new BufferedImage[256]; // index into sprite visual data, use assembler for index
+	
+	int lastKey = 0;
 
 	/**
 	 * Returns the Simulator object
@@ -112,6 +135,7 @@ public class Simulator extends Observable {
 	 **/
 
 	public boolean simulate(MIPSprogram p, int pc, int maxSteps, int[] breakPoints, AbstractAction actor) throws ProcessingException {
+		
 		simulatorThread = new SimThread(p,pc,maxSteps,breakPoints,actor);
 		simulatorThread.start();
 
@@ -196,6 +220,221 @@ public class Simulator extends Observable {
 	 * See SwingWorker.java for more details on its functionality and usage.  It is
 	 * provided by Sun Microsystems for download and is not part of the Swing library.
 	 */ 	
+	 
+	 class PPUSimulator implements Runnable {
+		public void run() {
+			readBackground();
+			//System.out.println("done reading background");
+			try {
+				start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void readBackground() {
+		spriteAssemblerHash = new HashMap<String, Integer>();
+		try {
+			File imageFile;
+			BufferedImage bufferedImage;
+			int[] imageData = new int[Globals.DISPLAY_LOGIC_IMAGE_DIMENSION * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION];
+			BufferedReader br = new BufferedReader(new FileReader("sprite-definitions.csv"));
+			for (String line; (line = br.readLine()) != null; ) {
+				// process the line
+				String[] lineTokens = line.split(",");
+				//for (int i = 0; i < lineTokens.length; ++i) {
+				//	System.out.println("lineTokens[" + i + "] = $" + lineTokens[i] + "$");
+				//}
+				try {
+					spriteAssemblerHash.put(lineTokens[0] + "_index", Integer.parseInt(lineTokens[1]));
+					spriteAssemblerHash.put(lineTokens[0] + "_height", Integer.parseInt(lineTokens[2]));
+					spriteAssemblerHash.put(lineTokens[0] + "_width", Integer.parseInt(lineTokens[3]));
+					spriteAssemblerHash.put(lineTokens[0] + "_size", Integer.parseInt(lineTokens[4]));
+					imageFile = new File("images/foreground/" + lineTokens[0] + ".png");
+					if (imageFile.exists()) {
+						// System.out.println(lineTokens[0] + " is sprite");
+						bufferedImage = ImageIO.read(imageFile);
+						for (int height = 0; height < bufferedImage.getHeight() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++height) {
+							for (int width = 0; width < bufferedImage.getWidth() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++width) {
+								bufferedImage.getRGB(width * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, height * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION);
+								BufferedImage bufferedImageOutput = new BufferedImage(Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, BufferedImage.TYPE_INT_RGB);
+								bufferedImageOutput.setRGB(0, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, 8);
+								// ImageIO.write(bufferedImageOutput, "png", new File("test_test_foreground" + foregroundCount + ".png"));
+								spritePatternTable[Integer.parseInt(lineTokens[1]) + height*(bufferedImage.getWidth()/Globals.DISPLAY_LOGIC_IMAGE_DIMENSION) + width] = bufferedImageOutput;
+							}
+						}
+					}
+					imageFile = new File("images/background/" + lineTokens[0] + ".png");
+					if (imageFile.exists()) {
+						// System.out.println(lineTokens[0] + " is background");
+						bufferedImage = ImageIO.read(imageFile);
+						for (int height = 0; height < bufferedImage.getHeight() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++height) {
+							for (int width = 0; width < bufferedImage.getWidth() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++width) {
+								bufferedImage.getRGB(width * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, height * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION);
+								BufferedImage bufferedImageOutput = new BufferedImage(Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, BufferedImage.TYPE_INT_RGB);
+								bufferedImageOutput.setRGB(0, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, 8);
+								// ImageIO.write(bufferedImageOutput, "png", new File("test_test_background" + backgroundCount + lineTokens[0] + ".png"));
+								Globals.backgroundPatternTable[Integer.parseInt(lineTokens[1]) + height*(bufferedImage.getWidth()/Globals.DISPLAY_LOGIC_IMAGE_DIMENSION) + width] = bufferedImageOutput;
+							}
+						}
+					}
+				} catch (Exception e) {
+				}
+			}
+			br.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+
+	public void start() throws IOException {
+		jFrame = new JFrame("PPU Simulator");
+		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		Globals.groundVisual = new BufferedImage[Globals.DISPLAY_LOGIC_WIDTH / Globals.DISPLAY_LOGIC_UNIT_SIZE][Globals.DISPLAY_LOGIC_HEIGHT / Globals.DISPLAY_LOGIC_UNIT_SIZE];
+
+		// background
+		BufferedImage initialBackgroundImage = Globals.setColorPalette(Globals.backgroundPatternTable[0], 0, false);
+		for (int x = 0; x < Globals.DISPLAY_LOGIC_WIDTH / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+			for (int y = 0; y < Globals.DISPLAY_LOGIC_HEIGHT / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+				Globals.groundVisual[x][y] = initialBackgroundImage;
+			}
+		}
+
+		PPU ppu = new PPU();
+		jFrame.add(ppu);
+		jFrame.setSize(Globals.DISPLAY_LOGIC_WIDTH + 50, Globals.DISPLAY_LOGIC_HEIGHT + 50);
+		jFrame.setVisible(true);
+
+		KeyListener keyListener = new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
+				//int epc = RegisterFile.getProgramCounter() / 4;
+				System.out.println("Globals.interruptStatus = " + Globals.interruptStatus + "; Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+				if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
+					char characterPressed = arg0.getKeyChar();
+					if (characterPressed == 'z' || characterPressed == 'g') {
+						Globals.interruptStatus = 1;
+					} else {
+						Globals.interruptStatus = 2;
+						lastKey = characterPressed;
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+		};
+
+		jFrame.addKeyListener(keyListener);
+
+		while(true) {
+			// sleep for 200 ms to not overload the processor and freeze
+			try {
+				Thread.sleep(200);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			/*
+			while (Globals.isInInterruptHandler) {
+				try {
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				System.out.println("Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+			}
+			Thread thread = new Thread(new TimerInterrupt());
+			thread.start();
+			try {
+				thread.join();
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+
+			System.out.println("timer interrupt has occurred");
+			// game tick interrupt, commented out, since Tronsmipster ISA has to do this instead
+			int gameTickInterruptAddressWord = 1021; // 0x3fd
+			if (!Globals.isGameTickInstructionSet) {
+				int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
+				Globals.isGameTickInstructionSet = true;
+				try {
+					Globals.memory.setStatement(gameTickInterruptAddressByte, new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte)); 
+				} catch (Exception e) { e.printStackTrace(); }
+			}					
+			RegisterFile.updateRegister(30, RegisterFile.getProgramCounter() / 4);
+			clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+			clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+			clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+			processJump(gameTickInterruptAddressWord); // 0x3FD * 4 (since word addressing), then converted to decimal
+			*/
+			jFrame.repaint();
+			
+		}
+	}
+	
+	public class PPU extends JPanel {
+		public void paintComponent(Graphics graphics) {
+			super.paintComponent(graphics);
+			this.setBackground(Color.WHITE);
+
+			for (int x = 0; x < Globals.DISPLAY_LOGIC_WIDTH / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+				for (int y = 0; y < Globals.DISPLAY_LOGIC_HEIGHT / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+					graphics.drawImage(Globals.groundVisual[x][y], x * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, y * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				}
+			}
+
+			// draw light bikes
+			for (int spriteIndex = 63; spriteIndex >= 0; --spriteIndex) {
+				int sld = Coprocessor1.getValue(spriteIndex);
+				int sslY = sld & 0x000000FF;
+				if (sslY == 255) {
+					continue;
+				}
+				int sfa = (sld & 0x00FF0000) >>> 16;
+				int colorPaletteIndex = sfa & 0x00000003;
+				boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
+				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x0000004;
+				int sft = (sld & 0x0000FF00) >>> 8;
+				BufferedImage bufferedImage = spritePatternTable[sft];
+				int sslX = (sld & 0xFF000000) >>> 24;
+
+				graphics.drawImage(Globals.setColorPalette(Globals.setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex, true), sslX, sslY, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			}
+		}
+	}
+
+	public void sleep(int milliseconds) {
+		try {
+			Thread.sleep(milliseconds);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	class TimerInterrupt implements Runnable {
+
+		public void run() {
+			System.out.println("started checking r15, initial value = " + Globals.isInInterruptHandler);
+			while (Coprocessor0.getValue(15) > 0);
+			System.out.println("in trap handler");
+			Globals.isInInterruptHandler = true;
+			//try {
+			//	Thread.sleep(10000);
+			//} catch (Exception e) {
+			//	e.printStackTrace();
+			//}
+		}
+	}
 
 	class SimThread extends SwingWorker {
 		private MIPSprogram p;
@@ -322,7 +561,6 @@ public class Simulator extends Observable {
 
 			int pc = 0;  // added: 7/26/06 (explanation above)
 
-			System.out.println("starting simulator\n\n\n");
 			while (statement != null) {
 				pc = RegisterFile.getProgramCounter(); // added: 7/26/06 (explanation above)
 				RegisterFile.incrementPC();           	
@@ -342,6 +580,52 @@ public class Simulator extends Observable {
 							throw new ProcessingException(statement,
 									"undefined instruction ("+Binary.intToHexString(statement.getBinaryStatement())+")",
 									Exceptions.RESERVED_INSTRUCTION_EXCEPTION);
+						}
+						if (tronMIPStorCounter == 0) {
+							
+							Thread thread = new Thread(new PPUSimulator());	// read meridian data while waiting for user input
+							thread.start();
+				
+						}
+						++tronMIPStorCounter;
+						//System.out.println("started simulating, tronMIPStorCounter = " + tronMIPStorCounter++);
+						if (Globals.interruptStatus == 1) {
+								System.out.println("timer interrupt is simulating");
+								Globals.clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+								Globals.clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+								Globals.clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+								Globals.isInInterruptHandler = true;
+								RegisterFile.updateRegister(30, (RegisterFile.getProgramCounter() - Instruction.INSTRUCTION_LENGTH) / 4); // save last pc that didn't simulate
+								
+								
+								int gameTickInterruptAddressWord = 1021; // 0x3fd
+								int gameTickInterruptAddressByte = gameTickInterruptAddressWord * 4;
+								statement = new ProgramStatement(0x0c000000 + (((-gameTickInterruptAddressWord) << 6 >>> 6) + Globals.game_tick_address / 4) - 1, gameTickInterruptAddressByte);
+								try {
+									Globals.memory.setStatement(gameTickInterruptAddressByte, statement); 
+								} catch (Exception e) { e.printStackTrace(); }
+								RegisterFile.setProgramCounter(gameTickInterruptAddressByte);
+								jFrame.repaint();
+								Globals.interruptStatus = 0;
+						}
+						if (Globals.interruptStatus == 2) {
+								System.out.println("key press interrupt has occured, key = " + lastKey);
+								Globals.clonedStatusRegisters[0] = Coprocessor0.getValue(16);
+								Globals.clonedStatusRegisters[1] = Coprocessor0.getValue(17);
+								Globals.clonedStatusRegisters[2] = Coprocessor0.getValue(18);
+								Globals.isInInterruptHandler = true;
+								RegisterFile.updateRegister(28, lastKey);
+								RegisterFile.updateRegister(30, (RegisterFile.getProgramCounter() - Instruction.INSTRUCTION_LENGTH) / 4); // save last pc that didn't simulate
+								
+								int keyboardInterruptAddressWord = 1022; // 0x3fe
+								int keyboardInterruptAddressByte = keyboardInterruptAddressWord * 4;
+								statement = new ProgramStatement(0x0c000000 + (((-keyboardInterruptAddressWord) << 6 >>> 6) + Globals.keyboard_address / 4) - 1, keyboardInterruptAddressByte);
+								try { 
+									// now PC = 4088 (or 4088 * 4 internally), so need to add b (branch) opcode plus jump up 4088 plus label address minus 1 (to cancel PC always incrementing)
+									Globals.memory.setStatement(keyboardInterruptAddressByte, statement); 
+								} catch (Exception e) { e.printStackTrace(); }
+								RegisterFile.setProgramCounter(keyboardInterruptAddressByte);
+								Globals.interruptStatus = 0;
 						}
 						// THIS IS WHERE THE INSTRUCTION EXECUTION IS ACTUALLY SIMULATED!
 						instruction.getSimulationCode().simulate(statement);
