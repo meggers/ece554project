@@ -127,19 +127,15 @@ LoadBackSprites:	# Load the sprites from the pattern table into the OAM
 		li $t0, 0
 		li $t2,background3330_index
 		sbt $t0,$t2
-		# sbt $t0,background3330
 		li $t0, 31
 		li $t2,background3303_index
 		sbt $t0,$t2
-		# sbt $t0,background3303
 		li $t0, 992
 		li $t2,background3033_index
 		sbt $t0,$t2
-		# sbt $t0,background3033
 		li $t0, 1023
 		li $t2,background0333_index
 		sbt $t0,$t2
-		# sbt $t0,background0333
 	#commented out, kai was testing this on dec 8th
 	#li $t0,0
 	#li $t1,light_bike_small_rotated_index
@@ -343,12 +339,19 @@ GameLoop:
 	
 		add $zero,$s3,$zero
 		bne GameFail
+#gameLoopSpin:
+#	nop
+#	b 0
+#	b GameLoop
+	
 gameLoopSpin:
 	nop
-	# b gameLoopSpin
-	# NO INTERRUPTS FOR TESTING
-	# NO CRYING IN BASEBALL
-	b GameLoop
+	li $s7, 4000
+gameLoopSpin2:
+	b 0
+	addi $s7,$s7,-1
+	beq GameLoop
+	b gameLoopSpin2
 
 
 updateGround:
@@ -376,35 +379,35 @@ updateGround:
 	li $t4,16
 	sub $zero,$t3,$t4
 	blt shift8
-	sub $t3,$t3,16
+	addi $t3,$t3,-16
 	sll $t2,$t2,16
 	
 	shift8:
 	li $t4,8
 	sub $zero,$t3,$t4
 	blt shift4
-	sub $t3,$t3,8
+	addi $t3,$t3,-8
 	sll $t2,$t2,8
 	
 	shift4:
 	li $t4,4
 	sub $zero,$t3,$t4
 	blt shift2
-	sub $t3,$t3,4
+	addi $t3,$t3,-4
 	sll $t2,$t2,4
 	
 	shift2:
 	li $t4,2
 	sub $zero,$t3,$t4
 	blt shift1
-	sub $t3,$t3,2
+	addi $t3,$t3,-2
 	sll $t2,$t2,2
 	
 	shift1:
 	li $t4,1
 	sub $zero,$t3,$t4
 	blt endShift
-	sub $t3,$t3,1
+	addi $t3,$t3,-1
 	sll $t2,$t2,1
 	
 	endShift:
@@ -428,7 +431,7 @@ updateGround:
 	li $t3,1
 	sub $zero,$t3,$a2
 	bne checkDown
-	sll $t2,$t2,1
+	srl $t2,$t2,1
 	lw $t1,$t0,groundData
 	and $t5,$t1,$t2
 	beq checkDown
@@ -448,7 +451,7 @@ updateGround:
 	li $t3,3
 	sub $zero,$t3,$a2
 	bne endCheck
-	srl $t2,$t2,1
+	sll $t2,$t2,1
 	lw $t1,$t0,groundData
 	and $t5,$t1,$t2
 	beq endCheck
@@ -909,23 +912,28 @@ p1displayupdate:
 		
 		
 GameFail:
-	li $t1,middle_finger_index
-	li $t0,6
-	sft $t0,$t1
-	
-	# Set the proper location
-	# addi ... 8 because the middle is "where the bike is"
-	li $t2,128
-	sll $t2,$t2,8
-	addi $t2,$t2,126
-	ssl $t0,$t2
+	li $t1,char_F_index
+	li $t2,char_U_index
+	li $t3,char_C_index
+	li $t4,char_K_index
 
-	# Set attributes
-	addi $t3,$zero,0x41
-	sfa $t0,$t3
+	# Set the proper location
+	li $t0,16
+	sll $t0,$t0,5
+	addi $t0,$t0,20
+
+	sbt $t0,$t1
+	addi $t0,$t0,1
+	sbt $t0,$t2
+	addi $t0,$t0,1
+	sbt $t0,$t3
+	addi $t0,$t0,1
+	sbt $t0,$t4
+	addi $t0,$t0,1
+gameFailSpin:
 	nop
 	nop
-	nop
+	b gameFailSpin
 	
 	
 #####################################################
@@ -944,9 +952,7 @@ or: nop
     push $t0
     push $t1
     nand $t0,$a0,$a0
-    #addi $t0,$t0,1
     nand $t1,$a1,$a1
-    #addi $t1,$t1,1 
     nand $v0,$t0,$t1
     pop $t1
     pop $t0

@@ -339,11 +339,11 @@ public class Simulator extends Observable {
 
 		while(true) {
 			// sleep for 200 ms to not overload the processor and freeze
-			//try {
-			//	Thread.sleep(200);
-			//} catch (Exception e) {
-			//	e.printStackTrace();
-			//}
+			try {
+				Thread.sleep(200);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			//
 			//while (Globals.isInInterruptHandler) {
 			//	try {
@@ -361,13 +361,13 @@ public class Simulator extends Observable {
 			//	e1.printStackTrace();
 			//}
 			
-			while (tronMIPStorCounter % 4096 != 0) {
-				//System.out.println("tronMIPStorCounter = " + tronMIPStorCounter);
-			}
+			// while (tronMIPStorCounter % 4096 != 0) {
+				// System.out.println("tronMIPStorCounter = " + tronMIPStorCounter);
+			// }
 			
-			if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
-				Globals.interruptStatus = 1;
-			}
+			// if (globals.interruptstatus == 0 && !globals.isininterrupthandler) {
+				// globals.interruptstatus = 1;
+			// }
 
 			jFrame.repaint();
 			
