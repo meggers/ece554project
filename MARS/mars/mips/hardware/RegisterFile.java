@@ -7,6 +7,25 @@
    import mars.mips.instructions.Instruction;
    import mars.util.Binary;
 
+   import java.util.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /*
 Copyright (c) 2003-2008,  Pete Sanderson and Kenneth Vollmar
 
@@ -315,7 +334,110 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          initializeProgramCounter(Globals .getSettings().getStartAtMain());// replaces "programCounter.resetValue()", DPS 3/3/09
          hi.resetValue();
          lo.resetValue();
+		 // reset background as well
+		 
+		 readBackground();
+		Globals.tronMIPStorCounter = 0;
+		Globals.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		 Globals.groundVisual = new BufferedImage[Globals.DISPLAY_LOGIC_WIDTH / Globals.DISPLAY_LOGIC_UNIT_SIZE][Globals.DISPLAY_LOGIC_HEIGHT / Globals.DISPLAY_LOGIC_UNIT_SIZE];
+
+		 BufferedImage initialBackgroundImage = Globals.setColorPalette(Globals.backgroundPatternTable[0], 0, false);
+		for (int x = 0; x < Globals.DISPLAY_LOGIC_WIDTH / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+			for (int y = 0; y < Globals.DISPLAY_LOGIC_HEIGHT / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+				Globals.groundVisual[x][y] = initialBackgroundImage;
+			}
+		}
+		
+		Globals.jFrame.add(Globals.ppu);
+		Globals.jFrame.setSize(Globals.DISPLAY_LOGIC_WIDTH + 50, Globals.DISPLAY_LOGIC_HEIGHT + 50);
+		Globals.jFrame.setVisible(true);
+		
+		KeyListener keyListener = new KeyListener() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				// key press interrupt, commented out, since Tronsmipster ISA has to do this instead
+				//int epc = RegisterFile.getProgramCounter() / 4;
+				//System.out.println("Globals.interruptStatus = " + Globals.interruptStatus + "; Globals.isInInterruptHandler = " + Globals.isInInterruptHandler);
+				if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
+					char characterPressed = arg0.getKeyChar();
+					if (characterPressed == 'z' || characterPressed == 'g') {
+						Globals.interruptStatus = 1;
+					} else {
+						Globals.lastKey = characterPressed;
+						Globals.interruptStatus = 2;
+					}
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+		};
+
+		Globals.jFrame.addKeyListener(keyListener);
       }
+	
+	  public static void readBackground() {
+		if (Globals.spriteAssemblerHash == null) {
+			Globals.spriteAssemblerHash = new HashMap<String, Integer>();
+			try {
+				File imageFile;
+				BufferedImage bufferedImage;
+				int[] imageData = new int[Globals.DISPLAY_LOGIC_IMAGE_DIMENSION * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION];
+				BufferedReader br = new BufferedReader(new FileReader("sprite-definitions.csv"));
+				for (String line; (line = br.readLine()) != null; ) {
+					// process the line
+					String[] lineTokens = line.split(",");
+					//for (int i = 0; i < lineTokens.length; ++i) {
+					//	System.out.println("lineTokens[" + i + "] = $" + lineTokens[i] + "$");
+					//}
+					try {
+						Globals.spriteAssemblerHash.put(lineTokens[0] + "_index", Integer.parseInt(lineTokens[1]));
+						Globals.spriteAssemblerHash.put(lineTokens[0] + "_height", Integer.parseInt(lineTokens[2]));
+						Globals.spriteAssemblerHash.put(lineTokens[0] + "_width", Integer.parseInt(lineTokens[3]));
+						Globals.spriteAssemblerHash.put(lineTokens[0] + "_size", Integer.parseInt(lineTokens[4]));
+						imageFile = new File("images/foreground/" + lineTokens[0] + ".png");
+						if (imageFile.exists()) {
+							// System.out.println(lineTokens[0] + " is sprite");
+							bufferedImage = ImageIO.read(imageFile);
+							for (int height = 0; height < bufferedImage.getHeight() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++height) {
+								for (int width = 0; width < bufferedImage.getWidth() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++width) {
+									bufferedImage.getRGB(width * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, height * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION);
+									BufferedImage bufferedImageOutput = new BufferedImage(Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, BufferedImage.TYPE_INT_RGB);
+									bufferedImageOutput.setRGB(0, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, 8);
+									// ImageIO.write(bufferedImageOutput, "png", new File("test_test_foreground" + foregroundCount + ".png"));
+									Globals.spritePatternTable[Integer.parseInt(lineTokens[1]) + height*(bufferedImage.getWidth()/Globals.DISPLAY_LOGIC_IMAGE_DIMENSION) + width] = bufferedImageOutput;
+								}
+							}
+						}
+						imageFile = new File("images/background/" + lineTokens[0] + ".png");
+						if (imageFile.exists()) {
+							// System.out.println(lineTokens[0] + " is background");
+							bufferedImage = ImageIO.read(imageFile);
+							for (int height = 0; height < bufferedImage.getHeight() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++height) {
+								for (int width = 0; width < bufferedImage.getWidth() / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++width) {
+									bufferedImage.getRGB(width * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, height * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION);
+									BufferedImage bufferedImageOutput = new BufferedImage(Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, BufferedImage.TYPE_INT_RGB);
+									bufferedImageOutput.setRGB(0, 0, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, imageData, 0, 8);
+									// ImageIO.write(bufferedImageOutput, "png", new File("test_test_background" + backgroundCount + lineTokens[0] + ".png"));
+									Globals.backgroundPatternTable[Integer.parseInt(lineTokens[1]) + height*(bufferedImage.getWidth()/Globals.DISPLAY_LOGIC_IMAGE_DIMENSION) + width] = bufferedImageOutput;
+								}
+							}
+						}
+					} catch (Exception e) {
+					}
+				}
+				br.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
       
      /**
        *  Method to increment the Program counter in the general case (not a jump or branch).

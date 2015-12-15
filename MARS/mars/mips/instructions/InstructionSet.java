@@ -315,6 +315,7 @@ public class InstructionSet
 						int sll = RegisterFile.getValue(operands[1]) << operands[2];
 						Coprocessor0.updateRegister(16, (sll == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (sll < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], sll);
 					}
 				}));
@@ -333,6 +334,7 @@ public class InstructionSet
 						int srl = RegisterFile.getValue(operands[1]) >>> operands[2];
 						Coprocessor0.updateRegister(16, (srl == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (srl < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], srl);
 					}
 				}));
