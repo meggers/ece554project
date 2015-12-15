@@ -268,9 +268,9 @@ public class Simulator extends Observable {
 				
 				//while (Globals.tronMIPStorCounter % 4096 != 0) {
 				//}
-				if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
-					Globals.interruptStatus = 1;
-				}
+				//if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
+				//	Globals.interruptStatus = 1;
+				//}
 				
 				Globals.jFrame.repaint();
 			}
