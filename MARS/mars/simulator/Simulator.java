@@ -264,13 +264,13 @@ public class Simulator extends Observable {
 	public class GameLoop implements Runnable {
 		public void run() {
 			while(true) {
-				sleep(250);
+				//sleep(250);
 				
-				//while (Globals.tronMIPStorCounter % 4096 != 0) {
-				//}
-				//if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
-				//	Globals.interruptStatus = 1;
-				//}
+				while (Globals.tronMIPStorCounter % 4096 != 0) {
+				}
+				if (Globals.interruptStatus == 0 && !Globals.isInInterruptHandler) {
+					Globals.interruptStatus = 1;
+				}
 				
 				Globals.jFrame.repaint();
 			}

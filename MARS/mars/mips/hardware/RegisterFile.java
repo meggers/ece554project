@@ -328,6 +328,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    	  **/
    	
        public static void resetRegisters(){
+		   //System.out.println("resetting registers");
          for(int i=0; i< regFile.length; i++){
             regFile[i].resetValue();
          }
@@ -351,7 +352,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		
 		Globals.jFrame.add(Globals.ppu);
 		Globals.jFrame.setSize(Globals.DISPLAY_LOGIC_WIDTH + 50, Globals.DISPLAY_LOGIC_HEIGHT + 50);
-		Globals.jFrame.setVisible(true);
+		if (!Globals.jFrame.isVisible()) {
+			Globals.jFrame.setVisible(true);
+		}
 		
 		KeyListener keyListener = new KeyListener() {
 			@Override
