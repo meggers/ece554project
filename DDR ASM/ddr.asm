@@ -8,7 +8,7 @@
 
 .text
 	li $s3, 0
-	li $t7, 0
+	li $t7, 16
 	call displayScore
 	b main
 	
@@ -206,8 +206,9 @@ game_loop:
 	add $t0, $0, $s0
 	addi $t0, $t0, -1
 	#add $s2, $0, $epc # random letter generate
+	add $s2, $0, $t7
 	andi $t0, 0x000000FF
-	#beq doNextLetterFromGameLoop
+	beq doNextLetterFromGameLoop
 	andi $s0, 0x0000FF00
 	add $s0, $s0, $t0
 	ssl $s1, $s0
@@ -238,7 +239,7 @@ handle_key_press:
 		li $s2, -1
 		call displayScore
 	doNextLetterFromGameLoop:
-		xor $s2, $t7, $s3
+		xor $s2, $s2, $s3
 		andi $s2, 0x03
 		li $s1, 0
 		sub $0, $s2, $s1
@@ -281,10 +282,16 @@ handle_key_press:
 		li $t1, 's'
 		li $s0, 37118 # 256*8*6*3+254
 		jr $epc
+
+before_game_loop:
+	li $t7, 32
+	b game_loop
 	
 game_tick_interrupt:
 	nop
-	b game_loop
+	addi $t7, $t7, -1
+	blt before_game_loop
+	jr $epc
 	
 keyboard_interrupt:
 	nop
