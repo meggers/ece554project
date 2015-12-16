@@ -181,7 +181,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				int sfa = (sld & 0x00FF0000) >>> 16;
 				int colorPaletteIndex = sfa & 0x00000003;
 				boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
-				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x0000004;
+				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x00000040;
 				int sft = (sld & 0x0000FF00) >>> 8;
 				BufferedImage bufferedImage = spritePatternTable[sft];
 				int sslX = (sld & 0xFF000000) >>> 24;
