@@ -284,19 +284,22 @@ handle_key_press:
 		jr $epc
 
 before_game_loop:
-	li $t7, 32
+	li $t7, 2
 	b game_loop
 	
+	nop
 game_tick_interrupt:
 	nop
 	addi $t7, $t7, -1
 	blt before_game_loop
 	jr $epc
 	
+	nop
 keyboard_interrupt:
 	nop
 	b handle_key_press
 	
+	nop
 stack_ov_interrupt:
 	nop
 	jr $epc
