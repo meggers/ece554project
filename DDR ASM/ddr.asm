@@ -9,6 +9,8 @@
 .text
 	li $s3, 0
 	li $t7, 16
+	li $t8, 0
+	li $t9, 0
 	call displayScore
 	nop
 	b main
@@ -49,7 +51,7 @@
 			li $t4, char_0_index
 		endDisplay10s:
 			nop
-			li $t5, 30
+			li $t5, 6
 			sbt $t5, $t4
 			li $t4, 2
 			sba $t5, $t4
@@ -74,7 +76,7 @@
 			li $t4, char_0_index
 		endDisplay1s:
 			nop
-			li $t5, 31
+			li $t5, 7
 			sbt $t5, $t4
 			li $t4, 2
 			sba $t5, $t4
@@ -156,23 +158,23 @@
 		ret
 	main: nop
 		li $t2, 2
-		li $t0, 24
+		li $t0, 0
 		li $t1, char_S_index
 		sbt $t0, $t1
 		sba $t0, $t2
-		li $t0, 25
+		li $t0, 1
 		li $t1, char_C_index
 		sbt $t0, $t1
 		sba $t0, $t2
-		li $t0, 26
+		li $t0, 2
 		li $t1, char_O_index
 		sbt $t0, $t1
 		sba $t0, $t2
-		li $t0, 27
+		li $t0, 3
 		li $t1, char_R_index
 		sbt $t0, $t1
 		sba $t0, $t2
-		li $t0, 28
+		li $t0, 4
 		li $t1, char_E_index
 		sbt $t0, $t1
 		sba $t0, $t2
@@ -227,7 +229,7 @@ waitForInterrupt: nop
 game_loop: nop
 	nop
 	add $t0, $0, $s0
-	addi $t0, $t0, -1
+	addi $t0, $t0, -5
 	#add $s2, $0, $epc # random letter generate
 	add $s2, $0, $t7
 	andi $t0, 0x000000FF
@@ -263,6 +265,7 @@ handle_key_press: nop
 		call displayScore
 	doNextLetterFromGameLoop: nop
 		xor $s2, $s2, $s3
+		xor $s2, $s2, $t8
 		andi $s2, 0x03
 		li $s1, 0
 		sub $0, $s2, $s1
@@ -306,17 +309,19 @@ handle_key_press: nop
 		li $s0, 37118 # 256*8*6*3+254
 		jr $epc
 
-before_game_loop: nop
-	li $t7, 2
+before_game_loop:
+	nop
+	addi $t8, $t8, 1
 	b game_loop
 	
 	nop
 game_tick_interrupt: nop
 	nop
-	addi $t7, $t7, -1
-	blt before_game_loop
+	addi $t7, $t7, 1
+	andi $t9, $t7, 0x03
+	beq before_game_loop
 	nop
-	jr $epc
+	b game_loop
 	
 	nop
 keyboard_interrupt: nop

@@ -117,7 +117,8 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 		}
 		
 		
-		out = new PrintStream(new FileOutputStream(new File(file.getParentFile().getAbsolutePath() + File.separator + "foreground_memory_" + file.getName())));
+		string = file.getParentFile().getAbsolutePath() + File.separator + (file.getName().contains(".") ? file.getName().substring(0, file.getName().indexOf(".")) : file.getName()) + "_foreground_memory.coe";
+		out = new PrintStream(new FileOutputStream(new File(string)));
 		string = null;
 		try {
 			out.println("memory_initialization_radix=2;");
@@ -153,8 +154,8 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 			out.close(); 
 		}
 		
-		
-		out = new PrintStream(new FileOutputStream(new File(file.getParentFile().getAbsolutePath() + File.separator + "background_memory_" + file.getName())));
+		string = file.getParentFile().getAbsolutePath() + File.separator + (file.getName().contains(".") ? file.getName().substring(0, file.getName().indexOf(".")) : file.getName()) + "_background_memory.coe";
+		out = new PrintStream(new FileOutputStream(new File(string)));
 		string = null;
 		try {
 			out.println("memory_initialization_radix=2;");
@@ -191,7 +192,8 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 		}
 		
 		
-		out = new PrintStream(new FileOutputStream(new File(file.getParentFile().getAbsolutePath() + File.separator + "color_palette_" + file.getName())));
+		string = file.getParentFile().getAbsolutePath() + File.separator + (file.getName().contains(".") ? file.getName().substring(0, file.getName().indexOf(".")) : file.getName()) + "_color_palette.coe";
+		out = new PrintStream(new FileOutputStream(new File(string)));
 		string = null;
 		try {
 			out.println("memory_initialization_radix=16;");
