@@ -129,6 +129,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          return settings;
       }
 	  
+	  public static JFrame jFrame = new JFrame("PPU Simulator");
+	  public static PPU ppu = new PPU();
+	  public static HashMap<String, Integer> spriteAssemblerHash; // will be handled by the assembler
+	
+	  
 	  public static int DISPLAY_LOGIC_WIDTH = 256;
 	  public static int DISPLAY_LOGIC_HEIGHT = 256;
 	  public static int DISPLAY_LOGIC_IMAGE_DIMENSION = 8;
@@ -149,6 +154,43 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	  public static boolean isStackOvInstructionSet = false;
 	  public static volatile boolean isInInterruptHandler = false;
 	  
+	  public static volatile int tronMIPStorCounter = 0;
+	  
+	public static volatile int lastKey = 0;
+	  
+	public static BufferedImage[] spritePatternTable = new BufferedImage[256]; // index into sprite visual data, use assembler for index	  
+	  
+	  	public static class PPU extends JPanel {
+		public void paintComponent(Graphics graphics) {
+			super.paintComponent(graphics);
+			this.setBackground(Color.WHITE);
+
+			for (int x = 0; x < Globals.DISPLAY_LOGIC_WIDTH / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++x) {
+				for (int y = 0; y < Globals.DISPLAY_LOGIC_HEIGHT / Globals.DISPLAY_LOGIC_IMAGE_DIMENSION; ++y) {
+					graphics.drawImage(Globals.groundVisual[x][y], x * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, y * Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+				}
+			}
+
+			// draw light bikes
+			for (int spriteIndex = 63; spriteIndex >= 0; --spriteIndex) {
+				int sld = Coprocessor1.getValue(spriteIndex);
+				int sslY = sld & 0x000000FF;
+				if (sslY == 255) {
+					continue;
+				}
+				int sfa = (sld & 0x00FF0000) >>> 16;
+				int colorPaletteIndex = sfa & 0x00000003;
+				boolean isFlipVertical = (sfa & 0x00000080) == 0x00000080;
+				boolean isFlipHorizontal = (sfa & 0x00000040) == 0x00000040;
+				int sft = (sld & 0x0000FF00) >>> 8;
+				BufferedImage bufferedImage = spritePatternTable[sft];
+				int sslX = (sld & 0xFF000000) >>> 24;
+
+				graphics.drawImage(Globals.setColorPalette(Globals.setFlip(bufferedImage, isFlipVertical, isFlipHorizontal), colorPaletteIndex, true), sslX, sslY, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, Globals.DISPLAY_LOGIC_IMAGE_DIMENSION, null);
+			}
+		}
+	}
+	
 	  public static BufferedImage setFlip(BufferedImage inputBufferedImage, boolean isFlipVertical, boolean isFlipHorizontal) {
 
 		if (inputBufferedImage == null) {
@@ -183,6 +225,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	public static BufferedImage setColorPalette(BufferedImage inputBufferedImage, int colorPaletteIndex, boolean isForeground) {
 
 		if (inputBufferedImage == null) {
+			System.out.println("returning null");
 			return new BufferedImage(8, 8, BufferedImage.TYPE_INT_RGB);
 		}
 		

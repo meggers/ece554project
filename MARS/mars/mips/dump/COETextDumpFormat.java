@@ -4,6 +4,8 @@
    import mars.Globals;
    import mars.mips.hardware.*;
    import java.io.*;
+   import java.awt.Color;
+   import java.awt.image.BufferedImage;
 /*
 Copyright (c) 2003-2011,  Pete Sanderson and Kenneth Vollmar
 
@@ -79,9 +81,9 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 			firstAddress = 0;
 			lastAddress = 16380;// 4092; 4092 is instructions only
 			
-			System.out.println("Globals.game_tick_address = " + Globals.game_tick_address);
-			System.out.println("Globals.keyboard_address = " + Globals.keyboard_address);
-			System.out.println("Globals.stack_ov_address = " + Globals.stack_ov_address);
+			//System.out.println("Globals.game_tick_address = " + Globals.game_tick_address);
+			//System.out.println("Globals.keyboard_address = " + Globals.keyboard_address);
+			//System.out.println("Globals.stack_ov_address = " + Globals.stack_ov_address);
 			out.println("memory_initialization_radix=16;");
 			out.println("memory_initialization_vector=");
 			for (int address = firstAddress; address <= lastAddress; address += Memory.WORD_LENGTH_BYTES) {
@@ -108,6 +110,110 @@ public class COETextDumpFormat extends AbstractDumpFormat {
 					string = '0' + string;
 				}
 				out.println(string + (address == lastAddress ? ";" : ","));
+			}
+		} 
+		finally { 
+			out.close(); 
+		}
+		
+		
+		out = new PrintStream(new FileOutputStream(new File(file.getParentFile().getAbsolutePath() + File.separator + "foreground_memory_" + file.getName())));
+		string = null;
+		try {
+			out.println("memory_initialization_radix=2;");
+			out.println("memory_initialization_vector=");
+			int numberOfForegroundIndices = 256;
+			for (int backgroundIndex = 0; backgroundIndex < numberOfForegroundIndices; ++backgroundIndex) {
+				BufferedImage bufferedImage = Globals.spritePatternTable[backgroundIndex];
+				for (int y = 0; y < 8; ++y) {
+					int[] stringToPrint = new int[16];
+					for (int x = 0; x < 8; ++x) {
+						if (bufferedImage == null || bufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
+							stringToPrint[x] = 0;
+							stringToPrint[x + 8] = 0;
+						} else if (bufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
+							stringToPrint[x] = 0;
+							stringToPrint[x + 8] = 1;
+						} else if (bufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
+							stringToPrint[x] = 1;
+							stringToPrint[x + 8] = 0;
+						} else if (bufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
+							stringToPrint[x] = 1;
+							stringToPrint[x + 8] = 1;
+						}
+					}
+					for (Integer intToPrint : stringToPrint) {
+						out.print(intToPrint);
+					}
+					out.println(backgroundIndex == numberOfForegroundIndices - 1 && y == 7 ? ";" : ",");
+				}
+			}
+		} 
+		finally { 
+			out.close(); 
+		}
+		
+		
+		out = new PrintStream(new FileOutputStream(new File(file.getParentFile().getAbsolutePath() + File.separator + "background_memory_" + file.getName())));
+		string = null;
+		try {
+			out.println("memory_initialization_radix=2;");
+			out.println("memory_initialization_vector=");
+			int numberOfBackgroundIndices = 256;
+			for (int backgroundIndex = 0; backgroundIndex < numberOfBackgroundIndices; ++backgroundIndex) {
+				BufferedImage bufferedImage = Globals.backgroundPatternTable[backgroundIndex];
+				for (int y = 0; y < 8; ++y) {
+					int[] stringToPrint = new int[16];
+					for (int x = 0; x < 8; ++x) {
+						if (bufferedImage == null || bufferedImage.getRGB(x, y) == Color.BLACK.getRGB()) {
+							stringToPrint[x] = 0;
+							stringToPrint[x + 8] = 0;
+						} else if (bufferedImage.getRGB(x, y) == Color.RED.getRGB()) {
+							stringToPrint[x] = 0;
+							stringToPrint[x + 8] = 1;
+						} else if (bufferedImage.getRGB(x, y) == Color.GREEN.getRGB()) {
+							stringToPrint[x] = 1;
+							stringToPrint[x + 8] = 0;
+						} else if (bufferedImage.getRGB(x, y) == Color.BLUE.getRGB()) {
+							stringToPrint[x] = 1;
+							stringToPrint[x + 8] = 1;
+						}
+					}
+					for (Integer intToPrint : stringToPrint) {
+						out.print(intToPrint);
+					}
+					out.println(backgroundIndex == numberOfBackgroundIndices - 1 && y == 7 ? ";" : ",");
+				}
+			}
+		} 
+		finally { 
+			out.close(); 
+		}
+		
+		
+		out = new PrintStream(new FileOutputStream(new File(file.getParentFile().getAbsolutePath() + File.separator + "color_palette_" + file.getName())));
+		string = null;
+		try {
+			out.println("memory_initialization_radix=16;");
+			out.println("memory_initialization_vector=");
+			int numberOfTimesToRepeat = 2;
+			for (int repeatIndex = 0; repeatIndex < numberOfTimesToRepeat; ++repeatIndex) {
+				out.println("00,");
+				out.println("30,");
+				out.println("0C,");
+				out.println("03,");
+				out.println("00,");
+				out.println("0F,");
+				out.println("33,");
+				out.println("3C,");
+				out.println("00,");
+				out.println("03,");
+				out.println("30,");
+				out.println("0C,");
+				out.println("00,");
+				out.println("03,");
+				out.println("03,");
+				out.println("03" + (repeatIndex == numberOfTimesToRepeat - 1 ? ";" : ","));
 			}
 		} 
 		finally { 

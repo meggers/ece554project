@@ -252,6 +252,23 @@ public class InstructionSet
 					}
 				}));
 		instructionList.add(
+				new BasicInstruction("nand $t1,$t2,$t3",
+						"Bitwise NAND: Set $t1 to bitwise NAND of $t2 and $t3",
+						BasicInstructionFormat.R_FORMAT,
+						"100011 fffff sssss ttttt 00000 000000",
+						new SimulationCode()
+				{
+					public void simulate(ProgramStatement statement) throws ProcessingException
+					{
+						int[] operands = statement.getOperands();
+						int nand = ~(RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]));
+						Coprocessor0.updateRegister(16, (nand == 0 ? 1 : 0));
+						Coprocessor0.updateRegister(17, (nand < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
+						RegisterFile.updateRegister(operands[0], nand);
+					}
+				}));
+		instructionList.add(
 				new BasicInstruction("xor $t1,$t2,$t3",
 						"Bitwise XOR (exclusive OR) : Set $t1 to bitwise XOR of $t2 and $t3",
 						BasicInstructionFormat.R_FORMAT,
@@ -286,24 +303,6 @@ public class InstructionSet
 					}
 				}));
 		instructionList.add(
-				new BasicInstruction("nand $t1,$t2,$t3",
-						"Bitwise NAND: Set $t1 to bitwise NAND of $t2 and $t3",
-						BasicInstructionFormat.R_FORMAT,
-						"100011 fffff sssss ttttt 00000 000000",
-						new SimulationCode()
-				{
-					public void simulate(ProgramStatement statement) throws ProcessingException
-					{
-						int[] operands = statement.getOperands();
-						int nand = ~(RegisterFile.getValue(operands[1]) & RegisterFile.getValue(operands[2]));
-						Coprocessor0.updateRegister(16, (nand == 0 ? 1 : 0));
-						Coprocessor0.updateRegister(17, (nand < 0 ? 1 : 0));
-						Coprocessor0.updateRegister(18, 0);
-						RegisterFile.updateRegister(operands[0], nand);
-					}
-				}));
-
-		instructionList.add(
 				new BasicInstruction("sll $t1,$t2,10",
 						"Shift left logical : Set $t1 to result of shifting $t2 left by number of bits specified by immediate",
 						BasicInstructionFormat.R_FORMAT,
@@ -316,6 +315,7 @@ public class InstructionSet
 						int sll = RegisterFile.getValue(operands[1]) << operands[2];
 						Coprocessor0.updateRegister(16, (sll == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (sll < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], sll);
 					}
 				}));
@@ -334,6 +334,7 @@ public class InstructionSet
 						int srl = RegisterFile.getValue(operands[1]) >>> operands[2];
 						Coprocessor0.updateRegister(16, (srl == 0 ? 1 : 0));
 						Coprocessor0.updateRegister(17, (srl < 0 ? 1 : 0));
+						Coprocessor0.updateRegister(18, 0);
 						RegisterFile.updateRegister(operands[0], srl);
 					}
 				}));
