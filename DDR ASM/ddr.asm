@@ -229,7 +229,7 @@ waitForInterrupt: nop
 game_loop: nop
 	nop
 	add $t0, $0, $s0
-	addi $t0, $t0, -5
+	addi $t0, $t0, -1
 	#add $s2, $0, $epc # random letter generate
 	add $s2, $0, $t7
 	andi $t0, 0x000000FF
@@ -321,7 +321,8 @@ game_tick_interrupt: nop
 	andi $t9, $t7, 0x03
 	beq before_game_loop
 	nop
-	b game_loop
+	jr $epc # comment in next line instead to make it run faster
+	#b game_loop
 	
 	nop
 keyboard_interrupt: nop
