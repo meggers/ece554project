@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=I:\Git_v2\OriginalSpart\originalSPART\top_level.ncd
+OUTFILE=I:\Git_v2\OriginalSpart\originalSPART\top_level.bit
+FAMILY=Virtex5
+PART=xc5vlx110t-1ff1136
+WORKINGDIR=I:\Git_v2\OriginalSpart\originalSPART
+LICENSE=ISE
+USER_INFO=204658407_203016412_210597697_865

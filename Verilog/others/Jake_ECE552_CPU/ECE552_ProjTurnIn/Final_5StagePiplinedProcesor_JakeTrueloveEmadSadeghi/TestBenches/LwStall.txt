@@ -1,0 +1,29 @@
+﻿lhb  R14, 0x00			#R14 <= 0x00xx
+llb  R14, 0x06			#R14 <= 0x0006
+lhb  R1, 0x00			#R1 <= 0x00xx
+llb  R1, 0x06			#R1 <= 0x0006
+sub  R2, R1, R1 		#R2 <= 0x0000				//Forwarding R1 from llb in EX_MEM stage
+
+sw   R2, 0x05			#mem[11] <= 0x0000			//Forwarding R1 from llb in MEM_WB stage
+lw   R3, 0x05			#R3 <= mem[11] == 0x0000		//No forwarding needed
+add  R15, R1, R3		#R15 <= 0x0006				//load-use 1 cycle stall - Forwarding R3 from lw in MEM_WB stage
+inc R10, R15, 0x04		#R10 <= 0x00aa				//Forwarding R15 from add in EX_MEM stage
+
+
+
+
+
+
+
+
+
+instr_mem[0] = 16'hAE00;
+instr_mem[1] = 16'hBE06;
+instr_mem[2] = 16'hA100;
+instr_mem[3] = 16'hB106;
+instr_mem[4] = 16'h1211;
+
+instr_mem[5] = 16'h9205;
+instr_mem[6] = 16'h8305;
+instr_mem[7] = 16'h0F13;
+instr_mem[8] = 16'h4AF4;

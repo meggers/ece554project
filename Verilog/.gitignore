@@ -1,6 +1,3 @@
-*
-
 !.gitignore
-!*.v
 !*.ucf
 !*.txt

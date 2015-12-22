@@ -1,0 +1,23 @@
+# RS232 Configuration
+NET rxd       LOC="AG15";  # Bank 4, Vcco=3.3V, No DCI (rxd)
+//NET txd       LOC="AG20";  # Bank 4, Vcco=3.3V, No DCI (txd)
+
+#LEDS
+NET  GPIO_LED_0           LOC="H18";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_1           LOC="L18";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_2           LOC="G15";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_3           LOC="AD26";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_4           LOC="G16";   # Bank 3, Vcco=2.5V, No DCI
+NET  GPIO_LED_5           LOC="AD25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_6           LOC="AD24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET  GPIO_LED_7           LOC="AE24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistorsET  data_reg_out<0> LOC="AE24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors ohm resistors
+NET  key_interrupt_pulse  LOC="AF13";
+
+# Switch Configuration
+NET rst       LOC="U25";   # Bank 15, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET br_cfg<0> LOC="AC25";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET br_cfg<1> LOC="AC24";  # Bank 21, Vcco=1.8V, DCI using 49.9 ohm resistors
+NET clr_rx	  LOC ="U8";
+#NET button    LOC="AJ6";   # Bank 18, Vcco=3.3V, No DCI
+# Clock Configuration
+NET clk       LOC="AH15";  # Bank 4, Vcco=3.3V, No DCI

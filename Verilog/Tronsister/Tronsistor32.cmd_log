@@ -1,0 +1,1143 @@
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+vhdtdtfi -lang verilog -prj Tronsistor -o "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.tfi" -lib work "I:/ECE 554/FINAL/Tronsistor/PPU//TOP_LEVEL.v" -module Tronsistor32 -template C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 "Tronsistor32.ngc" Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 
+xst -intstyle ise -ifn "I:/Git/Tronsister/Tronsistor32.xst" -ofn "I:/Git/Tronsister/Tronsistor32.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -uc Tronsistor32.ucf -p xc5vlx110t-ff1136-1 Tronsistor32.ngc Tronsistor32.ngd  
+map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf 
+par -w -intstyle ise -ol high -mt off Tronsistor32_map.ncd Tronsistor32.ncd Tronsistor32.pcf 
+trce -intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd -o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf 
+bitgen -intstyle ise -f Tronsistor32.ut Tronsistor32.ncd 

@@ -1,0 +1,329 @@
+CONTROL TEST WITH DELAYED BRANCHING<-----PASS
+
+
+	Clock #    0
+
+--------
+PC = 0000
+--------
+
+IFID = xxxx
+			R0 =xxxx
+			R1 =xxxx
+			R2 =xxxx
+			R3 =xxxx
+			R4 =xxxx
+			R5 =xxxx
+			R6 =xxxx
+			R7 =xxxx
+			R8 =xxxx
+			R9 =xxxx
+			R10 =xxxx
+			R11 =xxxx
+			R12 =xxxx
+			R13 =xxxx
+			R14 =xxxx
+			R15 =xxxx
+			 N = 0
+			 V = 0
+			 Z = 0
+
+--------
+PC = 0001
+--------
+
+IFID = af00
+	Clock #    1
+
+--------
+PC = 0002
+--------
+
+IFID = bf0f
+	Clock #    2
+	Clock #    3
+	Clock #    4
+			R15 =00xx
+	Clock #    5
+	Clock #    6
+
+--------
+PC = 0003
+--------
+
+IFID = a100
+	Clock #    7
+
+--------
+PC = 0004
+--------
+
+IFID = b105
+	Clock #    8
+	Clock #    9
+			R15 =000f
+	Clock #   10
+			R1 =00xx
+	Clock #   11
+	Clock #   12
+
+--------
+PC = 0005
+--------
+
+IFID = c702
+	Clock #   13
+
+--------
+PC = 0006
+--------
+
+IFID = 1011
+	Clock #   14
+	Clock #   15
+			R1 =0005
+	Clock #   16
+	Clock #   17
+
+--------
+PC = 0007
+--------
+
+IFID = d00c
+	Clock #   18
+			 Z = 1
+
+--------
+PC = 000c
+--------
+
+IFID = a400
+	Clock #   19
+
+--------
+PC = 000d
+--------
+
+IFID = a300
+	Clock #   20
+			R0 =0000
+	Clock #   21
+			R15 =000e
+	Clock #   22
+
+--------
+PC = 000e
+--------
+
+IFID = b357
+	Clock #   23
+	Clock #   24
+	Clock #   25
+			R3 =00xx
+	Clock #   26
+	Clock #   27
+
+--------
+PC = 000f
+--------
+
+IFID = e000
+	Clock #   28
+
+--------
+PC = 0010
+--------
+
+IFID = a2ff
+	Clock #   29
+
+--------
+PC = 0011
+--------
+
+IFID = b2ff
+	Clock #   30
+
+--------
+PC = 0012
+--------
+
+IFID = a1aa
+			R3 =0057
+	Clock #   31
+
+--------
+PC = 0007
+--------
+
+IFID = xxxx
+			R15 =000f
+	Clock #   32
+
+--------
+PC = 0008
+--------
+
+IFID = a400
+	Clock #   33
+
+--------
+PC = 0009
+--------
+
+IFID = b457
+	Clock #   34
+	Clock #   35
+	Clock #   36
+			R4 =00xx
+	Clock #   37
+	Clock #   38
+
+--------
+PC = 000a
+--------
+
+IFID = 1034
+	Clock #   39
+	Clock #   40
+	Clock #   41
+			R4 =0057
+	Clock #   42
+	Clock #   43
+
+--------
+PC = 000b
+--------
+
+IFID = c007
+	Clock #   44
+	Clock #   45
+	Clock #   46
+	Clock #   47
+	Clock #   48
+
+--------
+PC = 0011
+--------
+
+IFID = 0000
+	Clock #   49
+	Clock #   50
+	Clock #   51
+	Clock #   52
+	Clock #   53
+
+--------
+PC = 0012
+--------
+
+IFID = a1aa
+	Clock #   54
+
+--------
+PC = 0013
+--------
+
+IFID = xxxx
+	Clock #   55
+
+--------
+PC = 001X
+--------
+
+	Clock #   56
+
+--------
+PC = xxxx
+--------
+
+	Clock #   57
+			R1 =aa05
+	Clock #   58
+	Clock #   59
+	Clock #   60
+	Clock #   61
+	Clock #   62
+	Clock #   63
+	Clock #   64
+	Clock #   65
+	Clock #   66
+	Clock #   67
+	Clock #   68
+	Clock #   69
+	Clock #   70
+	Clock #   71
+	Clock #   72
+	Clock #   73
+	Clock #   74
+	Clock #   75
+	Clock #   76
+	Clock #   77
+	Clock #   78
+	Clock #   79
+	Clock #   80
+	Clock #   81
+	Clock #   82
+	Clock #   83
+	Clock #   84
+	Clock #   85
+	Clock #   86
+	Clock #   87
+	Clock #   88
+	Clock #   89
+	Clock #   90
+	Clock #   91
+	Clock #   92
+	Clock #   93
+	Clock #   94
+	Clock #   95
+	Clock #   96
+	Clock #   97
+	Clock #   98
+	Clock #   99
+	Clock #  100
+
+
+**********************************
+The final values of registers are:
+
+R0:  0000
+
+R1:  aa05
+
+R2:  xxxx
+
+R3:  0057
+
+R4:  0057
+
+R5:  xxxx
+
+R6:  xxxx
+
+R7:  xxxx
+
+R8:  xxxx
+
+R9:  xxxx
+
+R10: xxxx
+
+R11: xxxx
+
+R12: xxxx
+
+R13: xxxx
+
+R14: xxxx
+
+R15: 000f
+
+**********************************
+
+
+------------------------------------------------------------------------------
+| The Control Test:                                                          |
+| Worked! All the registers that have values were checked to be correct.     |
+------------------------------------------------------------------------------
+

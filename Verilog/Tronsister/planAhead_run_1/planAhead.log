@@ -1,0 +1,276 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Thu Dec 17 01:51:03 2015
+# Process ID: 7852
+# Log file: I:/Git/Tronsister/planAhead_run_1/planAhead.log
+# Journal file: I:/Git/Tronsister/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source I:/Git/Tronsister/pa.fromNetlist.tcl
+# create_project -name Tronsistor -dir "I:/Git/Tronsister/planAhead_run_1" -part xc5vlx110tff1136-1
+# set_property design_mode GateLvl [get_property srcset [current_run -impl]]
+# set_property edif_top_file "I:/Git/Tronsister/Tronsistor32.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {I:/Git/Tronsister} {ipcore_dir} }
+# add_files [list {ipcore_dir/Main_Memory.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/pattern_table.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/background_pattern_table.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/background_tile_table.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/background_attribute_table.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/color_palette_rom.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/OAMB.ncf}] -fileset [get_property constrset [current_run]]
+# add_files [list {ipcore_dir/OAM_RAM.ncf}] -fileset [get_property constrset [current_run]]
+# set_property target_constrs_file "Tronsistor32.ucf" [current_fileset -constrset]
+Adding file 'I:/Git/Tronsister/Tronsistor32.ucf' to fileset 'constrs_1'
+# add_files [list {Tronsistor32.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc5vlx110tff1136-1
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design Tronsistor32.ngc ...
+WARNING:NetListWriters:298 - No output is written to Tronsistor32.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus CPU/EXU/ALU1/Msub__AUX_4_lut<31 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus CPU/IDU/ALU_input2_mux_out<24 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus CPU/TrapHandler/next_state<5 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus CPU/TrapHandler/state<5 : 0> on block
+   Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/ppuctrl/sprite_attr<6 : 0> on block
+   Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/ppuctrl/sprite_attr_mux0000<7 : 1>
+   on block Tronsistor32 is not reconstructed, because there are some missing
+   bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen0/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen0/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen1/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen1/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen2/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen2/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen3/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen3/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen4/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen4/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen5/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen5/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen6/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen6/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen7/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen7/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus pixel_gbrg<17 : 0> on block Tronsistor32
+   is not reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file Tronsistor32.edif ...
+ngc2edif: Total memory usage is 112748 kilobytes
+
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/Tronsistor32_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/Tronsistor32_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design pattern_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to pattern_table.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file pattern_table.edif ...
+ngc2edif: Total memory usage is 101548 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/pattern_table.ngc' for (cell view 'pattern_table', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/pattern_table_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/pattern_table_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design OAM_RAM.ngc ...
+WARNING:NetListWriters:298 - No output is written to OAM_RAM.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file OAM_RAM.edif ...
+ngc2edif: Total memory usage is 102316 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/OAM_RAM.ngc' for (cell view 'OAM_RAM', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/OAM_RAM_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/OAM_RAM_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design background_pattern_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to
+   background_pattern_table.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file background_pattern_table.edif ...
+ngc2edif: Total memory usage is 101228 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/background_pattern_table.ngc' for (cell view 'background_pattern_table', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/background_pattern_table_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/background_pattern_table_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design background_tile_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to background_tile_table.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file background_tile_table.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/background_tile_table.ngc' for (cell view 'background_tile_table', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/background_tile_table_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/background_tile_table_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design Main_Memory.ngc ...
+WARNING:NetListWriters:298 - No output is written to Main_Memory.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file Main_Memory.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/Main_Memory.ngc' for (cell view 'Main_Memory', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/Main_Memory_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/Main_Memory_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design color_palette_rom.ngc ...
+WARNING:NetListWriters:298 - No output is written to color_palette_rom.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file color_palette_rom.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/color_palette_rom.ngc' for (cell view 'color_palette_rom', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/color_palette_rom_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/color_palette_rom_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design OAMB.ngc ...
+WARNING:NetListWriters:298 - No output is written to OAMB.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file OAMB.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/OAMB.ngc' for (cell view 'OAMB', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/OAMB_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/OAMB_ngc_zx.edif]
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design background_attribute_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to
+   background_attribute_table.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file background_attribute_table.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Reading core file 'I:/Git/Tronsister/ipcore_dir/background_attribute_table.ngc' for (cell view 'background_attribute_table', library 'Tronsistor32_lib', file 'Tronsistor32.ngc')
+Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/background_attribute_table_ngc_zx.edif]
+Finished Parsing EDIF File [./planAhead_run_1/Tronsistor.data/cache/background_attribute_table_ngc_zx.edif]
+INFO: [Designutils 20-910] Reading macro library C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn
+Parsing EDIF File [C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn]
+Finished Parsing EDIF File [C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex5/virtex5lx/hd_int_macros.edn]
+WARNING: [Netlist 29-43] Netlist 'Tronsistor32' is not ideal for floorplanning, since the cellview 'Tronsistor32' defined in file 'Tronsistor32.ngc' contains large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
+INFO: [Device 21-21] Reading bus macro file C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex5/pr_bus_macros.xml
+Loading clock regions from C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ClockRegion.xml
+Loading clock buffers from C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ClockBuffers.xml
+Loading package from C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ff1136/Package.xml
+Loading io standards from C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex5/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex5/virtex5lxt/xc5vlx110t/ff1136/SSORules.xml
+Loading list of drcs for the architecture : C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex5/drc.xml
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/Main_Memory.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/Main_Memory.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/pattern_table.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/pattern_table.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/background_pattern_table.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/background_pattern_table.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/background_tile_table.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/background_tile_table.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/background_attribute_table.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/background_attribute_table.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/color_palette_rom.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/color_palette_rom.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/OAMB.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/OAMB.ncf]
+Parsing UCF File [I:/Git/Tronsister/ipcore_dir/OAM_RAM.ncf]
+Finished Parsing UCF File [I:/Git/Tronsister/ipcore_dir/OAM_RAM.ncf]
+Parsing UCF File [I:/Git/Tronsister/Tronsistor32.ucf]
+Finished Parsing UCF File [I:/Git/Tronsister/Tronsistor32.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: 01d4fcad
+link_design: Time (s): elapsed = 00:00:36 . Memory (MB): peak = 764.801 ; gain = 332.453
+exit
+ERROR: [PlanAhead 12-106] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+ (See I:/Git/Tronsister\planAhead_pid7852.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Thu Dec 17 01:52:37 2015...
+INFO: [Common 17-83] Releasing license: PlanAhead

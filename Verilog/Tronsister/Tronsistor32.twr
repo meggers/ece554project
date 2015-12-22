@@ -1,0 +1,117 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+C:\ProgramData\App-V\DAA02E26-5322-4947-BF0F-062031F30E14\CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB\Root\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe
+-intstyle ise -v 3 -s 1 -n 3 -fastpaths -xml Tronsistor32.twx Tronsistor32.ncd
+-o Tronsistor32.twr Tronsistor32.pcf -ucf Tronsistor32.ucf
+
+Design file:              Tronsistor32.ncd
+Physical constraint file: Tronsistor32.pcf
+Device,package,speed:     xc5vlx110t,ff1136,-1 (PRODUCTION 1.73 2013-10-13, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk_100mhz
+------------------+------------+------------+------------------+--------+
+                  |Max Setup to|Max Hold to |                  | Clock  |
+Source            | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------------+------------+------------+------------------+--------+
+keyboard_serial_in|    5.828(R)|   -2.176(R)|clk_100mhz_buf    |   0.000|
+rst               |   13.642(R)|   -3.685(R)|clk_100mhz_buf    |   0.000|
+                  |   14.531(F)|   -4.379(F)|clk_100mhz_buf    |   0.000|
+                  |   10.112(R)|   -5.590(R)|clk_OBUF          |   0.000|
+------------------+------------+------------+------------------+--------+
+
+Clock clk_100mhz to Pad
+-------------------+------------+------------------+--------+
+                   | clk (edge) |                  | Clock  |
+Destination        |   to PAD   |Internal Clock(s) | Phase  |
+-------------------+------------+------------------+--------+
+D<0>               |    7.345(R)|clk_100mhz_buf    |   0.000|
+D<1>               |    6.945(R)|clk_100mhz_buf    |   0.000|
+D<2>               |    7.418(R)|clk_100mhz_buf    |   0.000|
+D<3>               |    7.016(R)|clk_100mhz_buf    |   0.000|
+D<4>               |    7.139(R)|clk_100mhz_buf    |   0.000|
+D<5>               |    6.990(R)|clk_100mhz_buf    |   0.000|
+D<6>               |    7.539(R)|clk_100mhz_buf    |   0.000|
+D<7>               |    7.028(R)|clk_100mhz_buf    |   0.000|
+D<8>               |    6.964(R)|clk_100mhz_buf    |   0.000|
+D<9>               |    7.237(R)|clk_100mhz_buf    |   0.000|
+D<10>              |    7.251(R)|clk_100mhz_buf    |   0.000|
+D<11>              |    7.481(R)|clk_100mhz_buf    |   0.000|
+GPIO_LED_0         |    6.254(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_1         |    5.924(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_2         |    6.833(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_3         |    6.016(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_4         |    6.647(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_5         |    6.063(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_6         |    6.131(F)|clk_100mhz_buf    |   0.000|
+GPIO_LED_7         |    6.201(F)|clk_100mhz_buf    |   0.000|
+blank              |    6.873(R)|clk_OBUF          |   0.000|
+hsync              |    6.553(R)|clk_OBUF          |   0.000|
+keyboard_serial_out|    6.064(R)|clk_100mhz_buf    |   0.000|
+vsync              |    9.285(R)|clk_OBUF          |   0.000|
+-------------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk_100mhz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_100mhz     |   13.898|   11.895|   12.023|    6.338|
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+clk_100mhz     |D<0>           |    4.169|
+clk_100mhz     |D<1>           |    4.177|
+clk_100mhz     |D<2>           |    4.242|
+clk_100mhz     |D<3>           |    4.248|
+clk_100mhz     |D<4>           |    4.297|
+clk_100mhz     |D<5>           |    4.246|
+clk_100mhz     |D<6>           |    4.697|
+clk_100mhz     |D<7>           |    4.284|
+clk_100mhz     |D<8>           |    4.397|
+clk_100mhz     |D<9>           |    4.177|
+clk_100mhz     |D<10>          |    4.684|
+clk_100mhz     |D<11>          |    4.421|
+clk_100mhz     |clk            |    3.242|
+clk_100mhz     |clk_n          |    3.247|
+rst            |dvi_rst        |   11.594|
+---------------+---------------+---------+
+
+
+Analysis completed Sun Dec 20 12:15:57 2015 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 508 MB
+
+
+

@@ -1,0 +1,5 @@
+MO BRG NULL ../BRG.v vlg53/_b_r_g.bin 1450046316
+MO spart NULL ../spart.v vlg1A/spart.bin 1450046316
+MO TransmitRecieve NULL ../TransmitRecieve.v vlg51/_transmit_recieve.bin 1450046316
+MO driver NULL ../driver.v vlg3C/driver.bin 1450046316
+MO top_level NULL ../top_level.v vlg7A/top__level.bin 1450046316

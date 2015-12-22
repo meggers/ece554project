@@ -1,0 +1,161 @@
+Running: C:\ProgramData\App-V\DAA02E26-5322-4947-BF0F-062031F30E14\CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB\Root\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o I:/Git/Tronsister/Tronsistor32_tb_isim_beh.exe -prj I:/Git/Tronsister/Tronsistor32_tb_beh.prj work.Tronsistor32_tb work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "I:/Git/Tronsister/CPU/Reg_32bit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/SPART/TransmitRecieve.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/SPART/BRG.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/PPU_SPGEN.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/PPU_BGLGEN.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/Tron.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/pattern_table.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/OAM_RAM.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/OAMB.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/color_palette_rom.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/background_tile_table.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/background_pattern_table.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/ipcore_dir/background_attribute_table.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/RegFile_32bit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/ALU.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/SPART/driver.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/SPART/core.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/vga_logic.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/SYSTEM_PALETTE.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/SPRITE_PATTERN_TABLE.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/PPU_SCANGEN.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/PPU_OAMB.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/PPUCTRL.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/OAM.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/COLOR_PALETTES.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/BG_TILE_TABLE.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/BG_PATTERN_TABLE.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/BG_ATTRIBUTE_TABLE.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/WB_Unit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/Trap_Handler.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/PC_control.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/MEM_Unit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/MEMWB_reg.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/Memory_Interface.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/IF_Unit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/IFID_reg.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/ID_Unit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/IDEX_reg.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/Hazard_Detect.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/Flags_reg.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/EX_Unit.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/EXMEM_reg.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/Data_Forward.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/CPU_control.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/SPART/SPART.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/vga_clk.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/PPU.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/dvi_ifc.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/CPU/CPU_PPU_Interface.v" into library work
+WARNING:HDLCompiler:327 - "I:/Git/Tronsister/CPU/CPU_PPU_Interface.v" Line 172: Concatenation with unsized literal; will interpret as 32 bits
+Analyzing Verilog file "I:/Git/Tronsister/CPU/CPU.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/PPU/TOP_LEVEL.v" into library work
+Analyzing Verilog file "I:/Git/Tronsister/Tronsistor32_tb.v" into library work
+Analyzing Verilog file "C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+WARNING:HDLCompiler:1016 - "I:/Git/Tronsister/Tronsistor32_tb.v" Line 43: Port br_cfg is not connected to this instance
+WARNING:HDLCompiler:1016 - "I:/Git/Tronsister/PPU/TOP_LEVEL.v" Line 331: Port scaley is not connected to this instance
+WARNING:HDLCompiler:1016 - "I:/Git/Tronsister/CPU/CPU.v" Line 506: Port rst is not connected to this instance
+WARNING:HDLCompiler:189 - "I:/Git/Tronsister/PPU/TOP_LEVEL.v" Line 268: Size mismatch in connection of port <stack_overflow_intr>. Formal port size is 1-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:327 - "I:/Git/Tronsister/CPU/CPU_PPU_Interface.v" Line 172: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:189 - "I:/Git/Tronsister/PPU/OAM.v" Line 78: Size mismatch in connection of port <wea>. Formal port size is 1-bit while actual signal size is 4-bit.
+Completed static elaboration
+Compiling module dvi_ifc_default
+Compiling module BUFG
+Compiling module IBUFG
+Compiling module dcm_adv_clock_divide_by_2
+Compiling module dcm_adv_maximum_period_check(clo...
+Compiling module dcm_adv_maximum_period_check(clo...
+Compiling module dcm_adv_clock_lost
+Compiling module DCM_ADV(CLKDV_DIVIDE=4.0,SIM_DEV...
+Compiling module vga_clk
+Compiling module vga_logic
+Compiling module TransmitRecieve
+Compiling module BRG
+Compiling module core
+Compiling module driver
+Compiling module SPART
+Compiling module IF_Unit
+Compiling module IFID_reg
+Compiling module Reg_32bit
+Compiling module RegFile_32bit
+Compiling module ID_Unit
+Compiling module CPU_control
+Compiling module Hazard_Detect
+Compiling module PC_control
+Compiling module Flags_reg
+Compiling module IDEX_reg
+Compiling module ALU
+Compiling module EX_Unit
+Compiling module EXMEM_reg
+Compiling module MEM_Unit
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module Tron
+Compiling module Memory_Interface
+Compiling module MEMWB_reg
+Compiling module WB_Unit
+Compiling module Data_Forward
+Compiling module Trap_Handler
+Compiling module CPU
+Compiling module CPU_PPU_Interface
+Compiling module PPU_OAMCTRL
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module OAMB
+Compiling module PPU_OAMB
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module OAM_RAM
+Compiling module OAM_v
+Compiling module PPU_SPGEN
+Compiling module PPU_BGLGEN
+Compiling module PPU_SCANGEN
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module pattern_table
+Compiling module SPRITE_PATTERN_TABLE
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module background_pattern_table
+Compiling module BG_PATTERN_TABLE
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module background_tile_table
+Compiling module BG_TILE_TABLE
+Compiling module background_attribute_table
+Compiling module BG_ATTRIBUTE_TABLE
+Compiling module BLK_MEM_GEN_V7_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V7_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V7_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V7_3(C_FAMILY="virte...
+Compiling module color_palette_rom
+Compiling module COLOR_PALETTES
+Compiling module SYSTEM_PALETTE
+Compiling module PPU
+Compiling module Tronsistor32
+Compiling module Tronsistor32_tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Compiled 89 Verilog Units
+Built simulation executable I:/Git/Tronsister/Tronsistor32_tb_isim_beh.exe
+Fuse Memory Usage: 45348 KB
+Fuse CPU Usage: 3587 ms

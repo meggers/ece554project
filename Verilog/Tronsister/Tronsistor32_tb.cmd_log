@@ -1,0 +1,2 @@
+xst -intstyle ise -ifn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32_tb.xst" -ofn "I:/ECE 554/FINAL/Tronsistor/Tronsistor32_tb.syr" 
+vhdtdtfi -lang verilog -prj Tronsistor -o "I:/ECE 554/FINAL/Tronsistor/Tronsistor32_tb.tfi" -lib work "I:/ECE 554/FINAL/Tronsistor//Tronsistor32_tb.v" -module Tronsistor32_tb -template C:/ProgramData/App-V/DAA02E26-5322-4947-BF0F-062031F30E14/CFE6CF14-93A8-4FCD-AB10-8A5F8232BFDB/Root/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror 

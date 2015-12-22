@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=I:\Git\Tronsister\Tronsistor32.ncd
+OUTFILE=I:\Git\Tronsister\Tronsistor32.bit
+FAMILY=Virtex5
+PART=xc5vlx110t-1ff1136
+WORKINGDIR=I:\Git\Tronsister
+LICENSE=ISE
+USER_INFO=204658407_203016412_210597697_865

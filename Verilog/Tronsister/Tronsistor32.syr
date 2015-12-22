@@ -1,0 +1,2086 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.29 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.29 secs
+ 
+--> Reading design: Tronsistor32.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Tronsistor32.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Tronsistor32"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : Tronsistor32
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Block
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "CPU/Reg_32bit.v" in library work
+Compiling verilog file "SPART/TransmitRecieve.v" in library work
+Module <Reg_32bit> compiled
+Compiling verilog file "SPART/BRG.v" in library work
+Module <TransmitRecieve> compiled
+Compiling verilog file "PPU/PPU_SPGEN.v" in library work
+Module <BRG> compiled
+Module <PPU_SPGEN> compiled
+Compiling verilog file "PPU/PPU_BGLGEN.v" in library work
+Module <t_PPU_SPGEN> compiled
+Compiling verilog file "ipcore_dir/Tron.v" in library work
+Module <PPU_BGLGEN> compiled
+Compiling verilog file "ipcore_dir/pattern_table.v" in library work
+Module <Tron> compiled
+Compiling verilog file "ipcore_dir/OAM_RAM.v" in library work
+Module <pattern_table> compiled
+Compiling verilog file "ipcore_dir/OAMB.v" in library work
+Module <OAM_RAM> compiled
+Compiling verilog file "ipcore_dir/color_palette_rom.v" in library work
+Module <OAMB> compiled
+Compiling verilog file "ipcore_dir/background_tile_table.v" in library work
+Module <color_palette_rom> compiled
+Compiling verilog file "ipcore_dir/background_pattern_table.v" in library work
+Module <background_tile_table> compiled
+Compiling verilog file "ipcore_dir/background_attribute_table.v" in library work
+Module <background_pattern_table> compiled
+Compiling verilog file "CPU/RegFile_32bit.v" in library work
+Module <background_attribute_table> compiled
+Compiling verilog file "CPU/ALU.v" in library work
+Module <RegFile_32bit> compiled
+Compiling verilog file "SPART/driver.v" in library work
+Module <ALU> compiled
+Compiling verilog file "SPART/core.v" in library work
+Module <driver> compiled
+Compiling verilog file "PPU/vga_logic.v" in library work
+Module <core> compiled
+Compiling verilog file "PPU/SYSTEM_PALETTE.v" in library work
+Module <vga_logic> compiled
+Compiling verilog file "PPU/SPRITE_PATTERN_TABLE.v" in library work
+Module <SYSTEM_PALETTE> compiled
+Compiling verilog file "PPU/PPU_SCANGEN.v" in library work
+Module <SPRITE_PATTERN_TABLE> compiled
+Module <PPU_SCANGEN> compiled
+Compiling verilog file "PPU/PPU_OAMB.v" in library work
+Module <t_PPU_SCANGEN> compiled
+Compiling verilog file "PPU/PPUCTRL.v" in library work
+Module <PPU_OAMB> compiled
+Compiling verilog file "PPU/OAM.v" in library work
+Module <PPU_OAMCTRL> compiled
+Compiling verilog file "PPU/COLOR_PALETTES.v" in library work
+Module <OAM_v> compiled
+Compiling verilog file "PPU/BG_TILE_TABLE.v" in library work
+Module <COLOR_PALETTES> compiled
+Compiling verilog file "PPU/BG_PATTERN_TABLE.v" in library work
+Module <BG_TILE_TABLE> compiled
+Compiling verilog file "PPU/BG_ATTRIBUTE_TABLE.v" in library work
+Module <BG_PATTERN_TABLE> compiled
+Compiling verilog file "CPU/WB_Unit.v" in library work
+Module <BG_ATTRIBUTE_TABLE> compiled
+Compiling verilog file "CPU/Trap_Handler.v" in library work
+Module <WB_Unit> compiled
+Compiling verilog file "CPU/PC_control.v" in library work
+Module <Trap_Handler> compiled
+Compiling verilog file "CPU/MEM_Unit.v" in library work
+Module <PC_control> compiled
+Compiling verilog file "CPU/MEMWB_reg.v" in library work
+Module <MEM_Unit> compiled
+Compiling verilog file "CPU/Memory_Interface.v" in library work
+Module <MEMWB_reg> compiled
+Compiling verilog file "CPU/IF_Unit.v" in library work
+Module <Memory_Interface> compiled
+Compiling verilog file "CPU/IFID_reg.v" in library work
+Module <IF_Unit> compiled
+Compiling verilog file "CPU/ID_Unit.v" in library work
+Module <IFID_reg> compiled
+Compiling verilog file "CPU/IDEX_reg.v" in library work
+Module <ID_Unit> compiled
+Compiling verilog file "CPU/Hazard_Detect.v" in library work
+Module <IDEX_reg> compiled
+Compiling verilog file "CPU/Flags_reg.v" in library work
+Module <Hazard_Detect> compiled
+Compiling verilog file "CPU/EX_Unit.v" in library work
+Module <Flags_reg> compiled
+Compiling verilog file "CPU/EXMEM_reg.v" in library work
+Module <EX_Unit> compiled
+Compiling verilog file "CPU/Data_Forward.v" in library work
+Module <EXMEM_reg> compiled
+Compiling verilog file "CPU/CPU_control.v" in library work
+Module <Data_Forward> compiled
+Compiling verilog file "SPART/SPART.v" in library work
+Module <CPU_control> compiled
+Compiling verilog file "PPU/vga_clk.v" in library work
+Module <SPART> compiled
+Compiling verilog file "PPU/PPU.v" in library work
+Module <vga_clk> compiled
+Module <PPU> compiled
+Compiling verilog file "PPU/dvi_ifc.v" in library work
+Module <t_PPU> compiled
+Compiling verilog file "CPU/CPU_PPU_Interface.v" in library work
+Module <dvi_ifc> compiled
+Compiling verilog file "CPU/CPU.v" in library work
+Module <CPU_PPU_Interface> compiled
+Compiling verilog file "PPU/TOP_LEVEL.v" in library work
+Module <CPU> compiled
+Module <Tronsistor32> compiled
+No errors in compilation
+Analysis of file <"Tronsistor32.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <Tronsistor32> in library <work> with parameters.
+	scalex = "01"
+
+Analyzing hierarchy for module <dvi_ifc> in library <work> with parameters.
+	ACK = "1"
+	CLK_FALL = "011"
+	CLK_RATE_MHZ = "00000000000000000000000000011001"
+	CLK_RISE = "101"
+	C_I2C_SLAVE_ADDR = "1110110"
+	DATA0 = "11000000"
+	DATA1 = "00001001"
+	DATA2a = "00000110"
+	DATA2b = "00001000"
+	DATA3a = "00100110"
+	DATA3b = "00010110"
+	DATA4a = "10100000"
+	DATA4b = "01100000"
+	IDLE = "000"
+	INIT = "001"
+	REG_ADDR0 = "01001001"
+	REG_ADDR1 = "00100001"
+	REG_ADDR2 = "00110011"
+	REG_ADDR3 = "00110100"
+	REG_ADDR4 = "00110110"
+	SCK_PERIOD_US = "00000000000000000000000000011110"
+	SDA_BUFFER_MSB = "00000000000000000000000000011011"
+	SETUP = "100"
+	START = "010"
+	START_BIT = "1"
+	STOP_BIT = "0"
+	TRANSITION_CYCLE = "00000000000000000000000101110111"
+	TRANSITION_CYCLE_MSB = "00000000000000000000000000001011"
+	WAIT_IIC = "110"
+	WRITE = "0"
+	XFER_DONE = "111"
+
+Analyzing hierarchy for module <vga_clk> in library <work>.
+
+Analyzing hierarchy for module <vga_logic> in library <work>.
+
+Analyzing hierarchy for module <SPART> in library <work>.
+
+Analyzing hierarchy for module <CPU> in library <work>.
+
+Analyzing hierarchy for module <CPU_PPU_Interface> in library <work> with parameters.
+	SBA = "0111"
+	SBT = "0101"
+	SFA = "0110"
+	SFT = "0100"
+	SLD = "0011"
+	SRM = "0001"
+	SSL = "0010"
+
+Analyzing hierarchy for module <PPU> in library <work>.
+
+Analyzing hierarchy for module <core> in library <work>.
+
+Analyzing hierarchy for module <driver> in library <work> with parameters.
+	IDLE = "01"
+	LOAD_BAUD = "00"
+	TRANSMIT = "10"
+
+Analyzing hierarchy for module <IF_Unit> in library <work>.
+
+Analyzing hierarchy for module <IFID_reg> in library <work>.
+
+Analyzing hierarchy for module <ID_Unit> in library <work>.
+
+Analyzing hierarchy for module <CPU_control> in library <work>.
+
+Analyzing hierarchy for module <Hazard_Detect> in library <work>.
+
+Analyzing hierarchy for module <PC_control> in library <work> with parameters.
+	EQ = "00"
+	LT = "10"
+	NE = "01"
+
+Analyzing hierarchy for module <Flags_reg> in library <work>.
+
+Analyzing hierarchy for module <IDEX_reg> in library <work>.
+
+Analyzing hierarchy for module <EX_Unit> in library <work>.
+
+Analyzing hierarchy for module <EXMEM_reg> in library <work>.
+
+Analyzing hierarchy for module <MEM_Unit> in library <work>.
+
+Analyzing hierarchy for module <Memory_Interface> in library <work>.
+
+Analyzing hierarchy for module <MEMWB_reg> in library <work>.
+
+Analyzing hierarchy for module <WB_Unit> in library <work>.
+
+Analyzing hierarchy for module <Data_Forward> in library <work>.
+
+Analyzing hierarchy for module <Trap_Handler> in library <work> with parameters.
+	EX_GAMETICK_INTERRUPT = "0101"
+	EX_KEYBOARD_INTERRUPT = "0100"
+	EX_STACKOVERFLOW_INTERRUPT = "0111"
+	HOLD_GAMETICK_INTERRUPT = "0010"
+	HOLD_KEYBOARD_INTERRUPT = "0001"
+	HOLD_STACKOVERFLOW_INTERRUPT = "0011"
+	IDLE = "0000"
+
+Analyzing hierarchy for module <PPU_OAMCTRL> in library <work> with parameters.
+	STATE_CHECK_SPRITE = "00000000000000000000000000000011"
+	STATE_CLEAR_OAMB = "00000000000000000000000000000010"
+	STATE_LOAD_SCANGEN = "00000000000000000000000000000111"
+	STATE_LOAD_SPRITE = "00000000000000000000000000000100"
+	STATE_OAM_COPY = "00000000000000000000000000000001"
+	STATE_SETUP_SCANGEN = "00000000000000000000000000000110"
+	STATE_WAIT_FOR_HSYNC = "00000000000000000000000000000101"
+	STATE_WAIT_FOR_VSYNC = "00000000000000000000000000000000"
+
+Analyzing hierarchy for module <PPU_OAMB> in library <work>.
+
+Analyzing hierarchy for module <OAM_v> in library <work>.
+
+Analyzing hierarchy for module <PPU_SCANGEN> in library <work>.
+
+Analyzing hierarchy for module <SPRITE_PATTERN_TABLE> in library <work>.
+
+Analyzing hierarchy for module <BG_PATTERN_TABLE> in library <work>.
+
+Analyzing hierarchy for module <BG_TILE_TABLE> in library <work>.
+
+Analyzing hierarchy for module <BG_ATTRIBUTE_TABLE> in library <work>.
+
+Analyzing hierarchy for module <COLOR_PALETTES> in library <work>.
+
+Analyzing hierarchy for module <SYSTEM_PALETTE> in library <work>.
+
+Analyzing hierarchy for module <TransmitRecieve> in library <work> with parameters.
+	IDLE_RX = "00"
+	IDLE_TX = "0"
+	RX = "10"
+	START = "01"
+	TX = "1"
+	WAIT_RX = "11"
+
+Analyzing hierarchy for module <BRG> in library <work>.
+
+Analyzing hierarchy for module <RegFile_32bit> in library <work> with parameters.
+	REG_0 = "00000"
+	REG_1 = "00001"
+	REG_10 = "01010"
+	REG_11 = "01011"
+	REG_12 = "01100"
+	REG_13 = "01101"
+	REG_14 = "01110"
+	REG_15 = "01111"
+	REG_16 = "10000"
+	REG_17 = "10001"
+	REG_18 = "10010"
+	REG_19 = "10011"
+	REG_2 = "00010"
+	REG_20 = "10100"
+	REG_21 = "10101"
+	REG_22 = "10110"
+	REG_23 = "10111"
+	REG_24 = "11000"
+	REG_25 = "11001"
+	REG_26 = "11010"
+	REG_27 = "11011"
+	REG_28 = "11100"
+	REG_29 = "11101"
+	REG_3 = "00011"
+	REG_30 = "11110"
+	REG_31 = "11111"
+	REG_4 = "00100"
+	REG_5 = "00101"
+	REG_6 = "00110"
+	REG_7 = "00111"
+	REG_8 = "01000"
+	REG_9 = "01001"
+
+Analyzing hierarchy for module <ALU> in library <work> with parameters.
+	ADD = "00000"
+	ADDI = "00001"
+	AND = "00100"
+	ANDI = "00101"
+	NAND = "00011"
+	NO_OP = "11111"
+	OR = "01010"
+	SLL = "00111"
+	SRL = "00110"
+	SUB = "00010"
+	XOR = "01000"
+
+Analyzing hierarchy for module <PPU_SPGEN> in library <work>.
+
+Analyzing hierarchy for module <PPU_BGLGEN> in library <work>.
+
+Analyzing hierarchy for module <Reg_32bit> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <Tronsistor32>.
+	scalex = 2'b01
+WARNING:Xst:852 - "PPU/TOP_LEVEL.v" line 331: Unconnected input port 'scaley' of instance 'PPU' is tied to GND.
+Module <Tronsistor32> is correct for synthesis.
+ 
+Analyzing module <dvi_ifc> in library <work>.
+	ACK = 1'b1
+	CLK_FALL = 3'b011
+	CLK_RATE_MHZ = 32'sb00000000000000000000000000011001
+	CLK_RISE = 3'b101
+	C_I2C_SLAVE_ADDR = 7'b1110110
+	DATA0 = 8'b11000000
+	DATA1 = 8'b00001001
+	DATA2a = 8'b00000110
+	DATA2b = 8'b00001000
+	DATA3a = 8'b00100110
+	DATA3b = 8'b00010110
+	DATA4a = 8'b10100000
+	DATA4b = 8'b01100000
+	IDLE = 3'b000
+	INIT = 3'b001
+	REG_ADDR0 = 8'b01001001
+	REG_ADDR1 = 8'b00100001
+	REG_ADDR2 = 8'b00110011
+	REG_ADDR3 = 8'b00110100
+	REG_ADDR4 = 8'b00110110
+	SCK_PERIOD_US = 32'sb00000000000000000000000000011110
+	SDA_BUFFER_MSB = 32'sb00000000000000000000000000011011
+	SETUP = 3'b100
+	START = 3'b010
+	START_BIT = 1'b1
+	STOP_BIT = 1'b0
+	TRANSITION_CYCLE = 32'sb00000000000000000000000101110111
+	TRANSITION_CYCLE_MSB = 32'sb00000000000000000000000000001011
+	WAIT_IIC = 3'b110
+	WRITE = 1'b0
+	XFER_DONE = 3'b111
+Module <dvi_ifc> is correct for synthesis.
+ 
+Analyzing module <vga_clk> in library <work>.
+Module <vga_clk> is correct for synthesis.
+ 
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <CLKIN_IBUFG_INST> in unit <vga_clk>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <CLKIN_IBUFG_INST> in unit <vga_clk>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <CLKIN_IBUFG_INST> in unit <vga_clk>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <CLKIN_IBUFG_INST> in unit <vga_clk>.
+    Set user-defined property "CLKDV_DIVIDE =  4.000000" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "CLKFX_DIVIDE =  1" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "CLKFX_MULTIPLY =  4" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "CLKIN_PERIOD =  10.000000" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "CLK_FEEDBACK =  1X" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "DCM_AUTOCALIBRATION =  TRUE" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "DCM_PERFORMANCE_MODE =  MAX_SPEED" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "FACTORY_JF =  F0F0" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "SIM_DEVICE =  VIRTEX5" for instance <DCM_ADV_INST> in unit <vga_clk>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <DCM_ADV_INST> in unit <vga_clk>.
+Analyzing module <vga_logic> in library <work>.
+Module <vga_logic> is correct for synthesis.
+ 
+Analyzing module <SPART> in library <work>.
+Module <SPART> is correct for synthesis.
+ 
+Analyzing module <core> in library <work>.
+Module <core> is correct for synthesis.
+ 
+Analyzing module <TransmitRecieve> in library <work>.
+	IDLE_RX = 2'b00
+	IDLE_TX = 1'b0
+	RX = 2'b10
+	START = 2'b01
+	TX = 1'b1
+	WAIT_RX = 2'b11
+Module <TransmitRecieve> is correct for synthesis.
+ 
+Analyzing module <BRG> in library <work>.
+Module <BRG> is correct for synthesis.
+ 
+Analyzing module <driver> in library <work>.
+	IDLE = 2'b01
+	LOAD_BAUD = 2'b00
+	TRANSMIT = 2'b10
+Module <driver> is correct for synthesis.
+ 
+Analyzing module <CPU> in library <work>.
+WARNING:Xst:852 - "CPU/CPU.v" line 506: Unconnected input port 'rst' of instance 'flags_hold' is tied to GND.
+Module <CPU> is correct for synthesis.
+ 
+Analyzing module <IF_Unit> in library <work>.
+Module <IF_Unit> is correct for synthesis.
+ 
+Analyzing module <IFID_reg> in library <work>.
+Module <IFID_reg> is correct for synthesis.
+ 
+Analyzing module <ID_Unit> in library <work>.
+Module <ID_Unit> is correct for synthesis.
+ 
+Analyzing module <RegFile_32bit> in library <work>.
+	REG_0 = 5'b00000
+	REG_1 = 5'b00001
+	REG_10 = 5'b01010
+	REG_11 = 5'b01011
+	REG_12 = 5'b01100
+	REG_13 = 5'b01101
+	REG_14 = 5'b01110
+	REG_15 = 5'b01111
+	REG_16 = 5'b10000
+	REG_17 = 5'b10001
+	REG_18 = 5'b10010
+	REG_19 = 5'b10011
+	REG_2 = 5'b00010
+	REG_20 = 5'b10100
+	REG_21 = 5'b10101
+	REG_22 = 5'b10110
+	REG_23 = 5'b10111
+	REG_24 = 5'b11000
+	REG_25 = 5'b11001
+	REG_26 = 5'b11010
+	REG_27 = 5'b11011
+	REG_28 = 5'b11100
+	REG_29 = 5'b11101
+	REG_3 = 5'b00011
+	REG_30 = 5'b11110
+	REG_31 = 5'b11111
+	REG_4 = 5'b00100
+	REG_5 = 5'b00101
+	REG_6 = 5'b00110
+	REG_7 = 5'b00111
+	REG_8 = 5'b01000
+	REG_9 = 5'b01001
+Module <RegFile_32bit> is correct for synthesis.
+ 
+Analyzing module <Reg_32bit> in library <work>.
+Module <Reg_32bit> is correct for synthesis.
+ 
+Analyzing module <CPU_control> in library <work>.
+Module <CPU_control> is correct for synthesis.
+ 
+Analyzing module <Hazard_Detect> in library <work>.
+Module <Hazard_Detect> is correct for synthesis.
+ 
+Analyzing module <PC_control> in library <work>.
+	EQ = 2'b00
+	LT = 2'b10
+	NE = 2'b01
+Module <PC_control> is correct for synthesis.
+ 
+Analyzing module <Flags_reg> in library <work>.
+Module <Flags_reg> is correct for synthesis.
+ 
+Analyzing module <IDEX_reg> in library <work>.
+Module <IDEX_reg> is correct for synthesis.
+ 
+Analyzing module <EX_Unit> in library <work>.
+Module <EX_Unit> is correct for synthesis.
+ 
+Analyzing module <ALU> in library <work>.
+	ADD = 5'b00000
+	ADDI = 5'b00001
+	AND = 5'b00100
+	ANDI = 5'b00101
+	NAND = 5'b00011
+	NO_OP = 5'b11111
+	OR = 5'b01010
+	SLL = 5'b00111
+	SRL = 5'b00110
+	SUB = 5'b00010
+	XOR = 5'b01000
+Module <ALU> is correct for synthesis.
+ 
+Analyzing module <EXMEM_reg> in library <work>.
+Module <EXMEM_reg> is correct for synthesis.
+ 
+Analyzing module <MEM_Unit> in library <work>.
+Module <MEM_Unit> is correct for synthesis.
+ 
+Analyzing module <Memory_Interface> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/Tron.v" line 58: Instantiating black box module <Tron>.
+Module <Memory_Interface> is correct for synthesis.
+ 
+Analyzing module <MEMWB_reg> in library <work>.
+Module <MEMWB_reg> is correct for synthesis.
+ 
+Analyzing module <WB_Unit> in library <work>.
+Module <WB_Unit> is correct for synthesis.
+ 
+Analyzing module <Data_Forward> in library <work>.
+Module <Data_Forward> is correct for synthesis.
+ 
+Analyzing module <Trap_Handler> in library <work>.
+	EX_GAMETICK_INTERRUPT = 4'b0101
+	EX_KEYBOARD_INTERRUPT = 4'b0100
+	EX_STACKOVERFLOW_INTERRUPT = 4'b0111
+	HOLD_GAMETICK_INTERRUPT = 4'b0010
+	HOLD_KEYBOARD_INTERRUPT = 4'b0001
+	HOLD_STACKOVERFLOW_INTERRUPT = 4'b0011
+	IDLE = 4'b0000
+Module <Trap_Handler> is correct for synthesis.
+ 
+Analyzing module <CPU_PPU_Interface> in library <work>.
+	SBA = 4'b0111
+	SBT = 4'b0101
+	SFA = 4'b0110
+	SFT = 4'b0100
+	SLD = 4'b0011
+	SRM = 4'b0001
+	SSL = 4'b0010
+Module <CPU_PPU_Interface> is correct for synthesis.
+ 
+Analyzing module <PPU> in library <work>.
+Module <PPU> is correct for synthesis.
+ 
+Analyzing module <PPU_OAMCTRL> in library <work>.
+	STATE_CHECK_SPRITE = 32'sb00000000000000000000000000000011
+	STATE_CLEAR_OAMB = 32'sb00000000000000000000000000000010
+	STATE_LOAD_SCANGEN = 32'sb00000000000000000000000000000111
+	STATE_LOAD_SPRITE = 32'sb00000000000000000000000000000100
+	STATE_OAM_COPY = 32'sb00000000000000000000000000000001
+	STATE_SETUP_SCANGEN = 32'sb00000000000000000000000000000110
+	STATE_WAIT_FOR_HSYNC = 32'sb00000000000000000000000000000101
+	STATE_WAIT_FOR_VSYNC = 32'sb00000000000000000000000000000000
+Module <PPU_OAMCTRL> is correct for synthesis.
+ 
+Analyzing module <PPU_OAMB> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/OAMB.v" line 34: Instantiating black box module <OAMB>.
+Module <PPU_OAMB> is correct for synthesis.
+ 
+Analyzing module <OAM_v> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/OAM_RAM.v" line 76: Instantiating black box module <OAM_RAM>.
+Module <OAM_v> is correct for synthesis.
+ 
+Analyzing module <PPU_SCANGEN> in library <work>.
+Module <PPU_SCANGEN> is correct for synthesis.
+ 
+Analyzing module <PPU_SPGEN> in library <work>.
+Module <PPU_SPGEN> is correct for synthesis.
+ 
+Analyzing module <PPU_BGLGEN> in library <work>.
+Module <PPU_BGLGEN> is correct for synthesis.
+ 
+Analyzing module <SPRITE_PATTERN_TABLE> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/pattern_table.v" line 40: Instantiating black box module <pattern_table>.
+Module <SPRITE_PATTERN_TABLE> is correct for synthesis.
+ 
+Analyzing module <BG_PATTERN_TABLE> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/background_pattern_table.v" line 40: Instantiating black box module <background_pattern_table>.
+Module <BG_PATTERN_TABLE> is correct for synthesis.
+ 
+Analyzing module <BG_TILE_TABLE> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/background_tile_table.v" line 43: Instantiating black box module <background_tile_table>.
+Module <BG_TILE_TABLE> is correct for synthesis.
+ 
+Analyzing module <BG_ATTRIBUTE_TABLE> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/background_attribute_table.v" line 42: Instantiating black box module <background_attribute_table>.
+Module <BG_ATTRIBUTE_TABLE> is correct for synthesis.
+ 
+Analyzing module <COLOR_PALETTES> in library <work>.
+WARNING:Xst:2211 - "ipcore_dir/color_palette_rom.v" line 37: Instantiating black box module <color_palette_rom>.
+Module <COLOR_PALETTES> is correct for synthesis.
+ 
+Analyzing module <SYSTEM_PALETTE> in library <work>.
+Module <SYSTEM_PALETTE> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <iocs> in unit <driver> has a constant value of 1 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <curr_y> in unit <PPU_SCANGEN> has a constant value of 00000000 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <dvi_ifc>.
+    Related source file is "PPU/dvi_ifc.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <c_state> of Case statement line 230 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <c_state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found finite state machine <FSM_0> for signal <c_state>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 17                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 8                                              |
+    | Clock              | Clk                       (rising_edge)        |
+    | Reset              | Reset_n                   (negative)           |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 001                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <Done>.
+    Found 32-bit up counter for signal <bit_count>.
+    Found 3-bit comparator lessequal for signal <c_state$cmp_le0000> created at line 299.
+    Found 12-bit register for signal <cycle_count>.
+    Found 12-bit adder for signal <cycle_count$addsub0000> created at line 161.
+    Found 1-bit register for signal <SCL_out>.
+    Found 28-bit register for signal <SDA_BUFFER>.
+    Found 1-bit register for signal <SDA_out>.
+    Found 3-bit up counter for signal <write_count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 Counter(s).
+	inferred  15 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <dvi_ifc> synthesized.
+
+
+Synthesizing Unit <vga_logic>.
+    Related source file is "PPU/vga_logic.v".
+    Found 10-bit register for signal <pixel_x>.
+    Found 10-bit register for signal <pixel_y>.
+    Found 10-bit comparator greater for signal <blank$cmp_gt0000> created at line 53.
+    Found 10-bit comparator greater for signal <blank$cmp_gt0001> created at line 53.
+    Found 10-bit comparator greater for signal <hsync$cmp_gt0000> created at line 51.
+    Found 10-bit comparator less for signal <hsync$cmp_lt0000> created at line 51.
+    Found 10-bit adder for signal <next_pixel_x$addsub0000> created at line 37.
+    Found 10-bit adder for signal <next_pixel_y$addsub0000> created at line 38.
+    Found 10-bit comparator greater for signal <vsync$cmp_gt0000> created at line 52.
+    Found 10-bit comparator less for signal <vsync$cmp_lt0000> created at line 52.
+    Summary:
+	inferred  20 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+Unit <vga_logic> synthesized.
+
+
+Synthesizing Unit <CPU_PPU_Interface>.
+    Related source file is "CPU/CPU_PPU_Interface.v".
+    Found 1-bit register for signal <enable_ff>.
+    Found 4-bit register for signal <opcode_ff>.
+    Found 10-bit register for signal <S_type_index_ff>.
+    Found 32-bit register for signal <S_type_value_ff>.
+    Summary:
+	inferred  47 D-type flip-flop(s).
+Unit <CPU_PPU_Interface> synthesized.
+
+
+Synthesizing Unit <driver>.
+    Related source file is "SPART/driver.v".
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 81 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Using one-hot encoding for signal <state>.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 81 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 81 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 81 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found 4x16-bit ROM for signal <baud_rate>.
+WARNING:Xst:737 - Found 8-bit latch for signal <data>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 8-bit tristate buffer for signal <databus>.
+    Found 1-bit register for signal <boot_complete>.
+    Found 3-bit register for signal <state>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   4 D-type flip-flop(s).
+	inferred   8 Tristate(s).
+Unit <driver> synthesized.
+
+
+Synthesizing Unit <TransmitRecieve>.
+    Related source file is "SPART/TransmitRecieve.v".
+WARNING:Xst:1780 - Signal <statusReg> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <clr_rx> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state_rx> of Case statement line 205 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state_rx> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+INFO:Xst:1608 - Relative priorities of control signals on register <tbr> differ from those commonly found in the selected device family. This will result in additional logic around the register.
+    Found finite state machine <FSM_1> for signal <state_rx>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Reset              | rst                       (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+WARNING:Xst:737 - Found 1-bit latch for signal <tbr>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 8-bit register for signal <rx_buffer>.
+    Found 1-bit register for signal <txd>.
+    Found 1-bit register for signal <rda>.
+    Found 5-bit up counter for signal <baud_cnt_rx>.
+    Found 5-bit up counter for signal <baud_cnt_tx>.
+    Found 5-bit up counter for signal <cnt_rx>.
+    Found 5-bit up counter for signal <cnt_tx>.
+    Found 1-bit register for signal <iorw_prev>.
+    Found 1-bit register for signal <recieve_done>.
+    Found 1-bit register for signal <rxd_ff_1>.
+    Found 1-bit register for signal <rxd_ff_2>.
+    Found 1-bit register for signal <set_recieve_done_ff>.
+    Found 1-bit register for signal <state_tx>.
+    Found 8-bit register for signal <tx_buffer>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   4 Counter(s).
+	inferred  24 D-type flip-flop(s).
+Unit <TransmitRecieve> synthesized.
+
+
+Synthesizing Unit <BRG>.
+    Related source file is "SPART/BRG.v".
+    Found 1-bit register for signal <enable>.
+    Found 16-bit register for signal <DivisionBuffer>.
+    Found 16-bit register for signal <DownCounter>.
+    Found 16-bit subtractor for signal <DownCounter$addsub0000> created at line 75.
+    Found 1-bit register for signal <load_ff1>.
+    Found 1-bit register for signal <load_ff2>.
+    Summary:
+	inferred  35 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <BRG> synthesized.
+
+
+Synthesizing Unit <IF_Unit>.
+    Related source file is "CPU/IF_Unit.v".
+WARNING:Xst:647 - Input <EPC<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit register for signal <PC_curr>.
+    Found 32-bit register for signal <PC_plus_1>.
+    Found 32-bit adder for signal <PC_plus_1$add0000> created at line 131.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <IF_Unit> synthesized.
+
+
+Synthesizing Unit <IFID_reg>.
+    Related source file is "CPU/IFID_reg.v".
+    Found 32-bit register for signal <instruction_out>.
+    Found 32-bit register for signal <PC_out>.
+    Found 1-bit register for signal <pop_haz_out>.
+    Found 1-bit register for signal <keep_flags_out>.
+    Summary:
+	inferred  66 D-type flip-flop(s).
+Unit <IFID_reg> synthesized.
+
+
+Synthesizing Unit <CPU_control>.
+    Related source file is "CPU/CPU_control.v".
+Unit <CPU_control> synthesized.
+
+
+Synthesizing Unit <Hazard_Detect>.
+    Related source file is "CPU/Hazard_Detect.v".
+WARNING:Xst:647 - Input <keyboard_hazard> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:737 - Found 1-bit latch for signal <data_hazard>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+    Found 1-bit xor2 for signal <mux0000$xor0000>.
+    Found 1-bit xor2 for signal <mux0000$xor0001>.
+    Found 1-bit xor2 for signal <mux0000$xor0002>.
+    Found 1-bit xor2 for signal <mux0000$xor0003>.
+    Found 1-bit xor2 for signal <mux0000$xor0004>.
+    Found 1-bit xor2 for signal <mux0000$xor0005>.
+    Found 1-bit xor2 for signal <mux0000$xor0006>.
+    Found 1-bit xor2 for signal <mux0000$xor0007>.
+    Found 1-bit xor2 for signal <mux0000$xor0008>.
+    Found 1-bit xor2 for signal <mux0000$xor0009>.
+    Found 1-bit register for signal <pop_square>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <Hazard_Detect> synthesized.
+
+
+Synthesizing Unit <PC_control>.
+    Related source file is "CPU/PC_control.v".
+    Found 1-bit register for signal <clr_jreg_hazard_ff>.
+    Found 1-bit register for signal <clr_branch_hazard_ff>.
+    Found 32-bit tristate buffer for signal <PC_update>.
+    Found 1-bit register for signal <clr_call_hazard_ff>.
+    Found 1-bit register for signal <clr_ret_hazard_ff>.
+    Found 1-bit register for signal <clr_branch_hazard_ff_2>.
+    Summary:
+	inferred   5 D-type flip-flop(s).
+	inferred  32 Tristate(s).
+Unit <PC_control> synthesized.
+
+
+Synthesizing Unit <Flags_reg>.
+    Related source file is "CPU/Flags_reg.v".
+    Found 3-bit register for signal <q>.
+    Summary:
+	inferred   3 D-type flip-flop(s).
+Unit <Flags_reg> synthesized.
+
+
+Synthesizing Unit <IDEX_reg>.
+    Related source file is "CPU/IDEX_reg.v".
+    Found 1-bit register for signal <Read_Reg_2_en_out>.
+    Found 1-bit register for signal <RegWrite_out>.
+    Found 1-bit register for signal <MemRead_out>.
+    Found 2-bit register for signal <alu_src_out>.
+    Found 32-bit register for signal <ALU_input_1_out>.
+    Found 1-bit register for signal <Read_Reg_1_en_out>.
+    Found 1-bit register for signal <MemSrc_out>.
+    Found 1-bit register for signal <ret_out>.
+    Found 1-bit register for signal <push_out>.
+    Found 32-bit register for signal <ALU_input_2_out>.
+    Found 2-bit register for signal <branch_cond_out>.
+    Found 5-bit register for signal <opcode_out>.
+    Found 1-bit register for signal <call_out>.
+    Found 1-bit register for signal <MemToReg_out>.
+    Found 32-bit register for signal <MemWrite_data_out>.
+    Found 5-bit tristate buffer for signal <DestReg_out>.
+    Found 1-bit register for signal <MemWrite_out>.
+    Found 32-bit register for signal <PC_out>.
+    Found 5-bit register for signal <reg_read_addr1_out>.
+    Found 1-bit register for signal <branch_out>.
+    Found 1-bit register for signal <load_imm_out>.
+    Found 1-bit register for signal <jreg_out>.
+    Found 1-bit register for signal <pop_haz_out>.
+    Found 5-bit register for signal <reg_read_addr2_out>.
+    Found 5-bit register for signal <Mtridata_DestReg_out>.
+    Found 1-bit register for signal <Mtrien_DestReg_out>.
+    Summary:
+	inferred 167 D-type flip-flop(s).
+	inferred   5 Tristate(s).
+Unit <IDEX_reg> synthesized.
+
+
+Synthesizing Unit <EXMEM_reg>.
+    Related source file is "CPU/EXMEM_reg.v".
+    Found 1-bit register for signal <RegWrite_out>.
+    Found 1-bit register for signal <MemRead_out>.
+    Found 1-bit register for signal <MemSrc_out>.
+    Found 32-bit register for signal <ALU_addr_out>.
+    Found 32-bit register for signal <NON_ALU_addr_out>.
+    Found 1-bit register for signal <ret_out>.
+    Found 1-bit register for signal <call_out>.
+    Found 1-bit register for signal <MemToReg_out>.
+    Found 32-bit register for signal <MemWrite_data_out>.
+    Found 5-bit register for signal <DestReg_out>.
+    Found 1-bit register for signal <MemWrite_out>.
+    Summary:
+	inferred 108 D-type flip-flop(s).
+Unit <EXMEM_reg> synthesized.
+
+
+Synthesizing Unit <MEM_Unit>.
+    Related source file is "CPU/MEM_Unit.v".
+Unit <MEM_Unit> synthesized.
+
+
+Synthesizing Unit <MEMWB_reg>.
+    Related source file is "CPU/MEMWB_reg.v".
+    Found 1-bit register for signal <RegWrite_out>.
+    Found 32-bit register for signal <MemRead_data_out>.
+    Found 1-bit register for signal <MemToReg_out>.
+    Found 5-bit register for signal <DestReg_out>.
+    Found 32-bit register for signal <ALU_result_out>.
+    Summary:
+	inferred  71 D-type flip-flop(s).
+Unit <MEMWB_reg> synthesized.
+
+
+Synthesizing Unit <WB_Unit>.
+    Related source file is "CPU/WB_Unit.v".
+Unit <WB_Unit> synthesized.
+
+
+Synthesizing Unit <Data_Forward>.
+    Related source file is "CPU/Data_Forward.v".
+    Found 5-bit comparator equal for signal <EX_forward_src_in1$cmp_eq0000> created at line 84.
+    Found 5-bit comparator equal for signal <EX_forward_src_in1$cmp_eq0001> created at line 84.
+    Found 5-bit comparator equal for signal <EX_forward_src_in2$cmp_eq0000> created at line 89.
+    Found 5-bit comparator equal for signal <EX_forward_src_in2$cmp_eq0001> created at line 89.
+    Found 5-bit comparator equal for signal <ID_forward_src_in1$cmp_eq0000> created at line 99.
+    Found 5-bit comparator equal for signal <ID_forward_src_in2$cmp_eq0000> created at line 101.
+    Summary:
+	inferred   6 Comparator(s).
+Unit <Data_Forward> synthesized.
+
+
+Synthesizing Unit <Trap_Handler>.
+    Related source file is "CPU/Trap_Handler.v".
+WARNING:Xst:646 - Signal <stack_overflow_intr_ff> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <save_keyboard_data> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <keyboard_intr_ff> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <game_tick_intr_ff> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Using one-hot encoding for signal <state>.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 187 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found 32-bit register for signal <EPC>.
+    Found 8-bit register for signal <keyboard_data_out>.
+    Found 2-bit up counter for signal <cnt>.
+    Found 7-bit register for signal <state>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  40 D-type flip-flop(s).
+Unit <Trap_Handler> synthesized.
+
+
+Synthesizing Unit <Reg_32bit>.
+    Related source file is "CPU/Reg_32bit.v".
+    Found 32-bit register for signal <q>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <Reg_32bit> synthesized.
+
+
+Synthesizing Unit <ALU>.
+    Related source file is "CPU/ALU.v".
+WARNING:Xst:737 - Found 1-bit latch for signal <V>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 32-bit tristate buffer for signal <ALU_out>.
+    Found 32-bit adder carry out for signal <AUX_3$addsub0000>.
+    Found 32-bit comparator greater for signal <N$cmp_gt0000> created at line 70.
+    Found 32-bit comparator greater for signal <N$cmp_gt0001> created at line 86.
+    Found 32-bit comparator greater for signal <N$cmp_gt0002> created at line 105.
+    Found 32-bit comparator greater for signal <N$cmp_gt0003> created at line 156.
+    Found 32-bit comparator greater for signal <N$cmp_gt0004> created at line 174.
+    Found 32-bit comparator greater for signal <N$cmp_gt0005> created at line 230.
+    Found 32-bit comparator greater for signal <N$cmp_gt0006> created at line 246.
+    Found 32-bit comparator greater for signal <N$cmp_gt0007> created at line 262.
+    Found 32-bit comparator greater for signal <N$cmp_gt0008> created at line 138.
+    Found 32-bit shifter logical left for signal <old_ALU_out_6$shift0000>.
+    Found 32-bit shifter logical right for signal <old_ALU_out_7$shift0000>.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred   9 Comparator(s).
+	inferred   2 Combinational logic shifter(s).
+	inferred  32 Tristate(s).
+Unit <ALU> synthesized.
+
+
+Synthesizing Unit <PPU_OAMCTRL>.
+    Related source file is "PPU/PPUCTRL.v".
+WARNING:Xst:647 - Input <scanx<2:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <clk_25mhz> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 10-bit adder for signal <bg_next_rowcol>.
+    Found 8-bit register for signal <sprite_attr>.
+    Found 1-bit register for signal <oam_rd_n_oamb_wr>.
+    Found 8-bit register for signal <sprite_xpos>.
+    Found 6-bit register for signal <oam_addr>.
+    Found 2-bit register for signal <oam_byte_sel>.
+    Found 3-bit adder for signal <bg_next_yoffset>.
+    Found 3-bit register for signal <oamb_addr>.
+    Found 8-bit register for signal <sprite_tile_num>.
+    Found 3-bit register for signal <sprite_yoffset>.
+    Found 8-bit register for signal <current_y>.
+    Found 6-bit adder for signal <oam_addr$share0000> created at line 176.
+    Found 2-bit adder for signal <oam_byte_sel$share0000> created at line 176.
+    Found 3-bit adder for signal <oamb_addr$share0000> created at line 176.
+    Found 3-bit subtractor for signal <sprite_yoffset$addsub0000> created at line 269.
+    Found 8-bit adder carry out for signal <sprite_yoffset$addsub0001> created at line 269.
+    Found 3-bit register for signal <state>.
+    Found 1-bit register for signal <toggle>.
+    Summary:
+	inferred  51 D-type flip-flop(s).
+	inferred   7 Adder/Subtractor(s).
+Unit <PPU_OAMCTRL> synthesized.
+
+
+Synthesizing Unit <SYSTEM_PALETTE>.
+    Related source file is "PPU/SYSTEM_PALETTE.v".
+    Found 4x8-bit ROM for signal <r_out>.
+    Found 4x8-bit ROM for signal <g_out>.
+    Found 4x8-bit ROM for signal <b_out>.
+    Summary:
+	inferred   3 ROM(s).
+Unit <SYSTEM_PALETTE> synthesized.
+
+
+Synthesizing Unit <PPU_SPGEN>.
+    Related source file is "PPU/PPU_SPGEN.v".
+WARNING:Xst:647 - Input <clk_100mhz> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <flipv> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <attr_buffer<5:2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit register for signal <attr_buffer>.
+    Found 8-bit down counter for signal <down_count>.
+    Found 2-bit register for signal <scale_count>.
+    Found 2-bit subtractor for signal <scale_count$addsub0000> created at line 127.
+    Found 8-bit register for signal <shift_reg0>.
+    Found 8-bit register for signal <shift_reg1>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  26 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <PPU_SPGEN> synthesized.
+
+
+Synthesizing Unit <PPU_BGLGEN>.
+    Related source file is "PPU/PPU_BGLGEN.v".
+WARNING:Xst:647 - Input <clk_100mhz> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 2-bit register for signal <color_pal>.
+    Found 3-bit down counter for signal <down_count>.
+    Found 2-bit down counter for signal <scale_count>.
+    Found 16-bit register for signal <shift_reg0>.
+    Found 16-bit register for signal <shift_reg1>.
+    Summary:
+	inferred   2 Counter(s).
+	inferred  34 D-type flip-flop(s).
+Unit <PPU_BGLGEN> synthesized.
+
+
+Synthesizing Unit <vga_clk>.
+    Related source file is "PPU/vga_clk.v".
+Unit <vga_clk> synthesized.
+
+
+Synthesizing Unit <core>.
+    Related source file is "SPART/core.v".
+    Found 8-bit tristate buffer for signal <databus>.
+    Found 16-bit register for signal <divisionBuffer>.
+    Found 1-bit register for signal <load_baud>.
+    Summary:
+	inferred  17 D-type flip-flop(s).
+	inferred   8 Tristate(s).
+Unit <core> synthesized.
+
+
+Synthesizing Unit <EX_Unit>.
+    Related source file is "CPU/EX_Unit.v".
+    Found 4x1-bit ROM for signal <ALU_mux_in2_src>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <EX_Unit> synthesized.
+
+
+Synthesizing Unit <Memory_Interface>.
+    Related source file is "CPU/Memory_Interface.v".
+    Found 32-bit tristate buffer for signal <instr>.
+    Found 32-bit comparator less for signal <ena$cmp_lt0000> created at line 54.
+    Found 32-bit comparator greater for signal <enb$cmp_gt0000> created at line 55.
+    Summary:
+	inferred   2 Comparator(s).
+	inferred  32 Tristate(s).
+Unit <Memory_Interface> synthesized.
+
+
+Synthesizing Unit <RegFile_32bit>.
+    Related source file is "CPU/RegFile_32bit.v".
+WARNING:Xst:646 - Signal <zero> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <v1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <v0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t9> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t8> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t6> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t5> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t10> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <t0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <sp> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s7> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s6> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s5> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <s0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ra> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <idr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <epc> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <au> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <at> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <a3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <a2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <a1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <a0> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 32-bit tristate buffer for signal <Read_Bus_1>.
+    Found 32-bit tristate buffer for signal <Read_Bus_2>.
+    Found 32-bit register for signal <Mtridata_Read_Bus_1>.
+    Found 32-bit 32-to-1 multiplexer for signal <Mtridata_Read_Bus_1$mux0000> created at line 186.
+    Found 32-bit register for signal <Mtridata_Read_Bus_2>.
+    Found 32-bit 32-to-1 multiplexer for signal <Mtridata_Read_Bus_2$mux0000> created at line 233.
+    Found 1-bit register for signal <Mtrien_Read_Bus_1>.
+    Found 1-bit register for signal <Mtrien_Read_Bus_2>.
+    Found 31-bit register for signal <RegWriteSel>.
+    Summary:
+	inferred  97 D-type flip-flop(s).
+	inferred  64 Multiplexer(s).
+	inferred  64 Tristate(s).
+Unit <RegFile_32bit> synthesized.
+
+
+Synthesizing Unit <PPU_OAMB>.
+    Related source file is "PPU/PPU_OAMB.v".
+Unit <PPU_OAMB> synthesized.
+
+
+Synthesizing Unit <OAM_v>.
+    Related source file is "PPU/OAM.v".
+WARNING:Xst:647 - Input <r_enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <data_out_temp> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <data_out_ff> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+Unit <OAM_v> synthesized.
+
+
+Synthesizing Unit <PPU_SCANGEN>.
+    Related source file is "PPU/PPU_SCANGEN.v".
+WARNING:Xst:646 - Signal <curr_y> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 10-bit register for signal <curr_x>.
+    Found 10-bit subtractor for signal <curr_x$addsub0000> created at line 66.
+    Summary:
+	inferred  10 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <PPU_SCANGEN> synthesized.
+
+
+Synthesizing Unit <SPRITE_PATTERN_TABLE>.
+    Related source file is "PPU/SPRITE_PATTERN_TABLE.v".
+WARNING:Xst:1780 - Signal <pt_addr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit register for signal <line0>.
+    Found 8-bit register for signal <line1>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <SPRITE_PATTERN_TABLE> synthesized.
+
+
+Synthesizing Unit <BG_PATTERN_TABLE>.
+    Related source file is "PPU/BG_PATTERN_TABLE.v".
+WARNING:Xst:1780 - Signal <pt_addr> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit register for signal <line0>.
+    Found 8-bit register for signal <line1>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <BG_PATTERN_TABLE> synthesized.
+
+
+Synthesizing Unit <BG_TILE_TABLE>.
+    Related source file is "PPU/BG_TILE_TABLE.v".
+Unit <BG_TILE_TABLE> synthesized.
+
+
+Synthesizing Unit <BG_ATTRIBUTE_TABLE>.
+    Related source file is "PPU/BG_ATTRIBUTE_TABLE.v".
+Unit <BG_ATTRIBUTE_TABLE> synthesized.
+
+
+Synthesizing Unit <COLOR_PALETTES>.
+    Related source file is "PPU/COLOR_PALETTES.v".
+Unit <COLOR_PALETTES> synthesized.
+
+
+Synthesizing Unit <SPART>.
+    Related source file is "SPART/SPART.v".
+    Found 8-bit register for signal <data>.
+    Found 1-bit register for signal <key_interrupt>.
+    Found 1-bit register for signal <key_interrupt_ff2>.
+    Found 1-bit register for signal <rda_ff>.
+    Summary:
+	inferred  11 D-type flip-flop(s).
+Unit <SPART> synthesized.
+
+
+Synthesizing Unit <PPU>.
+    Related source file is "PPU/PPU.v".
+WARNING:Xst:647 - Input <scaley> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <oam_copy> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <bg_next_yoffset> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <bg_next_rowcol> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <bg_attr<7:2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 10-bit adder for signal <bg_r_rowcol_adjust>.
+    Found 8-bit adder for signal <sprite_in_range$addsub0000> created at line 109.
+    Found 8-bit adder carry out for signal <sprite_in_range$addsub0001> created at line 109.
+    Found 8-bit comparator greatequal for signal <sprite_in_range$cmp_ge0000> created at line 109.
+    Found 11-bit comparator less for signal <sprite_in_range$cmp_lt0000> created at line 109.
+    Found 11-bit subtractor for signal <sprite_in_range$sub0000> created at line 109.
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+Unit <PPU> synthesized.
+
+
+Synthesizing Unit <ID_Unit>.
+    Related source file is "CPU/ID_Unit.v".
+WARNING:Xst:646 - Signal <A_type_imm> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <ID_Unit> synthesized.
+
+
+Synthesizing Unit <CPU>.
+    Related source file is "CPU/CPU.v".
+    Found 1-bit register for signal <PC_branch_ff>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <CPU> synthesized.
+
+
+Synthesizing Unit <Tronsistor32>.
+    Related source file is "PPU/TOP_LEVEL.v".
+WARNING:Xst:1306 - Output <data_out> is never assigned.
+WARNING:Xst:1306 - Output <MemAddr> is never assigned.
+WARNING:Xst:1306 - Output <NON_ALU> is never assigned.
+WARNING:Xst:646 - Signal <pixel_y<9>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <pixel_y<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <pixel_x<9>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <pixel_x<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <oam_we_ff> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <oam_w_addr_ff> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <oam_data_in_ff> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <iic_tx_done> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <done> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <display_ff<7:6>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <display_data> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <comp_sync> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <clkn_25mhz> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <clkin_ibufg_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <S_opcode<5:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 1-bit tristate buffer for signal <scl_tri>.
+    Found 1-bit tristate buffer for signal <sda_tri>.
+    Found 8-bit register for signal <display_ff>.
+    Found 1-bit register for signal <handled_1>.
+    Found 1-bit register for signal <handled_2>.
+    Found 1-bit register for signal <rst_ff>.
+    Found 1-bit register for signal <vsync_ff>.
+    Summary:
+	inferred  12 D-type flip-flop(s).
+	inferred   2 Tristate(s).
+Unit <Tronsistor32> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 5
+ 4x1-bit ROM                                           : 1
+ 4x16-bit ROM                                          : 1
+ 4x8-bit ROM                                           : 3
+# Adders/Subtractors                                   : 27
+ 10-bit adder                                          : 4
+ 10-bit subtractor                                     : 1
+ 11-bit subtractor                                     : 1
+ 12-bit adder                                          : 1
+ 16-bit subtractor                                     : 1
+ 2-bit adder                                           : 1
+ 2-bit subtractor                                      : 8
+ 3-bit adder                                           : 2
+ 3-bit subtractor                                      : 1
+ 32-bit adder                                          : 1
+ 32-bit adder carry out                                : 1
+ 33-bit subtractor                                     : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
+ 8-bit adder carry out                                 : 2
+# Counters                                             : 17
+ 2-bit down counter                                    : 1
+ 2-bit up counter                                      : 1
+ 3-bit down counter                                    : 1
+ 3-bit up counter                                      : 1
+ 32-bit up counter                                     : 1
+ 5-bit up counter                                      : 4
+ 8-bit down counter                                    : 8
+# Registers                                            : 185
+ 1-bit register                                        : 61
+ 10-bit register                                       : 4
+ 12-bit register                                       : 1
+ 16-bit register                                       : 5
+ 2-bit register                                        : 12
+ 28-bit register                                       : 1
+ 3-bit register                                        : 6
+ 31-bit register                                       : 1
+ 32-bit register                                       : 48
+ 4-bit register                                        : 1
+ 5-bit register                                        : 6
+ 6-bit register                                        : 1
+ 7-bit register                                        : 1
+ 8-bit register                                        : 37
+# Latches                                              : 4
+ 1-bit latch                                           : 3
+ 8-bit latch                                           : 1
+# Comparators                                          : 26
+ 10-bit comparator greater                             : 4
+ 10-bit comparator less                                : 2
+ 11-bit comparator less                                : 1
+ 3-bit comparator lessequal                            : 1
+ 32-bit comparator greater                             : 10
+ 32-bit comparator less                                : 1
+ 5-bit comparator equal                                : 6
+ 8-bit comparator greatequal                           : 1
+# Multiplexers                                         : 2
+ 32-bit 32-to-1 multiplexer                            : 2
+# Logic shifters                                       : 2
+ 32-bit shifter logical left                           : 1
+ 32-bit shifter logical right                          : 1
+# Tristates                                            : 10
+ 1-bit tristate buffer                                 : 2
+ 32-bit tristate buffer                                : 5
+ 5-bit tristate buffer                                 : 1
+ 8-bit tristate buffer                                 : 2
+# Xors                                                 : 11
+ 1-bit xor2                                            : 10
+ 32-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <SPART/spart0/TransmitRecieve0/state_rx/FSM> on signal <state_rx[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00    | 00
+ 01    | 01
+ 10    | 11
+ 11    | 10
+-------------------
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <dvi/c_state/FSM> on signal <c_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 001
+ 001   | 000
+ 010   | 011
+ 011   | 010
+ 100   | 110
+ 101   | 111
+ 110   | 101
+ 111   | 100
+-------------------
+Reading core <ipcore_dir/Tron.ngc>.
+Reading core <ipcore_dir/OAMB.ngc>.
+Reading core <ipcore_dir/OAM_RAM.ngc>.
+Reading core <ipcore_dir/pattern_table.ngc>.
+Reading core <ipcore_dir/background_pattern_table.ngc>.
+Reading core <ipcore_dir/background_tile_table.ngc>.
+Reading core <ipcore_dir/background_attribute_table.ngc>.
+Reading core <ipcore_dir/color_palette_rom.ngc>.
+Loading core <Tron> for timing and area information for instance <Memory>.
+Loading core <OAMB> for timing and area information for instance <buffa>.
+Loading core <OAM_RAM> for timing and area information for instance <oam0>.
+Loading core <pattern_table> for timing and area information for instance <tbl>.
+Loading core <background_pattern_table> for timing and area information for instance <tbl>.
+Loading core <background_tile_table> for timing and area information for instance <tbl>.
+Loading core <background_attribute_table> for timing and area information for instance <tbl>.
+Loading core <color_palette_rom> for timing and area information for instance <pal>.
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <SDA_BUFFER>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <EPC_16> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_17> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_18> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_19> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_20> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_21> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_22> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_23> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_24> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_25> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_26> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_27> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_28> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_29> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_30> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <EPC_31> of sequential type is unconnected in block <TrapHandler>.
+WARNING:Xst:2677 - Node <sprite_attr_2> of sequential type is unconnected in block <ppuctrl>.
+WARNING:Xst:2677 - Node <sprite_attr_3> of sequential type is unconnected in block <ppuctrl>.
+WARNING:Xst:2677 - Node <sprite_attr_4> of sequential type is unconnected in block <ppuctrl>.
+WARNING:Xst:2677 - Node <sprite_attr_5> of sequential type is unconnected in block <ppuctrl>.
+WARNING:Xst:2677 - Node <sprite_attr_7> of sequential type is unconnected in block <ppuctrl>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen0>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen0>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen0>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen0>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen0>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen1>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen1>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen1>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen1>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen1>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen2>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen2>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen2>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen2>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen2>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen3>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen3>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen3>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen3>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen3>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen4>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen4>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen4>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen4>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen4>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen5>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen5>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen5>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen5>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen5>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen6>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen6>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen6>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen6>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen6>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <spgen7>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <spgen7>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <spgen7>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <spgen7>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <spgen7>.
+WARNING:Xst:2677 - Node <display_ff_6> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <display_ff_7> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2404 -  FFs/Latches <display_ff<7:6>> (without init value) have a constant value of 0 in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <attr_buffer_2> of sequential type is unconnected in block <PPU_SPGEN>.
+WARNING:Xst:2677 - Node <attr_buffer_3> of sequential type is unconnected in block <PPU_SPGEN>.
+WARNING:Xst:2677 - Node <attr_buffer_4> of sequential type is unconnected in block <PPU_SPGEN>.
+WARNING:Xst:2677 - Node <attr_buffer_5> of sequential type is unconnected in block <PPU_SPGEN>.
+WARNING:Xst:2677 - Node <attr_buffer_7> of sequential type is unconnected in block <PPU_SPGEN>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 2
+# ROMs                                                 : 5
+ 4x1-bit ROM                                           : 1
+ 4x16-bit ROM                                          : 1
+ 4x8-bit ROM                                           : 3
+# Adders/Subtractors                                   : 27
+ 10-bit adder                                          : 4
+ 10-bit subtractor                                     : 1
+ 11-bit subtractor                                     : 1
+ 12-bit adder                                          : 1
+ 16-bit subtractor                                     : 1
+ 2-bit adder                                           : 1
+ 2-bit subtractor                                      : 8
+ 3-bit adder                                           : 2
+ 3-bit subtractor                                      : 1
+ 32-bit adder                                          : 1
+ 32-bit adder carry out                                : 1
+ 33-bit subtractor                                     : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
+ 8-bit adder carry out                                 : 2
+# Counters                                             : 17
+ 2-bit down counter                                    : 1
+ 2-bit up counter                                      : 1
+ 3-bit down counter                                    : 1
+ 3-bit up counter                                      : 1
+ 32-bit up counter                                     : 1
+ 5-bit up counter                                      : 4
+ 8-bit down counter                                    : 8
+# Registers                                            : 2131
+ Flip-Flops                                            : 2131
+# Latches                                              : 4
+ 1-bit latch                                           : 3
+ 8-bit latch                                           : 1
+# Comparators                                          : 26
+ 10-bit comparator greater                             : 4
+ 10-bit comparator less                                : 2
+ 11-bit comparator less                                : 1
+ 3-bit comparator lessequal                            : 1
+ 32-bit comparator greater                             : 10
+ 32-bit comparator less                                : 1
+ 5-bit comparator equal                                : 6
+ 8-bit comparator greatequal                           : 1
+# Multiplexers                                         : 2
+ 32-bit 32-to-1 multiplexer                            : 2
+# Logic shifters                                       : 2
+ 32-bit shifter logical left                           : 1
+ 32-bit shifter logical right                          : 1
+# Xors                                                 : 11
+ 1-bit xor2                                            : 10
+ 32-bit xor2                                           : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <LPM_DFF_2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <state_6> (without init value) has a constant value of 0 in block <Trap_Handler>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <state_3> (without init value) has a constant value of 0 in block <Trap_Handler>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2042 - Unit PC_control: 32 internal tristates are replaced by logic (pull-up yes): PC_update<0>, PC_update<10>, PC_update<11>, PC_update<12>, PC_update<13>, PC_update<14>, PC_update<15>, PC_update<16>, PC_update<17>, PC_update<18>, PC_update<19>, PC_update<1>, PC_update<20>, PC_update<21>, PC_update<22>, PC_update<23>, PC_update<24>, PC_update<25>, PC_update<26>, PC_update<27>, PC_update<28>, PC_update<29>, PC_update<2>, PC_update<30>, PC_update<31>, PC_update<3>, PC_update<4>, PC_update<5>, PC_update<6>, PC_update<7>, PC_update<8>, PC_update<9>.
+WARNING:Xst:2042 - Unit IDEX_reg: 5 internal tristates are replaced by logic (pull-up yes): DestReg_out<0>, DestReg_out<1>, DestReg_out<2>, DestReg_out<3>, DestReg_out<4>.
+WARNING:Xst:2042 - Unit Memory_Interface: 32 internal tristates are replaced by logic (pull-up yes): instr<0>, instr<10>, instr<11>, instr<12>, instr<13>, instr<14>, instr<15>, instr<16>, instr<17>, instr<18>, instr<19>, instr<1>, instr<20>, instr<21>, instr<22>, instr<23>, instr<24>, instr<25>, instr<26>, instr<27>, instr<28>, instr<29>, instr<2>, instr<30>, instr<31>, instr<3>, instr<4>, instr<5>, instr<6>, instr<7>, instr<8>, instr<9>.
+WARNING:Xst:2042 - Unit core: 8 internal tristates are replaced by logic (pull-up yes): databus<0>, databus<1>, databus<2>, databus<3>, databus<4>, databus<5>, databus<6>, databus<7>.
+WARNING:Xst:2042 - Unit driver: 8 internal tristates are replaced by logic (pull-up yes): databus<0>, databus<1>, databus<2>, databus<3>, databus<4>, databus<5>, databus<6>, databus<7>.
+WARNING:Xst:2042 - Unit ALU: 32 internal tristates are replaced by logic (pull-up yes): ALU_out<0>, ALU_out<10>, ALU_out<11>, ALU_out<12>, ALU_out<13>, ALU_out<14>, ALU_out<15>, ALU_out<16>, ALU_out<17>, ALU_out<18>, ALU_out<19>, ALU_out<1>, ALU_out<20>, ALU_out<21>, ALU_out<22>, ALU_out<23>, ALU_out<24>, ALU_out<25>, ALU_out<26>, ALU_out<27>, ALU_out<28>, ALU_out<29>, ALU_out<2>, ALU_out<30>, ALU_out<31>, ALU_out<3>, ALU_out<4>, ALU_out<5>, ALU_out<6>, ALU_out<7>, ALU_out<8>, ALU_out<9>.
+WARNING:Xst:2042 - Unit RegFile_32bit: 64 internal tristates are replaced by logic (pull-up yes): Read_Bus_1<0>, Read_Bus_1<10>, Read_Bus_1<11>, Read_Bus_1<12>, Read_Bus_1<13>, Read_Bus_1<14>, Read_Bus_1<15>, Read_Bus_1<16>, Read_Bus_1<17>, Read_Bus_1<18>, Read_Bus_1<19>, Read_Bus_1<1>, Read_Bus_1<20>, Read_Bus_1<21>, Read_Bus_1<22>, Read_Bus_1<23>, Read_Bus_1<24>, Read_Bus_1<25>, Read_Bus_1<26>, Read_Bus_1<27>, Read_Bus_1<28>, Read_Bus_1<29>, Read_Bus_1<2>, Read_Bus_1<30>, Read_Bus_1<31>, Read_Bus_1<3>, Read_Bus_1<4>, Read_Bus_1<5>, Read_Bus_1<6>, Read_Bus_1<7>, Read_Bus_1<8>, Read_Bus_1<9>, Read_Bus_2<0>, Read_Bus_2<10>, Read_Bus_2<11>, Read_Bus_2<12>, Read_Bus_2<13>, Read_Bus_2<14>, Read_Bus_2<15>, Read_Bus_2<16>, Read_Bus_2<17>, Read_Bus_2<18>, Read_Bus_2<19>, Read_Bus_2<1>, Read_Bus_2<20>, Read_Bus_2<21>, Read_Bus_2<22>, Read_Bus_2<23>, Read_Bus_2<24>, Read_Bus_2<25>, Read_Bus_2<26>, Read_Bus_2<27>, Read_Bus_2<28>, Read_Bus_2<29>, Read_Bus_2<2>, Read_Bus_2<30>, Read_Bus_2<31>, Read_Bus_2<3>, Read_Bus_2<4>, Read_Bus_2<5>, Read_Bus_2<6>, Read_Bus_2<7>, Read_Bus_2<8>, Read_Bus_2<9>.
+
+Optimizing unit <Tronsistor32> ...
+
+Optimizing unit <vga_logic> ...
+
+Optimizing unit <CPU_PPU_Interface> ...
+
+Optimizing unit <TransmitRecieve> ...
+
+Optimizing unit <BRG> ...
+
+Optimizing unit <IFID_reg> ...
+
+Optimizing unit <Hazard_Detect> ...
+
+Optimizing unit <PC_control> ...
+
+Optimizing unit <IDEX_reg> ...
+
+Optimizing unit <EXMEM_reg> ...
+
+Optimizing unit <MEMWB_reg> ...
+
+Optimizing unit <Data_Forward> ...
+
+Optimizing unit <Reg_32bit> ...
+
+Optimizing unit <ALU> ...
+
+Optimizing unit <PPU_OAMCTRL> ...
+
+Optimizing unit <PPU_BGLGEN> ...
+WARNING:Xst:1710 - FF/Latch <scale_count_1> (without init value) has a constant value of 0 in block <PPU_BGLGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <scale_count_1> (without init value) has a constant value of 0 in block <PPU_BGLGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <scale_count_1> (without init value) has a constant value of 0 in block <PPU_BGLGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <scale_count_1> (without init value) has a constant value of 0 in block <PPU_BGLGEN>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <Memory_Interface> ...
+
+Optimizing unit <SPRITE_PATTERN_TABLE> ...
+
+Optimizing unit <BG_PATTERN_TABLE> ...
+
+Optimizing unit <dvi_ifc> ...
+
+Optimizing unit <IF_Unit> ...
+
+Optimizing unit <Trap_Handler> ...
+
+Optimizing unit <EX_Unit> ...
+
+Optimizing unit <RegFile_32bit> ...
+
+Optimizing unit <PPU_SCANGEN> ...
+WARNING:Xst:1710 - FF/Latch <spgen7/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen6/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen5/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen4/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen3/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen2/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen1/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <spgen0/scale_count_1> (without init value) has a constant value of 0 in block <PPU_SCANGEN>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <SPART> ...
+
+Optimizing unit <PPU> ...
+
+Optimizing unit <ID_Unit> ...
+
+Optimizing unit <CPU> ...
+WARNING:Xst:2677 - Node <dvi/Done> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <PPU/ppuctrl/sprite_attr_2> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <PPU/ppuctrl/sprite_attr_3> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <PPU/ppuctrl/sprite_attr_4> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <PPU/ppuctrl/sprite_attr_5> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <PPU/ppuctrl/sprite_attr_7> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_16> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_17> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_18> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_19> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_20> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_21> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_22> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_23> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_24> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_25> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_26> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_27> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_28> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_29> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_30> of sequential type is unconnected in block <Tronsistor32>.
+WARNING:Xst:2677 - Node <CPU/TrapHandler/EPC_31> of sequential type is unconnected in block <Tronsistor32>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Tronsistor32, actual ratio is 6.
+
+Final Macro Processing ...
+
+Processing Unit <Tronsistor32> :
+	Found 2-bit shift register for signal <SPART/spart0/BRG0/load_ff2>.
+Unit <Tronsistor32> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 2226
+ Flip-Flops                                            : 2226
+# Shift Registers                                      : 1
+ 2-bit shift register                                  : 1
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Tronsistor32.ngr
+Top Level Output File Name         : Tronsistor32
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 130
+
+Cell Usage :
+# BELS                             : 3809
+#      GND                         : 9
+#      INV                         : 29
+#      LUT1                        : 12
+#      LUT2                        : 178
+#      LUT3                        : 196
+#      LUT4                        : 259
+#      LUT5                        : 595
+#      LUT6                        : 1903
+#      MUXCY                       : 230
+#      MUXF7                       : 161
+#      VCC                         : 8
+#      XORCY                       : 229
+# FlipFlops/Latches                : 2238
+#      FD                          : 10
+#      FD_1                        : 96
+#      FDC                         : 96
+#      FDCE                        : 87
+#      FDCE_1                      : 31
+#      FDE                         : 993
+#      FDP                         : 3
+#      FDPE                        : 13
+#      FDPE_1                      : 1
+#      FDR                         : 425
+#      FDR_1                       : 4
+#      FDRE                        : 392
+#      FDRE_1                      : 6
+#      FDRS                        : 27
+#      FDRSE                       : 3
+#      FDS                         : 3
+#      FDS_1                       : 31
+#      FDSE                        : 6
+#      LD                          : 9
+#      LDCP                        : 1
+#      LDCPE_1                     : 1
+# RAMS                             : 11
+#      RAMB18                      : 4
+#      RAMB36_EXP                  : 7
+# Shift Registers                  : 1
+#      SRLC16E                     : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 2
+# IO Buffers                       : 34
+#      IBUF                        : 4
+#      IBUFG                       : 1
+#      OBUF                        : 27
+#      OBUFT                       : 2
+# DCM_ADVs                         : 1
+#      DCM_ADV                     : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx110tff1136-1 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            2238  out of  69120     3%  
+ Number of Slice LUTs:                 3173  out of  69120     4%  
+    Number used as Logic:              3172  out of  69120     4%  
+    Number used as Memory:                1  out of  17920     0%  
+       Number used as SRL:                1
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   4457
+   Number with an unused Flip Flop:    2219  out of   4457    49%  
+   Number with an unused LUT:          1284  out of   4457    28%  
+   Number of fully used LUT-FF pairs:   954  out of   4457    21%  
+   Number of unique control sets:        95
+
+IO Utilization: 
+ Number of IOs:                         130
+ Number of bonded IOBs:                  34  out of    640     5%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                9  out of    148     6%  
+    Number using Block RAM only:          9
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+ Number of DCM_ADVs:                      1  out of     12     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                                                              | Clock buffer(FF name)                                                                                                                     | Load  |
+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+-------+
+clk_100mhz                                                                                | vga_clk_gen/DCM_ADV_INST:CLK0                                                                                                             | 1787  |
+clk_100mhz                                                                                | vga_clk_gen/DCM_ADV_INST:CLKDV                                                                                                            | 455   |
+SPART/spart0/TransmitRecieve0/tx_done(SPART/spart0/TransmitRecieve0/tx_done_cmp_eq00001:O)| NONE(*)(SPART/spart0/TransmitRecieve0/tbr)                                                                                                | 1     |
+SPART/driver0/data_not0001(SPART/driver0/data_not00011:O)                                 | NONE(*)(SPART/driver0/data_0)                                                                                                             | 8     |
+PPU/bg_pt/tbl/N1                                                                          | NONE(PPU/bg_pt/tbl/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)    | 1     |
+PPU/sprite_pt/tbl/N1                                                                      | NONE(PPU/sprite_pt/tbl/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 1     |
+CPU/EXU/ALU1/V_not0001(CPU/EXU/ALU1/V_not00011:O)                                         | NONE(*)(CPU/EXU/ALU1/V)                                                                                                                   | 1     |
+CPU/MEMWB/RegWrite_out                                                                    | NONE(CPU/Hazard_Detect/data_hazard)                                                                                                       | 1     |
+------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+-------+
+(*) These 3 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+---------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                         | Buffer(FF name)                                                                                                                                                            | Load  |
+---------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+_or0000(_or00001:O)                                                                    | NONE(CPU/IFU/PC_plus_1_0)                                                                                                                                                  | 229   |
+CPU/Memory_Interface/Memory/N1(CPU/Memory_Interface/Memory/XST_GND:G)                  | NONE(CPU/Memory_Interface/Memory/U0/xst_blk_mem_generator/gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/TRUE_DP.SINGLE_PRIM36.TDP)| 16    |
+PPU/bg_pt/tbl/N1(PPU/bg_pt/tbl/XST_GND:G)                                              | NONE(PPU/bg_pt/tbl/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)                                     | 8     |
+PPU/oam/oam0/N1(PPU/oam/oam0/XST_GND:G)                                                | NONE(PPU/oam/oam0/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_noinit.ram/SDP.SINGLE_PRIM36.TDP)                                  | 8     |
+PPU/sprite_pt/tbl/N1(PPU/sprite_pt/tbl/XST_GND:G)                                      | NONE(PPU/sprite_pt/tbl/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)                                 | 8     |
+N0(XST_GND:G)                                                                          | NONE(CPU/flags_hold/q_0)                                                                                                                                                   | 3     |
+CPU/Hazard_Detect/data_hazard__and0000(CPU/Hazard_Detect/data_hazard__and00001:O)      | NONE(CPU/Hazard_Detect/data_hazard)                                                                                                                                        | 1     |
+CPU/Hazard_Detect/data_hazard__or0000(CPU/Hazard_Detect/data_hazard__or00001:O)        | NONE(CPU/Hazard_Detect/data_hazard)                                                                                                                                        | 1     |
+SPART/spart0/TransmitRecieve0/tbr_and0000(SPART/spart0/TransmitRecieve0/tbr_and00001:O)| NONE(SPART/spart0/TransmitRecieve0/tbr)                                                                                                                                    | 1     |
+---------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -1
+
+   Minimum period: 15.862ns (Maximum Frequency: 63.044MHz)
+   Minimum input arrival time before clock: 7.631ns
+   Maximum output required time after clock: 5.648ns
+   Maximum combinational path delay: 4.414ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_100mhz'
+  Clock period: 15.862ns (frequency: 63.044MHz)
+  Total number of paths / destination ports: 1922240 / 4365
+-------------------------------------------------------------------------
+Delay:               7.931ns (Levels of Logic = 10)
+  Source:            CPU/Memory_Interface/Memory/U0/xst_blk_mem_generator/gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_init.ram/TRUE_DP.SINGLE_PRIM36.TDP (RAM)
+  Destination:       CPU/IFU/PC_curr_1 (FF)
+  Source Clock:      clk_100mhz falling
+  Destination Clock: clk_100mhz rising
+
+  Data Path: CPU/Memory_Interface/Memory/U0/xst_blk_mem_generator/gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_init.ram/TRUE_DP.SINGLE_PRIM36.TDP to CPU/IFU/PC_curr_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB36_EXP:REGCLKBL->DOB2    6   2.190   0.507  U0/xst_blk_mem_generator/gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[2].ram.r/v5_init.ram/TRUE_DP.SINGLE_PRIM36.TDP (doutb<18>)
+     end scope: 'CPU/Memory_Interface/Memory'
+     LUT6:I5->O           19   0.094   1.168  CPU/EXU/ALU_mux_in1<18>1 (CPU/EXU_ALU_mux_in1<18>)
+     LUT6:I0->O            5   0.094   0.732  CPU/EXU/ALU1/Sh1131 (CPU/EXU/ALU1/Sh113)
+     LUT6:I3->O            4   0.094   0.496  CPU/EXU/ALU1/Sh1451 (CPU/EXU/ALU1/Sh145)
+     LUT6:I5->O            1   0.094   0.000  CPU/EXU/ALU_addr<1>65_F (N1141)
+     MUXF7:I0->O           1   0.251   0.710  CPU/EXU/ALU_addr<1>65 (CPU/EXU/ALU_addr<1>65)
+     LUT5:I2->O            1   0.094   0.000  CPU/EXU/ALU_addr<1>158_G (N1454)
+     MUXF7:I1->O           1   0.254   0.480  CPU/EXU/ALU_addr<1>158 (CPU/EXU/ALU_addr<1>158)
+     LUT6:I5->O            2   0.094   0.485  CPU/EXU/ALU_addr<1>232 (CPU/EXU_ALU_addr<1>)
+     LUT6:I5->O            1   0.094   0.000  CPU/IFU/PC_update<1> (CPU/IFU/PC_update<1>)
+     FDRE:D                   -0.018          CPU/IFU/PC_curr_1
+    ----------------------------------------
+    Total                      7.931ns (3.353ns logic, 4.578ns route)
+                                       (42.3% logic, 57.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'SPART/driver0/data_not0001'
+  Clock period: 2.231ns (frequency: 448.229MHz)
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Delay:               2.231ns (Levels of Logic = 2)
+  Source:            SPART/driver0/data_7 (LATCH)
+  Destination:       SPART/driver0/data_7 (LATCH)
+  Source Clock:      SPART/driver0/data_not0001 falling
+  Destination Clock: SPART/driver0/data_not0001 falling
+
+  Data Path: SPART/driver0/data_7 to SPART/driver0/data_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q               4   0.736   0.592  SPART/driver0/data_7 (SPART/driver0/data_7)
+     LUT4:I2->O            2   0.094   0.715  SPART/databus<7>LogicTrst1 (SPART/databus<7>)
+     LUT6:I3->O            1   0.094   0.000  SPART/driver0/data_mux0000<7>1 (SPART/driver0/data_mux0000<7>)
+     LD:D                     -0.071          SPART/driver0/data_7
+    ----------------------------------------
+    Total                      2.231ns (0.924ns logic, 1.307ns route)
+                                       (41.4% logic, 58.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 12638 / 2431
+-------------------------------------------------------------------------
+Offset:              7.631ns (Levels of Logic = 8)
+  Source:            rst (PAD)
+  Destination:       CPU/IDEX/ALU_input_2_out_16 (FF)
+  Destination Clock: clk_100mhz rising
+
+  Data Path: rst to CPU/IDEX/ALU_input_2_out_16
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            91   0.818   0.618  rst_IBUF (rst_IBUF)
+     LUT2:I1->O         1043   0.094   1.003  _or00001 (_or0000)
+     LUT6:I2->O            5   0.094   0.732  CPU/CPU_cntrl/reg_2_sel (CPU/CPU_cntrl_reg_2_sel)
+     LUT3:I0->O           67   0.094   1.107  CPU/IDU/Read_Reg_2_out<3>1 (CPU/IDU_Read_Reg_2_out<3>)
+     LUT6:I1->O           44   0.094   0.840  CPU/DataForward/ID_forward_src_in285 (CPU/DataForward/ID_forward_src_in285)
+     LUT6:I3->O           39   0.094   0.839  CPU/IDU/ALU_input2_mux_out_and00001 (CPU/IDU/ALU_input2_mux_out_and0000)
+     LUT5:I2->O            9   0.094   1.017  CPU/IDU/ALU_input2_mux_out<16>11 (CPU/IDU/N3)
+     LUT5:I0->O            1   0.094   0.000  CPU/IDEX/ALU_input_2_out_16_rstpot (CPU/IDEX/ALU_input_2_out_16_rstpot)
+     FDR:D                    -0.018          CPU/IDEX/ALU_input_2_out_16
+    ----------------------------------------
+    Total                      7.631ns (1.476ns logic, 6.155ns route)
+                                       (19.3% logic, 80.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'SPART/driver0/data_not0001'
+  Total number of paths / destination ports: 15 / 8
+-------------------------------------------------------------------------
+Offset:              2.019ns (Levels of Logic = 2)
+  Source:            br_cfg<0> (PAD)
+  Destination:       SPART/driver0/data_2 (LATCH)
+  Destination Clock: SPART/driver0/data_not0001 falling
+
+  Data Path: br_cfg<0> to SPART/driver0/data_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             8   0.818   1.107  br_cfg_0_IBUF (br_cfg_0_IBUF)
+     LUT6:I0->O            1   0.094   0.000  SPART/driver0/data_mux0000<2>1 (SPART/driver0/data_mux0000<2>)
+     LD:D                     -0.071          SPART/driver0/data_2
+    ----------------------------------------
+    Total                      2.019ns (0.912ns logic, 1.107ns route)
+                                       (45.2% logic, 54.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CPU/MEMWB/RegWrite_out'
+  Total number of paths / destination ports: 35 / 1
+-------------------------------------------------------------------------
+Offset:              6.169ns (Levels of Logic = 7)
+  Source:            rst (PAD)
+  Destination:       CPU/Hazard_Detect/data_hazard (LATCH)
+  Destination Clock: CPU/MEMWB/RegWrite_out rising
+
+  Data Path: rst to CPU/Hazard_Detect/data_hazard
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            91   0.818   0.618  rst_IBUF (rst_IBUF)
+     LUT2:I1->O         1043   0.094   1.003  _or00001 (_or0000)
+     LUT6:I2->O            5   0.094   0.732  CPU/CPU_cntrl/reg_2_sel (CPU/CPU_cntrl_reg_2_sel)
+     LUT3:I0->O          259   0.094   1.238  CPU/IDU/Read_Reg_2_out<1>1 (CPU/IDU_Read_Reg_2_out<1>)
+     LUT6:I0->O            1   0.094   0.480  CPU/Hazard_Detect/data_hazard_mux000092_SW0 (N1219)
+     LUT6:I5->O            2   0.094   0.715  CPU/Hazard_Detect/data_hazard_mux000092 (CPU/Hazard_Detect/data_hazard_mux000092)
+     LUT3:I0->O            2   0.094   0.000  CPU/Hazard_Detect/data_hazard_mux0000223 (CPU/Hazard_Detect/data_hazard_mux0000)
+     LDCPE_1:D                -0.071          CPU/Hazard_Detect/data_hazard
+    ----------------------------------------
+    Total                      6.169ns (1.382ns logic, 4.787ns route)
+                                       (22.4% logic, 77.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_100mhz'
+  Total number of paths / destination ports: 58 / 26
+-------------------------------------------------------------------------
+Offset:              5.648ns (Levels of Logic = 3)
+  Source:            PPU/color_pal/pal/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.WIDE_PRIM18.SP (RAM)
+  Destination:       D<11> (PAD)
+  Source Clock:      clk_100mhz rising
+
+  Data Path: PPU/color_pal/pal/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.WIDE_PRIM18.SP to D<11>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB18:CLKA->DOA1     2   2.180   0.581  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.WIDE_PRIM18.SP (douta<1>)
+     end scope: 'PPU/color_pal/pal'
+     LUT3:I1->O            2   0.094   0.341  D<9>1 (D_11_OBUF)
+     OBUF:I->O                 2.452          D_11_OBUF (D<11>)
+    ----------------------------------------
+    Total                      5.648ns (4.726ns logic, 0.922ns route)
+                                       (83.7% logic, 16.3% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               4.414ns (Levels of Logic = 3)
+  Source:            rst (PAD)
+  Destination:       dvi_rst (PAD)
+
+  Data Path: rst to dvi_rst
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            91   0.818   0.714  rst_IBUF (rst_IBUF)
+     LUT2:I0->O            1   0.094   0.336  dvi_rst1 (dvi_rst_OBUF)
+     OBUF:I->O                 2.452          dvi_rst_OBUF (dvi_rst)
+    ----------------------------------------
+    Total                      4.414ns (3.364ns logic, 1.050ns route)
+                                       (76.2% logic, 23.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 52.00 secs
+Total CPU time to Xst completion: 51.59 secs
+ 
+--> 
+
+Total memory usage is 561460 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  206 (   0 filtered)
+Number of infos    :   14 (   0 filtered)
+

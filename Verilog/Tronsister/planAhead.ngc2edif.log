@@ -1,0 +1,172 @@
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design Tronsistor32.ngc ...
+WARNING:NetListWriters:298 - No output is written to Tronsistor32.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus CPU/EXU/ALU1/Msub__AUX_4_lut<31 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus CPU/IDU/ALU_input2_mux_out<24 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus CPU/TrapHandler/next_state<5 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus CPU/TrapHandler/state<5 : 0> on block
+   Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/ppuctrl/sprite_attr<6 : 0> on block
+   Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/ppuctrl/sprite_attr_mux0000<7 : 1>
+   on block Tronsistor32 is not reconstructed, because there are some missing
+   bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen0/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen0/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen1/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen1/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen2/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen2/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen3/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen3/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen4/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen4/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen5/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen5/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen6/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen6/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen7/attr_buffer<6 : 0> on
+   block Tronsistor32 is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus PPU/scangen/spgen7/attr_buffer_mux0000<6
+   : 0> on block Tronsistor32 is not reconstructed, because there are some
+   missing bus signals.
+WARNING:NetListWriters:306 - Signal bus pixel_gbrg<17 : 0> on block Tronsistor32
+   is not reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file Tronsistor32.edif ...
+ngc2edif: Total memory usage is 112748 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design pattern_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to pattern_table.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file pattern_table.edif ...
+ngc2edif: Total memory usage is 101548 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design OAM_RAM.ngc ...
+WARNING:NetListWriters:298 - No output is written to OAM_RAM.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file OAM_RAM.edif ...
+ngc2edif: Total memory usage is 102316 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design background_pattern_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to
+   background_pattern_table.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file background_pattern_table.edif ...
+ngc2edif: Total memory usage is 101228 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design background_tile_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to background_tile_table.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file background_tile_table.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design Main_Memory.ngc ...
+WARNING:NetListWriters:298 - No output is written to Main_Memory.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file Main_Memory.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design color_palette_rom.ngc ...
+WARNING:NetListWriters:298 - No output is written to color_palette_rom.xncf,
+   ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file color_palette_rom.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design OAMB.ngc ...
+WARNING:NetListWriters:298 - No output is written to OAMB.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file OAMB.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+
+Release 14.7 - ngc2edif P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design background_attribute_table.ngc ...
+WARNING:NetListWriters:298 - No output is written to
+   background_attribute_table.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file background_attribute_table.edif ...
+ngc2edif: Total memory usage is 101932 kilobytes
+

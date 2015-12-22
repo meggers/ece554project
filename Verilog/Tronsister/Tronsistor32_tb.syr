@@ -1,0 +1,228 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.45 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.45 secs
+ 
+--> Reading design: Tronsistor32_tb.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "Tronsistor32_tb.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "Tronsistor32_tb"
+Output Format                      : NGC
+Target Device                      : xc5vlx110t-1-ff1136
+
+---- Source Options
+Top Module Name                    : Tronsistor32_tb
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Block
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "CPU/Reg_32bit.v" in library work
+Compiling verilog file "PPU/SPRITE_PALETTES.v" in library work
+Module <Reg_32bit> compiled
+Compiling verilog file "PPU/PPU_SPGEN.v" in library work
+Module <SPRITE_PALETTES> compiled
+Module <PPU_SPGEN> compiled
+Compiling verilog file "PPU/PPU_BGLGEN.v" in library work
+Module <t_PPU_SPGEN> compiled
+Compiling verilog file "PPU/BG_PALETTES.v" in library work
+Module <PPU_BGLGEN> compiled
+Compiling verilog file "ipcore_dir/pattern_table.v" in library work
+Module <BG_PALETTES> compiled
+Compiling verilog file "ipcore_dir/OAM_RAM.v" in library work
+Module <pattern_table> compiled
+Compiling verilog file "ipcore_dir/OAMB.v" in library work
+Module <OAM_RAM> compiled
+Compiling verilog file "ipcore_dir/Main_Memory.v" in library work
+Module <OAMB> compiled
+Compiling verilog file "ipcore_dir/background_tile_table.v" in library work
+Module <Main_Memory> compiled
+Compiling verilog file "ipcore_dir/background_pattern_table.v" in library work
+Module <background_tile_table> compiled
+Compiling verilog file "ipcore_dir/background_attribute_table.v" in library work
+Module <background_pattern_table> compiled
+Compiling verilog file "CPU/RegFile_32bit.v" in library work
+Module <background_attribute_table> compiled
+Compiling verilog file "CPU/ALU.v" in library work
+Module <RegFile_32bit> compiled
+Compiling verilog file "PPU/vga_logic.v" in library work
+Module <ALU> compiled
+Compiling verilog file "PPU/SYSTEM_PALETTE.v" in library work
+Module <vga_logic> compiled
+Compiling verilog file "PPU/SPRITE_PATTERN_TABLE.v" in library work
+Module <SYSTEM_PALETTE> compiled
+Compiling verilog file "PPU/PPU_SCANGEN.v" in library work
+Module <SPRITE_PATTERN_TABLE> compiled
+Module <PPU_SCANGEN> compiled
+Compiling verilog file "PPU/PPU_OAMB.v" in library work
+Module <t_PPU_SCANGEN> compiled
+Compiling verilog file "PPU/PPUCTRL.v" in library work
+Module <PPU_OAMB> compiled
+Compiling verilog file "PPU/OAM.v" in library work
+Module <PPU_OAMCTRL> compiled
+Compiling verilog file "PPU/COLOR_PALETTES.v" in library work
+Module <OAM_v> compiled
+Compiling verilog file "PPU/BG_TILE_TABLE.v" in library work
+Module <COLOR_PALETTES> compiled
+Compiling verilog file "PPU/BG_PATTERN_TABLE.v" in library work
+Module <BG_TILE_TABLE> compiled
+Compiling verilog file "PPU/BG_ATTRIBUTE_TABLE.v" in library work
+Module <BG_PATTERN_TABLE> compiled
+Compiling verilog file "CPU/WB_Unit.v" in library work
+Module <BG_ATTRIBUTE_TABLE> compiled
+Compiling verilog file "CPU/Trap_Handler.v" in library work
+Module <WB_Unit> compiled
+Compiling verilog file "CPU/PC_control.v" in library work
+Module <Trap_Handler> compiled
+Compiling verilog file "CPU/MEM_Unit.v" in library work
+Module <PC_control> compiled
+Compiling verilog file "CPU/MEMWB_reg.v" in library work
+Module <MEM_Unit> compiled
+Compiling verilog file "CPU/Memory_Interface.v" in library work
+Module <MEMWB_reg> compiled
+Compiling verilog file "CPU/IF_Unit.v" in library work
+Module <Memory_Interface> compiled
+Compiling verilog file "CPU/IFID_reg.v" in library work
+Module <IF_Unit> compiled
+Compiling verilog file "CPU/ID_Unit.v" in library work
+Module <IFID_reg> compiled
+Compiling verilog file "CPU/IDEX_reg.v" in library work
+Module <ID_Unit> compiled
+Compiling verilog file "CPU/Hazard_Detect.v" in library work
+Module <IDEX_reg> compiled
+Compiling verilog file "CPU/Flags_reg.v" in library work
+Module <Hazard_Detect> compiled
+Compiling verilog file "CPU/EX_Unit.v" in library work
+Module <Flags_reg> compiled
+Compiling verilog file "CPU/EXMEM_reg.v" in library work
+Module <EX_Unit> compiled
+Compiling verilog file "CPU/Data_Forward.v" in library work
+Module <EXMEM_reg> compiled
+Compiling verilog file "CPU/CPU_control.v" in library work
+Module <Data_Forward> compiled
+Compiling verilog file "PPU/vga_clk.v" in library work
+Module <CPU_control> compiled
+Compiling verilog file "PPU/PPU.v" in library work
+Module <vga_clk> compiled
+Module <PPU> compiled
+Compiling verilog file "PPU/dvi_ifc.v" in library work
+Module <t_PPU> compiled
+Compiling verilog file "CPU/CPU_PPU_Interface.v" in library work
+Module <dvi_ifc> compiled
+Compiling verilog file "CPU/CPU.v" in library work
+Module <CPU_PPU_Interface> compiled
+Compiling verilog file "PPU/TOP_LEVEL.v" in library work
+Module <CPU> compiled
+Compiling verilog file "Tronsistor32_tb.v" in library work
+Module <Tronsistor32> compiled
+Module <Tronsistor32_tb> compiled
+No errors in compilation
+Analysis of file <"Tronsistor32_tb.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+ERROR:Xst - "Tronsistor32_tb.v" line 23: Module <Tronsistor32_tb> has no port.
+--> 
+
+Total memory usage is 379188 kilobytes
+
+Number of errors   :    1 (   0 filtered)
+Number of warnings :    4 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

@@ -1,0 +1,10 @@
+Command line:
+   \\userspace.cae.wisc.edu\people\j\jtruelove\Git\Tronsister\Tronsistor32_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  55077
+
+Sun Dec 20 14:00:55 2015
+
+
+ Elaboration Time: 5.14803 sec

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "I:/Git/Tronsister/Tronsistor32_tb_isim_beh.exe" -prj "I:/Git/Tronsister/Tronsistor32_tb_beh.prj" "work.Tronsistor32_tb" "work.glbl" 

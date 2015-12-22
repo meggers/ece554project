@@ -1,0 +1,25 @@
+
+
+
+// Instantiate the module
+Tronsistor32 instance_name (
+    .clk_100mhz(clk_100mhz), 
+    .rst(rst), 
+    .pixel_r(pixel_r), 
+    .pixel_g(pixel_g), 
+    .pixel_b(pixel_b), 
+    .hsync(hsync), 
+    .vsync(vsync), 
+    .blank(blank), 
+    .clk(clk), 
+    .clk_n(clk_n), 
+    .D(D), 
+    .dvi_rst(dvi_rst), 
+    .scl_tri(scl_tri), 
+    .sda_tri(sda_tri), 
+    .data_out(data_out), 
+    .MemAddr(MemAddr), 
+    .NON_ALU(NON_ALU)
+    );
+
+

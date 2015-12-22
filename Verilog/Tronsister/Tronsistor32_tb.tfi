@@ -1,0 +1,9 @@
+
+
+
+// Instantiate the module
+Tronsistor32_tb instance_name (
+    .()
+    );
+
+

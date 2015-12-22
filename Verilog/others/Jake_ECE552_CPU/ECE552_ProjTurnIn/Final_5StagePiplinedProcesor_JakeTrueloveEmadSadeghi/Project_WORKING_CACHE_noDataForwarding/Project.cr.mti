@@ -1,0 +1,161 @@
+I:/ECE552/Project/TestBenches/Branch_tb.sv {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/Branch_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Branch_tb
+
+Top level modules:
+	Branch_tb
+
+} {} {}} I:/ECE552/Project/TestBenches/instr_mem.v {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/instr_mem.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module IM_old
+
+Top level modules:
+	IM_old
+
+} {} {}} I:/ECE552/Project/TestBenches/BasicOp_tb.sv {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/BasicOp_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module BasicOp_tb
+
+Top level modules:
+	BasicOp_tb
+
+} {} {}} I:/ECE552/Project/control.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/control.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module control
+
+Top level modules:
+	control
+
+} {} {}} I:/ECE552/Project/TestBenches/Loop_tb.sv {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/Loop_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Loop_tb
+
+Top level modules:
+	Loop_tb
+
+} {} {}} I:/ECE552/Project/TestBenches/LwStall_tb.sv {2 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/LwStall_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module LwStall_tb
+** Warning: I:/ECE552/Project/TestBenches/LwStall_tb.sv(83): [RDGN] - Redundant digits in numeric literal.
+** Warning: I:/ECE552/Project/TestBenches/LwStall_tb.sv(83): [RDGN] - Redundant digits in numeric literal.
+** Warning: I:/ECE552/Project/TestBenches/LwStall_tb.sv(84): [RDGN] - Redundant digits in numeric literal.
+** Warning: I:/ECE552/Project/TestBenches/LwStall_tb.sv(84): [RDGN] - Redundant digits in numeric literal.
+** Warning: I:/ECE552/Project/TestBenches/LwStall_tb.sv(85): [RDGN] - Redundant digits in numeric literal.
+** Warning: I:/ECE552/Project/TestBenches/LwStall_tb.sv(85): [RDGN] - Redundant digits in numeric literal.
+
+Top level modules:
+	LwStall_tb
+
+} {} {}} I:/ECE552/Project/Full_processor.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/Full_processor.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Full_processor
+
+Top level modules:
+	Full_processor
+
+} {} {}} I:/ECE552/Project/ALU.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/ALU.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} I:/ECE552/Project/reg_file_tb.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/reg_file_tb.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module reg_file_tb
+
+Top level modules:
+	reg_file_tb
+
+} {} {}} I:/ECE552/Project/TestBenches/DataDependence_tb.sv {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/DataDependence_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module DataDependence_tb
+
+Top level modules:
+	DataDependence_tb
+
+} {} {}} I:/ECE552/Project/Reg16.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/Reg16.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Reg16
+
+Top level modules:
+	Reg16
+
+} {} {}} I:/ECE552/Project/reg_file.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/reg_file.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module reg_file
+
+Top level modules:
+	reg_file
+
+} {} {}} I:/ECE552/Project/memStage2/rf_pipelined.v {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/memStage2/rf_pipelined.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module rf
+
+Top level modules:
+	rf
+
+} {} {}} I:/ECE552/Project/memStage2/unified_mem.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/memStage2/unified_mem.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module unified_mem
+
+Top level modules:
+	unified_mem
+
+} {} {}} I:/ECE552/Project/TestBenches/Control_tb.sv {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/TestBenches/Control_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Control_tb
+
+Top level modules:
+	Control_tb
+
+} {} {}} I:/ECE552/Project/memStage2/Icache.v {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/memStage2/Icache.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module cache
+
+Top level modules:
+	cache
+
+} {} {}} I:/ECE552/Project/Testsss.v {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/Testsss.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module test
+
+Top level modules:
+	test
+
+} {} {}} I:/ECE552/Project/datapath.sv {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/datapath.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module datapath
+
+Top level modules:
+	datapath
+
+} {} {}} I:/ECE552/Project/ProjectMemStage1/data_mem.v {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/ProjectMemStage1/data_mem.v
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module DM_old
+
+Top level modules:
+	DM_old
+
+} {} {}} I:/ECE552/Project/ALU_tb.sv {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/ALU_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module ALU_tb
+
+Top level modules:
+	ALU_tb
+
+} {} {}} I:/ECE552/Project/Full_processor_tb.sv {1 {vlog -work work -vopt -sv -nocovercells I:/ECE552/Project/Full_processor_tb.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Full_processor_tb
+
+Top level modules:
+	Full_processor_tb
+
+} {} {}} I:/ECE552/Project/Cntrl_Mem_SM.sv {1 {vlog -work work -vopt -nocovercells I:/ECE552/Project/Cntrl_Mem_SM.sv
+Model Technology ModelSim SE vlog 6.3 Compiler 2007.05 May  4 2007
+-- Compiling module Cntrl_Mem_SM
+
+Top level modules:
+	Cntrl_Mem_SM
+
+} {} {}}

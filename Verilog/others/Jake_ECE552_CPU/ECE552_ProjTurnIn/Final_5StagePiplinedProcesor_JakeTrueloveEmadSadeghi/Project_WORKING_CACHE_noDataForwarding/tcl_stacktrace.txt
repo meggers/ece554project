@@ -1,0 +1,26 @@
+Thu Mar 19 11:43:22 PM Central Daylight Time 2015
+Trace back: expected integer but got ""
+    while executing
+"format "Ln:%5d  Col:%3d" $line $column"
+    (object "::.main_pane.mdi.interior.cs.vm.paneset.cli_2.wf.clip.cs.editor" method "::vsimwidgets::Srcedit::UpdateSourceState" body line 16)
+    invoked from within
+"::.main_pane.mdi.interior.cs.vm.paneset.cli_2.wf.clip.cs.editor UpdateSourceState"
+    (in namespace inscope "::vsimwidgets::Srcedit" script line 1)
+    invoked from within
+"namespace inscope ::vsimwidgets::Srcedit ::.main_pane.mdi.interior.cs.vm.paneset.cli_2.wf.clip.cs.editor UpdateSourceState"
+    ("after" script)
+  2: ::tkerror {expected integer but got ""}
+  1: ::bgerror {expected integer but got ""}
+Thu Apr 30 2:52:37 PM Central Daylight Time 2015
+Trace back: invalid command name ".main_pane.cs.36"
+    while executing
+"$w cget -opaqueresize"
+    (procedure "::tk::panedwindow::ReleaseSash" line 2)
+    invoked from within
+"::tk::panedwindow::ReleaseSash $w $opaque"
+    (procedure "::tk::panedwindow::2DReleaseSash" line 8)
+    invoked from within
+"::tk::panedwindow::2DReleaseSash .main_pane.mdi.interior.cs.vm.paneset.group0.pw 1050 1 1405 81 0"
+    (command bound to event)
+  2: ::tkerror {invalid command name ".main_pane.cs.36"}
+  1: ::bgerror {invalid command name ".main_pane.cs.36"}

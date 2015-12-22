@@ -1,0 +1,2843 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="I:/ECE 554/FINAL/Tronsistor/Tronsistor32_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="Tronsistor32_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="24" />
+   <wvobject fp_name="group17" type="group">
+      <obj_property name="label">PPU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/clk_100mhz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_100mhz</obj_property>
+         <obj_property name="ObjectShortName">clk_100mhz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/clk_25mhz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_25mhz</obj_property>
+         <obj_property name="ObjectShortName">clk_25mhz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/vsync" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">vsync</obj_property>
+         <obj_property name="ObjectShortName">vsync</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/hsync" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">hsync</obj_property>
+         <obj_property name="ObjectShortName">hsync</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/scanx" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">scanx[7:0]</obj_property>
+         <obj_property name="ObjectShortName">scanx[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/scany" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">scany[7:0]</obj_property>
+         <obj_property name="ObjectShortName">scany[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/scalex" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">scalex[1:0]</obj_property>
+         <obj_property name="ObjectShortName">scalex[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/scaley" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">scaley[1:0]</obj_property>
+         <obj_property name="ObjectShortName">scaley[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_we" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_we[3:0]</obj_property>
+         <obj_property name="ObjectShortName">oam_we[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_w_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_w_addr[5:0]</obj_property>
+         <obj_property name="ObjectShortName">oam_w_addr[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">oam_data_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_tile_we" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_tile_we</obj_property>
+         <obj_property name="ObjectShortName">bg_tile_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_tile_w_rowcol" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_tile_w_rowcol[9:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_tile_w_rowcol[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_tile_data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_tile_data_in[7:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_tile_data_in[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_attr_we" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_attr_we</obj_property>
+         <obj_property name="ObjectShortName">bg_attr_we</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_attr_w_rowcol" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_attr_w_rowcol[9:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_attr_w_rowcol[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_attr_data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_attr_data_in[7:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_attr_data_in[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/rgb_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">rgb_out[23:0]</obj_property>
+         <obj_property name="ObjectShortName">rgb_out[23:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_in_range" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_in_range</obj_property>
+         <obj_property name="ObjectShortName">sprite_in_range</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oamb_dout" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oamb_dout[7:0]</obj_property>
+         <obj_property name="ObjectShortName">oamb_dout[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_copy" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_copy</obj_property>
+         <obj_property name="ObjectShortName">oam_copy</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oamb_clear" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">oamb_clear</obj_property>
+         <obj_property name="ObjectShortName">oamb_clear</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oamb_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oamb_addr[2:0]</obj_property>
+         <obj_property name="ObjectShortName">oamb_addr[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_addr[5:0]</obj_property>
+         <obj_property name="ObjectShortName">oam_addr[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_byte_sel" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_byte_sel[1:0]</obj_property>
+         <obj_property name="ObjectShortName">oam_byte_sel[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_rd_n_oamb_wr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_rd_n_oamb_wr</obj_property>
+         <obj_property name="ObjectShortName">oam_rd_n_oamb_wr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_yoffset" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_yoffset[2:0]</obj_property>
+         <obj_property name="ObjectShortName">sprite_yoffset[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_tile_num" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_tile_num[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sprite_tile_num[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_attr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_attr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sprite_attr[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_xpos" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_xpos[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sprite_xpos[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/scangen_load_sprite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">scangen_load_sprite</obj_property>
+         <obj_property name="ObjectShortName">scangen_load_sprite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/scangen_shift_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">scangen_shift_enable</obj_property>
+         <obj_property name="ObjectShortName">scangen_shift_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_tile_num" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_tile_num[7:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_tile_num[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_next_rowcol" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_next_rowcol[9:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_next_rowcol[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_next_yoffset" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_next_yoffset[2:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_next_yoffset[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam_dout" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oam_dout[7:0]</obj_property>
+         <obj_property name="ObjectShortName">oam_dout[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oamb_din" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">oamb_din[7:0]</obj_property>
+         <obj_property name="ObjectShortName">oamb_din[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_line0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_line0[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sprite_line0[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/sprite_line1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sprite_line1[7:0]</obj_property>
+         <obj_property name="ObjectShortName">sprite_line1[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_line0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_line0[7:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_line0[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_line1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_line1[7:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_line1[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/bg_attr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">bg_attr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">bg_attr[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/pixel_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">pixel_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">pixel_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/system_color" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">system_color[5:0]</obj_property>
+         <obj_property name="ObjectShortName">system_color[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group691" type="group">
+      <obj_property name="label">RegFile</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite</obj_property>
+         <obj_property name="ObjectShortName">RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Read_Reg_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Read_Reg_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Write_Reg" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Write_Reg[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Write_Reg[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Write_Bus_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Write_Bus_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Write_Bus_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Write_Bus" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Write_Bus[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Write_Bus[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/zero" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">zero[31:0]</obj_property>
+         <obj_property name="ObjectShortName">zero[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/at" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">at[31:0]</obj_property>
+         <obj_property name="ObjectShortName">at[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/v0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">v0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">v0[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/v1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">v1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">v1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/a0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">a0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a0[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/a1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">a1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/a2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">a2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/a3" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">a3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">a3[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t0[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t3" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t3[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t4" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t4[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t4[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t5" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t5[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t5[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t6" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t6[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t6[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t7" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t7[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t7[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s0" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s0[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s3" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s3[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s4" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s4[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s4[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s5" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s5[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s5[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s6" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s6[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s6[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/s7" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">s7[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s7[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t8" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t8[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t8[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t9" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t9[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t9[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/t10" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">t10[31:0]</obj_property>
+         <obj_property name="ObjectShortName">t10[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/au" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">au[31:0]</obj_property>
+         <obj_property name="ObjectShortName">au[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/idr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">idr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">idr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/sp" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sp[31:0]</obj_property>
+         <obj_property name="ObjectShortName">sp[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/epc" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">epc[31:0]</obj_property>
+         <obj_property name="ObjectShortName">epc[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/ra" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ra[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Read_Bus_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Bus_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Bus_1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/Read_Bus_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Bus_2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Bus_2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegFile/RegWriteSel" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWriteSel[30:0]</obj_property>
+         <obj_property name="ObjectShortName">RegWriteSel[30:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/R_I_type_rs" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R_I_type_rs[4:0]</obj_property>
+      <obj_property name="ObjectShortName">R_I_type_rs[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffa500</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/R_type_rt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R_type_rt[4:0]</obj_property>
+      <obj_property name="ObjectShortName">R_type_rt[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/DestReg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">DestReg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">DestReg[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ff00ff</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus252" type="vbus" db_ref_id="1">
+      <obj_property name="label">OPCODE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#ffff00</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[31]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[30]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[29]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[28]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[27]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[26]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[26]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus644" type="vbus" db_ref_id="1">
+      <obj_property name="label">COE Opcode</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[31]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[31]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[31]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[30]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[30]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[30]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[29]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[29]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[29]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[28]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[28]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[28]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[27]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[27]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[27]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[26]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[26]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[26]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[25]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[25]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[25]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in[24]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[24]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[24]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">instruction_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction_in[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/PC_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_in[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/PC_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_in[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="CustomSignalColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="group316" type="group">
+      <obj_property name="label">Decode</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/call" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call</obj_property>
+         <obj_property name="ObjectShortName">call</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ret" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret</obj_property>
+         <obj_property name="ObjectShortName">ret</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/branch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch</obj_property>
+         <obj_property name="ObjectShortName">branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/push" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">push</obj_property>
+         <obj_property name="ObjectShortName">push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg</obj_property>
+         <obj_property name="ObjectShortName">jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/pop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop</obj_property>
+         <obj_property name="ObjectShortName">pop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/reg_2_sel" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_2_sel</obj_property>
+         <obj_property name="ObjectShortName">reg_2_sel</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ff0000</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/sign_ext_sel" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sign_ext_sel</obj_property>
+         <obj_property name="ObjectShortName">sign_ext_sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/alu_src" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">alu_src[1:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_src[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegWrite_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_in</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegWrite_Reg_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_Reg_in[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_Reg_in[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegWrite_Data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_Data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_Data_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/instruction_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instruction_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ID_forward_src_in1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_forward_src_in1</obj_property>
+         <obj_property name="ObjectShortName">ID_forward_src_in1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ID_forward_src_in2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_forward_src_in2</obj_property>
+         <obj_property name="ObjectShortName">ID_forward_src_in2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/opcode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode[5:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/J_type_imm_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">J_type_imm_out[25:0]</obj_property>
+         <obj_property name="ObjectShortName">J_type_imm_out[25:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/PC_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_out[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ALU_input1_mux_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input1_mux_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input1_mux_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ALU_input2_mux_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input2_mux_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input2_mux_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/MemWrite_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Reg_1_en_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en_haz</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Reg_2_en_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en_haz</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/intr_return" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">intr_return</obj_property>
+         <obj_property name="ObjectShortName">intr_return</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/S_type_index" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_index[9:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_index[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/S_type_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_value[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/R_I_A_type_rd" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">R_I_A_type_rd[4:0]</obj_property>
+         <obj_property name="ObjectShortName">R_I_A_type_rd[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/R_type_shamt" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">R_type_shamt[4:0]</obj_property>
+         <obj_property name="ObjectShortName">R_type_shamt[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/I_type_imm" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">I_type_imm[15:0]</obj_property>
+         <obj_property name="ObjectShortName">I_type_imm[15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/J_type_imm" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">J_type_imm[25:0]</obj_property>
+         <obj_property name="ObjectShortName">J_type_imm[25:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/A_type_imm" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">A_type_imm[20:0]</obj_property>
+         <obj_property name="ObjectShortName">A_type_imm[20:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Bus_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Bus_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Bus_1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Bus_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Bus_2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Bus_2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/SP_update" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">SP_update</obj_property>
+         <obj_property name="ObjectShortName">SP_update</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Reg_1_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/Read_Reg_2_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite</obj_property>
+         <obj_property name="ObjectShortName">RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegWrite_Reg" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_Reg[4:0]</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_Reg[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/RegWrite_Data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_Data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_Data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/sign_ext" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">sign_ext[31:0]</obj_property>
+         <obj_property name="ObjectShortName">sign_ext[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ALU_input_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU/ALU_input_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group361" type="group">
+      <obj_property name="label">Execute</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/opcode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode[4:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/branch_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_in</obj_property>
+         <obj_property name="ObjectShortName">branch_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/call_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call_in</obj_property>
+         <obj_property name="ObjectShortName">call_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ret_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret_in</obj_property>
+         <obj_property name="ObjectShortName">ret_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/pop_haz_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz_in</obj_property>
+         <obj_property name="ObjectShortName">pop_haz_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/load_imm" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">load_imm</obj_property>
+         <obj_property name="ObjectShortName">load_imm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/RegWrite_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_in</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemWrite_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_in</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemRead_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemRead_in</obj_property>
+         <obj_property name="ObjectShortName">MemRead_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemToReg_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemToReg_in</obj_property>
+         <obj_property name="ObjectShortName">MemToReg_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemSrc_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemSrc_in</obj_property>
+         <obj_property name="ObjectShortName">MemSrc_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/push" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">push</obj_property>
+         <obj_property name="ObjectShortName">push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/DestReg_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">DestReg_in[4:0]</obj_property>
+         <obj_property name="ObjectShortName">DestReg_in[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/PC_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_input_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_input_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemWrite_data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_data_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/EX_forward_src_in1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/EX_forward_src_in2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MEM_ALUfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/WB_ALUfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">WB_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WB_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MEM_Memfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_Memfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_Memfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/EXMEM_ALU_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_ALU_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_ALU_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_out</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemRead_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemRead_out</obj_property>
+         <obj_property name="ObjectShortName">MemRead_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemSrc_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemSrc_out</obj_property>
+         <obj_property name="ObjectShortName">MemSrc_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ret_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret_out</obj_property>
+         <obj_property name="ObjectShortName">ret_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/call_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call_out</obj_property>
+         <obj_property name="ObjectShortName">call_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_done" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_done</obj_property>
+         <obj_property name="ObjectShortName">ALU_done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/NON_ALU_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">NON_ALU_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">NON_ALU_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/MemWrite_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/reg_1_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_1_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_1_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/branch_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_out</obj_property>
+         <obj_property name="ObjectShortName">branch_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/N_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">N_out</obj_property>
+         <obj_property name="ObjectShortName">N_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/Z_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Z_out</obj_property>
+         <obj_property name="ObjectShortName">Z_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/V_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">V_out</obj_property>
+         <obj_property name="ObjectShortName">V_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_mux_in1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_mux_in1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_mux_in1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_mux_in2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_mux_in2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_mux_in2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_mux_in2_push" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_mux_in2_push[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_mux_in2_push[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU/ALU_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group375" type="group">
+      <obj_property name="label">Mem_Interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/instr_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instr_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instr_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/data_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">data_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/rd_instr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rd_instr_en</obj_property>
+         <obj_property name="ObjectShortName">rd_instr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/rd_data_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rd_data_en</obj_property>
+         <obj_property name="ObjectShortName">rd_data_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/wr_instr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">wr_instr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_instr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/wr_data_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">wr_data_en</obj_property>
+         <obj_property name="ObjectShortName">wr_data_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/wrt_instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">wrt_instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wrt_instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/wrt_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">wrt_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">wrt_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/MEM_instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/MEM_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Memory_Interface/instr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group397" type="group">
+      <obj_property name="label">Forward</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_addr_MEM" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_addr_MEM[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_addr_MEM[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_write_MEM" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_write_MEM</obj_property>
+         <obj_property name="ObjectShortName">reg_write_MEM</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_addr_WB" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_addr_WB[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_addr_WB[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_write_WB" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_write_WB</obj_property>
+         <obj_property name="ObjectShortName">reg_write_WB</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/MemtoReg_MEM" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemtoReg_MEM</obj_property>
+         <obj_property name="ObjectShortName">MemtoReg_MEM</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/MemtoReg_WB" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemtoReg_WB</obj_property>
+         <obj_property name="ObjectShortName">MemtoReg_WB</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_read1_ID" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read1_ID</obj_property>
+         <obj_property name="ObjectShortName">reg_read1_ID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_read2_ID" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read2_ID</obj_property>
+         <obj_property name="ObjectShortName">reg_read2_ID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_read1_EX" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read1_EX</obj_property>
+         <obj_property name="ObjectShortName">reg_read1_EX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_read2_EX" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read2_EX</obj_property>
+         <obj_property name="ObjectShortName">reg_read2_EX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_addr_ALUin1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_addr_ALUin1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_addr_ALUin1[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/reg_addr_ALUin2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_addr_ALUin2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_addr_ALUin2[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/regfile_addr1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">regfile_addr1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">regfile_addr1[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/regfile_addr2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">regfile_addr2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">regfile_addr2[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/EX_forward_src_in1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/EX_forward_src_in2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/ID_forward_src_in1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_forward_src_in1</obj_property>
+         <obj_property name="ObjectShortName">ID_forward_src_in1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/ID_forward_src_in2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_forward_src_in2</obj_property>
+         <obj_property name="ObjectShortName">ID_forward_src_in2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/en_ALUforward_frm_MEM" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">en_ALUforward_frm_MEM</obj_property>
+         <obj_property name="ObjectShortName">en_ALUforward_frm_MEM</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/en_ALUforward_frm_WB" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">en_ALUforward_frm_WB</obj_property>
+         <obj_property name="ObjectShortName">en_ALUforward_frm_WB</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/DataForward/en_Memforward_frm_WB" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">en_Memforward_frm_WB</obj_property>
+         <obj_property name="ObjectShortName">en_Memforward_frm_WB</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group429" type="group">
+      <obj_property name="label">Interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">enable</obj_property>
+         <obj_property name="ObjectShortName">enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/opcode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode[3:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/S_type_index" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_index[9:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_index[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/S_type_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_value[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/EX_forward_src_in1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/EX_forward_src_in2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/MEM_ALUfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/WB_ALUfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">WB_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WB_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/MEM_Memfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_Memfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_Memfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/S_type_index_mux" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_index_mux[9:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_index_mux[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/S_type_value_mux" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_value_mux[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_value_mux[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/BGTTWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">BGTTWrite</obj_property>
+         <obj_property name="ObjectShortName">BGTTWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/BGATWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">BGATWrite</obj_property>
+         <obj_property name="ObjectShortName">BGATWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/BGWrite_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">BGWrite_addr[9:0]</obj_property>
+         <obj_property name="ObjectShortName">BGWrite_addr[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/BGWrite_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">BGWrite_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">BGWrite_data[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/OAMWrite" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">OAMWrite[3:0]</obj_property>
+         <obj_property name="ObjectShortName">OAMWrite[3:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/OAMWrite_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">OAMWrite_addr[5:0]</obj_property>
+         <obj_property name="ObjectShortName">OAMWrite_addr[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/OAMWrite_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">OAMWrite_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">OAMWrite_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/enable_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">enable_ff</obj_property>
+         <obj_property name="ObjectShortName">enable_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/opcode_ff" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode_ff[3:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode_ff[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/S_type_index_ff" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_index_ff[9:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_index_ff[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/S_type_value_ff" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_value_ff[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_value_ff[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SRM" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SRM[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SRM[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SSL" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SSL[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SSL[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SLD" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SLD[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SLD[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SFT" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SFT[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SFT[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SBT" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SBT[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SBT[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SFA" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SFA[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SFA[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/Interface/SBA" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">SBA[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SBA[3:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group472" type="group">
+      <obj_property name="label">IFU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_src" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_src</obj_property>
+         <obj_property name="ObjectShortName">PC_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_control" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_control[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_control[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_hazard</obj_property>
+         <obj_property name="ObjectShortName">PC_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/pop_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz</obj_property>
+         <obj_property name="ObjectShortName">pop_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/ld_idr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ld_idr</obj_property>
+         <obj_property name="ObjectShortName">ld_idr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/ld_epc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ld_epc</obj_property>
+         <obj_property name="ObjectShortName">ld_epc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/branch_to_keyboard_ISR" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_to_keyboard_ISR</obj_property>
+         <obj_property name="ObjectShortName">branch_to_keyboard_ISR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/branch_to_stackoverflow_ISR" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_to_stackoverflow_ISR</obj_property>
+         <obj_property name="ObjectShortName">branch_to_stackoverflow_ISR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/branch_to_gametick_ISR" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_to_gametick_ISR</obj_property>
+         <obj_property name="ObjectShortName">branch_to_gametick_ISR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/idr_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">idr_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">idr_data[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/EPC" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EPC[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EPC[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/keyboard_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">keyboard_hazard</obj_property>
+         <obj_property name="ObjectShortName">keyboard_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/game_tick_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">game_tick_hazard</obj_property>
+         <obj_property name="ObjectShortName">game_tick_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/stack_overflow_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_overflow_hazard</obj_property>
+         <obj_property name="ObjectShortName">stack_overflow_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/jreg_noRead" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg_noRead</obj_property>
+         <obj_property name="ObjectShortName">jreg_noRead</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/instruction_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instruction_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/keep_flags" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">keep_flags</obj_property>
+         <obj_property name="ObjectShortName">keep_flags</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_IM" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_IM[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_IM[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/instr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">instr_en</obj_property>
+         <obj_property name="ObjectShortName">instr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/instruction_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instruction_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/interrupt_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">interrupt_hazard</obj_property>
+         <obj_property name="ObjectShortName">interrupt_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/cond_jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">cond_jreg</obj_property>
+         <obj_property name="ObjectShortName">cond_jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/interrupt_branch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">interrupt_branch</obj_property>
+         <obj_property name="ObjectShortName">interrupt_branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_plus_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_plus_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_plus_1[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_curr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_curr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_curr[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU/PC_update" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_update[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_update[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group501" type="group">
+      <obj_property name="label">PC_control</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/PC_update" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_update[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_update[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/branch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch</obj_property>
+         <obj_property name="ObjectShortName">branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/branch_cond" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_cond[1:0]</obj_property>
+         <obj_property name="ObjectShortName">branch_cond[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/call" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call</obj_property>
+         <obj_property name="ObjectShortName">call</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg</obj_property>
+         <obj_property name="ObjectShortName">jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/J_type_imm" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">J_type_imm[25:0]</obj_property>
+         <obj_property name="ObjectShortName">J_type_imm[25:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/PC_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_in[5:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_in[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/reg_1_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_1_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_1_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/ALU_result" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_result[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_result[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/flags" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">flags[2:0]</obj_property>
+         <obj_property name="ObjectShortName">flags[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/ret" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret</obj_property>
+         <obj_property name="ObjectShortName">ret</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/PC_stack_pointer" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_stack_pointer[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_stack_pointer[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/branch_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_en</obj_property>
+         <obj_property name="ObjectShortName">branch_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_branch_hazard_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_branch_hazard_ff</obj_property>
+         <obj_property name="ObjectShortName">clr_branch_hazard_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_call_hazard_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_call_hazard_ff</obj_property>
+         <obj_property name="ObjectShortName">clr_call_hazard_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_ret_hazard_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_ret_hazard_ff</obj_property>
+         <obj_property name="ObjectShortName">clr_ret_hazard_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_jreg_hazard_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_jreg_hazard_ff</obj_property>
+         <obj_property name="ObjectShortName">clr_jreg_hazard_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/PC_update" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_update[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_update[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/PC_src" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_src</obj_property>
+         <obj_property name="ObjectShortName">PC_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_branch_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_branch_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_branch_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_call_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_call_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_call_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_ret_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_ret_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_ret_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_jreg_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_jreg_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_jreg_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/clr_branch_hazard_ff_2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_branch_hazard_ff_2</obj_property>
+         <obj_property name="ObjectShortName">clr_branch_hazard_ff_2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/EQ" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EQ[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EQ[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/NE" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">NE[1:0]</obj_property>
+         <obj_property name="ObjectShortName">NE[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl/LT" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">LT[1:0]</obj_property>
+         <obj_property name="ObjectShortName">LT[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group540" type="group">
+      <obj_property name="label">CPU_control</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/opcode_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode_in[5:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode_in[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/call" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call</obj_property>
+         <obj_property name="ObjectShortName">call</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/ret" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret</obj_property>
+         <obj_property name="ObjectShortName">ret</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/branch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch</obj_property>
+         <obj_property name="ObjectShortName">branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/branch_cond" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_cond[1:0]</obj_property>
+         <obj_property name="ObjectShortName">branch_cond[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/push" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">push</obj_property>
+         <obj_property name="ObjectShortName">push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/pop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop</obj_property>
+         <obj_property name="ObjectShortName">pop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg</obj_property>
+         <obj_property name="ObjectShortName">jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/reg_2_sel" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_2_sel</obj_property>
+         <obj_property name="ObjectShortName">reg_2_sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/mem_to_reg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">mem_to_reg</obj_property>
+         <obj_property name="ObjectShortName">mem_to_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/mem_src" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">mem_src</obj_property>
+         <obj_property name="ObjectShortName">mem_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/load_imm" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">load_imm</obj_property>
+         <obj_property name="ObjectShortName">load_imm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/sign_ext_sel" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">sign_ext_sel</obj_property>
+         <obj_property name="ObjectShortName">sign_ext_sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/alu_src" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">alu_src[1:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_src[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite</obj_property>
+         <obj_property name="ObjectShortName">RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/MemWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite</obj_property>
+         <obj_property name="ObjectShortName">MemWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/OAMWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">OAMWrite</obj_property>
+         <obj_property name="ObjectShortName">OAMWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/MemRead" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemRead</obj_property>
+         <obj_property name="ObjectShortName">MemRead</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl/opcode_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group517" type="group">
+      <obj_property name="label">IDEX</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/branch_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_in</obj_property>
+         <obj_property name="ObjectShortName">branch_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/call_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call_in</obj_property>
+         <obj_property name="ObjectShortName">call_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/ret_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret_in</obj_property>
+         <obj_property name="ObjectShortName">ret_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/jreg_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg_in</obj_property>
+         <obj_property name="ObjectShortName">jreg_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemToReg_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemToReg_in</obj_property>
+         <obj_property name="ObjectShortName">MemToReg_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemSrc_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemSrc_in</obj_property>
+         <obj_property name="ObjectShortName">MemSrc_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/load_imm_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">load_imm_in</obj_property>
+         <obj_property name="ObjectShortName">load_imm_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/RegWrite_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_in</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemWrite_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_in</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemRead_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemRead_in</obj_property>
+         <obj_property name="ObjectShortName">MemRead_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/push_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">push_in</obj_property>
+         <obj_property name="ObjectShortName">push_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/PC_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_hazard</obj_property>
+         <obj_property name="ObjectShortName">PC_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/pop_haz_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz_in</obj_property>
+         <obj_property name="ObjectShortName">pop_haz_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/branch_cond_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_cond_in[1:0]</obj_property>
+         <obj_property name="ObjectShortName">branch_cond_in[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/alu_src_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">alu_src_in[1:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_src_in[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/DestReg_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">DestReg_in[4:0]</obj_property>
+         <obj_property name="ObjectShortName">DestReg_in[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/opcode_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode_in[4:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode_in[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/ALU_input_1_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_1_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_1_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/ALU_input_2_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_2_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_2_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/PC_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemWrite_data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_data_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/reg_read_addr1_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read_addr1_in[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_read_addr1_in[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/reg_read_addr2_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read_addr2_in[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_read_addr2_in[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/Read_Reg_1_en_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en_in</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/Read_Reg_2_en_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en_in</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/clr_ret_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_ret_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_ret_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/branch_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_out</obj_property>
+         <obj_property name="ObjectShortName">branch_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/call_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call_out</obj_property>
+         <obj_property name="ObjectShortName">call_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/ret_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret_out</obj_property>
+         <obj_property name="ObjectShortName">ret_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/jreg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg_out</obj_property>
+         <obj_property name="ObjectShortName">jreg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemSrc_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemSrc_out</obj_property>
+         <obj_property name="ObjectShortName">MemSrc_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/load_imm_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">load_imm_out</obj_property>
+         <obj_property name="ObjectShortName">load_imm_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_out</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemRead_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MemRead_out</obj_property>
+         <obj_property name="ObjectShortName">MemRead_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/push_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">push_out</obj_property>
+         <obj_property name="ObjectShortName">push_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/branch_cond_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">branch_cond_out[1:0]</obj_property>
+         <obj_property name="ObjectShortName">branch_cond_out[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/alu_src_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">alu_src_out[1:0]</obj_property>
+         <obj_property name="ObjectShortName">alu_src_out[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/opcode_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/ALU_input_1_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_1_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_1_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/ALU_input_2_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">ALU_input_2_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">ALU_input_2_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/PC_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/MemWrite_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/reg_read_addr1_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read_addr1_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_read_addr1_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/reg_read_addr2_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">reg_read_addr2_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_read_addr2_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/Read_Reg_1_en_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en_out</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/Read_Reg_2_en_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en_out</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX/pop_haz_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz_out</obj_property>
+         <obj_property name="ObjectShortName">pop_haz_out</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group578" type="group">
+      <obj_property name="label">CPU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/clk_100mhz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk_100mhz</obj_property>
+         <obj_property name="ObjectShortName">clk_100mhz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/rst_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst_ff</obj_property>
+         <obj_property name="ObjectShortName">rst_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/keyboard_intr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">keyboard_intr</obj_property>
+         <obj_property name="ObjectShortName">keyboard_intr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/game_tick_intr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">game_tick_intr</obj_property>
+         <obj_property name="ObjectShortName">game_tick_intr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/stack_overflow_intr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">stack_overflow_intr</obj_property>
+         <obj_property name="ObjectShortName">stack_overflow_intr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/keyboard_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">keyboard_data[7:0]</obj_property>
+         <obj_property name="ObjectShortName">keyboard_data[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MemAddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemAddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemAddr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/NON_ALU" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">NON_ALU[31:0]</obj_property>
+         <obj_property name="ObjectShortName">NON_ALU[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PPU_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PPU_en</obj_property>
+         <obj_property name="ObjectShortName">PPU_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/opcode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">opcode[5:0]</obj_property>
+         <obj_property name="ObjectShortName">opcode[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/S_type_index" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_index[9:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_index[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/S_type_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">S_type_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">S_type_value[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EX_forward_src_in1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in1[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EX_forward_src_in2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="ObjectShortName">EX_forward_src_in2[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_ALUfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/WB_ALUfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">WB_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WB_ALUfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_Memfrwd_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_Memfrwd_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_Memfrwd_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU_PC_IM" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IFU_PC_IM[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IFU_PC_IM[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU_PC_curr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IFU_PC_curr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IFU_PC_curr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU_PC_plus_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IFU_PC_plus_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IFU_PC_plus_1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU_instruction_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IFU_instruction_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IFU_instruction_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU_instr_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IFU_instr_en</obj_property>
+         <obj_property name="ObjectShortName">IFU_instr_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFU_keep_flags" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IFU_keep_flags</obj_property>
+         <obj_property name="ObjectShortName">IFU_keep_flags</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID_PC_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IFID_PC_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IFID_PC_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID_instruction_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IFID_instruction_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IFID_instruction_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID_pop_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IFID_pop_haz</obj_property>
+         <obj_property name="ObjectShortName">IFID_pop_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID_keep_flags" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IFID_keep_flags</obj_property>
+         <obj_property name="ObjectShortName">IFID_keep_flags</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_call" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_call</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_call</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_ret" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_ret</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_ret</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_branch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_branch</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_jreg</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_branch_cond" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_branch_cond[1:0]</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_branch_cond[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_push" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_push</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_pop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_pop</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_pop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_reg_2_sel" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_reg_2_sel</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_reg_2_sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_mem_to_reg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_mem_to_reg</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_mem_to_reg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_mem_src" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_mem_src</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_mem_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_load_imm" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_load_imm</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_load_imm</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_sign_ext_sel" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_sign_ext_sel</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_sign_ext_sel</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_alu_src" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_alu_src[1:0]</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_alu_src[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_RegWrite</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_MemWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_MemWrite</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_MemWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_OAMWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_OAMWrite</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_OAMWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_MemRead" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_MemRead</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_MemRead</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/CPU_cntrl_opcode_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">CPU_cntrl_opcode_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">CPU_cntrl_opcode_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_hazard</obj_property>
+         <obj_property name="ObjectShortName">PC_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/pop_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz</obj_property>
+         <obj_property name="ObjectShortName">pop_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/clr_branch_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_branch_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_branch_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/clr_call_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_call_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_call_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/clr_ret_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_ret_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_ret_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/clr_jreg_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clr_jreg_hazard</obj_property>
+         <obj_property name="ObjectShortName">clr_jreg_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl_PC_update" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_cntrl_PC_update[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_cntrl_PC_update[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_cntrl_PC_src" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_cntrl_PC_src</obj_property>
+         <obj_property name="ObjectShortName">PC_cntrl_PC_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Flags_in[2:0]</obj_property>
+         <obj_property name="ObjectShortName">Flags_in[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#00ff00</obj_property>
+         <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_in[2]" type="logic" db_ref_id="1">
+            <obj_property name="ElementShortName">[2]</obj_property>
+            <obj_property name="ObjectShortName">Flags_in[2]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_in[1]" type="logic" db_ref_id="1">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[1]</obj_property>
+            <obj_property name="ObjectShortName">Flags_in[1]</obj_property>
+            <obj_property name="label">flag 1</obj_property>
+         </wvobject>
+         <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_in[0]" type="logic" db_ref_id="1">
+            <obj_property name="ElementShortName">[0]</obj_property>
+            <obj_property name="ObjectShortName">Flags_in[0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_reg_flags" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Flags_reg_flags[2:0]</obj_property>
+         <obj_property name="ObjectShortName">Flags_reg_flags[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="CustomSignalColor">#ff0000</obj_property>
+         <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_reg_flags[2]" type="logic" db_ref_id="1">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[2]</obj_property>
+            <obj_property name="ObjectShortName">Flags_reg_flags[2]</obj_property>
+            <obj_property name="label">ZERO</obj_property>
+         </wvobject>
+         <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_reg_flags[1]" type="logic" db_ref_id="1">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[1]</obj_property>
+            <obj_property name="ObjectShortName">Flags_reg_flags[1]</obj_property>
+            <obj_property name="label">OVERFLOW</obj_property>
+         </wvobject>
+         <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_reg_flags[0]" type="logic" db_ref_id="1">
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="ElementShortName">[0]</obj_property>
+            <obj_property name="ObjectShortName">Flags_reg_flags[0]</obj_property>
+            <obj_property name="label">NEG</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Flags_reg_flags_hold" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Flags_reg_flags_hold[2:0]</obj_property>
+         <obj_property name="ObjectShortName">Flags_reg_flags_hold[2:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_opcode" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_opcode[5:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_opcode[5:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_DestReg" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_DestReg[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_DestReg[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_Read_Reg_1_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_Read_Reg_1_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_Read_Reg_1_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_Read_Reg_2_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_Read_Reg_2_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_Read_Reg_2_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_J_type_imm" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_J_type_imm[25:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_J_type_imm[25:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_PC_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_PC_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_PC_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_ALU_input_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_ALU_input_1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_ALU_input_1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_ALU_input_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_ALU_input_2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_ALU_input_2[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_MemWrite_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_MemWrite_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_MemWrite_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">IDU_Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">IDU_Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_S_type_index" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_S_type_index[9:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_S_type_index[9:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDU_S_type_value" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDU_S_type_value[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDU_S_type_value[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_branch_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_branch_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_branch_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_branch_cond_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_branch_cond_out[1:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_branch_cond_out[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_call_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_call_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_call_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_ret_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_ret_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_ret_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_jreg</obj_property>
+         <obj_property name="ObjectShortName">IDEX_jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_pop_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_pop_haz</obj_property>
+         <obj_property name="ObjectShortName">IDEX_pop_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_MemSrc_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_MemSrc_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_MemSrc_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_load_imm_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_load_imm_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_load_imm_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_MemWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_MemWrite_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_MemWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_MemRead_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_MemRead_out</obj_property>
+         <obj_property name="ObjectShortName">IDEX_MemRead_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">IDEX_Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">IDEX_Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_opcode_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_opcode_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_opcode_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_reg_read_addr1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_reg_read_addr1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_reg_read_addr1[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_reg_read_addr2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_reg_read_addr2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_reg_read_addr2[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_ALU_input_1_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_ALU_input_1_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_ALU_input_1_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_ALU_input_2_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_ALU_input_2_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_ALU_input_2_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_PC_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_PC_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_PC_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_MemWrite_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_push" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_push</obj_property>
+         <obj_property name="ObjectShortName">IDEX_push</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IDEX_alu_src_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_alu_src_out[1:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_alu_src_out[1:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_MemWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_MemWrite_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_MemWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_MemRead_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_MemRead_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_MemRead_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_MemSrc_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_MemSrc_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_MemSrc_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_branch_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_branch_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_branch_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_ret_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_ret_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_ret_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_call_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_call_out</obj_property>
+         <obj_property name="ObjectShortName">EXU_call_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">EXU_DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_ALU_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_ALU_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXU_ALU_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_ALU_mux_in1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_ALU_mux_in1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXU_ALU_mux_in1[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_NON_ALU_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_NON_ALU_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXU_NON_ALU_addr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_MemWrite_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXU_MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/N_flag" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">N_flag</obj_property>
+         <obj_property name="ObjectShortName">N_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Z_flag" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Z_flag</obj_property>
+         <obj_property name="ObjectShortName">Z_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/V_flag" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">V_flag</obj_property>
+         <obj_property name="ObjectShortName">V_flag</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXU_ALU_done" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXU_ALU_done</obj_property>
+         <obj_property name="ObjectShortName">EXU_ALU_done</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_MemWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_MemWrite_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_MemWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_MemRead_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_MemRead_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_MemRead_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_ret_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_ret_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_ret_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_call_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_call_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_call_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_MemSrc_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_MemSrc_out</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_MemSrc_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_ALU_addr_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_ALU_addr_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_ALU_addr_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_NON_ALU_addr_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_NON_ALU_addr_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_NON_ALU_addr_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/EXMEM_MemWrite_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_MemWrite_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">MEM_RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">MEM_MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_ret_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_ret_out</obj_property>
+         <obj_property name="ObjectShortName">MEM_ret_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_ALU_result_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_ALU_result_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_ALU_result_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_MemRead_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_MemRead_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_MemRead_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_MemAddr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_MemAddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_MemAddr[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_MemRead" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_MemRead</obj_property>
+         <obj_property name="ObjectShortName">MEM_MemRead</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_MemWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_MemWrite</obj_property>
+         <obj_property name="ObjectShortName">MEM_MemWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEM_MemWrite_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEM_MemWrite_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEM_MemWrite_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MemRead_data_frm_MemCtrl" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MemRead_data_frm_MemCtrl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MemRead_data_frm_MemCtrl[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/instr_frm_MemCtrl" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instr_frm_MemCtrl[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instr_frm_MemCtrl[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEMWB_RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEMWB_RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">MEMWB_RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEMWB_MemToReg_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEMWB_MemToReg_out</obj_property>
+         <obj_property name="ObjectShortName">MEMWB_MemToReg_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEMWB_DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEMWB_DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMWB_DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEMWB_ALU_result_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEMWB_ALU_result_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMWB_ALU_result_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/MEMWB_MemRead_data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">MEMWB_MemRead_data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MEMWB_MemRead_data_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/WBU_RegWrite_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">WBU_RegWrite_out</obj_property>
+         <obj_property name="ObjectShortName">WBU_RegWrite_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/WBU_DestReg_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">WBU_DestReg_out[4:0]</obj_property>
+         <obj_property name="ObjectShortName">WBU_DestReg_out[4:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/WBU_RegWrite_data" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">WBU_RegWrite_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">WBU_RegWrite_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/ID_forward_src_in1" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_forward_src_in1</obj_property>
+         <obj_property name="ObjectShortName">ID_forward_src_in1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/ID_forward_src_in2" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_forward_src_in2</obj_property>
+         <obj_property name="ObjectShortName">ID_forward_src_in2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_keyboard_data_trap" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_keyboard_data_trap[7:0]</obj_property>
+         <obj_property name="ObjectShortName">TH_keyboard_data_trap[7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_ld_idr" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_ld_idr</obj_property>
+         <obj_property name="ObjectShortName">TH_ld_idr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_ld_epc" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_ld_epc</obj_property>
+         <obj_property name="ObjectShortName">TH_ld_epc</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_EPC" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_EPC[31:0]</obj_property>
+         <obj_property name="ObjectShortName">TH_EPC[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_keyboard_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_keyboard_hazard</obj_property>
+         <obj_property name="ObjectShortName">TH_keyboard_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_branch_to_keyboard_ISR" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_branch_to_keyboard_ISR</obj_property>
+         <obj_property name="ObjectShortName">TH_branch_to_keyboard_ISR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_stack_overflow_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_stack_overflow_hazard</obj_property>
+         <obj_property name="ObjectShortName">TH_stack_overflow_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_game_tick_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_game_tick_hazard</obj_property>
+         <obj_property name="ObjectShortName">TH_game_tick_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_branch_to_stackoverflow_ISR" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_branch_to_stackoverflow_ISR</obj_property>
+         <obj_property name="ObjectShortName">TH_branch_to_stackoverflow_ISR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/TH_branch_to_gametick_ISR" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">TH_branch_to_gametick_ISR</obj_property>
+         <obj_property name="ObjectShortName">TH_branch_to_gametick_ISR</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/PC_branch_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_branch_ff</obj_property>
+         <obj_property name="ObjectShortName">PC_branch_ff</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/Tronsistor32_tb/tronsistor/hsync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hsync</obj_property>
+      <obj_property name="ObjectShortName">hsync</obj_property>
+   </wvobject>
+   <wvobject fp_name="group603" type="group">
+      <obj_property name="label">IFID</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/PC_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_hazard</obj_property>
+         <obj_property name="ObjectShortName">PC_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/pop_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz</obj_property>
+         <obj_property name="ObjectShortName">pop_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/keep_flags_in" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">keep_flags_in</obj_property>
+         <obj_property name="ObjectShortName">keep_flags_in</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/instruction_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instruction_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/PC_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/PC_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">PC_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/instruction_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">instruction_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">instruction_out[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/pop_haz_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz_out</obj_property>
+         <obj_property name="ObjectShortName">pop_haz_out</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/IFID/keep_flags_out" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">keep_flags_out</obj_property>
+         <obj_property name="ObjectShortName">keep_flags_out</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group595" type="group">
+      <obj_property name="label">OAM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/rclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rclk</obj_property>
+         <obj_property name="ObjectShortName">rclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/wclk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">wclk</obj_property>
+         <obj_property name="ObjectShortName">wclk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/r_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">r_addr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">r_addr[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/r_enable" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">r_enable</obj_property>
+         <obj_property name="ObjectShortName">r_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/w_addr" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_addr[5:0]</obj_property>
+         <obj_property name="ObjectShortName">w_addr[5:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/w_enable" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">w_enable[3:0]</obj_property>
+         <obj_property name="ObjectShortName">w_enable[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/data_in" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/PPU/oam/data_out" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">data_out[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group623" type="group">
+      <obj_property name="label">Hazard_Detect</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/clk" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/rst" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">rst</obj_property>
+         <obj_property name="ObjectShortName">rst</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/call" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">call</obj_property>
+         <obj_property name="ObjectShortName">call</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/ret" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ret</obj_property>
+         <obj_property name="ObjectShortName">ret</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/branch" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">branch</obj_property>
+         <obj_property name="ObjectShortName">branch</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/PC_update" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_update</obj_property>
+         <obj_property name="ObjectShortName">PC_update</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/Read_Reg_1" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/Read_Reg_2" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2[4:0]</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/Read_Reg_1_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_1_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_1_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/Read_Reg_2_en" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">Read_Reg_2_en</obj_property>
+         <obj_property name="ObjectShortName">Read_Reg_2_en</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/IDEX_reg_rd" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_reg_rd[4:0]</obj_property>
+         <obj_property name="ObjectShortName">IDEX_reg_rd[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/IDEX_RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">IDEX_RegWrite</obj_property>
+         <obj_property name="ObjectShortName">IDEX_RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/EXMEM_RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">EXMEM_RegWrite</obj_property>
+         <obj_property name="ObjectShortName">EXMEM_RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/MEMWB_RegWrite" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">MEMWB_RegWrite</obj_property>
+         <obj_property name="ObjectShortName">MEMWB_RegWrite</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/ID_MemToReg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">ID_MemToReg</obj_property>
+         <obj_property name="ObjectShortName">ID_MemToReg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/pop" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop</obj_property>
+         <obj_property name="ObjectShortName">pop</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/PC_src" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_src</obj_property>
+         <obj_property name="ObjectShortName">PC_src</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/PC_branch_ff" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_branch_ff</obj_property>
+         <obj_property name="ObjectShortName">PC_branch_ff</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/jreg" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">jreg</obj_property>
+         <obj_property name="ObjectShortName">jreg</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/keyboard_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">keyboard_hazard</obj_property>
+         <obj_property name="ObjectShortName">keyboard_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/PC_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_hazard</obj_property>
+         <obj_property name="ObjectShortName">PC_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/pop_haz" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_haz</obj_property>
+         <obj_property name="ObjectShortName">pop_haz</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/data_hazard" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">data_hazard</obj_property>
+         <obj_property name="ObjectShortName">data_hazard</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/pop_square" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">pop_square</obj_property>
+         <obj_property name="ObjectShortName">pop_square</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/POPPER" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">POPPER</obj_property>
+         <obj_property name="ObjectShortName">POPPER</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Tronsistor32_tb/tronsistor/CPU/Hazard_Detect/PC_hazard_initial" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">PC_hazard_initial</obj_property>
+         <obj_property name="ObjectShortName">PC_hazard_initial</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

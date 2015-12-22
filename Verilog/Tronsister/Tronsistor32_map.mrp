@@ -1,0 +1,277 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Mapping Report File for Design 'Tronsistor32'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc5vlx110t-ff1136-1 -w -logic_opt off -ol
+high -t 1 -register_duplication off -global_opt off -mt off -cm area -ir off -pr
+off -lc off -power off -o Tronsistor32_map.ncd Tronsistor32.ngd Tronsistor32.pcf
+ 
+Target Device  : xc5vlx110t
+Target Package : ff1136
+Target Speed   : -1
+Mapper Version : virtex5 -- $Revision: 1.55 $
+Mapped Date    : Sun Dec 20 12:13:58 2015
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    3
+Slice Logic Utilization:
+  Number of Slice Registers:                 2,239 out of  69,120    3%
+    Number used as Flip Flops:               2,227
+    Number used as Latches:                     11
+    Number used as Latch-thrus:                  1
+  Number of Slice LUTs:                      2,985 out of  69,120    4%
+    Number used as logic:                    2,983 out of  69,120    4%
+      Number using O6 output only:           2,689
+      Number using O5 output only:              19
+      Number using O5 and O6:                  275
+    Number used as Memory:                       1 out of  17,920    1%
+      Number used as Shift Register:             1
+        Number using O6 output only:             1
+    Number used as exclusive route-thru:         1
+  Number of route-thrus:                        25
+    Number using O6 output only:                20
+    Number using O5 output only:                 5
+
+Slice Logic Distribution:
+  Number of occupied Slices:                 1,209 out of  17,280    6%
+  Number of LUT Flip Flop pairs used:        3,890
+    Number with an unused Flip Flop:         1,651 out of   3,890   42%
+    Number with an unused LUT:                 905 out of   3,890   23%
+    Number of fully used LUT-FF pairs:       1,334 out of   3,890   34%
+    Number of unique control sets:              96
+    Number of slice register sites lost
+      to control set restrictions:              73 out of  69,120    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  OVERMAPPING of BRAM resources should be ignored if the design is
+  over-mapped for a non-BRAM resource or if placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        34 out of     640    5%
+    Number of LOCed IOBs:                       34 out of      34  100%
+
+Specific Feature Utilization:
+  Number of BlockRAM/FIFO:                      10 out of     148    6%
+    Number using BlockRAM only:                 10
+    Total primitives used:
+      Number of 36k BlockRAM used:               7
+      Number of 18k BlockRAM used:               4
+    Total Memory used (KB):                    324 out of   5,328    6%
+  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
+    Number used as BUFGs:                        2
+  Number of DCM_ADVs:                            1 out of      12    8%
+
+Average Fanout of Non-Clock Nets:                4.53
+
+Peak Memory Usage:  747 MB
+Total REAL time to MAP completion:  29 secs 
+Total CPU time to MAP completion:   22 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   SPART/spart0/TransmitRecieve0/tx_done is sourced by a combinatorial pin. This
+   is not good design practice. Use the CE pin to control the loading of data
+   into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net CPU/EXU/ALU1/V_not0001 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net SPART/driver0/data_not0001
+   is sourced by a combinatorial pin. This is not good design practice. Use the
+   CE pin to control the loading of data into the flip-flop.
+
+Section 3 - Informational
+-------------------------
+INFO:LIT:243 - Logical network CPU/MEM_MemAddr<30> has no load.
+INFO:LIT:395 - The above info message is repeated 103 more times for the
+   following (max. 5 shown):
+   CPU/MEM_MemAddr<31>,
+   data_out<31>,
+   data_out<30>,
+   data_out<29>,
+   data_out<28>
+   To see the details of these info messages, please use the -detail switch.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
+   1.050 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) removed
+  17 block(s) optimized away
+   8 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "PPU/bg_at/tbl/doutb<7>" is sourceless and has been removed.
+The signal "PPU/bg_at/tbl/doutb<6>" is sourceless and has been removed.
+The signal "PPU/bg_at/tbl/doutb<5>" is sourceless and has been removed.
+The signal "PPU/bg_at/tbl/doutb<4>" is sourceless and has been removed.
+The signal "PPU/bg_at/tbl/doutb<3>" is sourceless and has been removed.
+The signal "PPU/bg_at/tbl/doutb<2>" is sourceless and has been removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "CPU/MEM_MemAddr<30>" is unused and has been removed.
+ Unused block "CPU/MEMU/MemAddr_to_MemCtrl<30>1" (ROM) removed.
+The signal "CPU/MEM_MemAddr<31>" is unused and has been removed.
+ Unused block "CPU/MEMU/MemAddr_to_MemCtrl<31>1" (ROM) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		CPU/Memory_Interface/Memory/XST_GND
+GND 		PPU/bg_at/tbl/XST_GND
+VCC 		PPU/bg_at/tbl/XST_VCC
+GND 		PPU/bg_pt/tbl/XST_GND
+VCC 		PPU/bg_pt/tbl/XST_VCC
+GND 		PPU/bg_tt/tbl/XST_GND
+VCC 		PPU/bg_tt/tbl/XST_VCC
+GND 		PPU/color_pal/pal/XST_GND
+VCC 		PPU/color_pal/pal/XST_VCC
+GND 		PPU/oam/oam0/XST_GND
+VCC 		PPU/oam/oam0/XST_VCC
+GND 		PPU/oamb/buffa/XST_GND
+VCC 		PPU/oamb/buffa/XST_VCC
+GND 		PPU/sprite_pt/tbl/XST_GND
+VCC 		PPU/sprite_pt/tbl/XST_VCC
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| D<0>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<1>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<2>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<3>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<4>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<5>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<6>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<7>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<8>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<9>                               | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<10>                              | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| D<11>                              | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| GPIO_LED_0                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_1                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_2                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_3                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_4                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_5                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_6                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| GPIO_LED_7                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| blank                              | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| br_cfg<0>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| br_cfg<1>                          | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| clk                                | IOB              | OUTPUT    | LVCMOS33             |       | 24       | FAST |              |          |          |
+| clk_100mhz                         | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| clk_n                              | IOB              | OUTPUT    | LVCMOS33             |       | 24       | FAST |              |          |          |
+| dvi_rst                            | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| hsync                              | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
+| keyboard_serial_in                 | IOB              | INPUT     | LVCMOS33             |       |          |      |              |          |          |
+| keyboard_serial_out                | IOB              | OUTPUT    | LVCMOS33             |       | 12       | SLOW |              |          |          |
+| rst                                | IOB              | INPUT     | LVCMOS18             |       |          |      |              |          |          |
+| scl_tri                            | IOB              | OUTPUT    | LVCMOS18             |       | 6        | SLOW |              |          |          |
+| sda_tri                            | IOB              | OUTPUT    | LVCMOS18             |       | 6        | SLOW |              |          |          |
+| vsync                              | IOB              | OUTPUT    | LVDCI_33             |       |          |      |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Command Line Tools User Guide "TRACE" chapter.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.

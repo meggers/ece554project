@@ -1,0 +1,458 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/ProgramData/App-V/2191B702-5279-4048-91BA-BCF8F2A20B49/21710E5E-1DEB-4C76-9578-9609978C17F5/Root/examples
+vALU
+Z0 DXx6 sv_std 3 std 0 22 <EOTafDcUY:cQeO^ICn]m3
+Z1 V`JN@9S9cnhjKRR_L]QIcM3
+r1
+!s85 0
+31
+!i10b 1
+!s100 V?R7HZBg9B4Ih;MH^aPzM2
+I:Zhz>J2TSezQ7VkAHW0TT0
+!s105 ALU_v_unit
+S1
+Z2 dI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog
+w1428442978
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/ALU.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/ALU.v
+L0 1
+Z3 OE;L;10.3c;59
+!s108 1444175464.961000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/ALU.v|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/ALU.v|
+!i113 0
+Z4 o-work work -sv -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+n@a@l@u
+vALU_tb
+R0
+Z5 !s110 1444175467
+!i10b 1
+!s100 5P5Cz6MnSaGg69>Gi_2gh2
+I]CWcY5S:IbURm`hX5[O;63
+R1
+!s105 ALU_tb_sv_unit
+S1
+R2
+w1426825242
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/ALU_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/ALU_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175467.612000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/ALU_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/ALU_tb.sv|
+!i113 0
+R4
+n@a@l@u_tb
+vBasicOp_tb
+R0
+R5
+!i10b 1
+!s100 TWd7NoG`Rd6@T[MZzn5<A0
+I;?WkD_@I=KH]Ql]M@3^Lg2
+R1
+!s105 BasicOp_tb_sv_unit
+S1
+R2
+w1430322472
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/BasicOp_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/BasicOp_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175467.909000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/BasicOp_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/BasicOp_tb.sv|
+!i113 0
+R4
+n@basic@op_tb
+vBranch_tb
+R0
+Z6 !s110 1444175468
+!i10b 1
+!s100 FXMGFn]hgfZOMg:?YJh[m3
+IWB:OAaP;5QlY<gdGY8[b]1
+R1
+!s105 Branch_tb_sv_unit
+S1
+R2
+w1430419610
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Branch_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Branch_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175468.180000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Branch_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Branch_tb.sv|
+!i113 0
+R4
+n@branch_tb
+vcache
+Z7 !s110 1444175466
+!i10b 1
+!s100 jjKKJ>[9GJ9:DhX?1R6MZ0
+Id6B_oHFZz?f1LMM5S_;110
+R1
+R2
+w1430196542
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Icache.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Icache.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175466.788000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Icache.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Icache.v|
+!i113 0
+Z8 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+vCntrl_Mem_SM
+R0
+!s110 1444175465
+!i10b 1
+!s100 DUf9aegeG4:D`iTRP0S8<1
+I3TWjHKTa:madF6^e^;a980
+R1
+!s105 Cntrl_Mem_SM_sv_unit
+S1
+R2
+w1430451818
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Cntrl_Mem_SM.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Cntrl_Mem_SM.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175465.230000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Cntrl_Mem_SM.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Cntrl_Mem_SM.sv|
+!i113 0
+R4
+n@cntrl_@mem_@s@m
+vcontrol
+R0
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 m?3ZSL>W6`lieT59Y?c6J1
+InFSbgflba<FPC:J]EAWYm3
+!s105 control_v_unit
+S1
+R2
+w1444175462
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/control.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/control.v
+L0 1
+R3
+!s108 1444175465.518000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/control.v|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/control.v|
+!i113 0
+R4
+vControl_tb
+R0
+R6
+!i10b 1
+!s100 CZ4fhcSE@HoD=^:kL2BDA1
+IF9]zBnGfn^I3XIKKBOL:^1
+R1
+!s105 Control_tb_sv_unit
+S1
+R2
+w1430420290
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Control_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Control_tb.sv
+L0 8
+R3
+r1
+!s85 0
+31
+!s108 1444175468.477000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Control_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Control_tb.sv|
+!i113 0
+R4
+n@control_tb
+vDataDependence_tb
+R0
+R6
+!i10b 1
+!s100 g?eXlNRQ@e2nScDYWe<cV3
+I_QCP=B;Ld=F9CK^GeFNCF0
+R1
+!s105 DataDependence_tb_sv_unit
+S1
+R2
+w1430421872
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/DataDependence_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/DataDependence_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175468.770000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/DataDependence_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/DataDependence_tb.sv|
+!i113 0
+R4
+n@data@dependence_tb
+vdatapath
+R0
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 J^6:6;o>Y:b5_VFjD>>2J3
+Ih6iE@gePgzaJK50`hJ]ZF2
+!s105 datapath_sv_unit
+S1
+R2
+w1430795018
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/datapath.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/datapath.sv
+L0 6
+R3
+!s108 1444175466.220000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/datapath.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/datapath.sv|
+!i113 0
+R4
+vDM
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 Jn_:oJCfE0edd9_@?bmV00
+IFN0N2zH;Z;1fgRT9i4D7?1
+R2
+w1389155038
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/data_mem.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/data_mem.v
+L0 1
+R3
+!s108 1444175465.840000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/data_mem.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/data_mem.v|
+!i113 0
+R8
+n@d@m
+vFull_processor
+R0
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 FmLJ=XINMi_QRM]<zUoZn1
+I<YGDWCVk9bdl@7>4KMP=z2
+!s105 Full_processor_v_unit
+S1
+R2
+Z9 w1444175189
+Z10 8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Full_processor.v
+Z11 FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Full_processor.v
+L0 10
+R3
+Z12 !s108 1444175466.474000
+Z13 !s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Full_processor.v|
+Z14 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Full_processor.v|
+!i113 0
+R4
+n@full_processor
+vFull_processor_tb
+R0
+!s110 1444175469
+!i10b 1
+!s100 ]bfCd44<0o6<TclHl2DlH1
+Im5n6k?<3oE34<8cIXnAnI0
+R1
+!s105 Full_processor_tb_sv_unit
+S1
+R2
+w1428639042
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Full_processor_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Full_processor_tb.sv
+L0 18
+R3
+r1
+!s85 0
+31
+!s108 1444175469.053000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Full_processor_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Full_processor_tb.sv|
+!i113 0
+R4
+n@full_processor_tb
+XFull_processor_v_unit
+R0
+R7
+!i10b 1
+!s100 <KAGWZ=X]Kd=KPhhEDbI<2
+IO^U0UQcGU@c2BL19A1f2H0
+VO^U0UQcGU@c2BL19A1f2H0
+!i103 1
+S1
+R2
+R9
+R10
+R11
+L0 339
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 0
+R4
+n@full_processor_v_unit
+vIM
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 6JVHBd=Ef[bm?TBc3niCb2
+I^KOLIfd>5LKmB<kMaT75^0
+R2
+w1428638918
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/instr_mem.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/instr_mem.v
+L0 1
+R3
+!s108 1444175469.595000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/instr_mem.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/instr_mem.v|
+!i113 0
+R8
+n@i@m
+vLoop_tb
+R0
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 hDn5A9H4AeF3Zm414?19L0
+IeN:EUaH=cj@5Hh;i=F;?@2
+!s105 Loop_tb_sv_unit
+S1
+R2
+w1430452592
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Loop_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Loop_tb.sv
+L0 1
+R3
+!s108 1444175469.311000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Loop_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/Loop_tb.sv|
+!i113 0
+R4
+n@loop_tb
+vLwStall_tb
+R0
+R5
+!i10b 1
+!s100 KBIXKX>VH1e8>f:7CE=2L3
+IfiPiB0?e>en8@Y@2NBF=Y1
+R1
+!s105 LwStall_tb_sv_unit
+S1
+R2
+w1430421548
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/LwStall_tb.sv
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/LwStall_tb.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175467.321000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/LwStall_tb.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/TestBenches/LwStall_tb.sv|
+!i113 0
+R4
+n@lw@stall_tb
+vReg16
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 eT_il0BKJGKN_PWMMUkk70
+I24kO<YnOE6]A^co[_O]V]0
+R2
+w1424677232
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Reg16.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Reg16.v
+L0 1
+R3
+!s108 1444169483.855000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Reg16.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/Reg16.v|
+!i113 0
+R8
+n@reg16
+vreg_file
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 aVC8Kc[jkC9@A_6C;RYZX3
+Ib8z8Oz=D><?]^nE]oQ=eG1
+R2
+w1428545074
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/reg_file.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/reg_file.v
+L0 1
+R3
+!s108 1444175467.039000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/reg_file.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/reg_file.v|
+!i113 0
+R8
+vunified_mem
+!s110 1444175464
+!i10b 1
+!s100 a0XCCG7j^Y0=M[fbi8Va`2
+I4=h0GjR^:_II74SJKHa^D1
+R1
+R2
+w1444173239
+8I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/unified_mem.v
+FI:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/unified_mem.v
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1444175464.690000
+!s107 I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/unified_mem.v|
+!s90 -reportprogress|300|-work|work|-vopt|-stats=none|I:/GitHub/ece554project/CPU/ECE552_ProjTurnIn/Final_5StagePiplinedProcesor_JakeTrueloveEmadSadeghi/USETHIS_Pipelined_iCache_Dataforwarding_Verilog/unified_mem.v|
+!i113 0
+R8

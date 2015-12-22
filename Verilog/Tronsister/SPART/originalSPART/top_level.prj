@@ -1,0 +1,5 @@
+verilog work "../TransmitRecieve.v"
+verilog work "../BRG.v"
+verilog work "../spart.v"
+verilog work "../driver.v"
+verilog work "../top_level.v"

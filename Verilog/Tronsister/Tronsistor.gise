@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<generated_project xmlns="http://www.xilinx.com/XMLSchema" xmlns:xil_pn="http://www.xilinx.com/XMLSchema">
+
+  <!--                                                          -->
+
+  <!--             For tool use only. Do not edit.              -->
+
+  <!--                                                          -->
+
+  <!-- ProjectNavigator created generated project file.         -->
+
+  <!-- For use in tracking generated file and other information -->
+
+  <!-- allowing preservation of process status.                 -->
+
+  <!--                                                          -->
+
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
+
+  <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
+
+  <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Tronsistor.xise"/>
+
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="ID_Unit_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="IF_Unit_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="MEM_tb_isim_beh.exe"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="Tronsistor32.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="Tronsistor32.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="Tronsistor32.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="Tronsistor32.ncd" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="Tronsistor32.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="Tronsistor32.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="Tronsistor32.ngr"/>
+    <file xil_pn:fileType="FILE_PAD_MISC" xil_pn:name="Tronsistor32.pad"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAR_REPORT" xil_pn:name="Tronsistor32.par" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PCF" xil_pn:name="Tronsistor32.pcf" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Tronsistor32.prj"/>
+    <file xil_pn:fileType="FILE_TRCE_MISC" xil_pn:name="Tronsistor32.ptwx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="Tronsistor32.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="Tronsistor32.syr"/>
+    <file xil_pn:fileType="FILE_VERILOG_INSTTEMPLATE" xil_pn:name="Tronsistor32.tfi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_TXT_REPORT" xil_pn:name="Tronsistor32.twr" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_TIMING_XML_REPORT" xil_pn:name="Tronsistor32.twx" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_UNROUTES" xil_pn:name="Tronsistor32.unroutes" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="Tronsistor32.ut" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:fileType="FILE_XPI" xil_pn:name="Tronsistor32.xpi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="Tronsistor32.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="Tronsistor32_envsettings.html"/>
+    <file xil_pn:fileType="FILE_NCD" xil_pn:name="Tronsistor32_guide.ncd" xil_pn:origination="imported"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Tronsistor32_isim_beh.exe"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="Tronsistor32_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="Tronsistor32_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NCD" xil_pn:name="Tronsistor32_map.ncd" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGM" xil_pn:name="Tronsistor32_map.ngm" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Tronsistor32_map.xrpt"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Tronsistor32_ngdbuild.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_EXCEL_REPORT" xil_pn:name="Tronsistor32_pad.csv" xil_pn:subbranch="Par"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_PAD_TXT_REPORT" xil_pn:name="Tronsistor32_pad.txt" xil_pn:subbranch="Par"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Tronsistor32_par.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="Tronsistor32_summary.html"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="Tronsistor32_summary.xml"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="Tronsistor32_tb.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="Tronsistor32_tb.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Tronsistor32_tb.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="Tronsistor32_tb.syr"/>
+    <file xil_pn:fileType="FILE_VERILOG_INSTTEMPLATE" xil_pn:name="Tronsistor32_tb.tfi"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="Tronsistor32_tb.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="Tronsistor32_tb_beh.prj"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Tronsistor32_tb_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="Tronsistor32_tb_isim_beh.wdb"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Tronsistor32_tb_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="Tronsistor32_usage.xml"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="Tronsistor32_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/par.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/trce.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="planAhead_run_1"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="tronsistor32.bgn" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="tronsistor32.bit" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_DRC" xil_pn:name="tronsistor32.drc" xil_pn:subbranch="FPGAConfiguration"/>
+    <file xil_pn:fileType="FILE_LOG" xil_pn:name="webtalk.log"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
+
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1450639731" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1450639731">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450641612" xil_pn:in_ck="-6992011019329268013" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1450641612">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="CPU/ALU.v"/>
+      <outfile xil_pn:name="CPU/CPU.v"/>
+      <outfile xil_pn:name="CPU/CPU_PPU_Interface.v"/>
+      <outfile xil_pn:name="CPU/CPU_control.v"/>
+      <outfile xil_pn:name="CPU/CPU_tb.v"/>
+      <outfile xil_pn:name="CPU/Data_Forward.v"/>
+      <outfile xil_pn:name="CPU/EXMEM_reg.v"/>
+      <outfile xil_pn:name="CPU/EX_Unit.v"/>
+      <outfile xil_pn:name="CPU/Flags_reg.v"/>
+      <outfile xil_pn:name="CPU/Hazard_Detect.v"/>
+      <outfile xil_pn:name="CPU/IDEX_reg.v"/>
+      <outfile xil_pn:name="CPU/ID_Unit.v"/>
+      <outfile xil_pn:name="CPU/IFID_reg.v"/>
+      <outfile xil_pn:name="CPU/IF_Unit.v"/>
+      <outfile xil_pn:name="CPU/MEMWB_reg.v"/>
+      <outfile xil_pn:name="CPU/MEM_Unit.v"/>
+      <outfile xil_pn:name="CPU/Memory_Interface.v"/>
+      <outfile xil_pn:name="CPU/PC_control.v"/>
+      <outfile xil_pn:name="CPU/RegFile_32bit.v"/>
+      <outfile xil_pn:name="CPU/Reg_32bit.v"/>
+      <outfile xil_pn:name="CPU/Trap_Handler.v"/>
+      <outfile xil_pn:name="CPU/WB_Unit.v"/>
+      <outfile xil_pn:name="PPU/BG_ATTRIBUTE_TABLE.v"/>
+      <outfile xil_pn:name="PPU/BG_PALETTES.v"/>
+      <outfile xil_pn:name="PPU/BG_PATTERN_TABLE.v"/>
+      <outfile xil_pn:name="PPU/BG_TILE_TABLE.v"/>
+      <outfile xil_pn:name="PPU/COLOR_PALETTES.v"/>
+      <outfile xil_pn:name="PPU/OAM.v"/>
+      <outfile xil_pn:name="PPU/PPU.v"/>
+      <outfile xil_pn:name="PPU/PPUCTRL.v"/>
+      <outfile xil_pn:name="PPU/PPU_BGLGEN.v"/>
+      <outfile xil_pn:name="PPU/PPU_OAMB.v"/>
+      <outfile xil_pn:name="PPU/PPU_SCANGEN.v"/>
+      <outfile xil_pn:name="PPU/PPU_SPGEN.v"/>
+      <outfile xil_pn:name="PPU/SPRITE_PALETTES.v"/>
+      <outfile xil_pn:name="PPU/SPRITE_PATTERN_TABLE.v"/>
+      <outfile xil_pn:name="PPU/SYSTEM_PALETTE.v"/>
+      <outfile xil_pn:name="PPU/TOP_LEVEL.v"/>
+      <outfile xil_pn:name="PPU/dvi_ifc.v"/>
+      <outfile xil_pn:name="PPU/vga_clk.v"/>
+      <outfile xil_pn:name="PPU/vga_logic.v"/>
+      <outfile xil_pn:name="SPART/BRG.v"/>
+      <outfile xil_pn:name="SPART/SPART.v"/>
+      <outfile xil_pn:name="SPART/TransmitRecieve.v"/>
+      <outfile xil_pn:name="SPART/core.v"/>
+      <outfile xil_pn:name="SPART/driver.v"/>
+      <outfile xil_pn:name="Tronsistor32_tb.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1450639731" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-332671972086932008" xil_pn:start_ts="1450639731">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450639731" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="6139004054880226182" xil_pn:start_ts="1450639731">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450639733" xil_pn:in_ck="8467160490265000374" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="7458019042965074360" xil_pn:start_ts="1450639731">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ipcore_dir/Main_Memory.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/Main_Memory.v"/>
+      <outfile xil_pn:name="ipcore_dir/OAMB.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/OAMB.v"/>
+      <outfile xil_pn:name="ipcore_dir/OAM_RAM.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/OAM_RAM.v"/>
+      <outfile xil_pn:name="ipcore_dir/Tron.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/Tron.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_attribute_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/background_attribute_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_pattern_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/background_pattern_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_tile_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/background_tile_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/color_palette_rom.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/color_palette_rom.v"/>
+      <outfile xil_pn:name="ipcore_dir/pattern_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/pattern_table.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1450641612" xil_pn:in_ck="-5426073965360312966" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1450641612">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="CPU/ALU.v"/>
+      <outfile xil_pn:name="CPU/CPU.v"/>
+      <outfile xil_pn:name="CPU/CPU_PPU_Interface.v"/>
+      <outfile xil_pn:name="CPU/CPU_control.v"/>
+      <outfile xil_pn:name="CPU/CPU_tb.v"/>
+      <outfile xil_pn:name="CPU/Data_Forward.v"/>
+      <outfile xil_pn:name="CPU/EXMEM_reg.v"/>
+      <outfile xil_pn:name="CPU/EX_Unit.v"/>
+      <outfile xil_pn:name="CPU/Flags_reg.v"/>
+      <outfile xil_pn:name="CPU/Hazard_Detect.v"/>
+      <outfile xil_pn:name="CPU/IDEX_reg.v"/>
+      <outfile xil_pn:name="CPU/ID_Unit.v"/>
+      <outfile xil_pn:name="CPU/IFID_reg.v"/>
+      <outfile xil_pn:name="CPU/IF_Unit.v"/>
+      <outfile xil_pn:name="CPU/MEMWB_reg.v"/>
+      <outfile xil_pn:name="CPU/MEM_Unit.v"/>
+      <outfile xil_pn:name="CPU/Memory_Interface.v"/>
+      <outfile xil_pn:name="CPU/PC_control.v"/>
+      <outfile xil_pn:name="CPU/RegFile_32bit.v"/>
+      <outfile xil_pn:name="CPU/Reg_32bit.v"/>
+      <outfile xil_pn:name="CPU/Trap_Handler.v"/>
+      <outfile xil_pn:name="CPU/WB_Unit.v"/>
+      <outfile xil_pn:name="PPU/BG_ATTRIBUTE_TABLE.v"/>
+      <outfile xil_pn:name="PPU/BG_PALETTES.v"/>
+      <outfile xil_pn:name="PPU/BG_PATTERN_TABLE.v"/>
+      <outfile xil_pn:name="PPU/BG_TILE_TABLE.v"/>
+      <outfile xil_pn:name="PPU/COLOR_PALETTES.v"/>
+      <outfile xil_pn:name="PPU/OAM.v"/>
+      <outfile xil_pn:name="PPU/PPU.v"/>
+      <outfile xil_pn:name="PPU/PPUCTRL.v"/>
+      <outfile xil_pn:name="PPU/PPU_BGLGEN.v"/>
+      <outfile xil_pn:name="PPU/PPU_OAMB.v"/>
+      <outfile xil_pn:name="PPU/PPU_SCANGEN.v"/>
+      <outfile xil_pn:name="PPU/PPU_SPGEN.v"/>
+      <outfile xil_pn:name="PPU/SPRITE_PALETTES.v"/>
+      <outfile xil_pn:name="PPU/SPRITE_PATTERN_TABLE.v"/>
+      <outfile xil_pn:name="PPU/SYSTEM_PALETTE.v"/>
+      <outfile xil_pn:name="PPU/TOP_LEVEL.v"/>
+      <outfile xil_pn:name="PPU/dvi_ifc.v"/>
+      <outfile xil_pn:name="PPU/vga_clk.v"/>
+      <outfile xil_pn:name="PPU/vga_logic.v"/>
+      <outfile xil_pn:name="SPART/BRG.v"/>
+      <outfile xil_pn:name="SPART/SPART.v"/>
+      <outfile xil_pn:name="SPART/TransmitRecieve.v"/>
+      <outfile xil_pn:name="SPART/core.v"/>
+      <outfile xil_pn:name="SPART/driver.v"/>
+      <outfile xil_pn:name="Tronsistor32_tb.v"/>
+      <outfile xil_pn:name="ipcore_dir/OAMB.v"/>
+      <outfile xil_pn:name="ipcore_dir/OAM_RAM.v"/>
+      <outfile xil_pn:name="ipcore_dir/Tron.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_attribute_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_pattern_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_tile_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/color_palette_rom.v"/>
+      <outfile xil_pn:name="ipcore_dir/pattern_table.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1450641641" xil_pn:in_ck="1682002564504612129" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-3002474274667031913" xil_pn:start_ts="1450641612">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Tronsistor32_tb_beh.prj"/>
+      <outfile xil_pn:name="Tronsistor32_tb_isim_beh.exe"/>
+      <outfile xil_pn:name="fuse.log"/>
+      <outfile xil_pn:name="isim"/>
+      <outfile xil_pn:name="isim.log"/>
+      <outfile xil_pn:name="xilinxsim.ini"/>
+    </transform>
+    <transform xil_pn:end_ts="1450641642" xil_pn:in_ck="4244894469413906758" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3434727619402977882" xil_pn:start_ts="1450641641">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="Tronsistor32_tb_isim_beh.wdb"/>
+      <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="isim.log"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391479" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1450391479">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391479" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="1094876666731001169" xil_pn:start_ts="1450391479">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391482" xil_pn:in_ck="8467160490265000374" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="7458019042965074360" xil_pn:start_ts="1450391479">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="ipcore_dir/Etch.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/Etch.v"/>
+      <outfile xil_pn:name="ipcore_dir/Main_Memory.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/Main_Memory.v"/>
+      <outfile xil_pn:name="ipcore_dir/OAMB.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/OAMB.v"/>
+      <outfile xil_pn:name="ipcore_dir/OAM_RAM.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/OAM_RAM.v"/>
+      <outfile xil_pn:name="ipcore_dir/Tron.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/Tron.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_attribute_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/background_attribute_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_pattern_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/background_pattern_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/background_tile_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/background_tile_table.v"/>
+      <outfile xil_pn:name="ipcore_dir/color_palette_rom.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/color_palette_rom.v"/>
+      <outfile xil_pn:name="ipcore_dir/pattern_table.ngc"/>
+      <outfile xil_pn:name="ipcore_dir/pattern_table.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391482" xil_pn:in_ck="2870857856148311340" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1450391482">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391482" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="4211955959912276899" xil_pn:start_ts="1450391482">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391482" xil_pn:in_ck="2870857856148311340" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="-8458126479482839362" xil_pn:start_ts="1450391482">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391482" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-8828981504018742014" xil_pn:start_ts="1450391482">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450635229" xil_pn:in_ck="5202906539403680137" xil_pn:name="TRANEXT_xstsynthesize_virtex5" xil_pn:prop_ck="8416965661684080264" xil_pn:start_ts="1450635173">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="Tronsistor32.lso"/>
+      <outfile xil_pn:name="Tronsistor32.ngc"/>
+      <outfile xil_pn:name="Tronsistor32.ngr"/>
+      <outfile xil_pn:name="Tronsistor32.prj"/>
+      <outfile xil_pn:name="Tronsistor32.stx"/>
+      <outfile xil_pn:name="Tronsistor32.syr"/>
+      <outfile xil_pn:name="Tronsistor32.xst"/>
+      <outfile xil_pn:name="Tronsistor32_tb.prj"/>
+      <outfile xil_pn:name="Tronsistor32_xst.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1450391536" xil_pn:in_ck="4343252469376058776" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-8684818412011302450" xil_pn:start_ts="1450391536">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1450635237" xil_pn:in_ck="-6309463653584166676" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-6778036306391163903" xil_pn:start_ts="1450635229">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="Tronsistor32.bld"/>
+      <outfile xil_pn:name="Tronsistor32.ngd"/>
+      <outfile xil_pn:name="Tronsistor32_ngdbuild.xrpt"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1450635269" xil_pn:in_ck="4544272693799891947" xil_pn:name="TRANEXT_map_virtex5" xil_pn:prop_ck="6733564432430981316" xil_pn:start_ts="1450635237">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="Tronsistor32.pcf"/>
+      <outfile xil_pn:name="Tronsistor32_map.map"/>
+      <outfile xil_pn:name="Tronsistor32_map.mrp"/>
+      <outfile xil_pn:name="Tronsistor32_map.ncd"/>
+      <outfile xil_pn:name="Tronsistor32_map.ngm"/>
+      <outfile xil_pn:name="Tronsistor32_map.xrpt"/>
+      <outfile xil_pn:name="Tronsistor32_summary.xml"/>
+      <outfile xil_pn:name="Tronsistor32_usage.xml"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1450635358" xil_pn:in_ck="-6766539559602820476" xil_pn:name="TRANEXT_par_virtex5" xil_pn:prop_ck="-4097515898943074650" xil_pn:start_ts="1450635269">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="Tronsistor32.ncd"/>
+      <outfile xil_pn:name="Tronsistor32.pad"/>
+      <outfile xil_pn:name="Tronsistor32.par"/>
+      <outfile xil_pn:name="Tronsistor32.ptwx"/>
+      <outfile xil_pn:name="Tronsistor32.unroutes"/>
+      <outfile xil_pn:name="Tronsistor32.xpi"/>
+      <outfile xil_pn:name="Tronsistor32_pad.csv"/>
+      <outfile xil_pn:name="Tronsistor32_pad.txt"/>
+      <outfile xil_pn:name="Tronsistor32_par.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
+    </transform>
+    <transform xil_pn:end_ts="1450635396" xil_pn:in_ck="4343252469376051151" xil_pn:name="TRANEXT_bitFile_virtex5" xil_pn:prop_ck="1555517831305455702" xil_pn:start_ts="1450635358">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="Tronsistor32.ut"/>
+      <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
+      <outfile xil_pn:name="tronsistor32.bgn"/>
+      <outfile xil_pn:name="tronsistor32.bit"/>
+      <outfile xil_pn:name="tronsistor32.drc"/>
+      <outfile xil_pn:name="webtalk.log"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+    </transform>
+    <transform xil_pn:end_ts="1450633664" xil_pn:in_ck="-4956080008924499527" xil_pn:name="TRAN_impactProgrammingTool" xil_pn:prop_ck="-2379753801292018389" xil_pn:start_ts="1450633664">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
+    </transform>
+    <transform xil_pn:end_ts="1450057641" xil_pn:in_ck="-4956080008924499527" xil_pn:name="TRAN_configureTargetDevice" xil_pn:prop_ck="7814804799388247210" xil_pn:start_ts="1450057639">
+      <status xil_pn:value="AbortedRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForced"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
+    </transform>
+    <transform xil_pn:end_ts="1450635358" xil_pn:in_ck="-7021120801925846169" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416183" xil_pn:start_ts="1450635346">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="Tronsistor32.twr"/>
+      <outfile xil_pn:name="Tronsistor32.twx"/>
+      <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
+    </transform>
+  </transforms>
+
+</generated_project>
