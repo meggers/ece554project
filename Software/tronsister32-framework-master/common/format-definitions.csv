@@ -1,0 +1,15 @@
+format,field_order,type,bit_width
+R,1,register,5
+R,2,register,5
+R,3,register,5
+R,4,immediate,5
+R,5,not_used,6
+I,1,register,5
+I,2,register,5
+I,3,immediate,16
+J,1,immediate,26
+S,1,register,5
+S,2,register,5
+S,3,not_used,16
+S_REMV,1,not_used,20
+S_REMV,2,immediate,6
